@@ -20,7 +20,7 @@ export default async function Header() {
                 <div className='flex justify-between items-center'>
                     <div className="">
                         <Image
-                            src="/images/logo.png"
+                            src="/images/tmv-bd.png"
                             alt="Track My Vehicle BD Logo"
                             height={82}
                             width={82}
