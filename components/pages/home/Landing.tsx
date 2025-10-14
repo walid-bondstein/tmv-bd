@@ -1,9 +1,6 @@
-import { Button } from "@/components/ui/button";
-import { Check, ArrowRight } from "lucide-react";
+import Header from "@/components/shared/Header";
 import { AspectRatio } from "@/components/ui/aspect-ratio";
 import Image from "next/image";
-import { Tagline } from "@/components/shared/tagline";
-import Header from "@/components/shared/Header";
 
 export default function Landing() {
     return (
@@ -18,7 +15,7 @@ export default function Landing() {
                     <div className='border border-blue-400 flex flex-1 flex-col gap-6 lg:gap-8'>
                         <div className='space-y-2 lg:space-y-4 text-left'>
                             <Image
-                                src={"/images/award1.png"}
+                                src={"/images/award.png"}
                                 alt="Award"
                                 width={130}
                                 height={130}

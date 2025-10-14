@@ -100,7 +100,7 @@ export default function GoogleMap({ stores, selectedStore, setSelectedStore }: G
                 try {
                     this.draw();
                 } catch (e) {
-                    /* ignore */
+                    console.log(e);
                 }
 
                 // ensure draw after map becomes idle (helps modal/hidden init cases)
@@ -109,11 +109,11 @@ export default function GoogleMap({ stores, selectedStore, setSelectedStore }: G
                         try {
                             this.draw();
                         } catch (e) {
-                            /* ignore */
+                            console.log(e);
                         }
                     });
                 } catch (e) {
-                    /* ignore */
+                    console.log(e);
                 }
             };
             markerOverlay.draw = function () {
@@ -132,7 +132,7 @@ export default function GoogleMap({ stores, selectedStore, setSelectedStore }: G
                     try {
                         markerDiv.parentNode.removeChild(markerDiv);
                     } catch (e) {
-                        /* ignore */
+                        console.log(e);
                     }
                 }
             };
@@ -148,7 +148,7 @@ export default function GoogleMap({ stores, selectedStore, setSelectedStore }: G
             const root = createRoot(markerDiv);
             root.render(<Marker />);
         })
-    }, [stores, mapLoaded]);
+    }, [stores, mapLoaded, setSelectedStore]);
 
     useEffect(() => {
         if (!mapLoaded || !mapInstance.current || !selectedStore) {
@@ -182,7 +182,7 @@ export default function GoogleMap({ stores, selectedStore, setSelectedStore }: G
             try {
                 this.draw()
             } catch (e) {
-                /* ignore */
+                console.log(e);
             }
 
             try {
@@ -190,11 +190,11 @@ export default function GoogleMap({ stores, selectedStore, setSelectedStore }: G
                     try {
                         this.draw()
                     } catch (e) {
-                        /* ignore */
+                        console.log(e);
                     }
                 })
             } catch (e) {
-                /* ignore */
+                console.log(e);
             }
         }
 
@@ -217,7 +217,7 @@ export default function GoogleMap({ stores, selectedStore, setSelectedStore }: G
                 try {
                     infoDiv.parentNode.removeChild(infoDiv)
                 } catch (e) {
-                    /* ignore */
+                    console.log(e);
                 }
             }
         }
@@ -251,7 +251,7 @@ export default function GoogleMap({ stores, selectedStore, setSelectedStore }: G
                 // infoWindowRootRef.current.unmount()
             }
         }
-    }, [selectedStore, mapLoaded])
+    }, [selectedStore, mapLoaded, setSelectedStore])
 
     return <div ref={mapRef} style={{ width: "100%", height: "100%" }} />;
 }
