@@ -22,8 +22,9 @@ export default async function Header() {
                         <Image
                             src={"/images/logo.png"}
                             alt="Track My Vehicle BD Logo"
-                            className='w-full h-full'
+                            // className='w-full h-full'
                             fill
+                            style={{ objectFit: 'contain' }}
                         />
                     </div>
 
