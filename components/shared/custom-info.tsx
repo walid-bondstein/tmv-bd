@@ -1,7 +1,8 @@
 import React from 'react'
-import { generateAddress, StoreLocation } from '../pages/store-locations/store-locator'
+import { generateAddress } from '../pages/store-locations/store-locator'
 import Image from 'next/image';
 import { X } from 'lucide-react';
+import { StoreLocation } from '@/app/store-locations/page';
 
 interface CustomInfoWindowProps {
     store: StoreLocation;

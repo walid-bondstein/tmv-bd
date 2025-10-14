@@ -20,6 +20,15 @@ const nextConfig: NextConfig = {
 
     return config;
   },
+  images: {
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "tmvbd.bondstein.net",
+        pathname: "/**",
+      },
+    ],
+  },
 };
 
 export default nextConfig;

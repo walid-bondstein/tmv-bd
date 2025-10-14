@@ -2,10 +2,10 @@
 "use client"
 
 import { useEffect, useRef, useState } from "react"
-import { StoreLocation } from "../pages/store-locations/store-locator"
 import { createRoot, Root } from "react-dom/client"
 import Marker from "@/public/svgs/marker"
 import CustomInfoWindow from "./custom-info"
+import { StoreLocation } from "@/app/store-locations/page"
 
 interface GoogleMapProps {
     stores: StoreLocation[]
@@ -236,7 +236,11 @@ export default function GoogleMap({ stores, selectedStore, setSelectedStore }: G
                 }}
             />
         )
-        mapInstance.current.setCenter({ lat: selectedStore.lat + + 0.0420, lng: selectedStore.lng });
+        if (selectedStore.lat && selectedStore.lng) {
+            mapInstance.current.setCenter({ lat: selectedStore.lat + + 0.0420, lng: selectedStore.lng });
+        } else {
+
+        }
         mapInstance.current.setZoom(12);
         // Cleanup
         return () => {
@@ -248,13 +252,6 @@ export default function GoogleMap({ stores, selectedStore, setSelectedStore }: G
             }
         }
     }, [selectedStore, mapLoaded])
-
-    // useEffect(() => {
-    //     if (!selectedStore || !mapLoaded || !mapInstance.current) return;
-    //     // 🔍 Center and zoom to the selected store
-    //     mapInstance.current.setCenter({ lat: selectedStore.lat, lng: selectedStore.lng });
-    //     mapInstance.current.setZoom(15); // adjust zoom level as you like (13–17 works well)
-    // }, [selectedStore, mapLoaded]);
 
     return <div ref={mapRef} style={{ width: "100%", height: "100%" }} />;
 }
