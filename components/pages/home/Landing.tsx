@@ -12,7 +12,7 @@ export default function Landing() {
             <div className="component-container mx-auto">
                 <div className=" mx-auto flex flex-col items-center gap-12 lg:flex-row lg:gap-16">
                     {/* Left Column */}
-                    <div className='border border-blue-400 flex flex-1 flex-col gap-6 lg:gap-8'>
+                    <div className='flex flex-1 flex-col gap-6 lg:gap-8'>
                         <div className='space-y-2 lg:space-y-4 text-left'>
                             <Image
                                 src={"/images/award.png"}
