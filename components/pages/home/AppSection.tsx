@@ -3,7 +3,7 @@ import React from 'react'
 
 export default function AppSection() {
     return (
-        <div className='component-container mx-auto relative 2xl:pt-[76px] xl:pt-12 lg:pt-6 md:pb-0 pb-10 pt-10'>
+        <div className='component-container mx-auto relative 2xl:pt-[76px] xl:pt-12 lg:pt-6 md:pb-0 pb-10 pt-10 2xl:mb-28'>
             <div className='grid lg:grid-cols-2 grid-cols-1 bg-[#F0F4F9] 2xl:py-32 xl:py-12 lg:py-10 2xl:px-[7.14rem] xl:px-16 lg:px-11 p-0 rounded-4xl'>
                 <div className='space-y-5 px-4 pt-4 lg:px-0 lg:pt-0'>
                     <h2 className='text-title'>Driven by Trust, Backed by Experience</h2>

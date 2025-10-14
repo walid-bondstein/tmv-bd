@@ -29,7 +29,7 @@ const steps: Step[] = [
 export function HowItWorks() {
     return (
         <section className="component-container mx-auto py-12 md:py-20 lg:py-24">
-            <div className="container lg:px-4 md:px-6 px-0">
+            <div className="container lg:px-4 md:px-6 px-0 mx-auto w-full">
                 {/* Desktop Layout */}
                 <div className="hidden lg:grid lg:grid-cols-[300px_1fr] lg:gap-12 lg:items-start">
                     {/* Left side - Title and CTA */}
@@ -68,7 +68,7 @@ export function HowItWorks() {
                 </div>
 
                 {/* Mobile Layout */}
-                <div className="lg:hidden space-y-4">
+                <div className="lg:hidden space-y-4 mx-auto">
                     {/* Title */}
                     <div className="text-center">
                         <h2 className="text-3xl text-title tracking-tight text-balance">How It Works</h2>
@@ -76,7 +76,7 @@ export function HowItWorks() {
                     </div>
 
                     {/* Steps stacked vertically */}
-                    <div className="space-y-6">
+                    <div className="space-y-6 mx-auto">
                         {steps.map((step, index) => (
                             <div key={index} className="space-y-3 rounded-lg bg-[#F3F5F8] p-3">
                                 {/* Icon */}

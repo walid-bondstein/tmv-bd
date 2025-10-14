@@ -237,11 +237,11 @@ export default function GoogleMap({ stores, selectedStore, setSelectedStore }: G
             />
         )
         if (selectedStore.lat && selectedStore.lng) {
-            mapInstance.current.setCenter({ lat: selectedStore.lat + + 0.0420, lng: selectedStore.lng });
+            mapInstance.current.setCenter({ lat: selectedStore.lat + 0.0003, lng: selectedStore.lng });
         } else {
 
         }
-        mapInstance.current.setZoom(12);
+        mapInstance.current.setZoom(19);
         // Cleanup
         return () => {
             if (infoWindowOverlayRef.current) {
