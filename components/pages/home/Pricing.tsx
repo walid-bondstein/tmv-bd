@@ -1,4 +1,4 @@
-import { Product } from "@/app/page";
+import { Product } from "@/app/page1";
 import { PricingCard } from "./PricingCard";
 
 export default function Pricing({ products }: {

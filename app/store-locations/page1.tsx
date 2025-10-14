@@ -1,3 +1,4 @@
+export const dynamic = "force-dynamic";
 import StoreLocator from '@/components/pages/store-locations/store-locator'
 import Header from '@/components/shared/Header'
 import React from 'react'

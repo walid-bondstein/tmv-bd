@@ -32,11 +32,12 @@
     }
   },
   "include": [
-    "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts",
-    "public/svgs/marker.js"
+    "next-env.d.ts",
+    "public/svgs/marker.js",
+    "dist/types/**/*.ts"
   ],
   "exclude": [
     "node_modules"

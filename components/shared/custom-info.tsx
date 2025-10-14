@@ -2,7 +2,7 @@ import React from 'react'
 import { generateAddress } from '../pages/store-locations/store-locator'
 import Image from 'next/image';
 import { X } from 'lucide-react';
-import { StoreLocation } from '@/app/store-locations/page';
+import { StoreLocation } from '@/app/store-locations/page1';
 
 interface CustomInfoWindowProps {
     store: StoreLocation;
@@ -77,31 +77,3 @@ Location: https://www.google.com/maps/search/?api=1&query=${store.lat},${store.l
         </div>
     )
 }
-/* 
-
-const handleShare = async (e: React.MouseEvent<HTMLButtonElement>) => {
-        const shareData = {
-            title: store.name,
-            text: `Check out this store:\n${store.name}\n${store.address}${store.city ? ', ' + store.city : ''}\nTel: ${store.telephone ?? store.mobile_number ?? 'N/A'}`,
-            url: `https://www.google.com/maps?q=${store.lat},${store.lng}`
-        }
-        try {
-            const textToCopy = `${store.name}, ${store.address}`;
-            await navigator.clipboard.writeText(textToCopy);
-
-            const button = e.target;
-            const originalText = button.innerText;
-
-            // Change text to "Copied!" and add animation class
-            button.innerText = "Copied!";
-            button.classList.add("bg-green-500", "text-white");
-
-            // Reset back after 1.5 seconds
-            setTimeout(() => {
-                button.innerText = originalText;
-                button.classList.remove("bg-green-500", "text-white");
-            }, 1500);
-        } catch (err) {
-            console.error("Failed to copy: ", err);
-        }
-*/
