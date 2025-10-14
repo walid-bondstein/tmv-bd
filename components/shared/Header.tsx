@@ -18,15 +18,13 @@ export default async function Header() {
         <div className='w-full lg:py-3.5 py-1.5'>
             <div className={`component-container mx-auto`}>
                 <div className='flex justify-between items-center'>
-                    <div className="relative w-16 h-16 lg:w-[5.125rem] lg:h-[5.125rem]">
+                    <div className="">
                         <Image
                             src="/images/logo.png"
                             alt="Track My Vehicle BD Logo"
-                            fill
-                            style={{
-                                objectFit: 'contain',  // keeps the image fully visible
-                                objectPosition: 'center' // centers the image inside the div
-                            }}
+                            height={82}
+                            width={82}
+                            className='w-16 h-16 lg:w-[5.125rem] lg:h-[5.125rem] object-center object-contain'
                         />
                     </div>
 
