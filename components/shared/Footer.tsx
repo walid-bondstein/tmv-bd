@@ -9,7 +9,7 @@ export default function Footer() {
         <div className="bg-[#F6F5EE]">
             <div className="component-container mx-auto py-20">
                 <div className="w-full grid grid-cols-3">
-                    <div className='border border-blue-600'>
+                    <div className=''>
                         <div className='space-y-4 max-w-[21rem]'>
                             <Image
                                 src="/images/tmv-bd.png"
@@ -28,7 +28,7 @@ export default function Footer() {
                             </div>
                         </div>
                     </div>
-                    <div className='border border-blue-600 flex justify-end'>
+                    <div className='flex justify-end'>
                         <div className='max-w-max flex justify-start items-start gap-36'  >
                             <div className=''>
                                 <p className="text-lg font-semibold text-[#4A5E6D]">Quick links</p>
@@ -50,7 +50,7 @@ export default function Footer() {
                             </div>
                         </div>
                     </div>
-                    <div className='border border-blue-600 flex justify-end items-start'>
+                    <div className='flex justify-end items-start'>
                         <div className='max-w-[25.725rem] space-y-4'>
                             <p className="2xl:text-[32px] 2xl:leading-10 2xl:font-semibold text-[#002838]">Drop your email here. We will get back to you.</p>
                             <div className='border px-2 py-1 rounded-full flex justify-between items-center'>
