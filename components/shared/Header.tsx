@@ -28,7 +28,7 @@ export default async function Header() {
                         />
                     </div>
 
-                    <div className='hidden'>
+                    <div className='hidden lg:block'>
                         <div className='flex justify-center items-center gap-6 text-secondary-foreground'>
                             <Link className={`${isActive("/") ? "text-gradient" : ""}`} prefetch={false} href={"/"}>Home</Link>
                             <Link className={`${isActive("/products") ? "text-gradient" : ""}`} prefetch={false} href={"/products"}>Products</Link>
@@ -38,7 +38,7 @@ export default async function Header() {
                         </div>
                     </div>
 
-                    <div className='fl ex justify-end items-center gap-3 hidden'>
+                    <div className='flex justify-end items-center gap-3'>
                         <div className='border border-secondary-foreground/10 rounded-full cursor-pointer bg-white/50 backdrop-blur-sm'>
                             <Search className='w-6 h-6 m-3 text-secondary-foreground' />
                         </div>

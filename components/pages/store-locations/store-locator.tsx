@@ -12,7 +12,7 @@ import {
     SelectTrigger,
     SelectValue,
 } from "@/components/ui/select"
-import { StoreLocation } from "@/app/store-locations/page1";
+import { StoreLocation } from "@/app/store-locations/page";
 
 export function generateAddress(location: StoreLocation) {
     const parts = [

@@ -5,7 +5,7 @@ import { useEffect, useRef, useState } from "react"
 import { createRoot, Root } from "react-dom/client"
 import Marker from "@/public/svgs/marker"
 import CustomInfoWindow from "./custom-info"
-import { StoreLocation } from "@/app/store-locations/page1"
+import { StoreLocation } from "@/app/store-locations/page"
 
 interface GoogleMapProps {
     stores: StoreLocation[]

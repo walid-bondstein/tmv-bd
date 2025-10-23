@@ -1,5 +1,5 @@
 import React from "react"
-import { Product } from '@/app/page1'
+import { Product } from '@/app/page'
 import { Button } from "@/components/ui/button"
 import Image from "next/image"
 
