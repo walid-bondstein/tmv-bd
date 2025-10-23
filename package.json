@@ -6,6 +6,7 @@
     "dev": "NODE_ENV=development next dev --turbopack",
     "build": "NODE_ENV=production next build --turbopack",
     "start": "NODE_ENV=production next start",
+    "intern": "next dev",
     "lint": "eslint"
   },
   "dependencies": {
@@ -21,6 +22,7 @@
     "lucide": "^0.545.0",
     "lucide-react": "^0.545.0",
     "motion": "^12.23.24",
+    "framer-motion": "^12.23.24",
     "next": "15.5.4",
     "react": "19.1.0",
     "react-dom": "19.1.0",
