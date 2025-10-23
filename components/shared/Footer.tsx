@@ -7,9 +7,9 @@ import { Input } from '../ui/input'
 export default function Footer() {
     return (
         <div className="bg-[#F6F5EE]">
-            <div className="component-container mx-auto py-20">
-                <div className="w-full grid grid-cols-3">
-                    <div className=''>
+            <div className="component-container mx-auto md:py-20 py-11">
+                <div className="w-full grid grid-cols-3 gap-4">
+                    <div className='2xl:col-span-1 lg:col-span-1 col-span-3'>
                         <div className='space-y-4 max-w-[21rem]'>
                             <Image
                                 src="/images/tmv-bd.png"
@@ -28,8 +28,8 @@ export default function Footer() {
                             </div>
                         </div>
                     </div>
-                    <div className='flex justify-end'>
-                        <div className='max-w-max flex justify-start items-start gap-36'  >
+                    <div className='flex lg:justify-end justify-start 2xl:col-span-1 lg:col-span-1 col-span-3'>
+                        <div className='max-w-max flex justify-start items-start 2xl:gap-36 2xl:border-amber-400 gap-12'  >
                             <div className=''>
                                 <p className="text-lg font-semibold text-[#4A5E6D]">Quick links</p>
                                 <ul>
@@ -50,9 +50,9 @@ export default function Footer() {
                             </div>
                         </div>
                     </div>
-                    <div className='flex justify-end items-start'>
-                        <div className='max-w-[25.725rem] space-y-4'>
-                            <p className="2xl:text-[32px] 2xl:leading-10 2xl:font-semibold text-[#002838]">Drop your email here. We will get back to you.</p>
+                    <div className='flex lg:justify-end justify-start items-start 2xl:col-span-1 lg:col-span-1 col-span-3'>
+                        <div className='max-w-[25.725rem] md:space-y-4 space-y-3'>
+                            <p className="text-[clamp(22px,1.6666vw,32px)] font-semibold text-[#002838]">Drop your email here. We will get back to you.</p>
                             <div className='border px-2 py-1 rounded-full flex justify-between items-center'>
                                 <Input
                                     type="email"
@@ -63,20 +63,20 @@ export default function Footer() {
                                     <Send />
                                 </div>
                             </div>
-                            <p className="md:text-2xl md:font-normal text-[#777F92]">The flagship product of</p>
+                            <p className="font-normal text-[clamp(20px,1.2499vw,24px)] text-[#777F92] line-clamp-1">The flagship product of</p>
                             <Image
                                 src="/images/bondstein.png"
                                 alt="Track My Vehicle BD Logo"
                                 height={82}
                                 width={176}
-                                className='h-[8rem] lg:h-auto lg:w-[11rem] object-center object-contain'
+                                className='lg:h-auto h-9 lg:w-[11rem] object-center object-contain'
                             />
                         </div>
                     </div>
                 </div>
             </div>
             <div className='border-t'>
-                <p className='text-center'>© Copyright {new Date().getFullYear()}. All rights TMV.</p>
+                <p className='text-center text-base font-normal py-4 md:py-7 text-[#6C757D]'>© Copyright {new Date().getFullYear()}. All rights TMV.</p>
             </div>
         </div>
     )
