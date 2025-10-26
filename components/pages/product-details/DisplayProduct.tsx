@@ -34,11 +34,11 @@ export default function DisplayProduct({ product }: DisplayProductProps) {
 
   return (
     <section
-      className="flex flex-col md:flex-row justify-between gap-10 bg-white p-6 md:p-10 rounded-xl shadow-sm w-full max-w-[1438px] mx-auto"
+      className="grid grid-cols-12 gap-6 px-4 lg:px-8 component-container"
       style={{ minHeight: 793 }}
     >
       {/* LEFT SIDE - Product Image Gallery */}
-      <div className="flex-1">
+      <div className="col-span-6">
         <div className="w-full border rounded-xl overflow-hidden bg-gray-50">
           <Image
             src={selectedImage}
@@ -63,9 +63,9 @@ export default function DisplayProduct({ product }: DisplayProductProps) {
           ))}
         </div>
       </div>
-
+        {/* <div className="col-span-1"/> */}
       {/* RIGHT SIDE - Product Info */}
-      <div className="flex-1 flex flex-col justify-between">
+      <div className="flex flex-col justify-between border col-end-5 ">
         <div>
           <h1 className="text-3xl font-semibold">{product.name}</h1>
 
@@ -90,16 +90,17 @@ export default function DisplayProduct({ product }: DisplayProductProps) {
           {/* Subscription Options */}
           <div className="mt-6">
             <h3 className="text-sm font-medium mb-2">Monthly Subscription *</h3>
-            <div className="grid grid-cols-2 gap-3 sm:gap-4">
+            <div className="flex justify-between items-center flex-wrap gap-4">
               {product.subscriptionOptions?.map((option, i) => (
                 <button
                   key={i}
                   onClick={() => setSelectedPlan(option)}
-                  className={`border rounded-md p-3 text-left hover:border-yellow-500 transition ${
-                    selectedPlan?.label === option.label
-                      ? "border-yellow-500 ring-2 ring-yellow-400"
-                      : ""
-                  }`}
+                  className={`border rounded-xl p-3 text-left transition 
+  ${
+    selectedPlan?.label === option.label
+                 ? "border-gray-400 bg-[#E8EBF0]"
+                    : "border-transparent bg-[#F0F2F5] hover:bg-[#E8EBF0]"
+                 }`}
                 >
                   <div className="font-semibold text-gray-900">{option.price}/- MRP</div>
                   <p className="text-xs text-gray-500">{option.duration}</p>
@@ -136,7 +137,7 @@ export default function DisplayProduct({ product }: DisplayProductProps) {
               </p>
               {selectedPlan && (
                 <p className="text-xs text-yellow-600">
-                  For {selectedPlan.duration}
+                  {selectedPlan.duration}
                 </p>
               )}
             </div>
@@ -145,12 +146,15 @@ export default function DisplayProduct({ product }: DisplayProductProps) {
 
         {/* Buttons */}
         <div className="mt-8 flex flex-col sm:flex-row gap-4">
-          <Button className="bg-yellow-500 hover:bg-yellow-600 text-white px-8 py-2 text-base">
-            Purchase
+          <Button className="bg-submit 2xl:w-78 xl:w-72 lg:w-64 md:w-58 sm:w-50 w-full  xs:h-[3.25rem] h-[3.5rem] lg:font-bold    rounded-lg tmv-shadow submit cursor-pointer text-[clamp(14px,4.0625vw,16px)]"
+                                type="submit">
+                    Purchase
           </Button>
-          <Button variant="outline" className="px-8 py-2 text-base">
-            Add to cart
+
+          <Button variant="outline" className="flex-grow 2xl:w-78 xl:w-72 lg:w-64 md:w-58 sm:w-50 w-full xs:h-[3.25rem] h-[3.  5rem] lg:font-bold rounded-lg text-black border border-gray-300 hover:bg-gray-50 transition-all duration-200 text-[clamp(14px,4.0625vw,16px)]">
+                 Add to cart
           </Button>
+
         </div>
 
         {/* Payment Methods */}
