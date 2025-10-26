@@ -20,12 +20,12 @@ interface DisplayProductProps {
 }
 
 export default function DisplayProduct({ product }: DisplayProductProps) {
-  // Selected image and subscription plan states
+ 
   const [selectedImage, setSelectedImage] = useState(product.images?.[0] || "/images/default.png");
   const [quantity, setQuantity] = useState(1);
   const [selectedPlan, setSelectedPlan] = useState(product.subscriptionOptions?.[0]);
 
-  // Calculate discount and total
+  
   const discountedPrice = product.discountPercent
     ? product.mrp - (product.mrp * product.discountPercent) / 100
     : product.mrp;

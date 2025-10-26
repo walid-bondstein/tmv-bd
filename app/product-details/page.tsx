@@ -20,7 +20,7 @@ export const metadata: Metadata = {
   },
 };
 
-// ✅ Sample static product data
+
 const sampleProduct = {
   name: "VTS Regular",
   description:
