@@ -43,15 +43,10 @@ const sampleProduct = {
 
 export default function ProductDetailsPage() {
   return (
-    <main className="bg-[#FAFAFA] text-slate-900 min-h-screen flex flex-col">
+    <main className="bg-[#FAFAFA] text-slate-900">
       {/* Header */}
       <Header />
-
-      {/* Product Section */}
-      <section className="container mx-auto px-4 md:px-8 py-10">
-        <DisplayProduct product={sampleProduct} />
-      </section>
-
+      <DisplayProduct product={sampleProduct} />
       {/* Footer */}
       <Footer />
     </main>
