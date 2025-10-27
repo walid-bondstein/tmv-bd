@@ -4,6 +4,12 @@ import Header from "@/components/shared/Header";
 import Footer from "@/components/shared/Footer";
 import DisplayProduct from "@/components/pages/product-details/DisplayProduct";
 import { Metadata } from "next";
+import FeaturedProducts from "@/components/pages/product-details/FeaturedProducts";
+import ConfusedProducts from "@/components/pages/product-details/ConfusedProducts";
+import Details from "@/components/pages/product-details/Details";
+
+
+
 
 export const metadata: Metadata = {
   title: "Product Details | Track My Vehicle BD",
@@ -134,6 +140,8 @@ export default function ProductDetailsPage({
     <main className="bg-[#FAFAFA] text-slate-900">
       <Header />
       <DisplayProduct product={product} />
+      <ConfusedProducts />
+      <FeaturedProducts />
       <Footer />
     </main>
   );
