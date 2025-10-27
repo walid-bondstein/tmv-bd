@@ -9,7 +9,7 @@ type Props = {
 
 export const PricingCard: React.FC<Props> = ({ product }) => {
     return (
-        <div className="max-w-[280px] md:max-w-xs flex flex-col space-y-3 justify-between bg-[#F6F5EE] relative rounded-xl transition hover:shadow-md w-full mx-auto overflow-hidden group/card">
+        <div className="max-w-[280px] min-w-[250px] md:max-w-xs flex flex-col space-y-3 justify-between bg-[#F6F5EE] relative rounded-xl transition hover:shadow-md w-full mx-auto overflow-hidden group/card">
             {/* Subscription Label */}
             {product.subscriptionFee && (
                 <div className="whitespace-nowrap ml-auto text-ellipsis text-sm px-[18px] py-[11px] bg-white group-hover/card:bg-primary text-left font-semibold w-2/3 rounded-bl-4xl text-black transition-all duration-300">

@@ -3,6 +3,8 @@
 import Image from "next/image";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
+import { Minus, Plus } from "lucide-react";
+import DisplayImages from "@/components/pages/product-details/DisplayImages";
 
 interface DisplayProductProps {
   product: {
@@ -20,12 +22,16 @@ interface DisplayProductProps {
 }
 
 export default function DisplayProduct({ product }: DisplayProductProps) {
-
-  const [selectedImage, setSelectedImage] = useState(product.images?.[0] || "/images/default.png");
+  // States
+  const [selectedImage, setSelectedImage] = useState(
+    product.images?.[0] || "/images/gps-map.jpg"
+  );
   const [quantity, setQuantity] = useState(1);
-  const [selectedPlan, setSelectedPlan] = useState(product.subscriptionOptions?.[0]);
+  const [selectedPlan, setSelectedPlan] = useState(
+    product.subscriptionOptions?.[0]
+  );
 
-
+  // Calculate discount and total
   const discountedPrice = product.discountPercent
     ? product.mrp - (product.mrp * product.discountPercent) / 100
     : product.mrp;
@@ -33,121 +39,154 @@ export default function DisplayProduct({ product }: DisplayProductProps) {
   const total = discountedPrice * quantity;
 
   return (
-    <div className="grid grid-cols-12 2xl:gap-14 xs:gap-8 gap-0 border border-blue-400 component-container mx-auto">
+    <div className="grid grid-cols-12 2xl:gap-24 xl:gap-16 lg:gap-12 md:gap-10 sm:gap-8 gap-6 component-container mx-auto">
+      {/* Left Side — Image Gallery */}
+      <DisplayImages
+      />
 
-    {/* left side */}
-
-      <div className="col-span-12 xl:col-span-6 border-amber-400 border flex flex-col">
-         {/* Main Image */}
-        <div className="w-full h-auto flex-1 2xl:min-h-[580px] xl:min-h-[480px] min-h-[300px] border relative border-blue-400 rounded-xl flex items-center justify-center bg-gray-50 mb-6">
-          <Image 
-            src={"/images/gps-map.jpg"}
-            fill
-            alt="prod image"
-          />
-      </div>
-
-      {/* Thumbnail Grid */}
-  <div className="flex justify-start items-center overflow-x-auto gap-3">
-    <div className="border relative border-orange-300 rounded-lg flex items-center justify-center bg-white shadow-sm h-20 w-20 md:h-32 md:w-32 shrink-0">
-      <p className="text-gray-500 text-sm">Image 1</p>
-    </div>    <div className="border relative border-orange-300 rounded-lg flex items-center justify-center bg-white shadow-sm h-20 w-20 md:h-32 md:w-32 shrink-0">
-      <p className="text-gray-500 text-sm">Image 1</p>
-    </div>    <div className="border relative border-orange-300 rounded-lg flex items-center justify-center bg-white shadow-sm h-20 w-20 md:h-32 md:w-32 shrink-0">
-      <p className="text-gray-500 text-sm">Image 1</p>
-    </div>    <div className="border relative border-orange-300 rounded-lg flex items-center justify-center bg-white shadow-sm h-20 w-20 md:h-32 md:w-32 shrink-0">
-      <p className="text-gray-500 text-sm">Image 1</p>
-    </div>    <div className="border relative border-orange-300 rounded-lg flex items-center justify-center bg-white shadow-sm h-20 w-20 md:h-32 md:w-32 shrink-0">
-      <p className="text-gray-500 text-sm">Image 1</p>
-    </div>    <div className="border relative border-orange-300 rounded-lg flex items-center justify-center bg-white shadow-sm h-20 w-20 md:h-32 md:w-32 shrink-0">
-      <p className="text-gray-500 text-sm">Image 1</p>
-    </div>    <div className="border relative border-orange-300 rounded-lg flex items-center justify-center bg-white shadow-sm h-20 w-20 md:h-32 md:w-32 shrink-0">
-      <p className="text-gray-500 text-sm">Image 1</p>
-    </div>    <div className="border relative border-orange-300 rounded-lg flex items-center justify-center bg-white shadow-sm h-20 w-20 md:h-32 md:w-32 shrink-0">
-      <p className="text-gray-500 text-sm">Image 1</p>
-    </div>
-    
-  </div>
-</div>
-
-      
-    
-    {/* RIght side */}  
-
+      {/* Right Side — Product Info */}
       <div className="col-span-12 xl:col-span-6 w-full h-full">
-        <div className="">
-          <h1>{product.name}</h1>
-          <p className="text-lg font-medium text-gray-800 mt-1">
+        {/* Product Details */}
+        <div className="mb-6">
+          <h1 className="text-3xl font-bold text-gray-900 tracking-tight">
+            {product.name}
+          </h1>
+
+          <p className="text-2xl font-semibold text-gray-900 mt-2">
             ৳{product.mrp.toLocaleString()} /- MRP{" "}
             {product.discountPercent && (
-              <span className="text-gray-500 text-base ml-2">
+              <span className="text-gray-500 text-lg font-medium ml-2">
                 ({product.discountPercent}% Off)
               </span>
             )}
           </p>
-         <p className="text-gray-600 mt-2">{product.description}</p>
 
+          <p className="text-gray-500 text-base mt-3 leading-relaxed">
+            {product.description}
+          </p>
         </div>
-        <div className="">
-         <h2>Monthly Subscription *</h2>
-          <div className="grid xl:grid-cols-2 lg:grid-cols-2 gap-4 border lg:border-green-300 border-violet-400">
-           {product.subscriptionOptions?.map((option, index) => (
-            <div key={index} className="flex justify-start items-center border border-rose-500">
-          <div>
-          <input
-            type="radio"
-            name="subscription"
-            id={`plan-${index}`}
-            // optional: checked logic (if you want to track selection)
-            onChange={() => setSelectedPlan(option)}
-            checked={selectedPlan?.label === option.label}
-          />
-         </div>
-          <div>
-            <p>{option.price} /- MRP</p>
-            <p>{option.duration}</p>
-          </div>
-         </div>
-        ))}
-    </div>
-  </div>
-  <div className="flex flex-col sm:flex-row items-center sm:items-center justify-start gap-6 mt-6">
-  {/* Quantity Section */}
-  <div className="flex flex-col">
-    <span className="text-sm font-medium mb-1">Quantity :</span>
-    <div className="flex items-center border rounded-lg px-3 py-1">
-      <button
-        onClick={() => setQuantity((prev) => Math.max(1, prev - 1))}
-        className="text-xl font-bold px-2"
-      >
-        −
-      </button>
-      <span className="px-3">{quantity}</span>
-      <button
-        onClick={() => setQuantity((prev) => prev + 1)}
-        className="text-xl font-bold px-2"
-      >
-        +
-      </button>
-    </div>
-  </div>
 
-  {/* Total Section */}
-   <div className="flex flex-col">
-     <p className="text-sm text-gray-500">Total:</p>
-     <p className="text-lg font-semibold">৳{total.toLocaleString()} /- MRP</p>
-     {selectedPlan && (
-        <p className="text-xs text-yellow-600">
-        For {selectedPlan.duration}
-      </p>
-     )}
+        <hr className="h-px my-8 bg-gray-200 border-0 dark:bg-gray-700" />
+
+        {/* Subscription Options */}
+        <div>
+          <h2 className="text-lg font-semibold text-gray-900 tracking-tight mb-3">
+            Monthly Subscription *
+          </h2>
+
+          <div className="grid xl:grid-cols-2 lg:grid-cols-2 gap-4">
+            {product.subscriptionOptions?.map((option, index) => (
+              <label
+                key={index}
+                htmlFor={`plan-${index}`}
+                className="flex items-center justify-start gap-3 rounded-2xl px-5 py-4 bg-gray-100 cursor-pointer border border-transparent"
+              >
+                {/* Radio Button */}
+                <input
+                  type="radio"
+                  name="subscription"
+                  id={`plan-${index}`}
+                  onChange={() => setSelectedPlan(option)}
+                  checked={selectedPlan?.label === option.label}
+                  className="w-4 h-4 accent-gray-400"
+                />
+
+                {/* Text Content */}
+                <div>
+                  <p className="text-lg font-bold text-gray-900">
+                    {option.price}
+                    <span className="font-semibold">/-MRP</span>
+                  </p>
+                  <p className="text-sm text-gray-500">{option.duration}</p>
+                </div>
+              </label>
+            ))}
+          </div>
+        </div>
+
+        {/* Quantity + Total */}
+        <div className="flex flex-col sm:flex-row items-center justify-start gap-6 mt-6">
+          {/* Quantity Section */}
+          <div className="flex flex-col md:mr-0 mr-auto">
+            <span className="text-sm font-medium mb-1">Quantity :</span>
+            <div className="flex items-center space-x-3 px-3 py-1">
+              {/* Minus Button */}
+              <button
+                onClick={() => setQuantity((prev) => Math.max(1, prev - 1))}
+                className="w-9 h-9 flex justify-center items-center border rounded-full hover:bg-black hover:text-white"
+              >
+                <Minus />
+              </button>
+
+              {/* Quantity Display */}
+              <span className="px-6 py-1 border border-gray-300 rounded-full">
+                {quantity}
+              </span>
+
+              {/* Plus Button */}
+              <button
+                onClick={() => setQuantity((prev) => prev + 1)}
+                className="w-9 h-9 flex justify-center items-center border rounded-full hover:bg-black hover:text-white"
+              >
+                <Plus />
+              </button>
+            </div>
+          </div>
+
+          {/* Total Section */}
+          <div className="flex flex-col md:mr-0 mr-auto">
+            <p className="text-sm font-bold text-gray-900">Total:</p>
+            <p className="text-lg font-semibold">
+              ৳{total.toLocaleString()} /- MRP
+            </p>
+            {selectedPlan && (
+              <p className="text-xs text-yellow-600">
+                For {selectedPlan.duration}
+              </p>
+            )}
+          </div>
+        </div>
+
+        <hr className="h-px my-8 bg-gray-200 border-0 dark:bg-gray-700" />
+
+        {/* Buttons */}
+        <div className="flex gap-4 w-full mt-8 md:flex-row flex-col">
+          <Button
+            className="flex-1 h-14 bg-gradient-to-r from-[#FDD00E] to-[#F9AA17] text-black font-semibold rounded-md"
+            type="submit"
+          >
+            Purchase
+          </Button>
+
+          <Button
+            variant="outline"
+            className="flex-1 h-14 text-black font-semibold border border-gray-300 hover:bg-gray-50 rounded-md"
+          >
+            Add to cart
+          </Button>
+        </div>
+
+        {/* Payment Section */}
+        <div className="mt-10">
+          <h3 className="text-lg font-semibold text-gray-800 mb-3">
+            Guaranteed Safe Checkout :
+          </h3>
+          <div className="flex flex-wrap items-center gap-2">
+            <Image
+              src="/images/Paywith.png"
+              alt="Payment Methods"
+              width={800}
+              height={200}
+              className="object-contain"
+            />
+          </div>
+        </div>
+      </div>
     </div>
-   </div>
-  </div>
-      
- </div>
   );
 }
+
+
 
 // <section
 //   className="flex flex-col md:flex-row justify-between gap-10 bg-white p-6 md:p-10 rounded-xl shadow-sm w-full max-w-[1438px] mx-auto"
