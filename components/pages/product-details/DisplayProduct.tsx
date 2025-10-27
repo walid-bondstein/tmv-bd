@@ -33,60 +33,119 @@ export default function DisplayProduct({ product }: DisplayProductProps) {
   const total = discountedPrice * quantity;
 
   return (
-    <div className="grid grid-cols-12 2xl:gap-14 xs:gap-8 gap-0 border border-red-400 component-container mx-auto">
-      <div className="col-span-12 xl:col-span-6 h-[500px] border-amber-400 border"></div>
+    <div className="grid grid-cols-12 2xl:gap-14 xs:gap-8 gap-0 border border-blue-400 component-container mx-auto">
+
+    {/* left side */}
+
+      <div className="col-span-12 xl:col-span-6 border-amber-400 border flex flex-col">
+         {/* Main Image */}
+        <div className="w-full h-auto flex-1 2xl:min-h-[580px] xl:min-h-[480px] min-h-[300px] border relative border-blue-400 rounded-xl flex items-center justify-center bg-gray-50 mb-6">
+          <Image 
+            src={"/images/gps-map.jpg"}
+            fill
+            alt="prod image"
+          />
+      </div>
+
+      {/* Thumbnail Grid */}
+  <div className="flex justify-start items-center overflow-x-auto gap-3">
+    <div className="border relative border-orange-300 rounded-lg flex items-center justify-center bg-white shadow-sm h-20 w-20 md:h-32 md:w-32 shrink-0">
+      <p className="text-gray-500 text-sm">Image 1</p>
+    </div>    <div className="border relative border-orange-300 rounded-lg flex items-center justify-center bg-white shadow-sm h-20 w-20 md:h-32 md:w-32 shrink-0">
+      <p className="text-gray-500 text-sm">Image 1</p>
+    </div>    <div className="border relative border-orange-300 rounded-lg flex items-center justify-center bg-white shadow-sm h-20 w-20 md:h-32 md:w-32 shrink-0">
+      <p className="text-gray-500 text-sm">Image 1</p>
+    </div>    <div className="border relative border-orange-300 rounded-lg flex items-center justify-center bg-white shadow-sm h-20 w-20 md:h-32 md:w-32 shrink-0">
+      <p className="text-gray-500 text-sm">Image 1</p>
+    </div>    <div className="border relative border-orange-300 rounded-lg flex items-center justify-center bg-white shadow-sm h-20 w-20 md:h-32 md:w-32 shrink-0">
+      <p className="text-gray-500 text-sm">Image 1</p>
+    </div>    <div className="border relative border-orange-300 rounded-lg flex items-center justify-center bg-white shadow-sm h-20 w-20 md:h-32 md:w-32 shrink-0">
+      <p className="text-gray-500 text-sm">Image 1</p>
+    </div>    <div className="border relative border-orange-300 rounded-lg flex items-center justify-center bg-white shadow-sm h-20 w-20 md:h-32 md:w-32 shrink-0">
+      <p className="text-gray-500 text-sm">Image 1</p>
+    </div>    <div className="border relative border-orange-300 rounded-lg flex items-center justify-center bg-white shadow-sm h-20 w-20 md:h-32 md:w-32 shrink-0">
+      <p className="text-gray-500 text-sm">Image 1</p>
+    </div>
+    
+  </div>
+</div>
+
+      
+    
+    {/* RIght side */}  
+
       <div className="col-span-12 xl:col-span-6 w-full h-full">
         <div className="">
-          <h1>VTS Regular</h1>
-          <p>5,000 /- MRP (15.4% Off)</p>
-          <p>Real-time tracking, smart alerts, route history, and 25+ features with a 1-year warranty</p>
+          <h1>{product.name}</h1>
+          <p className="text-lg font-medium text-gray-800 mt-1">
+            ৳{product.mrp.toLocaleString()} /- MRP{" "}
+            {product.discountPercent && (
+              <span className="text-gray-500 text-base ml-2">
+                ({product.discountPercent}% Off)
+              </span>
+            )}
+          </p>
+         <p className="text-gray-600 mt-2">{product.description}</p>
+
         </div>
         <div className="">
-          <h2>Monthly Subscription *</h2>
-          <div className=" grid xl:grid-cols-2 lg:grid-cols-2 gap-4 border lg:border-green-300 border-violet-400">
-            <div className="flex justify-start items-center border border-rose-500">
-              <div>
-                <input type="radio" name="" id="" />
-              </div>
-              <div>
-                <p>499 /- MRP</p>
-                <p>For 1 Month Subscription</p>
-              </div>
-            </div>
-            <div className="flex justify-start items-center border border-rose-500">
-              <div>
-                <input type="radio" name="" id="" />
-              </div>
-              <div>
-                <p>499 /- MRP</p>
-                <p>For 1 Month Subscription</p>
-              </div>
-            </div>
-            <div className="flex justify-start items-center border border-rose-500">
-              <div>
-                <input type="radio" name="" id="" />
-              </div>
-              <div>
-                <p>499 /- MRP</p>
-                <p>For 1 Month Subscription</p>
-              </div>
-            </div>
-            <div className="flex justify-start items-center border border-rose-500">
-              <div>
-                <input type="radio" name="" id="" />
-              </div>
-              <div>
-                <p>499 /- MRP</p>
-                <p>For 1 Month Subscription</p>
-              </div>
-            </div>
+         <h2>Monthly Subscription *</h2>
+          <div className="grid xl:grid-cols-2 lg:grid-cols-2 gap-4 border lg:border-green-300 border-violet-400">
+           {product.subscriptionOptions?.map((option, index) => (
+            <div key={index} className="flex justify-start items-center border border-rose-500">
+          <div>
+          <input
+            type="radio"
+            name="subscription"
+            id={`plan-${index}`}
+            // optional: checked logic (if you want to track selection)
+            onChange={() => setSelectedPlan(option)}
+            checked={selectedPlan?.label === option.label}
+          />
+         </div>
+          <div>
+            <p>{option.price} /- MRP</p>
+            <p>{option.duration}</p>
           </div>
-        </div>
-        <div className="">
-          Buy
-        </div>
-      </div>
+         </div>
+        ))}
     </div>
+  </div>
+  <div className="flex flex-col sm:flex-row items-center sm:items-center justify-start gap-6 mt-6">
+  {/* Quantity Section */}
+  <div className="flex flex-col">
+    <span className="text-sm font-medium mb-1">Quantity :</span>
+    <div className="flex items-center border rounded-lg px-3 py-1">
+      <button
+        onClick={() => setQuantity((prev) => Math.max(1, prev - 1))}
+        className="text-xl font-bold px-2"
+      >
+        −
+      </button>
+      <span className="px-3">{quantity}</span>
+      <button
+        onClick={() => setQuantity((prev) => prev + 1)}
+        className="text-xl font-bold px-2"
+      >
+        +
+      </button>
+    </div>
+  </div>
+
+  {/* Total Section */}
+   <div className="flex flex-col">
+     <p className="text-sm text-gray-500">Total:</p>
+     <p className="text-lg font-semibold">৳{total.toLocaleString()} /- MRP</p>
+     {selectedPlan && (
+        <p className="text-xs text-yellow-600">
+        For {selectedPlan.duration}
+      </p>
+     )}
+    </div>
+   </div>
+  </div>
+      
+ </div>
   );
 }
 
