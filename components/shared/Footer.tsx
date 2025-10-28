@@ -20,11 +20,31 @@ export default function Footer() {
                             />
                             <p className="2xl:text-[22px] 2xl:leading-[35px] font-semibold">Head Office</p>
                             <p className="2xl:text-[18px] 2xl:leading-[26px] font-light text-[#4A5E6D]">138/1, Level, 4 Bir Uttam Mir Shawkat Sarak, Dhaka 1208</p>
-                            <div className='flex justify-start items-center gap-6'>
-                                <Twitter className='w-6 h-6 text-blue-500' />
-                                <Facebook className='w-6 h-6 text-blue-700' />
-                                <Instagram className='w-6 h-6 text-pink-500' />
-                                <Github className='w-6 h-6 text-black' />
+                            <div className='flex justify-start items-center gap-4 mt-8'>
+                              <a href="https://twitter.com/"
+                                target="_blank"
+                                 className="bg-[#FDD10E] p-3 rounded-full hover:scale-110 transition-transform">
+                                <Twitter className="w-6 h-6 text-transparent fill-black" />
+                                 </a>
+
+                             <a href= "https://www.facebook.com/tmvbd"
+                                target="_blank"
+                                 className="bg-[#FDD10E] p-3 rounded-full hover:scale-110 transition-transform">
+                                 <Facebook className='w-6 h-6 text-transparent fill-black' />
+                                 </a>
+
+                             <a href= "https://www.instagram.com/track_my_vehicle/?igsh=ZnllbXZhZWE4ejd5#"
+                                target="_blank"
+                                 className="bg-[#FDD10E] p-3 rounded-full hover:scale-110 transition-transform">
+                                 <Instagram className='w-6 h-6 text-black' />
+                                 </a>
+
+                              
+                             <a href= ""
+                                target="_blank"
+                                 className="bg-[#FDD10E] p-3 rounded-full hover:scale-110 transition-transform">
+                                 <Github className='w-6 h-6 text-black' />
+                                 </a> 
                             </div>
                         </div>
                     </div>
@@ -33,7 +53,7 @@ export default function Footer() {
                             <div className=''>
                                 <p className="text-lg font-semibold text-[#4A5E6D]">Quick links</p>
                                 <ul>
-                                    <li>  <Link href={"/"} className="text-base font-normal text-[#6C757D] leading-10">Shop</Link></li>
+                                    <li>  <Link href={"https://store.tmvbd.com/"} className="text-base font-normal text-[#6C757D] leading-10">Shop</Link></li>
                                     <li>  <Link href={"/"} className="text-base font-normal text-[#6C757D] leading-10">About</Link></li>
                                     <li>  <Link href={"/"} className="text-base font-normal text-[#6C757D] leading-10">Contact</Link></li>
                                     <li>  <Link href={"/"} className="text-base font-normal text-[#6C757D] leading-10">Support</Link></li>
