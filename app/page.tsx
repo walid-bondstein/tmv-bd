@@ -1,4 +1,5 @@
 export const dynamic = "force-dynamic";
+
 import AppSection from '@/components/pages/home/AppSection'
 import GetInTouch from '@/components/pages/home/GetInTouch';
 import { HowItWorks } from '@/components/pages/home/how-it-works'
@@ -163,13 +164,13 @@ export const products: Product[] = [
 
 export default function HomePage() {
   return (
-    <main className="min-h-screen bg-white text-slate-900">
+    <main className="min-h-screen bg-white text-slate-900 2xl:space-y-[140px] xl:space-y-[120px] lg:space-y-[100px] md:space-y-[80px] sm:space-y-[70px] ">
       <Landing />
       <Pricing products={products} />
+      <KeyFeatures />
       <HowItWorks />
       <Platform />
       <AppSection />
-      <KeyFeatures />
       <Partners />
       <OfferSlider />
       <HoverScaleGroup />
