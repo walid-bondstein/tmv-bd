@@ -29,7 +29,7 @@ export default function Footer() {
                         </div>
                     </div>
                     <div className='flex lg:justify-end justify-start 2xl:col-span-1 lg:col-span-1 col-span-3'>
-                        <div className='max-w-max flex justify-start items-start 2xl:gap-36 2xl:border-amber-400 gap-12'  >
+                        <div className='max-w-max flex justify-start lg:-translate-x-4 items-start 2xl:gap-36 gap-12'  >
                             <div className=''>
                                 <p className="text-lg font-semibold text-[#4A5E6D]">Quick links</p>
                                 <ul>

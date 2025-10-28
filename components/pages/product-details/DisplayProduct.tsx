@@ -22,10 +22,6 @@ interface DisplayProductProps {
 }
 
 export default function DisplayProduct({ product }: DisplayProductProps) {
-  // States
-  const [selectedImage, setSelectedImage] = useState(
-    product.images?.[0] || "/images/gps-map.jpg"
-  );
   const [quantity, setQuantity] = useState(1);
   const [selectedPlan, setSelectedPlan] = useState(
     product.subscriptionOptions?.[0]

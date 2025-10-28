@@ -7,6 +7,7 @@ import { Metadata } from "next";
 import FeaturedProducts from "@/components/pages/product-details/FeaturedProducts";
 import ConfusedProducts from "@/components/pages/product-details/ConfusedProducts";
 import Details from "@/components/pages/product-details/Details";
+import ProductDescription from "@/components/pages/product-details/ProductDescription";
 
 
 
@@ -50,6 +51,32 @@ const products = [
       { label: "6 Month", price: 899, duration: "For 6 Month Subscription" },
       { label: "12 Month", price: 1200, duration: "For 12 Month Subscription" },
     ],
+    productSpecifications: {
+      productImage: "/images/vts-regular-1.png",
+      description: [
+        "Real-time GPS tracking with updates every 10 seconds.",
+        "Geo-fencing to set virtual boundaries and receive alerts.",
+        "Route history playback for up to 6 months.",
+        "Smart alerts for over-speeding, idling, and unauthorized movement.",
+        "Mobile app and web platform access for easy monitoring.",
+        "1-year warranty with dedicated customer support.",
+      ],
+      gallery: [
+        "/images/vts-regular-1.png",
+        "/images/vts-regular-2.png",
+        "/images/vts-regular-3.png",
+        "/images/vts-regular-4.png",
+      ],
+      specifications: [
+        "Dimensions: 70mm x 50mm x 20mm",
+        "Weight: 100g",
+        "Battery: 300mAh rechargeable battery",
+        "Connectivity: GSM/GPRS 850/900/1800/1900 MHz",
+        "GPS Chipset: High-sensitivity SiRF Star IV",
+        "Operating Temperature: -20°C to +70°C",
+        "Mounting: Magnetic mount or adhesive tape",
+      ]
+    }
   },
   {
     id: 2,
@@ -70,6 +97,32 @@ const products = [
       { label: "6 Month", price: 999, duration: "For 6 Month Subscription" },
       { label: "12 Month", price: 1400, duration: "For 12 Month Subscription" },
     ],
+    productSpecifications: {
+      productImage: "/images/vts-regular-1.png",
+      description: [
+        "Real-time GPS tracking with updates every 10 seconds.",
+        "Geo-fencing to set virtual boundaries and receive alerts.",
+        "Route history playback for up to 6 months.",
+        "Smart alerts for over-speeding, idling, and unauthorized movement.",
+        "Mobile app and web platform access for easy monitoring.",
+        "1-year warranty with dedicated customer support.",
+      ],
+      gallery: [
+        "/images/vts-regular-1.png",
+        "/images/vts-regular-2.png",
+        "/images/vts-regular-3.png",
+        "/images/vts-regular-4.png",
+      ],
+      specifications: [
+        "Dimensions: 70mm x 50mm x 20mm",
+        "Weight: 100g",
+        "Battery: 300mAh rechargeable battery",
+        "Connectivity: GSM/GPRS 850/900/1800/1900 MHz",
+        "GPS Chipset: High-sensitivity SiRF Star IV",
+        "Operating Temperature: -20°C to +70°C",
+        "Mounting: Magnetic mount or adhesive tape",
+      ]
+    }
   },
   {
     id: 3,
@@ -90,6 +143,32 @@ const products = [
       { label: "6 Month", price: 699, duration: "For 6 Month Subscription" },
       { label: "12 Month", price: 999, duration: "For 12 Month Subscription" },
     ],
+    productSpecifications: {
+      productImage: "/images/vts-regular-1.png",
+      description: [
+        "Real-time GPS tracking with updates every 10 seconds.",
+        "Geo-fencing to set virtual boundaries and receive alerts.",
+        "Route history playback for up to 6 months.",
+        "Smart alerts for over-speeding, idling, and unauthorized movement.",
+        "Mobile app and web platform access for easy monitoring.",
+        "1-year warranty with dedicated customer support.",
+      ],
+      gallery: [
+        "/images/vts-regular-1.png",
+        "/images/vts-regular-2.png",
+        "/images/vts-regular-3.png",
+        "/images/vts-regular-4.png",
+      ],
+      specifications: [
+        "Dimensions: 70mm x 50mm x 20mm",
+        "Weight: 100g",
+        "Battery: 300mAh rechargeable battery",
+        "Connectivity: GSM/GPRS 850/900/1800/1900 MHz",
+        "GPS Chipset: High-sensitivity SiRF Star IV",
+        "Operating Temperature: -20°C to +70°C",
+        "Mounting: Magnetic mount or adhesive tape",
+      ]
+    }
   },
   {
     id: 4,
@@ -110,20 +189,44 @@ const products = [
       { label: "6 Month", price: 899, duration: "For 6 Month Subscription" },
       { label: "12 Month", price: 1200, duration: "For 12 Month Subscription" },
     ],
+    productSpecifications: {
+      productImage: "/images/vts-regular-1.png",
+      description: [
+        "Real-time GPS tracking with updates every 10 seconds.",
+        "Geo-fencing to set virtual boundaries and receive alerts.",
+        "Route history playback for up to 6 months.",
+        "Smart alerts for over-speeding, idling, and unauthorized movement.",
+        "Mobile app and web platform access for easy monitoring.",
+        "1-year warranty with dedicated customer support.",
+      ],
+      gallery: [
+        "/images/vts-regular-1.png",
+        "/images/vts-regular-2.png",
+        "/images/vts-regular-3.png",
+        "/images/vts-regular-4.png",
+      ],
+      specifications: [
+        "Dimensions: 70mm x 50mm x 20mm",
+        "Weight: 100g",
+        "Battery: 300mAh rechargeable battery",
+        "Connectivity: GSM/GPRS 850/900/1800/1900 MHz",
+        "GPS Chipset: High-sensitivity SiRF Star IV",
+        "Operating Temperature: -20°C to +70°C",
+        "Mounting: Magnetic mount or adhesive tape",
+      ]
+    }
   },
 ];
 
 // Page component with dynamic routing
-export default function ProductDetailsPage({
+export default async function ProductDetailsPage({
   params,
 }: {
   params: { id: string };
 }) {
-  
-  const productId = Number(params.id);
+  const { id } = await params;
+  const productId = await Number(id);
   const product = products.find((p) => p.id === productId);
-
-  console.log("Selected Product:", product);
 
   if (!product) {
     return (
@@ -140,6 +243,10 @@ export default function ProductDetailsPage({
     <main className="bg-[#FAFAFA] text-slate-900">
       <Header />
       <DisplayProduct product={product} />
+      <ProductDescription productSpecifications={{
+        ...product.productSpecifications,
+        productName: product.name
+      }} />
       <ConfusedProducts />
       <FeaturedProducts />
       <Footer />

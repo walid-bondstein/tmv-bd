@@ -17,12 +17,12 @@ export default function DisplayProductImages() {
   return (
     <div className="col-span-12 xl:col-span-6 flex flex-col">
       {/* Main Image */}
-      <div className="w-full h-auto flex-1 2xl:min-h-[580px] xl:min-h-[480px] min-h-[300px] max-h-[580px] relative rounded-xl flex items-center justify-center bg-gray-50 mb-6 overflow-hidden">
+      <div className="w-full h-auto 2xl:min-h-[580px] xl:min-h-[480px] md:min-h-[500px] min-h-[300px] max-h-[580px] relative rounded-xl flex items-center justify-center bg-gray-50 mb-6 overflow-hidden">
         <Image
           src={mainImage}
           fill
           alt="prod image"
-          className="object-contain transition-all duration-300"
+          className="object-cover transition-all duration-300"
         />
       </div>
 
@@ -32,9 +32,8 @@ export default function DisplayProductImages() {
           <div
             key={index}
             onClick={() => setMainImage(img)}
-            className={`relative rounded-lg flex items-center rounded-s-sm overflow-hidden justify-center bg-white shadow-sm h-20 w-20 md:h-32 md:w-32 shrink-0 cursor-pointer transition-all duration-200 ${
-              mainImage === img ? "ring-2 ring-yellow-400" : "hover:opacity-80"
-            }`}
+            className={`relative rounded-lg flex items-center rounded-s-sm overflow-hidden justify-center bg-white shadow-sm h-20 w-20 md:h-32 md:w-32 shrink-0 cursor-pointer transition-all duration-200 ${mainImage === img ? "ring-2 ring-yellow-400" : "hover:opacity-80"
+              }`}
           >
             <Image
               src={img}

@@ -197,6 +197,31 @@ body {
 
 
 @layer utilities {
+
+  /* Target elements with data-state="active" */
+  [data-state="active"] {
+    background-size: 300% 100%;
+    -moz-transition: all 0.4s ease-in-out;
+    -o-transition: all 0.4s ease-in-out;
+    -webkit-transition: all 0.4s ease-in-out;
+    transition: all 0.4s ease-in-out;
+    background-image: linear-gradient(to right,
+        var(--primary2),
+        var(--secondary2),
+        var(--secondary2),
+        var(--primary2));
+  }
+
+  /* Hover effect for gradient animation */
+  [data-state="active"]:hover {
+    background-position: 100% 0;
+    -moz-transition: all 0.4s ease-in-out;
+    -o-transition: all 0.4s ease-in-out;
+    -webkit-transition: all 0.4s ease-in-out;
+    transition: all 0.4s ease-in-out;
+  }
+
+
   .bg-submit {
     background-size: 300% 100%;
     moz-transition: all 0.4s ease-in-out;
@@ -255,7 +280,6 @@ body {
     position: absolute;
     inset: 0;
     padding: 2px;
-    /* border thickness */
     border-radius: inherit;
     background: linear-gradient(135deg, var(--primary2), var(--secondary2), var(--primary2));
     -webkit-mask:
