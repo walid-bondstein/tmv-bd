@@ -16,11 +16,11 @@ export default function ProductDescription({ productSpecifications }: { productS
         <div className="component-container mx-auto lg:my-24 my-7">
             <Tabs defaultValue="description" className="bg-[#F0F2F5] lg:p-12 p-4 rounded-lg w-full">
                 <TabsList className="mx-0 w-full bg-transparent lg:h-[60px] h-[38px]">
-                    <TabsTrigger value="description" className="py-4 lg:h-[60px] h-[38px] lg:text-2xl text-base font-semibold">
+                    <TabsTrigger value="description" className="py-4 custom-tab lg:h-[60px] h-[38px] lg:text-2xl text-base font-semibold">
                         Description
                     </TabsTrigger>
-                    <TabsTrigger value="gallery" className="py-4 lg:h-[60px] h-[38px] lg:text-2xl text-base font-semibold" >Product Gallery</TabsTrigger>
-                    <TabsTrigger value="specifications" className="py-4 lg:h-[60px] h-[38px] lg:text-2xl text-base font-semibold">Specifications</TabsTrigger>
+                    <TabsTrigger value="gallery" className="py-4 custom-tab lg:h-[60px] h-[38px] lg:text-2xl text-base font-semibold" >Product Gallery</TabsTrigger>
+                    <TabsTrigger value="specifications" className="py-4 custom-tab lg:h-[60px] h-[38px] lg:text-2xl text-base font-semibold">Specifications</TabsTrigger>
                 </TabsList>
                 <TabsContent value="description" className=''>
                     <div className='lg:grid flex flex-col-reverse grid-cols-2 bg-[#F0F2F5]'>
