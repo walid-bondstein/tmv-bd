@@ -24,20 +24,20 @@ export default function Landing() {
                         </h1>
                         <div className='flex justify-start items-center gap-4 lg:gap-6 '>
                             <button
-                                className="bg-submit lg:w-[9.7rem] xs:w-[9.8rem] xs:h-[3.25rem] w-[7rem] h-[2rem] lg:font-bold rounded-lg tmv-shadow submit cursor-pointer text-[clamp(14px,4.0625vw,16px)]"
+                                className="bg-submit lg:w-[9.7rem] xs:w-[9.8rem] xs:h-13 w-28 h-8 lg:font-bold rounded-lg tmv-shadow submit cursor-pointer text-[clamp(14px,4.0625vw,16px)]"
                                 type="submit"
                             >
                                 Buy Now
                             </button>
                             <button
-                                className="bg-btn-info lg:w-[9.7rem] xs:w-[9.8rem] xs:h-[3.25rem] w-[7rem] h-[2rem] lg:font-bold rounded-lg tmv-shadow submit cursor-pointer text-[clamp(14px,4.0625vw,16px)]"
+                                className="bg-btn-info lg:w-[9.7rem] xs:w-[9.8rem] xs:h-13 w-28 h-8 lg:font-bold rounded-lg tmv-shadow submit cursor-pointer text-[clamp(14px,4.0625vw,16px)]"
                             >
                                 Learn More
                             </button>
                         </div>
                     </div>
                 </div>
-                <div className={`h-full w-full flex-1 relative bg-[url("/images/group.png")] lg:bg-none bg-no-repeat bg-[length:100%_100%] bg-[position:100%_0%] lg:block hidden`}>
+                <div className={`h-full w-full flex-1 relative bg-[url("/images/group.png")] lg:bg-none bg-no-repeat bg-size-[100%_100%] bg-position-[100%_0%] lg:block hidden`}>
                     <Image
                         src="/images/background1.png"
                         alt="Hero visual"
@@ -47,7 +47,7 @@ export default function Landing() {
                     />
                 </div>
             </div>
-            <div className={`mt-4 h-full w-full flex-1 relative bg-[url("/images/bg-mobile.png")] lg:bg-none bg-no-repeat bg-[length:100%_100%] object-cover bg-[position:100%_100%] block lg:hidden`}>
+            <div className={`mt-4 h-full w-full flex-1 relative bg-[url("/images/bg-mobile.png")] lg:bg-none bg-no-repeat bg-size-[100%_100%] object-cover bg-position-[100%_100%] block lg:hidden`}>
                 <Image
                     src="/images/background1.png"
                     alt="Hero visual"

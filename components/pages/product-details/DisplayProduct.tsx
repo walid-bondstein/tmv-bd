@@ -182,6 +182,7 @@ export default function DisplayProduct({ product }: DisplayProductProps) {
           </div>
         </div>
       </div>
+
     </div>
   );
 }
