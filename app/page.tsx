@@ -1,22 +1,30 @@
 export const dynamic = "force-dynamic";
 
-import AppSection from '@/components/pages/home/AppSection'
-import GetInTouch from '@/components/pages/home/GetInTouch';
-import { HowItWorks } from '@/components/pages/home/how-it-works'
-import KeyFeatures from '@/components/pages/home/KeyFeatures'
-import Landing from '@/components/pages/home/Landing'
-import HoverScaleGroup from '@/components/pages/home/motions';
-import { Partners } from '@/components/pages/home/Partners';
-import Platform from '@/components/pages/home/Platform'
-import Pricing from '@/components/pages/home/Pricing'
-import OfferSlider from '@/components/pages/home/slider';
-import Footer from '@/components/shared/Footer';
-import { Metadata } from 'next'
+import AppSection from "@/components/pages/home/AppSection";
+import GetInTouch from "@/components/pages/home/GetInTouch";
+import { HowItWorks } from "@/components/pages/home/how-it-works";
+import KeyFeatures from "@/components/pages/home/KeyFeatures";
+import Landing from "@/components/pages/home/Landing";
+import HoverScaleGroup from "@/components/pages/home/motions";
+import { Partners } from "@/components/pages/home/Partners";
+import Platform from "@/components/pages/home/Platform";
+import Pricing from "@/components/pages/home/Pricing";
+import OfferSlider from "@/components/pages/home/slider";
+import Footer from "@/components/shared/Footer";
+
+import { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Home | Track My Vehicle BD",
   description: "ADVANCED TELEMATICS SOLUTIONS FOR YOUR FLEET",
-  keywords: ["tmv", "tmvbd", "Truck My Vehicle BD", "truck my vehicle bd", "Truck My Vehicle", "truck my vehicle"],
+  keywords: [
+    "tmv",
+    "tmvbd",
+    "Truck My Vehicle BD",
+    "truck my vehicle bd",
+    "Truck My Vehicle",
+    "truck my vehicle",
+  ],
   openGraph: {
     title: "Home",
     description: "ADVANCED TELEMATICS SOLUTIONS FOR YOUR FLEET",
@@ -27,19 +35,19 @@ export const metadata: Metadata = {
     title: "Home",
     description: "ADVANCED TELEMATICS SOLUTIONS FOR YOUR FLEET",
   },
-}
+};
 
 export type Product = {
-  id: number
-  name: string
-  description: string
-  mrp: number
-  discountPercent?: number
-  subscriptionFee?: number
-  warranty?: string
-  features?: string[]
-  image: string
-}
+  id: number;
+  name: string;
+  description: string;
+  mrp: number;
+  discountPercent?: number;
+  subscriptionFee?: number;
+  warranty?: string;
+  features?: string[];
+  image: string;
+};
 export const products: Product[] = [
   {
     id: 1,
@@ -177,7 +185,7 @@ export default function HomePage() {
       <GetInTouch />
       <Footer />
     </main>
-  )
+  );
 }
 
 /*
