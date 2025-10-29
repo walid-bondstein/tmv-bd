@@ -45,6 +45,8 @@ const defaultValues: BillingFormValues = {
 export default function BillingForm() {
     const [isSubmitting, setIsSubmitting] = useState(false)
     const [submitSuccess, setSubmitSuccess] = useState(false)
+    const [showCoupone , setCouponeForm] = useState(false);
+
 
     const form = useForm<BillingFormValues>({
         resolver: zodResolver(billingFormSchema),
@@ -101,7 +103,7 @@ export default function BillingForm() {
                                                     <FormLabel className="text-sm font-medium">
                                                         Full Name <span className="text-destructive">*</span>
                                                     </FormLabel>
-                                                    <Input placeholder="Enter full name" {...field} className="bg-muted/50" />
+                                                    <Input placeholder="Enter Full Name" {...field} className="bg-muted/50" />
                                                     <FormMessage />
                                                 </FormItem>
                                             )}
@@ -117,7 +119,7 @@ export default function BillingForm() {
                                                         <FormLabel className="text-sm font-medium">
                                                             Contact Number <span className="text-destructive">*</span>
                                                         </FormLabel>
-                                                        <Input placeholder="Enter contact number" {...field} className="bg-muted/50" />
+                                                        <Input placeholder="Enter Contact Number" {...field} className="bg-muted/50" />
                                                         <FormMessage />
                                                     </FormItem>
                                                 )}
@@ -148,7 +150,12 @@ export default function BillingForm() {
                                                         <FormLabel className="text-sm font-medium">
                                                             Installation Date <span className="text-destructive">*</span>
                                                         </FormLabel>
-                                                        <Input type="date" {...field} className="bg-muted/50" />
+                                                           <Input
+                                                            type="date"
+                                                            {...field}
+                                                            className="bg-muted/50"
+                                                            min={new Date(Date.now() + 86400000).toISOString().split("T")[0]}
+                                                        />                                                        
                                                         <FormMessage />
                                                     </FormItem>
                                                 )}
@@ -162,7 +169,20 @@ export default function BillingForm() {
                                                         <FormLabel className="text-sm font-medium">
                                                             Installation Time <span className="text-destructive">*</span>
                                                         </FormLabel>
-                                                        <Input type="time" {...field} className="bg-muted/50" />
+
+                                                        <Input type="time" {...field}
+                                                            min="09:00"
+                                                            max="21:00"
+                                                            step="60" 
+                                                            value={field.value || ""}
+                                                            onChange={(e) => {
+                                                                const val = e.target.value
+                                                                
+                                                                if (val < "09:00") field.onChange("09:00")
+                                                                else if (val > "21:00") field.onChange("21:00")
+                                                                else field.onChange(val)
+                                                            }}
+                                                            className="bg-muted/50" />
                                                         <FormMessage />
                                                     </FormItem>
                                                 )}
@@ -187,7 +207,7 @@ export default function BillingForm() {
                                                         </FormLabel>
                                                         <Select onValueChange={field.onChange} value={field.value}>
                                                             <SelectTrigger className="bg-muted/50 w-full">
-                                                                <SelectValue placeholder="Select district" />
+                                                                <SelectValue placeholder="Select District" />
                                                             </SelectTrigger>
                                                             <SelectContent>
                                                                 <SelectItem value="dhaka">Dhaka</SelectItem>
@@ -212,7 +232,7 @@ export default function BillingForm() {
                                                         </FormLabel>
                                                         <Select onValueChange={field.onChange} value={field.value}>
                                                             <SelectTrigger className="bg-muted/50 w-full">
-                                                                <SelectValue placeholder="Select thana" />
+                                                                <SelectValue placeholder="Select Thana" />
                                                             </SelectTrigger>
                                                             <SelectContent>
                                                                 <SelectItem value="gulshan">Gulshan</SelectItem>
@@ -236,7 +256,7 @@ export default function BillingForm() {
                                                         </FormLabel>
                                                         <Select onValueChange={field.onChange} value={field.value}>
                                                             <SelectTrigger className="bg-muted/50 w-full">
-                                                                <SelectValue placeholder="Select postal code" />
+                                                                <SelectValue placeholder="Select Postal Code" />
                                                             </SelectTrigger>
                                                             <SelectContent>
                                                                 <SelectItem value="1212">1212</SelectItem>
@@ -268,35 +288,52 @@ export default function BillingForm() {
                                     </div>
                                 </div>
                             </div>
-                            <div className='border border-gray-200 px-7 py-8 rounded-lg'>
+      {/* Button */}
+
+                            <span onClick={() => setCouponeForm(!showCoupone)}
+                              className="cursor-pointer text-[clamp(14px,4.0625vw,16px)] lg:font-semibold text-black hover:underline">
+                              {showCoupone ? " - Hide Coupon" : " + Apply Coupon"}
+                            </span>
+
+
+                            {showCoupone&& <div className='border border-gray-200 px-7 py-8 rounded-lg'>
                                 {/* Coupon Code */}
                                 <FormField
                                     control={form.control}
                                     name="couponCode"
                                     render={({ field }) => (
-                                        <FormItem>
-                                            <FormLabel className="text-sm font-medium">Coupon Code</FormLabel>
-                                            <div className="flex gap-4 md:flex-row flex-col">
-                                                <Input placeholder="Code Here" {...field} className="bg-muted/50 h-[52px]" />
-                                                <Button type="button" className="bg-submit lg:w-40 xs:w-[9.8rem] xs:h-13 w-28 h-[52px] lg:font-bold rounded-lg tmv-shadow submit cursor-pointer text-[clamp(14px,4.0625vw,16px)]">
-                                                    Apply
-                                                </Button>
+                                        <div className="space-y-4">
+        <FormItem>
+          <FormLabel className="text-sm font-medium">Coupon Code</FormLabel>
+          <div className="flex gap-4 md:flex-row flex-col">
+            <Input
+              placeholder="Code Here"
+              {...field}
+              className="bg-muted/50 h-[52px]"
+            />
+            <Button
+              type="button"
+              className="bg-submit lg:w-40 xs:w-[9.8rem] xs:h-13 w-28 h-[52px] lg:font-bold rounded-lg tmv-shadow submit cursor-pointer text-[clamp(14px,4.0625vw,16px)]"
+            >
+              Apply
+            </Button>
+          </div>
+          <FormMessage />
+        </FormItem>
+    </div>
 
-                                            </div>
-                                            <FormMessage />
-                                        </FormItem>
                                     )}
                                 />
-                            </div>
+                            </div>}
                         </div>
                     </div>
                     <div className='lg:col-span-5 col-span-12'>
                         <div className='border px-7 py-8 rounded-lg space-y-4'>
-                            <p className="text-2xl font-bold">Place an order</p>
+                            <p className="text-2xl font-bold">Place An Order</p>
                             <div className='grid grid-cols-2 gap-y-4'>
-                                <p className="text-sm font-medium md:text-lg text-[#727B8C]">Item name</p>
+                                <p className="text-sm font-medium md:text-lg text-[#727B8C]">Item Name</p>
                                 <p className="text-sm md:text-lg font-semibold text-right">4545/- MRP</p>
-                                <p className="text-sm font-medium md:text-lg text-[#727B8C]">Monthly subscrive</p>
+                                <p className="text-sm font-medium md:text-lg text-[#727B8C]">Monthly Subscrive</p>
                                 <p className="text-sm md:text-lg font-semibold text-right">4545/- MRP</p>
                                 <p className="text-sm font-medium md:text-lg text-[#727B8C]">Shipping</p>
                                 <p className="text-sm md:text-lg font-semibold text-right">4545/- MRP</p>
