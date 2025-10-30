@@ -2,17 +2,14 @@
 import { useState } from "react";
 import Image from "next/image";
 
-export default function DisplayProductImages() {
-  const images = [
-    "/images/gps-map.jpg",
-    "/images/mobile-app.jpg",
-    "/images/ISO_certified.png",
-    "/images/window-shield.png",
-    "/images/logo.png",
-  ];
+export default function DisplayProductImages({
+  images
+}: {
+  images: string[];
+}) {
 
   // Manage main image
-  const [mainImage, setMainImage] = useState(images[0]);
+  const [mainImage, setMainImage] = useState(images?.[0] ?? "/images/storePlaceholder.png");
 
   return (
     <div className="col-span-12 xl:col-span-6 flex flex-col">
@@ -27,7 +24,7 @@ export default function DisplayProductImages() {
       </div>
 
       {/* Thumbnail Grid (no borders) */}
-      <div className="flex justify-start items-center overflow-x-auto gap-3 py-1">
+      <div className="flex justify-start items-center overflow-x-auto gap-3 py-1 px-2">
         {images.map((img, index) => (
           <div
             key={index}

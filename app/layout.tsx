@@ -3,6 +3,7 @@ import type { Metadata } from "next"
 import { Lato } from "next/font/google"
 import { Suspense } from "react"
 import "./globals.css"
+import { CartProvider } from "@/context/cart-context"
 
 export const metadata: Metadata = {
   title: {
@@ -49,7 +50,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`font-sans ${lato.variable}`}>
-        <Suspense>{children}</Suspense>
+        <CartProvider>
+          <Suspense>{children}</Suspense>
+        </CartProvider>
       </body>
     </html>
   )

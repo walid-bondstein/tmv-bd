@@ -29,140 +29,60 @@ export const metadata: Metadata = {
   },
 }
 
-export type Product = {
-  id: number
-  name: string
-  description: string
-  mrp: number
-  discountPercent?: number
-  subscriptionFee?: number
-  warranty?: string
-  features?: string[]
-  image: string
+// types/product.ts
+export interface ProductSubscription {
+  duration_months: number;
+  base_amount: string;       // stored as string to match backend data (e.g. "500.00")
+  discount_amount: string;
+  final_amount: string;
 }
-export const products: Product[] = [
-  {
-    id: 1,
-    name: "VTS Regular",
-    description:
-      "Real-time tracking, smart alerts, route history, and 25+ features with a 1-year warranty.",
-    mrp: 5499,
-    discountPercent: 14.3,
-    subscriptionFee: 499,
-    warranty: "1 year",
-    features: ["Real-time tracking", "Smart alerts", "Route history"],
-    image: "/images/vts-regular.png",
-  },
-  {
-    id: 2,
-    name: "VTS Regular + Voice",
-    description:
-      "Live GPS tracking with voice, smart alerts, and a 1-year warranty.",
-    mrp: 5999,
-    discountPercent: 14.3,
-    subscriptionFee: 499,
-    warranty: "1 year",
-    features: ["Live GPS", "Voice support", "Smart alerts"],
-    image: "/images/vts-regular-voice.png",
-  },
-  {
-    id: 3,
-    name: "VTS Lite",
-    description:
-      "Live GPS tracking, alerts, and route history with a 6-month warranty.",
-    mrp: 3999,
-    subscriptionFee: 399,
-    warranty: "6 months",
-    features: ["Live GPS", "Alerts", "Route history"],
-    image: "/images/vts-lite.png",
-  },
-  {
-    id: 4,
-    name: "VTS Portable",
-    description:
-      "Rechargeable GPS tracker with a 20-day battery and live tracking route insights.",
-    mrp: 7500,
-    subscriptionFee: 499,
-    warranty: "1 year",
-    features: ["Rechargeable battery", "20-day standby", "Live tracking"],
-    image: "/images/vts-portable.png",
-  },
-  {
-    id: 5,
-    name: "VTS OBD",
-    description:
-      "Plug-and-play GPS for new and hybrid vehicles with live tracking and alerts.",
-    mrp: 5999,
-    discountPercent: 14.3,
-    subscriptionFee: 499,
-    warranty: "1 year",
-    features: ["OBD plug-and-play", "Live tracking", "Alerts"],
-    image: "/images/vts-obd.png",
-  },
-  {
-    id: 6,
-    name: "VTS Intelligent Dashcam",
-    description:
-      "AI dashcam with live front, back, and cabin view. Detects fatigue and smoking.",
-    mrp: 5999,
-    discountPercent: 14.3,
-    subscriptionFee: 499,
-    warranty: "1 year",
-    features: ["AI detection", "Front & rear camera", "Cabin monitoring"],
-    image: "/images/vts-dashcam.png",
-  },
-  {
-    id: 7,
-    name: "VTS With Live Video (Front)",
-    description:
-      "Live GPS tracking with front camera, voice, smart alerts, and 1-year warranty.",
-    mrp: 18000,
-    subscriptionFee: 499,
-    warranty: "1 year",
-    features: ["Live video", "Front camera", "Smart alerts"],
-    image: "/images/vts-live-front.png",
-  },
-  {
-    id: 8,
-    name: "VTS With Live Video (Both)",
-    description:
-      "Live GPS tracking with dual cameras (front & rear), voice, and smart alerts.",
-    mrp: 18000,
-    subscriptionFee: 499,
-    warranty: "1 year",
-    features: ["Dual cameras", "Live video", "Smart alerts"],
-    image: "/images/vts-live-both.png",
-  },
-  {
-    id: 9,
-    name: "VTS Premium Fleet",
-    description:
-      "Fleet management solution with real-time analytics, reports, and live tracking.",
-    mrp: 22000,
-    subscriptionFee: 699,
-    warranty: "1 year",
-    features: ["Fleet analytics", "Driver insights", "Live map view"],
-    image: "/images/vts-premium-fleet.png",
-  },
-  {
-    id: 10,
-    name: "VTS Pro Advanced",
-    description:
-      "Advanced tracking device with voice assistant, remote immobilizer, and cloud backup.",
-    mrp: 25999,
-    subscriptionFee: 699,
-    warranty: "2 years",
-    features: [
-      "Voice assistant",
-      "Remote immobilizer",
-      "Cloud data backup",
-      "Geofence alerts",
-    ],
-    image: "/images/vts-pro-advanced.png",
-  },
-];
 
-export default function HomePage() {
+export interface Product {
+  id: number;
+  product_name: string;
+  product_description: string;
+  product_details: string;
+  product_base_amount: string;
+  product_discount_amount: string;
+  product_final_amount: string;
+  product_warranty_period: number;
+  product_specification: string;
+  images: string[]; // can later be expanded to {url: string, alt?: string}[]
+  subscriptions: ProductSubscription[];
+  status: boolean;
+  created_at: string; // e.g. "2025-10-29 03:31:16"
+  updated_at: string;
+  product_slug: string;
+}
+
+
+// Fetch store data keeping page server-side
+async function getProducts(): Promise<Product[]> {
+  try {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/v1/products`, {
+      // cache: 'no-store', // 👈 use this if you want no caching (always fresh)
+      next: { revalidate: 3600 }, // or control revalidation at fetch-level
+    })
+    if (!res.ok) {
+      console.error('API returned non-OK status:', res.status)
+      return []
+    }
+
+    const data = (await res.json()).data;
+
+    if (!Array.isArray(data)) {
+      console.error('Unexpected API structure:', [])
+      return []
+    }
+    return data as Product[]
+  } catch (error) {
+    console.error('Error fetching stores:', error)
+    return []
+  }
+}
+
+export default async function HomePage() {
+  const products = await getProducts();
   return (
     <main className="min-h-screen bg-white text-slate-900 2xl:space-y-[140px] xl:space-y-[120px] lg:space-y-[100px] md:space-y-[80px] sm:space-y-[70px] ">
       <Landing />

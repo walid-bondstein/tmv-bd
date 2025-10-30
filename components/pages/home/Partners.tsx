@@ -54,10 +54,10 @@ export function Partners() {
 
     return (
         <div className="flex w-full flex-col gap-6 mx-auto my-24">
-            <Tabs defaultValue="certified" className="mx-auto md:space-y-16 space-y-6 w-full">
+            <Tabs defaultValue="partners" className="mx-auto md:space-y-16 space-y-6 w-full">
                 <TabsList className="mx-auto component-container">
-                    <TabsTrigger value="certified">Certified</TabsTrigger>
                     <TabsTrigger value="partners">Partners</TabsTrigger>
+                    <TabsTrigger value="certified">Certified</TabsTrigger>
                     <TabsTrigger value="connectivity">Connectivity Partners</TabsTrigger>
                 </TabsList>
                 <TabsContent className="component-container mx-auto" value="certified">
@@ -87,10 +87,10 @@ export function Partners() {
                 <TabsContent value="partners" className="">
 
                     <div className="w-full md:flex items-center hidden">
-                        <div className="flex-grow flex justify-center items-center">
+                        <div className="grow flex justify-center items-center">
                             <div
                                 onClick={() => handlePrevious(itemsPerView.desktop)}
-                                className="flex-shrink-0 bg-transparent rounded-full border hover:cursor-pointer hover:bg-amber-300 transition-colors duration-700"
+                                className="shrink-0 bg-transparent rounded-full border hover:cursor-pointer hover:bg-amber-300 transition-colors duration-700"
                             >
                                 <ChevronRight className="rotate-180 p-3 h-14 w-14 -translate-x-0.5" />
                             </div>
@@ -112,10 +112,10 @@ export function Partners() {
                             </div>
                         </div>
 
-                        <div className="flex-grow flex justify-center items-center">
+                        <div className="grow flex justify-center items-center">
                             <div
                                 onClick={() => handleNext(itemsPerView.desktop)}
-                                className="flex-shrink-0 bg-transparent rounded-full border hover:cursor-pointer hover:bg-amber-300 transition-colors duration-700"
+                                className="shrink-0 bg-transparent rounded-full border hover:cursor-pointer hover:bg-amber-300 transition-colors duration-700"
                             >
                                 <ChevronRight className="p-3 h-14 w-14 translate-x-0.5" />
                             </div>
@@ -140,13 +140,13 @@ export function Partners() {
                                 <div className="mx-auto gap-5 max-w-max flex justify-center items-center">
                                     <div
                                         onClick={() => handlePrevious(itemsPerView.mobile)}
-                                        className="flex-shrink-0 bg-transparent rounded-full border hover:cursor-pointer hover:bg-amber-300 transition-colors duration-700"
+                                        className="shrink-0 bg-transparent rounded-full border hover:cursor-pointer hover:bg-amber-300 transition-colors duration-700"
                                     >
                                         <ChevronRight className="rotate-180 p-2 h-8 w-8" />
                                     </div>
                                     <div
                                         onClick={() => handleNext(itemsPerView.mobile)}
-                                        className="flex-shrink-0 bg-transparent rounded-full border hover:cursor-pointer hover:bg-amber-300 transition-colors duration-700"
+                                        className="shrink-0 bg-transparent rounded-full border hover:cursor-pointer hover:bg-amber-300 transition-colors duration-700"
                                     >
                                         <ChevronRight className="p-2 h-8 w-8" />
                                     </div>

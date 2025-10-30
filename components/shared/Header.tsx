@@ -4,9 +4,10 @@ import Image from 'next/image'
 import React from 'react'
 import { LanguageSwitcher } from './LanguageSwitcher'
 import Link from 'next/link'
+import Cart from './Cart'
 
 export default async function Header() {
-    const headersList = await headers()
+    const headersList = await headers();
     const pathname = headersList.get("pathname") || "/"
     const isActive = (href: string) => {
         if (href === "/") {
@@ -47,7 +48,7 @@ export default async function Header() {
                         </div>
 
                         <div className='border border-secondary-foreground/10 rounded-full cursor-pointer bg-white/50 backdrop-blur-sm'>
-                            <ShoppingCart className='w-6 h-6 m-3 text-secondary-foreground' />
+                            <Cart />
                         </div>
                         <div className='border border-secondary-foreground/10 rounded-full lg:hidden block cursor-pointer bg-white/50 backdrop-blur-sm'>
                             <TextAlignStart className='w-6 h-6 m-3 text-secondary-foreground' />

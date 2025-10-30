@@ -5,39 +5,29 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Minus, Plus } from "lucide-react";
 import DisplayImages from "@/components/pages/product-details/DisplayImages";
+import { Product } from "@/app/page";
+import { useCart } from "@/context/cart-context";
 
 interface DisplayProductProps {
-  product: {
-    name: string;
-    description: string;
-    mrp: number;
-    discountPercent?: number;
-    images?: string[];
-    subscriptionOptions?: {
-      label: string;
-      price: number;
-      duration: string;
-    }[];
-  };
+  product: Product;
 }
 
 export default function DisplayProduct({ product }: DisplayProductProps) {
   const [quantity, setQuantity] = useState(1);
+  const { addToCart } = useCart();
   const [selectedPlan, setSelectedPlan] = useState(
-    product.subscriptionOptions?.[0]
+    product.subscriptions?.[0]
   );
 
-  // Calculate discount and total
-  const discountedPrice = product.discountPercent
-    ? product.mrp - (product.mrp * product.discountPercent) / 100
-    : product.mrp;
 
-  const total = discountedPrice * quantity;
+
+  const total = Number(product.product_final_amount) * quantity;
 
   return (
     <div className="grid grid-cols-12 2xl:gap-24 xl:gap-16 lg:gap-12 md:gap-10 sm:gap-8 gap-6 component-container mx-auto">
       {/* Left Side — Image Gallery */}
       <DisplayImages
+        images={product.images ?? []}
       />
 
       {/* Right Side — Product Info */}
@@ -45,20 +35,20 @@ export default function DisplayProduct({ product }: DisplayProductProps) {
         {/* Product Details */}
         <div className="mb-6">
           <h1 className="text-3xl font-bold text-gray-900 tracking-tight">
-            {product.name}
+            {product.product_name}
           </h1>
 
           <p className="text-2xl font-semibold text-gray-900 mt-2">
-            ৳{product.mrp.toLocaleString()} /- MRP{" "}
-            {product.discountPercent && (
+            ৳{Number(product.product_final_amount).toLocaleString()} /- MRP{" "}
+            {product.product_discount_amount && (
               <span className="text-gray-500 text-lg font-medium ml-2">
-                ({product.discountPercent}% Off)
+                ({Number((Number(product.product_discount_amount) / Number(product.product_base_amount)) * 100).toFixed(1)}% Off)
               </span>
             )}
           </p>
 
           <p className="text-gray-500 text-base mt-3 leading-relaxed">
-            {product.description}
+            {product.product_description}
           </p>
         </div>
 
@@ -71,7 +61,7 @@ export default function DisplayProduct({ product }: DisplayProductProps) {
           </h2>
 
           <div className="grid xl:grid-cols-2 lg:grid-cols-2 gap-4">
-            {product.subscriptionOptions?.map((option, index) => (
+            {product.subscriptions?.map((option, index) => (
               <label
                 key={index}
                 htmlFor={`plan-${index}`}
@@ -83,17 +73,17 @@ export default function DisplayProduct({ product }: DisplayProductProps) {
                   name="subscription"
                   id={`plan-${index}`}
                   onChange={() => setSelectedPlan(option)}
-                  checked={selectedPlan?.label === option.label}
+                  checked={selectedPlan?.duration_months === option.duration_months}
                   className="w-4 h-4 accent-gray-400"
                 />
 
                 {/* Text Content */}
                 <div>
                   <p className="text-lg font-bold text-gray-900">
-                    {option.price}
+                    {Number(option.final_amount).toFixed(0)}
                     <span className="font-semibold">/-MRP</span>
                   </p>
-                  <p className="text-sm text-gray-500">{option.duration}</p>
+                  <p className="text-sm text-gray-500">For {option.duration_months} Month Subscription</p>
                 </div>
               </label>
             ))}
@@ -137,7 +127,7 @@ export default function DisplayProduct({ product }: DisplayProductProps) {
             </p>
             {selectedPlan && (
               <p className="text-xs text-yellow-600">
-                For {selectedPlan.duration}
+                For {selectedPlan.duration_months} Months
               </p>
             )}
           </div>
@@ -148,15 +138,28 @@ export default function DisplayProduct({ product }: DisplayProductProps) {
         {/* Buttons */}
         <div className="flex gap-4 w-full mt-8 md:flex-row flex-col">
           <Button
-            className="flex-1 h-14 bg-gradient-to-r from-[#FDD00E] to-[#F9AA17] text-black font-semibold rounded-md"
+            className="flex-1 bg-submit h-14 lg:text-lg text-black font-semibold rounded-md"
             type="submit"
           >
             Purchase
           </Button>
 
           <Button
+            onClick={() => {
+              if (!selectedPlan) return;
+              addToCart({
+                id: product.id,
+                name: product.product_name,
+                price: Number(product.product_base_amount),
+                discount: Number(product.product_discount_amount),
+                priceWithoutDiscount: Number(product.product_final_amount),
+                quantity: quantity,
+                subscriptionPrice: Number(selectedPlan.final_amount),
+                subscriptionDurationMonths: Number(selectedPlan.duration_months),
+              })
+            }}
             variant="outline"
-            className="flex-1 h-14 text-black font-semibold border border-gray-300 hover:bg-gray-50 rounded-md"
+            className="flex-1 h-14 cursor-pointer lg:text-lg text-black font-semibold border border-gray-300 hover:bg-gray-50 rounded-md"
           >
             Add to cart
           </Button>
