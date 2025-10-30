@@ -35,6 +35,7 @@ export default function CartItem() {
                     <div className='space-y-5'>
                         <div className="border space-y-4 border-gray-200 px-7 py-8 rounded-lg">
 
+
                         </div>
                         {/* Button */}
 
