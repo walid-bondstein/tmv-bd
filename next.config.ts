@@ -32,3 +32,5 @@ const nextConfig: NextConfig = {
 };
 
 export default nextConfig;
+const { i18n } = require("./i18.config");
+module.exports = { i18n };

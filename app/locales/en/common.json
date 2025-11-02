@@ -1,0 +1,17 @@
+{
+  "home": {
+    "heading": "Track your vehicle.\nanytime. anywhere.",
+    "buy_now": "Buy Now",
+    "learn_more": "Learn More",
+    "award_alt": "Award",
+    "hero_alt": "Hero visual"
+  },
+
+  "header": {
+    "home": "Home",
+    "products": "Products",
+    "features": "Features",
+    "howItWorks": "How It Works",
+    "storeLocation": "Store Location"
+  }
+}
