@@ -11,6 +11,7 @@ type CartItem = {
     quantity: number;
     subscriptionPrice: number;
     subscriptionDurationMonths: number;
+    itemImage?: string;
 };
 
 type Coupon = {
@@ -22,13 +23,14 @@ type CartContextType = {
     items: CartItem[];
     coupon: Coupon | null;
     addToCart: (item: CartItem) => void;
-    removeFromCart: (id: number) => void;
-    updateQuantity: (id: number, quantity: number) => void;
+    removeFromCart: (id: number, subscription: number) => void;
+    updateQuantity: (id: number, quantity: number, subscription: number) => void;
     applyCoupon: (code: string, discountPercent: number) => void;
     clearCart: () => void;
     subtotal: number;
     discount: number;
     total: number;
+    clearCoupon: () => void;
 };
 
 const CartContext = createContext<CartContextType | undefined>(undefined);
@@ -40,7 +42,7 @@ export function CartProvider({ children }: { children: ReactNode }) {
     // ➕ Add item
     const addToCart = (item: CartItem) => {
         setItems((prev) => {
-            const existing = prev.find((p) => p.id === item.id);
+            const existing = prev.find((p) => (p.id === item.id) && (item.subscriptionDurationMonths === p.subscriptionDurationMonths));
             if (existing) {
                 return prev.map((p) =>
                     ((p.id === item.id) && (item.subscriptionDurationMonths === p.subscriptionDurationMonths)) ? { ...p, quantity: p.quantity + item.quantity } : p
@@ -51,16 +53,16 @@ export function CartProvider({ children }: { children: ReactNode }) {
     };
 
     // ❌ Remove item
-    const removeFromCart = (id: number) => {
-        setItems((prev) => prev.filter((item) => item.id !== id));
+    const removeFromCart = (id: number, subscription: number) => {
+        setItems((prev) => prev.filter((item) => !(item.id === id && item.subscriptionDurationMonths === subscription)));
     };
 
     // 🔄 Update quantity
-    const updateQuantity = (id: number, quantity: number) => {
-        if (quantity <= 0) return removeFromCart(id);
+    const updateQuantity = (id: number, quantity: number, subscription: number) => {
+        if (quantity <= 0) return removeFromCart(id, subscription);
         setItems((prev) =>
             prev.map((item) =>
-                item.id === id ? { ...item, quantity } : item
+                ((item.id === id) && (subscription === item.subscriptionDurationMonths)) ? { ...item, quantity } : item
             )
         );
     };
@@ -69,6 +71,10 @@ export function CartProvider({ children }: { children: ReactNode }) {
     const applyCoupon = (code: string, discount: number) => {
         setCoupon({ code, discount });
     };
+
+    const clearCoupon = () => {
+        setCoupon(null);
+    }
 
     // 🧹 Clear cart
     const clearCart = () => {
@@ -79,7 +85,7 @@ export function CartProvider({ children }: { children: ReactNode }) {
     // 🧮 Calculations
     const { subtotal, discount, total } = useMemo(() => {
         const subtotal = items.reduce(
-            (acc, item) => acc + (item.priceWithoutDiscount * item.quantity) + (item.subscriptionDurationMonths * item.subscriptionPrice * item.quantity),
+            (acc, item) => acc + (item.priceWithoutDiscount * item.quantity) + (item.subscriptionPrice * item.quantity),
             0
         );
         const discount = coupon ? coupon.discount : 0;
@@ -100,6 +106,7 @@ export function CartProvider({ children }: { children: ReactNode }) {
                 subtotal,
                 discount,
                 total,
+                clearCoupon,
             }}
         >
             {children}

@@ -41,7 +41,7 @@ export default function DisplayProduct({ product }: DisplayProductProps) {
           </h1>
 
           <p className="text-2xl font-semibold text-gray-900 mt-2">
-            ৳{Number(product.product_final_amount).toLocaleString()} /- MRP{" "}
+            ৳{Number(product.product_final_amount).toLocaleString()} /- BDT{" "}
             {product.product_discount_amount && (
               <span className="text-gray-500 text-lg font-medium ml-2">
                 ({Number((Number(product.product_discount_amount) / Number(product.product_base_amount)) * 100).toFixed(1)}% Off)
@@ -83,7 +83,7 @@ export default function DisplayProduct({ product }: DisplayProductProps) {
                 <div>
                   <p className="text-lg font-bold text-gray-900">
                     {Number(option.final_amount).toFixed(0)}
-                    <span className="font-semibold">/-MRP</span>
+                    <span className="font-semibold">/-BDT</span>
                   </p>
                   <p className="text-sm text-gray-500">For {option.duration_months} Month Subscription</p>
                 </div>
@@ -125,7 +125,7 @@ export default function DisplayProduct({ product }: DisplayProductProps) {
           <div className="flex flex-col md:mr-0 mr-auto">
             <p className="text-sm font-bold text-gray-900">Total:</p>
             <p className="text-lg font-semibold">
-              ৳{total.toLocaleString()} /- MRP
+              ৳{total + Number(selectedPlan.final_amount)} /- BDT
             </p>
             {selectedPlan && (
               <p className="text-xs text-yellow-600">
@@ -151,6 +151,7 @@ export default function DisplayProduct({ product }: DisplayProductProps) {
                 quantity: quantity,
                 subscriptionPrice: Number(selectedPlan.final_amount),
                 subscriptionDurationMonths: Number(selectedPlan.duration_months),
+                itemImage: product.images?.[0] || "",
               })
               router.push('/cart');
             }}
@@ -172,6 +173,7 @@ export default function DisplayProduct({ product }: DisplayProductProps) {
                 quantity: quantity,
                 subscriptionPrice: Number(selectedPlan.final_amount),
                 subscriptionDurationMonths: Number(selectedPlan.duration_months),
+                itemImage: product.images?.[0] || "",
               })
             }}
             variant="outline"

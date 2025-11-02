@@ -5,12 +5,13 @@ import { Form, FormField, FormItem, FormLabel, FormMessage } from "@/components/
 import { Input } from "@/components/ui/input"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { zodResolver } from "@hookform/resolvers/zod"
-import { ArrowLeft } from 'lucide-react'
+import { ArrowLeft, X } from 'lucide-react'
 import Image from 'next/image'
 import { useState } from "react"
 import { useForm } from "react-hook-form"
 import * as z from "zod"
 import CustomRadio from './CustomRdio'
+import { useCart } from '@/context/cart-context'
 
 const billingFormSchema = z.object({
     fullName: z.string().min(2, "Full name must be at least 2 characters"),
@@ -43,9 +44,11 @@ const defaultValues: BillingFormValues = {
 }
 
 export default function BillingForm() {
+    const { items, removeFromCart, applyCoupon, coupon, clearCoupon, subtotal, discount, total } = useCart()
     const [isSubmitting, setIsSubmitting] = useState(false)
     const [submitSuccess, setSubmitSuccess] = useState(false)
     const [showCoupon, setCouponForm] = useState(false);
+    const [couponText, setCouponText] = useState("");
 
 
     const form = useForm<BillingFormValues>({
@@ -89,7 +92,7 @@ export default function BillingForm() {
                                     ✓ Billing details submitted successfully!
                                 </div>
                             )}
-                            <div className="border space-y-4 border-gray-200 px-7 py-8 rounded-lg">
+                            <div className="border space-y-4 border-gray-200 md:px-7 px-2 md:py-8 py-3 rounded-lg">
                                 <div >
                                     <h2 className="mb-6 text-lg font-semibold text-foreground">BILLING DETAILS</h2>
                                     <div className="space-y-4">
@@ -290,58 +293,76 @@ export default function BillingForm() {
                             </div>
                             {/* Button */}
 
-                            <span onClick={() => setCouponForm(!showCoupon)}
-                                className="cursor-pointer text-[clamp(14px,4.0625vw,16px)] lg:font-semibold text-black hover:underline">
-                                {showCoupon ? " - Hide Coupon" : " + Apply Coupon"}
-                            </span>
-
-
-                            {showCoupon && <div className='border border-gray-200 px-7 py-8 rounded-lg'>
-                                {/* Coupon Code */}
-                                <FormField
-                                    control={form.control}
-                                    name="couponCode"
-                                    render={({ field }) => (
-                                        <div className="space-y-4">
-                                            <FormItem>
-                                                <FormLabel className="text-sm font-medium">Coupon Code</FormLabel>
-                                                <div className="flex gap-4 md:flex-row flex-col">
-                                                    <Input
-                                                        placeholder="Code Here"
-                                                        {...field}
-                                                        className="bg-muted/50 h-[52px]"
-                                                    />
-                                                    <Button
-                                                        type="button"
-                                                        className="bg-submit lg:w-40 xs:w-[9.8rem] xs:h-13 w-28 h-[52px] lg:font-bold rounded-lg tmv-shadow submit cursor-pointer text-[clamp(14px,4.0625vw,16px)]"
-                                                    >
-                                                        Apply
-                                                    </Button>
-                                                </div>
-                                                <FormMessage />
-                                            </FormItem>
+                            {coupon ? <>
+                                <div className='border border-gray-200 md:px-7 px-2 md:py-8 py-3 mb-4 rounded-lg flex justify-between items-center'>
+                                    <p className='text-subtitle'>Coupon Applied</p>
+                                    <div className='flex justify-between items-center gap-4'>
+                                        <div>
+                                            <p className="text-lg font-semibold">{coupon.code}</p>
+                                            <p>{coupon.discount}/- BDT off</p>
                                         </div>
+                                        <Button onClick={() => { applyCoupon("", 0); clearCoupon(); setCouponText("") }} className="bg-primary rounded-lg tmv-shadow submit cursor-pointer text-[clamp(14px,4.0625vw,16px)]">
+                                            <X />
+                                        </Button>
+                                    </div>
+                                </div>
+                            </> : <>
+                                <span onClick={() => setCouponForm(!showCoupon)}
+                                    className="cursor-pointer text-[clamp(14px,4.0625vw,16px)] select-none lg:font-semibold text-black hover:underline">
+                                    {showCoupon ? " - Hide Coupon" : " + Apply Coupon"}
+                                </span>
 
-                                    )}
-                                />
-                            </div>}
+
+                                {showCoupon && <div className='border border-gray-200 md:px-7 px-2 md:py-8 py-3 mb-4 rounded-lg'>
+                                    {/* Coupon Code */}
+                                    <div className="space-y-4">
+                                        <div>
+                                            <p className="text-sm font-medium select-none">Coupon Code</p>
+                                            <div className="flex gap-4 md:flex-row flex-col">
+                                                <Input
+                                                    placeholder="Code Here"
+                                                    className="bg-muted/50 h-[52px]"
+                                                    value={couponText}
+                                                    onChange={(e) => setCouponText(e.target.value)}
+                                                />
+                                                <Button
+                                                    onClick={() => { applyCoupon(couponText, 100); setCouponText(""); setCouponForm(false); }}
+                                                    type="button"
+                                                    className="bg-submit lg:w-40 xs:w-[9.8rem] xs:h-13 w-28 h-[52px] lg:font-bold rounded-lg tmv-shadow submit cursor-pointer text-[clamp(14px,4.0625vw,16px)]"
+                                                >
+                                                    Apply
+                                                </Button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>}
+                            </>
+                            }
                         </div>
                     </div>
                     <div className='lg:col-span-5 col-span-12'>
-                        <div className='border px-7 py-8 rounded-lg space-y-4'>
+                        <div className='border md:px-7 px-2 md:py-8 py-3 rounded-lg space-y-4'>
                             <p className="text-2xl font-bold">Place An Order</p>
                             <div className='grid grid-cols-2 gap-y-4'>
-                                <p className="text-sm font-medium md:text-lg text-[#727B8C]">Item Name</p>
-                                <p className="text-sm md:text-lg font-semibold text-right">4545/- MRP</p>
-                                <p className="text-sm font-medium md:text-lg text-[#727B8C]">Monthly Subscrive</p>
-                                <p className="text-sm md:text-lg font-semibold text-right">4545/- MRP</p>
-                                <p className="text-sm font-medium md:text-lg text-[#727B8C]">Shipping</p>
-                                <p className="text-sm md:text-lg font-semibold text-right">4545/- MRP</p>
+                                {
+                                    items.map((itm, indx) => <div key={indx} className='col-span-2 flex justify-between items-center'>
+                                        <section className='max-w-4xs'>
+                                            <p className="text-sm font-medium md:text-lg text-[#727B8C]">{itm.quantity}X. {itm.name}</p>
+                                            <p className='text-[#727B8C] md:text-base text-xs'>Monthly Subscription- {itm.subscriptionDurationMonths} Month {`(${(itm.subscriptionPrice) * itm.quantity}/- BDT)`}</p>
+                                        </section>
+                                        <p className="text-sm md:text-lg font-semibold text-right">{(itm.priceWithoutDiscount + itm.subscriptionPrice) * itm.quantity}/- BDT</p>
+                                    </div>)
+                                }
+
+                                <p className="text-sm font-medium md:text-lg text-[#727B8C]">Subtotal</p>
+                                <p className="text-sm md:text-lg font-semibold text-right">{subtotal ?? 0}/- BDT</p>
+                                {coupon && <p className="text-sm font-medium md:text-lg text-[#727B8C]">Coupon Discount</p>}
+                                {coupon && <p className="text-sm md:text-lg font-semibold text-right">{coupon?.discount ?? 0}/- BDT</p>}
                             </div>
                             <hr />
                             <div className='grid grid-cols-2'>
                                 <p className="text-sm font-medium md:text-lg text-[#727B8C]">Total Amount</p>
-                                <p className="text-sm md:text-lg font-semibold text-right">4545/- MRP</p>
+                                <p className="text-sm md:text-lg font-semibold text-right">{total}/- BDT</p>
                             </div>
                             <div>
                                 <FormField

@@ -48,7 +48,7 @@ export const PricingCard: React.FC<Props> = ({ product }) => {
                 <div>
                     <p className="text-gray-800 font-semibold mb-4">
                         {Number(product.product_final_amount).toLocaleString()} /-{" "}
-                        <span className="text-gray-700">MRP</span>
+                        <span className="text-gray-700">BDT</span>
                         {Number(product.product_discount_amount) && (
                             <span className="font-medium ml-1 text-deep-gradient">
                                 ({Number((Number(product.product_discount_amount) / Number(product.product_base_amount)) * 100).toFixed(1)}% Off)
