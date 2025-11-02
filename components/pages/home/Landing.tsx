@@ -1,6 +1,7 @@
 import Header from "@/components/shared/Header";
 import Image from "next/image";
 import CurrentOffer from "./CurrentOffer";
+import Icons from "./Icons";
 
 export default function Landing() {
   return (
@@ -8,6 +9,7 @@ export default function Landing() {
       className={`lg:bg-[url("/images/group.png")] relative lg:bg-no-repeat lg:bg-[length:50%_100%] lg:bg-[position:100%_0%] bg-secondary section-padding-y min-h-[100vh] flex flex-col`}
       aria-labelledby="hero-heading"
     >
+      <Icons />
       <CurrentOffer />
       <Header />
       <div className="mx-auto component-container lg:grid flex flex-col grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-0 items-center lg:flex-1">
