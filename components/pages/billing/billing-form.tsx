@@ -45,7 +45,7 @@ const defaultValues: BillingFormValues = {
 export default function BillingForm() {
     const [isSubmitting, setIsSubmitting] = useState(false)
     const [submitSuccess, setSubmitSuccess] = useState(false)
-    const [showCoupone , setCouponeForm] = useState(false);
+    const [showCoupon, setCouponForm] = useState(false);
 
 
     const form = useForm<BillingFormValues>({
@@ -150,12 +150,12 @@ export default function BillingForm() {
                                                         <FormLabel className="text-sm font-medium">
                                                             Installation Date <span className="text-destructive">*</span>
                                                         </FormLabel>
-                                                           <Input
+                                                        <Input
                                                             type="date"
                                                             {...field}
                                                             className="bg-muted/50"
                                                             min={new Date(Date.now() + 86400000).toISOString().split("T")[0]}
-                                                        />                                                        
+                                                        />
                                                         <FormMessage />
                                                     </FormItem>
                                                 )}
@@ -173,11 +173,11 @@ export default function BillingForm() {
                                                         <Input type="time" {...field}
                                                             min="09:00"
                                                             max="21:00"
-                                                            step="60" 
+                                                            step="60"
                                                             value={field.value || ""}
                                                             onChange={(e) => {
                                                                 const val = e.target.value
-                                                                
+
                                                                 if (val < "09:00") field.onChange("09:00")
                                                                 else if (val > "21:00") field.onChange("21:00")
                                                                 else field.onChange(val)
@@ -288,39 +288,39 @@ export default function BillingForm() {
                                     </div>
                                 </div>
                             </div>
-      {/* Button */}
+                            {/* Button */}
 
-                            <span onClick={() => setCouponeForm(!showCoupone)}
-                              className="cursor-pointer text-[clamp(14px,4.0625vw,16px)] lg:font-semibold text-black hover:underline">
-                              {showCoupone ? " - Hide Coupon" : " + Apply Coupon"}
+                            <span onClick={() => setCouponForm(!showCoupon)}
+                                className="cursor-pointer text-[clamp(14px,4.0625vw,16px)] lg:font-semibold text-black hover:underline">
+                                {showCoupon ? " - Hide Coupon" : " + Apply Coupon"}
                             </span>
 
 
-                            {showCoupone&& <div className='border border-gray-200 px-7 py-8 rounded-lg'>
+                            {showCoupon && <div className='border border-gray-200 px-7 py-8 rounded-lg'>
                                 {/* Coupon Code */}
                                 <FormField
                                     control={form.control}
                                     name="couponCode"
                                     render={({ field }) => (
                                         <div className="space-y-4">
-        <FormItem>
-          <FormLabel className="text-sm font-medium">Coupon Code</FormLabel>
-          <div className="flex gap-4 md:flex-row flex-col">
-            <Input
-              placeholder="Code Here"
-              {...field}
-              className="bg-muted/50 h-[52px]"
-            />
-            <Button
-              type="button"
-              className="bg-submit lg:w-40 xs:w-[9.8rem] xs:h-13 w-28 h-[52px] lg:font-bold rounded-lg tmv-shadow submit cursor-pointer text-[clamp(14px,4.0625vw,16px)]"
-            >
-              Apply
-            </Button>
-          </div>
-          <FormMessage />
-        </FormItem>
-    </div>
+                                            <FormItem>
+                                                <FormLabel className="text-sm font-medium">Coupon Code</FormLabel>
+                                                <div className="flex gap-4 md:flex-row flex-col">
+                                                    <Input
+                                                        placeholder="Code Here"
+                                                        {...field}
+                                                        className="bg-muted/50 h-[52px]"
+                                                    />
+                                                    <Button
+                                                        type="button"
+                                                        className="bg-submit lg:w-40 xs:w-[9.8rem] xs:h-13 w-28 h-[52px] lg:font-bold rounded-lg tmv-shadow submit cursor-pointer text-[clamp(14px,4.0625vw,16px)]"
+                                                    >
+                                                        Apply
+                                                    </Button>
+                                                </div>
+                                                <FormMessage />
+                                            </FormItem>
+                                        </div>
 
                                     )}
                                 />

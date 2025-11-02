@@ -48,11 +48,11 @@ export default function ProductDescription({ productSpecifications }: { productS
                 </TabsContent>
                 <TabsContent value="gallery">
                     <div className='grid xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2 grid-cols-1 bg-[#F0F2F5] lg:max-h-auto gap-4 max-h-[80vh] overflow-x-auto '>
-                        {gallery.map((img, index) => (
+                        {gallery.map((img = "/images/storePlaceholder.png", index) => (
                             <div key={index}>
                                 <AspectRatio ratio={1} className="w-full">
                                     <Image
-                                        src={"/images/demo-prod.png"}
+                                        src={img}
                                         alt="Product Image"
                                         fill
                                         className="object-contain w-full h-full"
@@ -77,7 +77,7 @@ export default function ProductDescription({ productSpecifications }: { productS
                         <div className='bg-[#F0F2F5]'>
                             <AspectRatio ratio={1} className="w-full">
                                 <Image
-                                    src={"/images/demo-prod.png"}
+                                    src={productImage}
                                     alt="Product Image"
                                     fill
                                     className="object-contain w-full h-full"
