@@ -22,15 +22,104 @@ export const metadata: Metadata = {
     },
 };
 
+export type Option = {
+    value: string;
+    label: string;
+}
+
+
+// Fetch store data keeping page server-side
+async function getDistrict(): Promise<Option[]> {
+    try {
+        const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/v1/district-select`, {
+            // cache: 'no-store', // 👈 use this if you want no caching (always fresh)
+            next: { revalidate: 3600 }, // or control revalidation at fetch-level
+        })
+        if (!res.ok) {
+            console.error('API returned non-OK status:', res.status)
+            return []
+        }
+
+        const data = (await res.json()).data;
+
+        if (!Array.isArray(data)) {
+            console.error('Unexpected API structure:', [])
+            return []
+        }
+        return data.map((item) => ({
+            value: item.id,
+            label: item.name
+        })) as Option[]
+    } catch (error) {
+        console.error('Error fetching stores:', error)
+        return []
+    }
+}
+
+// Fetch store data keeping page server-side
+async function getDivision(): Promise<Option[]> {
+    try {
+        const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/v1/division-select`, {
+            // cache: 'no-store', // 👈 use this if you want no caching (always fresh)
+            next: { revalidate: 3600 }, // or control revalidation at fetch-level
+        })
+        if (!res.ok) {
+            console.error('API returned non-OK status:', res.status)
+            return []
+        }
+
+        const data = (await res.json()).data;
+
+        if (!Array.isArray(data)) {
+            console.error('Unexpected API structure:', [])
+            return []
+        }
+        return data.map((item) => ({
+            value: item.id,
+            label: item.name
+        })) as Option[]
+    } catch (error) {
+        console.error('Error fetching stores:', error)
+        return []
+    }
+}
+// Fetch store data keeping page server-side
+async function getUpazila(): Promise<Option[]> {
+    try {
+        const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/v1/upazila-select`, {
+            // cache: 'no-store', // 👈 use this if you want no caching (always fresh)
+            next: { revalidate: 3600 }, // or control revalidation at fetch-level
+        })
+        if (!res.ok) {
+            console.error('API returned non-OK status:', res.status)
+            return []
+        }
+
+        const data = (await res.json()).data;
+
+        if (!Array.isArray(data)) {
+            console.error('Unexpected API structure:', [])
+            return []
+        }
+        return data.map((item) => ({
+            value: item.id,
+            label: item.name
+        })) as Option[]
+    } catch (error) {
+        console.error('Error fetching stores:', error)
+        return []
+    }
+}
 
 // Page component with dynamic routing
-export default function Page() {
-
-
+export default async function Page() {
+    const districtOptions = await getDistrict();
+    const divisionOptions = await getDivision();
+    const upazilaOptions = await getUpazila();
     return (
         <main className="bg-[#FAFAFA] text-slate-900">
             <Header />
-            <BillingForm />
+            <BillingForm divitions={divisionOptions} districts={districtOptions} upazilas={upazilaOptions} />
             <Footer />
         </main>
     );

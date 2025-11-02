@@ -12,6 +12,7 @@ import { useForm } from "react-hook-form"
 import * as z from "zod"
 import CustomRadio from './CustomRdio'
 import { useCart } from '@/context/cart-context'
+import { Option } from '@/app/billing/page'
 
 const billingFormSchema = z.object({
     fullName: z.string().min(2, "Full name must be at least 2 characters"),
@@ -20,7 +21,7 @@ const billingFormSchema = z.object({
     installationDate: z.string().min(1, "Installation date is required"),
     installationTime: z.string().min(1, "Installation time is required"),
     district: z.string().min(1, "District is required"),
-    thana: z.string().min(1, "Thana is required"),
+    upazila: z.string().min(1, "Thana is required"),
     postalCode: z.string().min(1, "Postal code is required"),
     address: z.string().min(5, "Address must be at least 5 characters"),
     couponCode: z.string(),
@@ -36,14 +37,22 @@ const defaultValues: BillingFormValues = {
     installationDate: "",
     installationTime: "",
     district: "",
-    thana: "",
+    upazila: "",
     postalCode: "",
     address: "",
     couponCode: "",
     paymentMethod: "cash",
 }
-
-export default function BillingForm() {
+type BillinfFormProps = {
+    divitions: Option[]
+    districts: Option[]
+    upazilas: Option[]
+}
+export default function BillingForm({
+    divitions,
+    districts,
+    upazilas,
+}: BillinfFormProps) {
     const { items, removeFromCart, applyCoupon, coupon, clearCoupon, subtotal, discount, total } = useCart()
     const [isSubmitting, setIsSubmitting] = useState(false)
     const [submitSuccess, setSubmitSuccess] = useState(false)
@@ -151,7 +160,7 @@ export default function BillingForm() {
                                                 render={({ field }) => (
                                                     <FormItem>
                                                         <FormLabel className="text-sm font-medium">
-                                                            Installation Date <span className="text-destructive">*</span>
+                                                            Preferred Installation Date <span className="text-destructive">*</span>
                                                         </FormLabel>
                                                         <Input
                                                             type="date"
@@ -170,7 +179,7 @@ export default function BillingForm() {
                                                 render={({ field }) => (
                                                     <FormItem>
                                                         <FormLabel className="text-sm font-medium">
-                                                            Installation Time <span className="text-destructive">*</span>
+                                                            Preferred Installation Time <span className="text-destructive">*</span>
                                                         </FormLabel>
 
                                                         <Input type="time" {...field}
@@ -213,11 +222,11 @@ export default function BillingForm() {
                                                                 <SelectValue placeholder="Select District" />
                                                             </SelectTrigger>
                                                             <SelectContent>
-                                                                <SelectItem value="dhaka">Dhaka</SelectItem>
-                                                                <SelectItem value="chittagong">Chittagong</SelectItem>
-                                                                <SelectItem value="sylhet">Sylhet</SelectItem>
-                                                                <SelectItem value="khulna">Khulna</SelectItem>
-                                                                <SelectItem value="rajshahi">Rajshahi</SelectItem>
+                                                                {
+                                                                    districts.map((district) => (
+                                                                        <SelectItem key={district.value} value={district.value}>{district.label}</SelectItem>
+                                                                    ))
+                                                                }
                                                             </SelectContent>
                                                         </Select>
                                                         <FormMessage />
@@ -227,21 +236,22 @@ export default function BillingForm() {
 
                                             <FormField
                                                 control={form.control}
-                                                name="thana"
+                                                name="upazila"
                                                 render={({ field }) => (
                                                     <FormItem>
                                                         <FormLabel className="text-sm font-medium">
-                                                            Thana <span className="text-destructive">*</span>
+                                                            Upazila <span className="text-destructive">*</span>
                                                         </FormLabel>
                                                         <Select onValueChange={field.onChange} value={field.value}>
                                                             <SelectTrigger className="bg-muted/50 w-full">
-                                                                <SelectValue placeholder="Select Thana" />
+                                                                <SelectValue placeholder="Select Upazila" />
                                                             </SelectTrigger>
                                                             <SelectContent>
-                                                                <SelectItem value="gulshan">Gulshan</SelectItem>
-                                                                <SelectItem value="banani">Banani</SelectItem>
-                                                                <SelectItem value="dhanmondi">Dhanmondi</SelectItem>
-                                                                <SelectItem value="mirpur">Mirpur</SelectItem>
+                                                                {
+                                                                    upazilas.map((upazila) => (
+                                                                        <SelectItem key={upazila.value} value={upazila.value}>{upazila.label}</SelectItem>
+                                                                    ))
+                                                                }
                                                             </SelectContent>
                                                         </Select>
                                                         <FormMessage />
@@ -257,17 +267,11 @@ export default function BillingForm() {
                                                         <FormLabel className="text-sm font-medium">
                                                             Postal Code <span className="text-destructive">*</span>
                                                         </FormLabel>
-                                                        <Select onValueChange={field.onChange} value={field.value}>
-                                                            <SelectTrigger className="bg-muted/50 w-full">
-                                                                <SelectValue placeholder="Select Postal Code" />
-                                                            </SelectTrigger>
-                                                            <SelectContent>
-                                                                <SelectItem value="1212">1212</SelectItem>
-                                                                <SelectItem value="1213">1213</SelectItem>
-                                                                <SelectItem value="1214">1214</SelectItem>
-                                                                <SelectItem value="1215">1215</SelectItem>
-                                                            </SelectContent>
-                                                        </Select>
+                                                        <Input
+                                                            type="text"
+                                                            {...field}
+                                                            className="bg-muted/50"
+                                                        />
                                                         <FormMessage />
                                                     </FormItem>
                                                 )}
