@@ -4,6 +4,7 @@ import { useRouter, useSearchParams } from "next/navigation";
 import Image from "next/image";
 import { useEffect } from "react";
 import { X } from "lucide-react";
+import { motion } from "framer-motion";
 
 export default function CurrentOffer() {
   const router = useRouter();
@@ -51,10 +52,20 @@ export default function CurrentOffer() {
       </button>
 
       {/* Poster */}
+
       {isOpen && (
         <div className="fixed inset-0 bg-black/60 flex items-center justify-center z-50 p-4">
-          <div className="relative bg-white overflow-hidden rounded-3xl shadow-2xl p-4 sm:p-6 w-full sm:w-[80%] md:w-[70%] lg:w-[60%] max-w-5xl text-center ">
-            <div className=" w-full aspect-[16/9]">
+          <motion.div
+            initial={{ opacity: 0, scale: 0, rotate: 0, x: -100 }}
+            animate={{ opacity: 1, scale: 1, rotate: 0, x: 0 }}
+            exit={{ opacity: 0, scale: 0, rotate: 0, x: 100 }}
+            transition={{
+              duration: 0.5,
+              rotate: { duration: 0.5, ease: "easeOut" },
+            }}
+            className="relative bg-white overflow-hidden rounded-3xl shadow-2xl p-4 sm:p-6 w-full sm:w-[80%] md:w-[70%] lg:w-[60%] max-w-5xl text-center"
+          >
+            <div className="w-full aspect-[16/9]">
               <Image
                 src="/images/Poster.png"
                 alt="Certified"
@@ -65,11 +76,11 @@ export default function CurrentOffer() {
             </div>
             <button
               onClick={closeOffer}
-              className="bg-gray-500 rounded-full absolute top-3 right-3 text-gray-300 hover:text-black "
+              className="bg-gray-500 rounded-full absolute top-3 right-3 text-gray-300 hover:text-black cursor-pointer"
             >
               <X className="p-1" />
             </button>
-          </div>
+          </motion.div>
         </div>
       )}
     </div>
