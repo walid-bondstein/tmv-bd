@@ -46,7 +46,7 @@ async function getDistrict(): Promise<Option[]> {
             return []
         }
         return data.map((item) => ({
-            value: item.id,
+            value: item?.id?.toString(),
             label: item.name
         })) as Option[]
     } catch (error) {
@@ -74,7 +74,7 @@ async function getDivision(): Promise<Option[]> {
             return []
         }
         return data.map((item) => ({
-            value: item.id,
+            value: item?.id?.toString(),
             label: item.name
         })) as Option[]
     } catch (error) {
@@ -101,7 +101,7 @@ async function getUpazila(): Promise<Option[]> {
             return []
         }
         return data.map((item) => ({
-            value: item.id,
+            value: item?.id?.toString(),
             label: item.name
         })) as Option[]
     } catch (error) {

@@ -224,8 +224,8 @@ export default function CartItem() {
                         <div className='grid grid-cols-2 gap-y-4'>
                             <p className="text-sm font-medium md:text-lg text-[#727B8C]">Subtotal Amount</p>
                             <p className="text-sm md:text-lg font-semibold text-right">{subtotal}/- BDT</p>
-                            <p className="text-sm font-medium md:text-lg text-[#727B8C]">Coupon Discount</p>
-                            <p className="text-sm md:text-lg font-semibold text-right">{discount}/- BDT</p>
+                            {discount ? <p className="text-sm font-medium md:text-lg text-[#727B8C]">Coupon Discount</p> : <></>}
+                            {discount ? <p className="text-sm md:text-lg font-semibold text-right">{discount}/- BDT</p> : <></>}
                         </div>
                         <hr />
                         <div className='grid grid-cols-2'>
