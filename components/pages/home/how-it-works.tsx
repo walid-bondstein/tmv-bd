@@ -1,6 +1,6 @@
-import type React from "react"
-import { ShoppingCart, Crown, Smartphone } from "lucide-react"
 import { Button } from "@/components/ui/button"
+import { Crown, ShoppingCart, Smartphone } from "lucide-react"
+import type React from "react"
 
 interface Step {
     icon: React.ReactNode
@@ -48,7 +48,7 @@ export function HowItWorks() {
                         {/* Dotted Line connector */}
                         {/* <div className="absolute left-0 top-10 w-full border-t-2 z-[1] border-dashed border-muted-foreground/30" /> */}
                         {steps.map((step, index) => (
-                            <div key={index} className="flex-1 z-[2] paper-container">
+                            <div key={index} className="flex-1 z-2 paper-container">
                                 {/* Step content */}
                                 <div className="space-y-4">
                                     {/* Icon */}
@@ -80,7 +80,7 @@ export function HowItWorks() {
                         {steps.map((step, index) => (
                             <div key={index} className="space-y-3 rounded-lg bg-[#F3F5F8] p-3">
                                 {/* Icon */}
-                                <div className="flex-shrink-0 h-14 w-14 flex items-center justify-center rounded-2xl bg-yellow-400 text-black">
+                                <div className="shrink-0 h-14 w-14 flex items-center justify-center rounded-2xl bg-yellow-400 text-black">
                                     {step.icon}
                                 </div>
 

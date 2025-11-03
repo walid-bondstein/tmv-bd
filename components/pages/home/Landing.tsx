@@ -1,13 +1,12 @@
 import Header from "@/components/shared/Header";
 import Image from "next/image";
-import CurrentOffer from "./CurrentOffer";
-import Icons from "./Icons";
 import Link from "next/link";
+import CurrentOffer from "./CurrentOffer";
 
 export default function Landing() {
   return (
     <section
-      className={`lg:bg-[url("/images/group.png")] relative lg:bg-no-repeat lg:bg-[length:50%_100%] lg:bg-[position:100%_0%] bg-secondary section-padding-y min-h-[100vh] flex flex-col`}
+      className={`lg:bg-[url("/images/group.png")] relative lg:bg-no-repeat lg:bg-size-[50%_100%] lg:bg-position-[100%_0%] bg-secondary section-padding-y min-h-screen flex flex-col`}
       aria-labelledby="hero-heading"
     >
       {/* <Icons /> */}
@@ -25,7 +24,7 @@ export default function Landing() {
             />
             <h1 className="font-semibold text-[clamp(28px,4.0625vw,78px)] leading-[1.03]">
               Track your vehicle. <br />
-              anytime. anywhere.
+              Anytime. Anywhere.
             </h1>
             <div className="flex justify-start items-center gap-4 lg:gap-6 ">
               <Link

@@ -1,6 +1,5 @@
 "use client"
 import Image from 'next/image'
-import React from 'react'
 
 export default function Platform() {
     return (
@@ -20,7 +19,7 @@ export default function Platform() {
                         height={591}
                         alt="Platform"
                         // fill
-                        className='w-full object-contain 2xl:h-[24.313rem] xl:h-[22rem] lg:h-[18rem] sm:h-[16rem] xs:h-[14.125rem] h-[13.125rem]'
+                        className='w-full object-contain 2xl:h-[24.313rem] xl:h-88 lg:h-72 sm:h-64 xs:h-56.5 h-52.5'
                         onLoadingComplete={() => console.log("Image loaded")}
                     />
                 </div>

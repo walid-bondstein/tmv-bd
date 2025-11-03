@@ -1,9 +1,11 @@
 "use client"
 
+import { Option } from '@/app/billing/page'
 import { Button } from '@/components/ui/button'
 import { Form, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
+import { useCart } from '@/context/cart-context'
 import { zodResolver } from "@hookform/resolvers/zod"
 import { ArrowLeft, X } from 'lucide-react'
 import Image from 'next/image'
@@ -11,8 +13,6 @@ import { useState } from "react"
 import { useForm } from "react-hook-form"
 import * as z from "zod"
 import CustomRadio from './CustomRdio'
-import { useCart } from '@/context/cart-context'
-import { Option } from '@/app/billing/page'
 
 const billingFormSchema = z.object({
     fullName: z.string().min(2, "Full name must be at least 2 characters"),
@@ -49,11 +49,10 @@ type BillinfFormProps = {
     upazilas: Option[]
 }
 export default function BillingForm({
-    divitions,
     districts,
     upazilas,
 }: BillinfFormProps) {
-    const { items, removeFromCart, applyCoupon, coupon, clearCoupon, subtotal, discount, total } = useCart()
+    const { items, applyCoupon, coupon, clearCoupon, subtotal, discount, total } = useCart()
     const [isSubmitting, setIsSubmitting] = useState(false)
     const [submitSuccess, setSubmitSuccess] = useState(false)
     const [showCoupon, setCouponForm] = useState(false);
@@ -303,7 +302,7 @@ export default function BillingForm({
                                     <div className='flex justify-between items-center gap-4'>
                                         <div>
                                             <p className="text-lg font-semibold">{coupon.code}</p>
-                                            <p>{coupon.discount}/- BDT off</p>
+                                            <p>{discount}/- BDT off</p>
                                         </div>
                                         <Button onClick={() => { applyCoupon("", 0); clearCoupon(); setCouponText("") }} className="bg-primary rounded-lg tmv-shadow submit cursor-pointer text-[clamp(14px,4.0625vw,16px)]">
                                             <X />

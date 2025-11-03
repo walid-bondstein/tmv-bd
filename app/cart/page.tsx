@@ -1,9 +1,7 @@
-import Header from "@/components/shared/Header";
-import Footer from "@/components/shared/Footer";
-import DisplayProduct from "@/components/pages/product-details/DisplayProduct";
-import { Metadata } from "next";
-import BillingForm from "@/components/pages/billing/billing-form";
 import CartItem from "@/components/pages/cart/cartItem";
+import Footer from "@/components/shared/Footer";
+import Header from "@/components/shared/Header";
+import { Metadata } from "next";
 
 export const metadata: Metadata = {
     title: "Product Details | Track My Vehicle BD",

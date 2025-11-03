@@ -1,14 +1,12 @@
+import KeyArrow1 from '@/public/svgs/keyArrow1'
+import KeyArrow2 from '@/public/svgs/keyArrow2'
 import KeyFuel from '@/public/svgs/keyFuel'
 import KeyMarker from '@/public/svgs/keyMarker'
 import KeyRoute from '@/public/svgs/keyRouter'
 import KeySearch from '@/public/svgs/keySearch'
 import KeySignal from '@/public/svgs/keySignal'
 import KeyTimer from '@/public/svgs/keyTimer'
-import React from 'react'
 import FeatureCard from './FeatureCard'
-import KeyArrow1 from '@/public/svgs/keyArrow1'
-import KeyArrow2 from '@/public/svgs/keyArrow2'
-import Image from 'next/image'
 
 export default function KeyFeatures() {
     const features = {
@@ -64,7 +62,7 @@ export default function KeyFeatures() {
                         </div>
                         <div className='flex justify-center items-center'>
                             <video autoPlay loop muted
-                                className="w-[237px] object-cover h-[389px] sm:w-[280px] sm:h-[460px] md:w-[320px] md:h-[525px] lg:w-[360px] lg:h-[590px] xl:w-[400px] xl:h-[656px] 2xl:w-[29rem] 2xl:h-[47.625rem] rounded-3xl"
+                                className="w-[237px] object-cover h-[389px] sm:w-[280px] sm:h-[460px] md:w-[320px] md:h-[525px] lg:w-[360px] lg:h-[590px] xl:w-[400px] xl:h-[656px] 2xl:w-116 2xl:h-190.5 rounded-3xl"
                             >
                                 <source src="/video/keyFeature.mp4" type="video/mp4" />
                                 Your browser does not support the video tag.
@@ -92,13 +90,13 @@ export default function KeyFeatures() {
                         <div className='flex justify-center relative items-center'>
                             <KeyArrow2 className='absolute bottom-0 left-0 w-[70px]' />
                             <video autoPlay loop muted
-                                className="w-[237px] object-cover h-[389px] sm:w-[280px] sm:h-[460px] md:w-[320px] md:h-[525px] lg:w-[360px] lg:h-[590px] xl:w-[400px] xl:h-[656px] 2xl:w-[29rem] 2xl:h-[47.625rem] rounded-3xl"
+                                className="w-[237px] object-cover h-[389px] sm:w-[280px] sm:h-[460px] md:w-[320px] md:h-[525px] lg:w-[360px] lg:h-[590px] xl:w-[400px] xl:h-[656px] 2xl:w-116 2xl:h-190.5 rounded-3xl"
                             >
                                 <source src="/video/keyFeature.mp4" type="video/mp4" />
                                 Your browser does not support the video tag.
                             </video>
                         </div>
-                        <KeyArrow1 className='absolute top-0 right-0 w-[80px]' />
+                        <KeyArrow1 className='absolute top-0 right-0 w-20' />
                     </div>
                 </div>
                 <div className='flex flex-col items-center gap-4 mt-10'>
