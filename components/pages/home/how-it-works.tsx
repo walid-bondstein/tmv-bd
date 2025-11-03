@@ -28,7 +28,7 @@ const steps: Step[] = [
 
 export function HowItWorks() {
     return (
-        <section className="component-container mx-auto py-12 md:py-20 lg:py-24">
+        <section id="how-it-works" className="component-container mx-auto py-12 md:py-20 lg:py-24">
             <div className="container lg:px-4 md:px-6 px-0 mx-auto w-full">
                 {/* Desktop Layout */}
                 <div className="hidden lg:grid lg:grid-cols-[300px_1fr] lg:gap-12 lg:items-start">

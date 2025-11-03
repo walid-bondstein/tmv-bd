@@ -7,6 +7,7 @@ import { ArrowLeft, Minus, Plus, X } from 'lucide-react'
 import Image from 'next/image'
 import { useRouter } from 'next/navigation'
 import { useState } from "react"
+import { toast } from 'sonner'
 
 
 
@@ -15,6 +16,14 @@ export default function CartItem() {
     const [showCoupon, setCouponForm] = useState(false);
     const [couponText, setCouponText] = useState("");
     const router = useRouter();
+
+
+    const handeleApplyCoupon = () => {
+        applyCoupon(couponText, 100);
+        setCouponText("");
+        setCouponForm(false);
+        toast.success("Coupon applied successfully");
+    }
 
 
     return (
@@ -170,7 +179,7 @@ export default function CartItem() {
                                         <p className="text-lg font-semibold">{coupon.code}</p>
                                         <p>{coupon.discount}/- BDT off</p>
                                     </div>
-                                    <Button onClick={() => { applyCoupon("", 0); clearCoupon(); setCouponText("") }} className="bg-primary rounded-lg tmv-shadow submit cursor-pointer text-[clamp(14px,4.0625vw,16px)]">
+                                    <Button onClick={() => { clearCoupon(); setCouponText("") }} className="bg-primary rounded-lg tmv-shadow submit cursor-pointer text-[clamp(14px,4.0625vw,16px)]">
                                         <X />
                                     </Button>
                                 </div>
@@ -195,7 +204,7 @@ export default function CartItem() {
                                                 onChange={(e) => setCouponText(e.target.value)}
                                             />
                                             <Button
-                                                onClick={() => { applyCoupon(couponText, 100); setCouponText(""); setCouponForm(false); }}
+                                                onClick={handeleApplyCoupon}
                                                 type="button"
                                                 className="bg-submit lg:w-40 xs:w-[9.8rem] xs:h-13 w-28 h-[52px] lg:font-bold rounded-lg tmv-shadow submit cursor-pointer text-[clamp(14px,4.0625vw,16px)]"
                                             >

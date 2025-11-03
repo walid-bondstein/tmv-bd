@@ -48,7 +48,7 @@ export default function KeyFeatures() {
         ],
     }
     return (
-        <div>
+        <div id="features">
             <div className="component-container lg:block hidden mx-auto py-8">
                 <div>
                     <h2 className="text-title text-center">Key Features TMV</h2>

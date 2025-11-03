@@ -25,16 +25,16 @@ export default async function Header() {
                             alt="Track My Vehicle BD Logo"
                             height={82}
                             width={82}
-                            className='w-16 h-16 lg:w-[5.125rem] lg:h-[5.125rem] object-center object-contain'
+                            className='w-16 h-16 lg:w-20.5 lg:h-20.5 object-center object-contain'
                         />
                     </div>
 
                     <div className='hidden lg:block'>
                         <div className='flex justify-center items-center gap-6 text-secondary-foreground'>
                             <Link className={`${isActive("/") ? "text-gradient" : ""}`} prefetch={false} href={"/"}>Home</Link>
-                            <Link className={`${isActive("/products") ? "text-gradient" : ""}`} prefetch={false} href={"/products"}>Products</Link>
-                            <Link className={`${isActive("/features") ? "text-gradient" : ""}`} prefetch={false} href={"/features"}>Features</Link>
-                            <Link className={`${isActive("/how-it-works") ? "text-gradient" : ""}`} prefetch={false} href={"/how-it-works"}>How It Works</Link>
+                            <Link className={`${isActive("/products") ? "text-gradient" : ""}`} prefetch={false} href={"#products"}>Products</Link>
+                            <Link className={`${isActive("/features") ? "text-gradient" : ""}`} prefetch={false} href={"#features"}>Features</Link>
+                            <Link className={`${isActive("/how-it-works") ? "text-gradient" : ""}`} prefetch={false} href={"#how-it-works"}>How It Works</Link>
                             <Link className={`${isActive("/store-locations") ? "text-gradient" : ""}`} prefetch={false} href={"/store-locations"}>Store location</Link>
                         </div>
                     </div>

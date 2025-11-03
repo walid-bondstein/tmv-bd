@@ -8,6 +8,7 @@ import DisplayImages from "@/components/pages/product-details/DisplayImages";
 import { Product } from "@/app/page";
 import { useCart } from "@/context/cart-context";
 import { useRouter } from "next/navigation";
+import { toast } from "sonner"
 
 interface DisplayProductProps {
   product: Product;
@@ -153,6 +154,7 @@ export default function DisplayProduct({ product }: DisplayProductProps) {
                 subscriptionDurationMonths: Number(selectedPlan.duration_months),
                 itemImage: product.images?.[0] || "",
               })
+              toast.success("Product added to cart!");
               router.push('/cart');
             }}
             className="flex-1 bg-submit h-14 lg:text-lg text-black font-semibold rounded-md cursor-pointer"
@@ -175,6 +177,7 @@ export default function DisplayProduct({ product }: DisplayProductProps) {
                 subscriptionDurationMonths: Number(selectedPlan.duration_months),
                 itemImage: product.images?.[0] || "",
               })
+              toast.success("Product added to cart!");
             }}
             variant="outline"
             className="flex-1 h-14 cursor-pointer lg:text-lg text-black font-semibold border border-gray-300 hover:bg-gray-50 rounded-md"

@@ -3,6 +3,7 @@ import type { Metadata } from "next"
 import { Lato } from "next/font/google"
 import { Suspense } from "react"
 import "./globals.css"
+import { Toaster } from "@/components/ui/sonner"
 import { CartProvider } from "@/context/cart-context"
 
 export const metadata: Metadata = {
@@ -53,6 +54,7 @@ export default function RootLayout({
         <CartProvider>
           <Suspense>{children}</Suspense>
         </CartProvider>
+        <Toaster position="top-right" richColors />
       </body>
     </html>
   )

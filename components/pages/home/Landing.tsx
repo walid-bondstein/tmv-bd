@@ -2,6 +2,7 @@ import Header from "@/components/shared/Header";
 import Image from "next/image";
 import CurrentOffer from "./CurrentOffer";
 import Icons from "./Icons";
+import Link from "next/link";
 
 export default function Landing() {
   return (
@@ -20,19 +21,22 @@ export default function Landing() {
               alt="Award"
               width={150}
               height={130}
-              className="w-16 h-14 md:w-[9rem] md:h-[8.125rem] md:mt-0 mt-7"
+              className="w-16 h-14 md:w-36 md:h-32.5 md:mt-0 mt-7"
             />
             <h1 className="font-semibold text-[clamp(28px,4.0625vw,78px)] leading-[1.03]">
               Track your vehicle. <br />
               anytime. anywhere.
             </h1>
             <div className="flex justify-start items-center gap-4 lg:gap-6 ">
-              <button
-                className="bg-submit lg:w-[9.7rem] xs:w-[9.8rem] xs:h-13 w-28 h-8 lg:font-bold rounded-lg tmv-shadow submit cursor-pointer text-[clamp(14px,4.0625vw,16px)]"
-                type="submit"
-              >
-                Buy Now
-              </button>
+              <Link
+                href="#products">
+                <button
+                  className="bg-submit lg:w-[9.7rem] xs:w-[9.8rem] xs:h-13 w-28 h-8 lg:font-bold rounded-lg tmv-shadow submit cursor-pointer text-[clamp(14px,4.0625vw,16px)]"
+                  type="submit"
+                >
+                  Buy Now
+                </button>
+              </Link>
               <button className="bg-btn-info lg:w-[9.7rem] xs:w-[9.8rem] xs:h-13 w-28 h-8 lg:font-bold rounded-lg tmv-shadow submit cursor-pointer text-[clamp(14px,4.0625vw,16px)]">
                 Learn More
               </button>

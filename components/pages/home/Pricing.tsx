@@ -5,7 +5,7 @@ export default function Pricing({ products }: {
     products: Product[],
 }) {
     return (
-        <div className="component-container mx-auto lg:space-y-16 md:space-y-8 space-y-2"  >
+        <div className="component-container mx-auto lg:space-y-16 md:space-y-8 space-y-2" id="products"  >
             <div>
                 <h2 className="text-title text-center">Product & Pricing Showcase</h2>
                 <p className="text-subtitle text-center">Quick trust-building line BTRC Approved,</p>
