@@ -8,7 +8,7 @@ import DisplayImages from "@/components/pages/product-details/DisplayImages";
 import { Product } from "@/app/page";
 import { useCart } from "@/context/cart-context";
 import { useRouter } from "next/navigation";
-import { toast } from "sonner"
+import { toast } from "sonner";
 
 interface DisplayProductProps {
   product: Product;
@@ -18,20 +18,14 @@ export default function DisplayProduct({ product }: DisplayProductProps) {
   const [quantity, setQuantity] = useState(1);
   const { addToCart } = useCart();
   const router = useRouter();
-  const [selectedPlan, setSelectedPlan] = useState(
-    product.subscriptions?.[0]
-  );
-
-
+  const [selectedPlan, setSelectedPlan] = useState(product.subscriptions?.[0]);
 
   const total = Number(product.product_final_amount) * quantity;
 
   return (
     <div className="grid grid-cols-12 2xl:gap-24 xl:gap-16 lg:gap-12 md:gap-10 sm:gap-8 gap-6 component-container mx-auto">
       {/* Left Side — Image Gallery */}
-      <DisplayImages
-        images={product.images ?? []}
-      />
+      <DisplayImages images={product.images ?? []} />
 
       {/* Right Side — Product Info */}
       <div className="col-span-12 xl:col-span-6 w-full h-full">
@@ -45,7 +39,13 @@ export default function DisplayProduct({ product }: DisplayProductProps) {
             ৳{Number(product.product_final_amount).toLocaleString()} /- BDT{" "}
             {product.product_discount_amount && (
               <span className="text-gray-500 text-lg font-medium ml-2">
-                ({Number((Number(product.product_discount_amount) / Number(product.product_base_amount)) * 100).toFixed(1)}% Off)
+                (
+                {Number(
+                  (Number(product.product_discount_amount) /
+                    Number(product.product_base_amount)) *
+                    100
+                ).toFixed(1)}
+                % Off)
               </span>
             )}
           </p>
@@ -76,7 +76,9 @@ export default function DisplayProduct({ product }: DisplayProductProps) {
                   name="subscription"
                   id={`plan-${index}`}
                   onChange={() => setSelectedPlan(option)}
-                  checked={selectedPlan?.duration_months === option.duration_months}
+                  checked={
+                    selectedPlan?.duration_months === option.duration_months
+                  }
                   className="w-4 h-4 accent-gray-400"
                 />
 
@@ -86,7 +88,9 @@ export default function DisplayProduct({ product }: DisplayProductProps) {
                     {Number(option.final_amount).toFixed(0)}
                     <span className="font-semibold">/-BDT</span>
                   </p>
-                  <p className="text-sm text-gray-500">For {option.duration_months} Month Subscription</p>
+                  <p className="text-sm text-gray-500">
+                    For {option.duration_months} Month Subscription
+                  </p>
                 </div>
               </label>
             ))}
@@ -102,7 +106,7 @@ export default function DisplayProduct({ product }: DisplayProductProps) {
               {/* Minus Button */}
               <button
                 onClick={() => setQuantity((prev) => Math.max(1, prev - 1))}
-                className="w-9 h-9 flex justify-center items-center border rounded-full hover:bg-black hover:text-white"
+                className="w-9 h-9 flex justify-center items-center border rounded-full hover:bg-black hover:text-white cursor-pointer"
               >
                 <Minus />
               </button>
@@ -115,7 +119,7 @@ export default function DisplayProduct({ product }: DisplayProductProps) {
               {/* Plus Button */}
               <button
                 onClick={() => setQuantity((prev) => prev + 1)}
-                className="w-9 h-9 flex justify-center items-center border rounded-full hover:bg-black hover:text-white"
+                className="w-9 h-9 flex justify-center items-center border rounded-full hover:bg-black hover:text-white cursor-pointer"
               >
                 <Plus />
               </button>
@@ -151,11 +155,13 @@ export default function DisplayProduct({ product }: DisplayProductProps) {
                 priceWithoutDiscount: Number(product.product_final_amount),
                 quantity: quantity,
                 subscriptionPrice: Number(selectedPlan.final_amount),
-                subscriptionDurationMonths: Number(selectedPlan.duration_months),
+                subscriptionDurationMonths: Number(
+                  selectedPlan.duration_months
+                ),
                 itemImage: product.images?.[0] || "",
-              })
+              });
               toast.success("Product added to cart!");
-              router.push('/cart');
+              router.push("/cart");
             }}
             className="flex-1 bg-submit h-14 lg:text-lg text-black font-semibold rounded-md cursor-pointer"
             type="submit"
@@ -174,9 +180,11 @@ export default function DisplayProduct({ product }: DisplayProductProps) {
                 priceWithoutDiscount: Number(product.product_final_amount),
                 quantity: quantity,
                 subscriptionPrice: Number(selectedPlan.final_amount),
-                subscriptionDurationMonths: Number(selectedPlan.duration_months),
+                subscriptionDurationMonths: Number(
+                  selectedPlan.duration_months
+                ),
                 itemImage: product.images?.[0] || "",
-              })
+              });
               toast.success("Product added to cart!");
             }}
             variant="outline"
