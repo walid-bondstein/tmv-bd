@@ -26,7 +26,8 @@ const billingFormSchema = z.object({
     postalCode: z.string().min(1, "Postal code is required"),
     address: z.string().min(5, "Address must be at least 5 characters"),
     couponCode: z.string(),
-    paymentMethod: z.enum(["cash", "online"] as const),
+    paymentMethod: z.enum(["full_payment", "partial_payment"] as const),
+    advance_payment_amount: z.number().optional(),
 })
 
 type BillingFormValues = z.infer<typeof billingFormSchema>
@@ -42,7 +43,7 @@ const defaultValues: BillingFormValues = {
     postalCode: "",
     address: "",
     couponCode: "",
-    paymentMethod: "cash",
+    paymentMethod: "full_payment",
 }
 type BillinfFormProps = {
     divitions: Option[]
@@ -382,31 +383,31 @@ export default function BillingForm({
                                         <FormItem>
                                             <div className="grid gap-4 md:grid-cols-2">
                                                 <div
-                                                    className={`flex items-center space-x-2 rounded-lg border border-border p-3 cursor-pointer hover:bg-muted/50 ${field.value === "cash" ? "bg-[#e0e2e5]" : ""}`}
-                                                    onClick={() => field.onChange("cash")}
+                                                    className={`flex items-center space-x-2 rounded-lg border border-border p-3 cursor-pointer hover:bg-muted/50 ${field.value === "full_payment" ? "bg-[#e0e2e5]" : ""}`}
+                                                    onClick={() => field.onChange("full_payment")}
                                                 >
                                                     <CustomRadio
                                                         name="payment"
-                                                        value="online"
-                                                        checked={field.value === "cash"}
-                                                        onChange={() => field.onChange("cash")}
+                                                        value="full_payment"
+                                                        checked={field.value === "full_payment"}
+                                                        onChange={() => field.onChange("full_payment")}
                                                     />
-                                                    <label htmlFor="cash" className="flex-1 cursor-pointer font-medium">
-                                                        Cash
+                                                    <label htmlFor="full_payment" className="flex-1 cursor-pointer font-medium">
+                                                        Full Payment
                                                     </label>
                                                 </div>
                                                 <div
-                                                    className={`flex items-center space-x-2 rounded-lg border border-border p-3 cursor-pointer hover:bg-muted/50 ${field.value === "online" ? "bg-[#e0e2e5]" : ""}`}
-                                                    onClick={() => field.onChange("online")}
+                                                    className={`flex items-center space-x-2 rounded-lg border border-border p-3 cursor-pointer hover:bg-muted/50 ${field.value === "partial_payment" ? "bg-[#e0e2e5]" : ""}`}
+                                                    onClick={() => field.onChange("partial_payment")}
                                                 >
                                                     <CustomRadio
                                                         name="payment"
-                                                        value="online"
-                                                        checked={field.value === "online"}
-                                                        onChange={() => field.onChange("online")}
+                                                        value="partial_payment"
+                                                        checked={field.value === "partial_payment"}
+                                                        onChange={() => field.onChange("partial_payment")}
                                                     />
-                                                    <label htmlFor="online" className="flex-1 cursor-pointer font-medium">
-                                                        Online
+                                                    <label htmlFor="partial_payment" className="flex-1 cursor-pointer font-medium">
+                                                        Partial Payment
                                                     </label>
                                                 </div>
                                             </div>
@@ -414,6 +415,28 @@ export default function BillingForm({
                                         </FormItem>
                                     )}
                                 />
+                                {form.watch("paymentMethod") === "partial_payment" && (
+                                    <FormField
+                                        control={form.control}
+                                        name="advance_payment_amount"
+                                        render={({ field }) => (
+                                            <FormItem className="mt-4">
+                                                <FormLabel className="text-sm font-medium">
+                                                    Advance Payment Amount <span className="text-destructive">*</span>
+                                                </FormLabel>
+                                                <Input
+                                                    type="number"
+                                                    placeholder="Enter advance payment amount (BDT)"
+                                                    {...field}
+                                                    className="bg-muted/50"
+                                                    step="1"
+                                                    min="500"
+                                                />
+                                                <FormMessage />
+                                            </FormItem>
+                                        )}
+                                    />
+                                )}
                             </div>
                             <div className="mt-3 space-y-3">
                                 <Button
