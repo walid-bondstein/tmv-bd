@@ -20,7 +20,7 @@ export default function Platform() {
                         alt="Platform"
                         // fill
                         className='w-full object-contain 2xl:h-[24.313rem] xl:h-88 lg:h-72 sm:h-64 xs:h-56.5 h-52.5'
-                        onLoadingComplete={() => console.log("Image loaded")}
+                        onLoad={() => console.log("Image loaded")}
                     />
                 </div>
             </div>

@@ -10,16 +10,9 @@ import "swiper/css/navigation";
 import { AspectRatio } from "@/components/ui/aspect-ratio";
 import Image from "next/image";
 
-const datas = [
-    "/images/appleStore.png",
-    "/images/appStore.png",
-    "/images/award.png",
-    "/images/background.png",
-    "/images/background1.png",
-    "/images/banglalink.png",
-];
 
-export default function OfferSlider({ data = datas }) {
+export default function OfferSlider({ offers }: { offers: string[] }) {
+    if (offers.length === 0) return null;
     return (
         <section className="text-white relative space-y-4">
             <h2 className="text-title text-center">Special Offers</h2>
@@ -76,7 +69,7 @@ export default function OfferSlider({ data = datas }) {
                     },
                 }}
             >
-                {data.map((item, index) => (
+                {offers.map((item, index) => (
                     <SwiperSlide key={index} className="px-10">
                         <AspectRatio ratio={21 / 9} className="rounded-3xl overflow-hidden">
                             <Image
