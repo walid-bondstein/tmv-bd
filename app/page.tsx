@@ -40,7 +40,7 @@ export const metadata: Metadata = {
 // types/product.ts
 export interface ProductSubscription {
   duration_months: number;
-  base_amount: string;       // stored as string to match backend data (e.g. "500.00")
+  base_amount: string; // stored as string to match backend data (e.g. "500.00")
   discount_amount: string;
   final_amount: string;
 }
@@ -63,36 +63,38 @@ export interface Product {
   product_slug: string;
 }
 
-
 // Fetch store data keeping page server-side
 async function getProducts(): Promise<Product[]> {
   try {
-    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/v1/products`, {
-      // cache: 'no-store', // 👈 use this if you want no caching (always fresh)
-      next: { revalidate: 3600 }, // or control revalidation at fetch-level
-    })
+    const res = await fetch(
+      `${process.env.NEXT_PUBLIC_API_URL}/api/v1/products`,
+      {
+        // cache: 'no-store', // 👈 use this if you want no caching (always fresh)
+        next: { revalidate: 3600 }, // or control revalidation at fetch-level
+      }
+    );
     if (!res.ok) {
-      console.error('API returned non-OK status:', res.status)
-      return []
+      console.error("API returned non-OK status:", res.status);
+      return [];
     }
 
     const data = (await res.json()).data;
 
     if (!Array.isArray(data)) {
-      console.error('Unexpected API structure:', [])
-      return []
+      console.error("Unexpected API structure:", []);
+      return [];
     }
-    return data as Product[]
+    return data as Product[];
   } catch (error) {
-    console.error('Error fetching stores:', error)
-    return []
+    console.error("Error fetching stores:", error);
+    return [];
   }
 }
 
 export default async function HomePage() {
   const products = await getProducts();
   return (
-    <main className="min-h-screen bg-white text-slate-900 2xl:space-y-[140px] xl:space-y-[120px] lg:space-y-[100px] md:space-y-20 sm:space-y-[70px] ">
+    <main className="min-h-screen bg-white text-slate-900 space-y-[45px] 2xl:space-y-[140px] xl:space-y-[120px] lg:space-y-[100px] md:space-y-20 sm:space-y-[70px] ">
       <Landing />
       <Pricing products={products} />
       <KeyFeatures />
