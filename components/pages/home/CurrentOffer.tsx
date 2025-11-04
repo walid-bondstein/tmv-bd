@@ -5,8 +5,9 @@ import Image from "next/image";
 import { useEffect } from "react";
 import { X } from "lucide-react";
 import { motion } from "framer-motion";
+import ImageSlider from "@/components/shared/ImageSlider";
 
-export default function CurrentOffer() {
+export default function CurrentOffer({ offers }: { offers: string[] }) {
   const router = useRouter();
   const searchParams = useSearchParams();
   const isOpen = searchParams.get("offer") === "open";
@@ -63,16 +64,17 @@ export default function CurrentOffer() {
               duration: 0.5,
               rotate: { duration: 0.5, ease: "easeOut" },
             }}
-            className="relative bg-white overflow-hidden rounded-3xl shadow-2xl p-4 sm:p-6 w-full sm:w-[80%] md:w-[70%] lg:w-[60%] max-w-5xl text-center"
+            className="relative bg-white overflow-hidden rounded-3xl shadow-2xl w-full sm:w-[80%] md:w-[70%] lg:w-[60%] max-w-5xl text-center"
           >
-            <div className="w-full aspect-[16/9]">
-              <Image
+            <div className="w-full aspect-video">
+              {/* <Image
                 src="/images/Poster.png"
                 alt="Certified"
                 fill
                 className="object-cover"
                 sizes="(max-width: 768px) 100vw, (max-width: 1200px) 70vw, 60vw"
-              />
+              /> */}
+              <ImageSlider images={offers ?? []} />
             </div>
             <button
               onClick={closeOffer}

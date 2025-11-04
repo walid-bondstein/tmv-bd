@@ -3,14 +3,16 @@ import Image from "next/image";
 import Link from "next/link";
 import CurrentOffer from "./CurrentOffer";
 
-export default function Landing() {
+export default function Landing({
+  offers,
+}: { offers: string[] }) {
   return (
     <section
       className={`lg:bg-[url("/images/group.png")] relative lg:bg-no-repeat lg:bg-size-[50%_100%] lg:bg-position-[100%_0%] bg-secondary section-padding-y min-h-screen flex flex-col`}
       aria-labelledby="hero-heading"
     >
       {/* <Icons /> */}
-      <CurrentOffer />
+      {offers.length >= 1 ? <CurrentOffer offers={offers} /> : <></>}
       <Header />
       <div className="mx-auto component-container lg:grid flex flex-col grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-0 items-center lg:flex-1">
         <div className="lg:h-full h-auto w-full lg:flex justify-start items-center">
