@@ -1,6 +1,6 @@
-import { motion, AnimatePresence } from 'framer-motion'
+import { AnimatePresence, motion } from 'framer-motion';
 import Image from 'next/image';
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react';
 
 export default function ImageSlider({ images }: { images: string[] }) {
     const [index, setIndex] = useState(0);
@@ -8,7 +8,7 @@ export default function ImageSlider({ images }: { images: string[] }) {
 
     // Preload images
     useEffect(() => {
-        const preload = images.map(src => {
+        images.map(src => {
             const img = new window.Image();
             img.src = src;
         });

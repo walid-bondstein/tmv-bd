@@ -1,10 +1,10 @@
-import { Search, ShoppingCart, TextAlignStart } from "lucide-react";
+import React from "react";
+import { Search, TextAlignStart } from "lucide-react";
 import { headers } from "next/headers";
 import Image from "next/image";
-import React from "react";
-import { LanguageSwitcher } from "./LanguageSwitcher";
 import Link from "next/link";
 import Cart from "./Cart";
+import { LanguageSwitcher } from "./LanguageSwitcher";
 
 export default async function Header() {
   const headersList = await headers();
