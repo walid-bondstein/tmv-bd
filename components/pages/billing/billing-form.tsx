@@ -23,6 +23,7 @@ const billingFormSchema = z.object({
     installationTime: z.string().min(1, "Installation time is required"),
     district: z.string().min(1, "District is required"),
     upazila: z.string().min(1, "Thana is required"),
+    union: z.string().min(1, "Union is required"),
     postalCode: z.string().min(1, "Postal code is required"),
     address: z.string().min(5, "Address must be at least 5 characters"),
     couponCode: z.string(),
@@ -44,15 +45,18 @@ const defaultValues: BillingFormValues = {
     address: "",
     couponCode: "",
     paymentMethod: "full_payment",
+    union: "",
 }
 type BillinfFormProps = {
     divitions: Option[]
     districts: Option[]
     upazilas: Option[]
+    unions: Option[]
 }
 export default function BillingForm({
     districts,
     upazilas,
+    unions,
 }: BillinfFormProps) {
     const { items, applyCoupon, coupon, clearCoupon, subtotal, discount, total } = useCart()
     const [isSubmitting, setIsSubmitting] = useState(false)
@@ -257,6 +261,30 @@ export default function BillingForm({
                                                                 {
                                                                     upazilas.map((upazila) => (
                                                                         <SelectItem key={upazila.value} value={upazila.value}>{upazila.label}</SelectItem>
+                                                                    ))
+                                                                }
+                                                            </SelectContent>
+                                                        </Select>
+                                                        <FormMessage />
+                                                    </FormItem>
+                                                )}
+                                            />
+                                            <FormField
+                                                control={form.control}
+                                                name="union"
+                                                render={({ field }) => (
+                                                    <FormItem>
+                                                        <FormLabel className="text-sm font-medium">
+                                                            Union <span className="text-destructive">*</span>
+                                                        </FormLabel>
+                                                        <Select onValueChange={field.onChange} value={field.value}>
+                                                            <SelectTrigger className="bg-muted/50 w-full">
+                                                                <SelectValue placeholder="Select Union" />
+                                                            </SelectTrigger>
+                                                            <SelectContent>
+                                                                {
+                                                                    unions.map((union) => (
+                                                                        <SelectItem key={union.value} value={union.value}>{union.label}</SelectItem>
                                                                     ))
                                                                 }
                                                             </SelectContent>

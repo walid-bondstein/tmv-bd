@@ -109,16 +109,44 @@ async function getUpazila(): Promise<Option[]> {
         return []
     }
 }
+// Fetch store data keeping page server-side
+async function getUnion(): Promise<Option[]> {
+    try {
+        const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/v1/union-select`, {
+            // cache: 'no-store', // 👈 use this if you want no caching (always fresh)
+            next: { revalidate: 3600 }, // or control revalidation at fetch-level
+        })
+        if (!res.ok) {
+            console.error('API returned non-OK status:', res.status)
+            return []
+        }
+
+        const data = (await res.json()).data;
+
+        if (!Array.isArray(data)) {
+            console.error('Unexpected API structure:', [])
+            return []
+        }
+        return data.map((item) => ({
+            value: item?.id?.toString(),
+            label: item.name
+        })) as Option[]
+    } catch (error) {
+        console.error('Error fetching stores:', error)
+        return []
+    }
+}
 
 // Page component with dynamic routing
 export default async function Page() {
     const districtOptions = await getDistrict();
     const divisionOptions = await getDivision();
     const upazilaOptions = await getUpazila();
+    const unionsOptions = await getUnion();
     return (
         <main className="bg-[#FAFAFA] text-slate-900">
             <Header />
-            <BillingForm divitions={divisionOptions} districts={districtOptions} upazilas={upazilaOptions} />
+            <BillingForm unions={unionsOptions} divitions={divisionOptions} districts={districtOptions} upazilas={upazilaOptions} />
             <Footer />
         </main>
     );
