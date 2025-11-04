@@ -1,9 +1,8 @@
-import React from 'react'
-import { generateAddress } from '../pages/store-locations/store-locator'
-import Image from 'next/image';
-import { Phone, Share2, Waypoints, X } from 'lucide-react';
 import { StoreLocation } from '@/app/store-locations/page';
+import { Phone, Share2, Waypoints, X } from 'lucide-react';
+import React from 'react';
 import { toast } from 'sonner';
+import { generateAddress } from '../pages/store-locations/store-locator';
 import ImageSlider from './ImageSlider';
 
 interface CustomInfoWindowProps {
@@ -87,15 +86,27 @@ export default function CustomInfoWindow({ store, onClose }: CustomInfoWindowPro
                     </a>
                     <button
                         onClick={handleShare}
-                        className="border border-gray-300 rounded-sm tmv-shadow submit cursor-pointer md:px-2 px-2 md:py-1 py-1 text-[clamp(8px,0.6249vw,12px)] flex justify-start items-center gap-2"
+                        className="border border-gray-300 md:flex hidden rounded-sm tmv-shadow submit cursor-pointer md:px-2 px-2 md:py-1 py-1 text-[clamp(8px,0.6249vw,12px)] justify-start items-center gap-2"
                     >
                         <Share2 className="w-5" /> Share
                     </button>
                     <button
                         onClick={() => handleOpenDirections(store?.lat, store?.lng)}
-                        className="border border-gray-300 rounded-sm tmv-shadow submit cursor-pointer md:px-2 px-2 md:py-1 py-1 text-[clamp(8px,0.6249vw,12px)] flex justify-start items-center gap-2"
+                        className="border border-gray-300 rounded-sm tmv-shadow submit cursor-pointer md:px-2 px-2 md:py-1 py-1 text-[clamp(8px,0.6249vw,12px)] md:flex hidden justify-start items-center gap-2"
                     >
                         <Waypoints className="w-5" /> Directions
+                    </button>
+                    <button
+                        onClick={handleShare}
+                        className="border border-gray-300 rounded-sm tmv-shadow submit cursor-pointer md:px-2 px-2 md:py-1 py-1 text-[clamp(8px,0.6249vw,12px)] flex md:hidden justify-start items-center gap-2"
+                    >
+                        <Share2 className="w-5" />
+                    </button>
+                    <button
+                        onClick={() => handleOpenDirections(store?.lat, store?.lng)}
+                        className="border border-gray-300 rounded-sm tmv-shadow submit cursor-pointer md:px-2 px-2 md:py-1 py-1 text-[clamp(8px,0.6249vw,12px)] flex md:hidden justify-start items-center gap-2"
+                    >
+                        <Waypoints className="w-5" />
                     </button>
                 </div>
             </div>

@@ -66,7 +66,7 @@ export default function StoreLocator({ stores }: { stores: StoreLocation[] }) {
                                 placeholder="Search location near you"
                                 value={searchQuery}
                                 onChange={(e) => setSearchQuery(e.target.value)}
-                                className="flex-grow border-0 focus:border-0 ring-0 focus:ring-0 focus-visible:ring-0 outline-none focus:outline-none focus-visible:outline-none shadow-none"
+                                className="grow border-0 focus:border-0 ring-0 focus:ring-0 focus-visible:ring-0 outline-none focus:outline-none focus-visible:outline-none shadow-none"
                             />
                         </div>
                         <div className="flex-1 mt-4 overflow-y-auto space-y-4 border-green-400 bg-[#F6F5EE] rounded-2xl p-3">
@@ -81,7 +81,7 @@ export default function StoreLocator({ stores }: { stores: StoreLocation[] }) {
                                     </div>
                                     <div>
                                         <div className="border rounded-full w-[60px] h-[60px] flex justify-center items-center">
-                                            <div className="w-[24px] h-[24px] rounded-[5px] mx-auto my-auto rotate-45 border border-gray-400">
+                                            <div className="w-6 h-6 rounded-[5px] mx-auto my-auto rotate-45 border border-gray-400">
                                                 <CornerLeftUp size={18} className="mx-auto my-auto text-gray-400 " />
                                             </div>
                                         </div>
