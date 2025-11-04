@@ -1,0 +1,84 @@
+/* .buttonWrapper {
+  position: relative;
+  display: inline-block;
+  border-radius: 49px;
+  background: #f3f5f8;
+  cursor: pointer;
+  overflow: hidden;
+  border: none;
+  transition: all 0.4s ease-in-out;
+  user-select: none;
+} */
+
+.buttonWrapper {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  border-radius: 6px;
+  background: #f3f5f8;
+  color: #0b0b0b;
+  border: none;
+  cursor: pointer;
+  overflow: hidden;
+  transition: transform 0.2s ease, box-shadow 0.3s ease;
+  box-shadow: 0 2px 6px rgba(15, 23, 42, 0.06);
+}
+
+/* Sunrise gradient animation */
+.buttonWrapper::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  width: 160%;
+  height: 784%;
+  left: 50%;
+  bottom: -70%;
+  transform: translateX(-50%) scale(0);
+  border-radius: 9999px;
+  background-image: linear-gradient(
+    to right,
+    var(--primary2),
+    var(--secondary2),
+    var(--secondary2),
+    var(--primary2)
+  );
+  background-size: 300% 100%;
+  z-index: 0;
+  background-position: 0 0;
+  transition: transform 2000ms ease, background-position 400ms ease;
+}
+
+.buttonWrapper:hover::before {
+  transform: translateX(-50%) scale(1.25);
+  background-position: 100% 0;
+}
+
+.buttonWrapper span {
+  position: relative;
+  z-index: 1;
+}
+.buttonWrapper:active {
+  transform: translateY(1px);
+}
+
+/* Inner content */
+.innerContent {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem 1rem;
+  z-index: 1;
+  transition: color 0.4s ease-in-out;
+}
+
+.text {
+  font-size: 14px;
+  color: black;
+  transition: color 0.4s ease-in-out;
+  font-weight: 600;
+}
+
+.buttonWrapper:hover .text {
+  color: rgb(7, 7, 7);
+}

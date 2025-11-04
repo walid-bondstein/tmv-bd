@@ -15,149 +15,157 @@ import Footer from "@/components/shared/Footer";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-    title: "Home | Track My Vehicle BD",
+  title: "Home | Track My Vehicle BD",
+  description: "ADVANCED TELEMATICS SOLUTIONS FOR YOUR FLEET",
+  keywords: [
+    "tmv",
+    "tmvbd",
+    "Truck My Vehicle BD",
+    "truck my vehicle bd",
+    "Truck My Vehicle",
+    "truck my vehicle",
+  ],
+  openGraph: {
+    title: "Home",
     description: "ADVANCED TELEMATICS SOLUTIONS FOR YOUR FLEET",
-    keywords: [
-        "tmv",
-        "tmvbd",
-        "Truck My Vehicle BD",
-        "truck my vehicle bd",
-        "Truck My Vehicle",
-        "truck my vehicle",
-    ],
-    openGraph: {
-        title: "Home",
-        description: "ADVANCED TELEMATICS SOLUTIONS FOR YOUR FLEET",
-        type: "website",
-    },
-    twitter: {
-        card: "summary_large_image",
-        title: "Home",
-        description: "ADVANCED TELEMATICS SOLUTIONS FOR YOUR FLEET",
-    },
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Home",
+    description: "ADVANCED TELEMATICS SOLUTIONS FOR YOUR FLEET",
+  },
 };
 
 // types/product.ts
 export interface ProductSubscription {
-    duration_months: number;
-    base_amount: string;       // stored as string to match backend data (e.g. "500.00")
-    discount_amount: string;
-    final_amount: string;
+  duration_months: number;
+  base_amount: string; // stored as string to match backend data (e.g. "500.00")
+  discount_amount: string;
+  final_amount: string;
 }
 
 export interface Product {
-    id: number;
-    product_name: string;
-    product_description: string;
-    product_details: string;
-    product_base_amount: string;
-    product_discount_amount: string;
-    product_final_amount: string;
-    product_warranty_period: number;
-    product_specification: string;
-    images: string[]; // can later be expanded to {url: string, alt?: string}[]
-    subscriptions: ProductSubscription[];
-    status: boolean;
-    created_at: string; // e.g. "2025-10-29 03:31:16"
-    updated_at: string;
-    product_slug: string;
+  id: number;
+  product_name: string;
+  product_description: string;
+  product_details: string;
+  product_base_amount: string;
+  product_discount_amount: string;
+  product_final_amount: string;
+  product_warranty_period: number;
+  product_specification: string;
+  images: string[]; // can later be expanded to {url: string, alt?: string}[]
+  subscriptions: ProductSubscription[];
+  status: boolean;
+  created_at: string; // e.g. "2025-10-29 03:31:16"
+  updated_at: string;
+  product_slug: string;
 }
-
 
 // Fetch store data keeping page server-side
 async function getProducts(): Promise<Product[]> {
-    try {
-        const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/v1/products`, {
-            // cache: 'no-store', // 👈 use this if you want no caching (always fresh)
-            next: { revalidate: 3600 }, // or control revalidation at fetch-level
-        })
-        if (!res.ok) {
-            console.error('API returned non-OK status:', res.status)
-            return []
-        }
-
-        const data = (await res.json()).data;
-
-        if (!Array.isArray(data)) {
-            console.error('Unexpected API structure:', [])
-            return []
-        }
-        return data as Product[]
-    } catch (error) {
-        console.error('Error fetching stores:', error)
-        return []
+  try {
+    const res = await fetch(
+      `${process.env.NEXT_PUBLIC_API_URL}/api/v1/products`,
+      {
+        // cache: 'no-store', // 👈 use this if you want no caching (always fresh)
+        next: { revalidate: 3600 }, // or control revalidation at fetch-level
+      }
+    );
+    if (!res.ok) {
+      console.error("API returned non-OK status:", res.status);
+      return [];
     }
+
+    const data = (await res.json()).data;
+
+    if (!Array.isArray(data)) {
+      console.error("Unexpected API structure:", []);
+      return [];
+    }
+    return data as Product[];
+  } catch (error) {
+    console.error("Error fetching stores:", error);
+    return [];
+  }
 }
 
 // Fetch store data keeping page server-side
 async function getCurrentOffer(): Promise<string[]> {
-    try {
-        const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/v1/offers`, {
-            // cache: 'no-store', // 👈 use this if you want no caching (always fresh)
-            next: { revalidate: 3600 }, // or control revalidation at fetch-level
-        })
-        if (!res.ok) {
-            console.error('API returned non-OK status:', res.status)
-            return []
-        }
-
-        const data = (await res.json()).data;
-
-        if (!Array.isArray(data)) {
-            console.error('Unexpected API structure:', [])
-            return []
-        }
-        return data as string[]
-    } catch (error) {
-        console.error('Error fetching stores:', error)
-        return []
+  try {
+    const res = await fetch(
+      `${process.env.NEXT_PUBLIC_API_URL}/api/v1/offers`,
+      {
+        // cache: 'no-store', // 👈 use this if you want no caching (always fresh)
+        next: { revalidate: 3600 }, // or control revalidation at fetch-level
+      }
+    );
+    if (!res.ok) {
+      console.error("API returned non-OK status:", res.status);
+      return [];
     }
+
+    const data = (await res.json()).data;
+
+    if (!Array.isArray(data)) {
+      console.error("Unexpected API structure:", []);
+      return [];
+    }
+    return data as string[];
+  } catch (error) {
+    console.error("Error fetching stores:", error);
+    return [];
+  }
 }
 
 // Fetch store data keeping page server-side
 async function getSpecialOffer(): Promise<string[]> {
-    try {
-        const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/v1/special-offers`, {
-            // cache: 'no-store', // 👈 use this if you want no caching (always fresh)
-            next: { revalidate: 3600 }, // or control revalidation at fetch-level
-        })
-        if (!res.ok) {
-            console.error('API returned non-OK status:', res.status)
-            return []
-        }
-
-        const data = (await res.json()).data;
-
-        if (!Array.isArray(data)) {
-            console.error('Unexpected API structure:', [])
-            return []
-        }
-        return data as string[]
-    } catch (error) {
-        console.error('Error fetching stores:', error)
-        return []
+  try {
+    const res = await fetch(
+      `${process.env.NEXT_PUBLIC_API_URL}/api/v1/special-offers`,
+      {
+        // cache: 'no-store', // 👈 use this if you want no caching (always fresh)
+        next: { revalidate: 3600 }, // or control revalidation at fetch-level
+      }
+    );
+    if (!res.ok) {
+      console.error("API returned non-OK status:", res.status);
+      return [];
     }
+
+    const data = (await res.json()).data;
+
+    if (!Array.isArray(data)) {
+      console.error("Unexpected API structure:", []);
+      return [];
+    }
+    return data as string[];
+  } catch (error) {
+    console.error("Error fetching stores:", error);
+    return [];
+  }
 }
 
 export default async function HomePage() {
-    const products = await getProducts();
-    const offerBanners: string[] = await getCurrentOffer();
-    const specialOffers: string[] = await getSpecialOffer();
-    return (
-        <main className="min-h-screen bg-white text-slate-900 2xl:space-y-[140px] xl:space-y-[120px] lg:space-y-[100px] md:space-y-20 sm:space-y-[70px] space-y-[50px]">
-            <Landing offers={offerBanners} />
-            <Pricing products={products} />
-            <KeyFeatures />
-            <HowItWorks />
-            <Platform />
-            <AppSection />
-            <Partners />
-            <OfferSlider offers={specialOffers} />
-            <HoverScaleGroup />
-            <GetInTouch />
-            <Footer />
-        </main>
-    );
+  const products = await getProducts();
+  const offerBanners: string[] = await getCurrentOffer();
+  const specialOffers: string[] = await getSpecialOffer();
+  return (
+    <main className="min-h-screen bg-white text-slate-900 2xl:space-y-[140px] xl:space-y-[120px] lg:space-y-[100px] md:space-y-20 sm:space-y-[70px] space-y-[50px]">
+      <Landing offers={offerBanners} />
+      <Pricing products={products} />
+      <KeyFeatures />
+      <HowItWorks />
+      <Platform />
+      <AppSection />
+      <Partners />
+      <OfferSlider offers={specialOffers} />
+      <HoverScaleGroup />
+      <GetInTouch />
+      <Footer />
+    </main>
+  );
 }
 
 /*

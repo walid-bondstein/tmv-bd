@@ -1,3 +1,4 @@
+import CircleButton from "@/components/shared/button/CircleButton";
 import { Button } from "@/components/ui/button";
 import { Crown, ShoppingCart, Smartphone } from "lucide-react";
 import type React from "react";
@@ -48,13 +49,15 @@ export function HowItWorks() {
                 Quick trust-building line BTRC <br /> Approved
               </p>
             </div>
-            <Button
+            {/* <Button
               className="bg-[#F3F5F8] cursor-pointer"
               variant="outline"
               size="lg"
             >
               See Plans & Pricing
-            </Button>
+            </Button> */}
+
+            <CircleButton title="See Plans & Pricing" />
           </div>
 
           {/* Right side - Steps with connectors */}
