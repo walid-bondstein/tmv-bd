@@ -1,6 +1,6 @@
-import type React from "react";
-import { ShoppingCart, Crown, Smartphone } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Crown, ShoppingCart, Smartphone } from "lucide-react";
+import type React from "react";
 
 interface Step {
   icon: React.ReactNode;

@@ -13,13 +13,13 @@ export const PricingCard: React.FC<Props> = ({ product }) => {
     return (
         <div className="max-w-[280px] min-w-[250px] md:max-w-xs flex flex-col space-y-3 justify-between bg-[#F6F5EE] relative rounded-xl transition hover:shadow-md w-full mx-auto overflow-hidden group/card">
             {/* Subscription Label */}
-            {monthlySubscription && (
+            {monthlySubscription ? (
                 <div className="whitespace-nowrap ml-auto text-ellipsis text-sm px-[18px] py-[11px] bg-white group-hover/card:bg-primary text-left font-semibold w-2/3 rounded-bl-4xl text-black transition-all duration-300">
                     <span className="">{Number(monthlySubscription.final_amount) ?? 0}/-</span>
                     <br />
                     {monthlySubscription.duration_months === 1 ? "Monthly Subscription" : `${monthlySubscription.duration_months} Months Subscription`}
                 </div>
-            )}
+            ) : <></>}
             <div className="lg:px-6 px-4 space-y-2 lg:pb-6 pb-4">
 
                 {/* Product Image */}
@@ -49,11 +49,11 @@ export const PricingCard: React.FC<Props> = ({ product }) => {
                     <p className="text-gray-800 font-semibold mb-4">
                         {Number(product.product_final_amount).toLocaleString()} /-{" "}
                         <span className="text-gray-700">BDT</span>
-                        {Number(product.product_discount_amount) && (
+                        {Number(product.product_discount_amount) ? (
                             <span className="font-medium ml-1 text-deep-gradient">
                                 ({Number((Number(product.product_discount_amount) / Number(product.product_base_amount)) * 100).toFixed(1)}% Off)
                             </span>
-                        )}
+                        ) : <></>}
                     </p>
 
                     <Link

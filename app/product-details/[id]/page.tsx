@@ -1,14 +1,13 @@
 export const dynamic = "force-dynamic";
 
-import Header from "@/components/shared/Header";
-import Footer from "@/components/shared/Footer";
-import DisplayProduct from "@/components/pages/product-details/DisplayProduct";
-import { Metadata } from "next";
-import FeaturedProducts from "@/components/pages/product-details/FeaturedProducts";
-import ConfusedProducts from "@/components/pages/product-details/ConfusedProducts";
-import Details from "@/components/pages/product-details/Details";
-import ProductDescription from "@/components/pages/product-details/ProductDescription";
 import { Product } from "@/app/page";
+import ConfusedProducts from "@/components/pages/product-details/ConfusedProducts";
+import DisplayProduct from "@/components/pages/product-details/DisplayProduct";
+import FeaturedProducts from "@/components/pages/product-details/FeaturedProducts";
+import ProductDescription from "@/components/pages/product-details/ProductDescription";
+import Footer from "@/components/shared/Footer";
+import Header from "@/components/shared/Header";
+import { Metadata } from "next";
 
 
 
@@ -83,11 +82,11 @@ export default async function ProductDetailsPage({
       <Header />
       <DisplayProduct product={product} />
       <ProductDescription productSpecifications={{
-        description: product.product_description.split('\r\n').filter(Boolean).map((para) => para.trim()),
-        specifications: product.product_specification.split('\r\n').filter(Boolean).map((para) => para.trim()),
-        productImage: product.images[0] || "",
-        productName: product.product_name,
-        gallery: product.images || [],
+        description: product?.product_description?.split('\r\n')?.filter(Boolean)?.map((para) => para?.trim()) ?? [],
+        specifications: product?.product_specification?.split('\r\n')?.filter(Boolean)?.map((para) => para?.trim()) ?? [],
+        productImage: product?.images[0] || "",
+        productName: product?.product_name,
+        gallery: product?.images || [],
       }} />
       <ConfusedProducts />
       <FeaturedProducts products={relatedProducts} />

@@ -1,5 +1,5 @@
 "use client";
-import { createContext, ReactNode, useContext, useMemo, useState } from "react";
+import { createContext, ReactNode, useContext, useEffect, useMemo, useState } from "react";
 
 // 🧩 Types
 type CartItem = {
@@ -92,6 +92,19 @@ export function CartProvider({ children }: { children: ReactNode }) {
         const total = subtotal - discount;
         return { subtotal, discount, total };
     }, [items, coupon]);
+
+
+    useEffect(() => {
+        const storedCart = localStorage.getItem('cartItems');
+        if (storedCart) {
+            setItems(JSON.parse(storedCart));
+        }
+
+    }, []);
+
+    useEffect(() => {
+        localStorage.setItem('cartItems', JSON.stringify(items));
+    }, [items]);
 
     return (
         <CartContext.Provider

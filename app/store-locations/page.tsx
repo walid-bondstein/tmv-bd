@@ -27,7 +27,7 @@ export interface StoreLocation {
     telephone?: string | null
     mobile_number?: string | null
     email?: string | null
-    store_image?: string | null
+    store_image?: string[] | null
     contact_person_name?: string | null
     contact_person_position?: string | null
     contact_person_mobile_no?: string | null
@@ -57,7 +57,7 @@ async function getStores(): Promise<StoreLocation[]> {
             telephone?: string | null
             mobile_number?: string | null
             email?: string | null
-            store_image?: string | null
+            // store_image?: string[] | null
             contact_person_name?: string | null
             contact_person_position?: string | null
             contact_person_mobile_no?: string | null
@@ -65,7 +65,8 @@ async function getStores(): Promise<StoreLocation[]> {
             contact_person_image?: string | null
             latitude: number
             longitude: number
-        }) => ({ ...store, id: store.id.toString(), lat: store?.latitude, lng: store?.longitude }));
+            store_location_images?: string[]
+        }) => ({ ...store, id: store.id.toString(), lat: store?.latitude, lng: store?.longitude, store_image: store.store_location_images ?? [] }));
 
         if (!Array.isArray(data)) {
             console.error('Unexpected API structure:', data)

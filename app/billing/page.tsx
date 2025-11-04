@@ -1,8 +1,7 @@
-import Header from "@/components/shared/Header";
-import Footer from "@/components/shared/Footer";
-import DisplayProduct from "@/components/pages/product-details/DisplayProduct";
-import { Metadata } from "next";
 import BillingForm from "@/components/pages/billing/billing-form";
+import Footer from "@/components/shared/Footer";
+import Header from "@/components/shared/Header";
+import { Metadata } from "next";
 
 export const metadata: Metadata = {
     title: "Product Details | Track My Vehicle BD",
@@ -47,7 +46,7 @@ async function getDistrict(): Promise<Option[]> {
             return []
         }
         return data.map((item) => ({
-            value: item.id,
+            value: item?.id?.toString(),
             label: item.name
         })) as Option[]
     } catch (error) {
@@ -75,7 +74,7 @@ async function getDivision(): Promise<Option[]> {
             return []
         }
         return data.map((item) => ({
-            value: item.id,
+            value: item?.id?.toString(),
             label: item.name
         })) as Option[]
     } catch (error) {
@@ -102,7 +101,7 @@ async function getUpazila(): Promise<Option[]> {
             return []
         }
         return data.map((item) => ({
-            value: item.id,
+            value: item?.id?.toString(),
             label: item.name
         })) as Option[]
     } catch (error) {
