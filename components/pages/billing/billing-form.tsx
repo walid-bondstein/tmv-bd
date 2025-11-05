@@ -101,7 +101,7 @@ export default function BillingForm({
             const { paymentType, advance_payment_amount, ...rest } = values;
             const rawData = {
                 ...rest,
-                coupon: coupon,
+                coupon_code: coupon ? values.coupon_code : "",
                 partial_payment_amount: advance_payment_amount ? Number(advance_payment_amount) : 0,
                 products: items.map((itm) => ({
                     id: itm.id,
@@ -313,7 +313,7 @@ export default function BillingForm({
                                                         </FormLabel>
                                                         <Select onValueChange={field.onChange} value={field.value}>
                                                             <SelectTrigger className="bg-muted/50 w-full">
-                                                                <SelectValue placeholder="Select Upazila" />
+                                                                <SelectValue placeholder="Select Division" />
                                                             </SelectTrigger>
                                                             <SelectContent>
                                                                 {
