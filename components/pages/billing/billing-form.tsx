@@ -66,7 +66,7 @@ export default function BillingForm({
     divitions,
     // unions,
 }: BillinfFormProps) {
-    const { items, applyCoupon, coupon, clearCoupon, subtotal, discount, total } = useCart()
+    const { items, applyCoupon, coupon, clearCoupon, subtotal, discount, total, clearCart } = useCart()
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [showCoupon, setCouponForm] = useState(false);
     const [couponText, setCouponText] = useState("");
@@ -135,12 +135,13 @@ export default function BillingForm({
                             */
                             if (event.data.status === "ACCEPTED") {
                                 toast.success("Payment Successful!");
+                                clearCart();
                                 childWindow?.close();
                                 router.push(`/payment-invoice?status=ACCEPTED`);
                             } else if (event.data.status === "REJECTED") {
                                 toast.error("Payment Failed! Try again.");
                                 childWindow?.close();
-                                router.push(`/payment-invoice?status=REJECTED`);
+                                // router.push(`/payment-invoice?status=REJECTED`);
                             }
                         }
                     });
@@ -153,13 +154,13 @@ export default function BillingForm({
                             const currentUrl = childWindow.location.href;
                             console.log("Current URL:", currentUrl);
                             if (currentUrl.includes("ACCEPTED")) {
-                                toast.success("Payment Successfull!");
+                                // toast.success("Payment Successfull!");
                                 // childWindow.close();
                                 clearInterval(intervalId);
                                 console.log("Current URL:", { currentUrl });
                                 window.postMessage({ type: "payment_status", status: "ACCEPTED" }, "*");
                             } else if (currentUrl.includes("REJECTED")) {
-                                toast.error("Payment Rejected!");
+                                // toast.error("Payment Rejected!");
                                 // childWindow.close();
                                 window.postMessage({ type: "payment_status", status: "REJECTED" }, "*");
                                 clearInterval(intervalId);

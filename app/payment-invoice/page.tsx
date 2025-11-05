@@ -1,16 +1,17 @@
 "use client"
 
-import { useSearchParams } from "next/navigation"
+import { useRouter, useSearchParams } from "next/navigation"
 import { CheckCircle, XCircle, Home } from "lucide-react"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 
 export default function Page() {
     const searchParams = useSearchParams()
+    const router = useRouter()
     const status = searchParams.get("status")
 
     const isSuccess = status === "ACCEPTED"
-
+    if (!isSuccess) router.replace('/');
     return (
         <main className="min-h-screen flex items-center justify-center bg-background px-4">
             <div className="w-full max-w-md">
@@ -22,12 +23,6 @@ export default function Page() {
                             <p className="text-muted-foreground mb-8">
                                 Thank you for your order. Your payment has been received and processed.
                             </p>
-                            <div className="bg-card rounded-lg p-6 w-full mb-8 border border-border">
-                                <p className="text-sm text-muted-foreground mb-2">Order Number</p>
-                                <p className="text-lg font-mono font-semibold text-foreground">
-                                    #ORD-{Math.random().toString(36).substring(7).toUpperCase()}
-                                </p>
-                            </div>
                         </>
                     ) : (
                         <>
