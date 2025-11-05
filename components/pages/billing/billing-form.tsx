@@ -125,6 +125,14 @@ export default function BillingForm({
                         620
                     );
 
+                    window.addEventListener("message", (event) => {
+                        if (event.data?.type === "payment_status") {
+                            console.log("Payment status received:", event.data.status);
+                            childWindow?.close();
+                            toast.success("Payment status received");
+                        }
+                    });
+
                     toast.success("Invoice has been created");
                     const intervalId = setInterval(() => {
                         try {
@@ -134,12 +142,14 @@ export default function BillingForm({
                             console.log("Current URL:", currentUrl);
                             if (currentUrl.includes("ACCEPTED")) {
                                 toast.success("Payment Successfull!");
-                                childWindow.close();
+                                // childWindow.close();
                                 clearInterval(intervalId);
                                 console.log("Current URL:", { currentUrl });
+                                window.postMessage({ type: "payment_status", status: "ACCEPTED" }, "*");
                             } else if (currentUrl.includes("REJECTED")) {
                                 toast.error("Payment Rejected!");
-                                childWindow.close();
+                                // childWindow.close();
+                                window.postMessage({ type: "payment_status", status: "REJECTED" }, "*");
                                 clearInterval(intervalId);
                                 setIsSubmitting(false);
                             }
