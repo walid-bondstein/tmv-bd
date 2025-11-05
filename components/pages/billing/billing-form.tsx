@@ -15,6 +15,7 @@ import * as z from "zod"
 import CustomRadio from './CustomRdio'
 import { toast } from 'sonner'
 import axios from 'axios'
+import { useRouter } from 'next/navigation'
 
 const billingFormSchema = z.object({
     first_name: z.string().min(2, "First name must be at least 2 characters"),
@@ -69,6 +70,7 @@ export default function BillingForm({
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [showCoupon, setCouponForm] = useState(false);
     const [couponText, setCouponText] = useState("");
+    const router = useRouter();
 
 
     const form = useForm<BillingFormValues>({
@@ -127,9 +129,19 @@ export default function BillingForm({
 
                     window.addEventListener("message", (event) => {
                         if (event.data?.type === "payment_status") {
-                            console.log("Payment status received:", event.data.status);
+                            /* 
                             childWindow?.close();
                             toast.success("Payment status received");
+                            */
+                            if (event.data.status === "ACCEPTED") {
+                                toast.success("Payment Successful!");
+                                childWindow?.close();
+                                router.push(`/payment-invoice?status=ACCEPTED`);
+                            } else if (event.data.status === "REJECTED") {
+                                toast.error("Payment Failed! Try again.");
+                                childWindow?.close();
+                                router.push(`/payment-invoice?status=REJECTED`);
+                            }
                         }
                     });
 

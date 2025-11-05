@@ -4,31 +4,12 @@ import { useSearchParams } from "next/navigation"
 import { CheckCircle, XCircle, Home } from "lucide-react"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
-import { useEffect } from "react"
 
 export default function Page() {
     const searchParams = useSearchParams()
     const status = searchParams.get("status")
 
     const isSuccess = status === "ACCEPTED"
-
-    useEffect(() => {
-
-        if (searchParams.has("status")) {
-            const status = searchParams.get("status");
-
-            // ✅ Send message to parent window (the opener)
-            if (window.opener) {
-                window.opener.postMessage(
-                    { type: "payment_status", status },
-                    "*" // or your domain like "https://yourapp.com" for security
-                );
-            }
-
-            // ✅ Close the popup after sending signal
-            // window.close();
-        }
-    }, []);
 
     return (
         <main className="min-h-screen flex items-center justify-center bg-background px-4">
