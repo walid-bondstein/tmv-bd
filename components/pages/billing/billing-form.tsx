@@ -144,6 +144,9 @@ export default function BillingForm({
                                 // router.push(`/payment-invoice?status=REJECTED`);
                             }
                         }
+                        window.removeEventListener("message", () => {
+                            console.log("Event listener removed");
+                        })
                     });
 
                     toast.success("Invoice has been created");

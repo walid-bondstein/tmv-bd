@@ -43,9 +43,6 @@ export default function Page() {
                     <div className="flex flex-col gap-3 w-full">
                         {isSuccess ? (
                             <>
-                                <Button className="w-full" size="lg">
-                                    Download Invoice
-                                </Button>
                             </>
                         ) : (
                             <>
