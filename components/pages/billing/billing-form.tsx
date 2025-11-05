@@ -14,38 +14,44 @@ import { useForm } from "react-hook-form"
 import * as z from "zod"
 import CustomRadio from './CustomRdio'
 import { toast } from 'sonner'
+import axios from 'axios'
 
 const billingFormSchema = z.object({
-    fullName: z.string().min(2, "Full name must be at least 2 characters"),
-    contactNumber: z.string().regex(/^[0-9+\-\s()]+$/, "Invalid phone number"),
+    first_name: z.string().min(2, "First name must be at least 2 characters"),
+    last_name: z.string().min(2, "Last name must be at least 2 characters"),
+    contact_number: z.string().regex(/^[0-9+\-\s()]+$/, "Invalid phone number"),
     email: z.string().email("Invalid email address").or(z.literal("")),
-    installationDate: z.string().min(1, "Installation date is required"),
-    installationTime: z.string().min(1, "Installation time is required"),
-    district: z.string().min(1, "District is required"),
-    upazila: z.string().min(1, "Thana is required"),
-    union: z.string().min(1, "Union is required"),
-    postalCode: z.string().min(1, "Postal code is required"),
+    installation_date: z.string().min(1, "Installation date is required"),
+    installation_time: z.string().min(1, "Installation time is required"),
+    district_id: z.string().min(1, "District is required"),
+    division_id: z.string().min(1, "Division is required"),
+    post_code: z.string().min(1, "Postal code is required"),
     address: z.string().min(5, "Address must be at least 5 characters"),
-    couponCode: z.string(),
-    paymentMethod: z.enum(["full_payment", "partial_payment"] as const),
-    advance_payment_amount: z.number().optional(),
+    coupon_code: z.string(),
+    paymentType: z.enum(["full_payment", "partial_payment"] as const),
+    advance_payment_amount: z.string().optional(),
+    payment_method: z.enum(["bkash", "online"] as const),
+    city: z.string("City is required").min(1, "City is required"),
 })
 
 type BillingFormValues = z.infer<typeof billingFormSchema>
 
 const defaultValues: BillingFormValues = {
-    fullName: "",
-    contactNumber: "",
+    first_name: "",
+    last_name: "",
+    contact_number: "",
     email: "",
-    installationDate: "",
-    installationTime: "",
-    district: "",
-    upazila: "",
-    postalCode: "",
+    installation_date: "",
+    installation_time: "",
+    district_id: "",
+    division_id: "",
+    post_code: "",
     address: "",
-    couponCode: "",
-    paymentMethod: "full_payment",
-    union: "",
+    coupon_code: "",
+    paymentType: "full_payment",
+    payment_method: "online",
+    city: "",
+    advance_payment_amount: "",
 }
 type BillinfFormProps = {
     divitions: Option[]
@@ -55,34 +61,104 @@ type BillinfFormProps = {
 }
 export default function BillingForm({
     districts,
-    upazilas,
-    unions,
+    // upazilas,
+    divitions,
+    // unions,
 }: BillinfFormProps) {
     const { items, applyCoupon, coupon, clearCoupon, subtotal, discount, total } = useCart()
-    const [isSubmitting, setIsSubmitting] = useState(false)
-    const [submitSuccess, setSubmitSuccess] = useState(false)
+    const [isSubmitting, setIsSubmitting] = useState(false);
     const [showCoupon, setCouponForm] = useState(false);
     const [couponText, setCouponText] = useState("");
 
 
     const form = useForm<BillingFormValues>({
         resolver: zodResolver(billingFormSchema),
-        defaultValues,
+        defaultValues: { ...defaultValues, coupon_code: coupon?.code ?? "" },
     })
+
+
+    function popupWindow(url: string, windowName: string, win: Window, w: number, h: number) {
+        const topWin = (win.top ?? win) as Window;
+        const outerHeight = topWin.outerHeight ?? win.outerHeight ?? 0;
+        const outerWidth = topWin.outerWidth ?? win.outerWidth ?? 0;
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        const screenY = (topWin as any).screenY ?? 0;
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        const screenX = (topWin as any).screenX ?? 0;
+
+        const y = outerHeight / 2 + screenY - h / 2;
+        const x = outerWidth / 2 + screenX - w / 2;
+        return win.open(
+            url,
+            windowName,
+            `toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=no, resizable=no, copyhistory=no, width=${w}, height=${h}, top=${y}, left=${x}`
+        );
+    }
+
 
     const onSubmit = async (values: BillingFormValues) => {
         try {
-            setIsSubmitting(true)
-            setSubmitSuccess(false)
+            const { paymentType, advance_payment_amount, ...rest } = values;
+            const rawData = {
+                ...rest,
+                coupon: coupon,
+                partial_payment_amount: advance_payment_amount ? Number(advance_payment_amount) : 0,
+                products: items.map((itm) => ({
+                    id: itm.id,
+                    quantity: itm.quantity,
+                    product_subscription_id: itm.subscriptionID,
+                })),
+            }
+            setIsSubmitting(true);
 
             // Simulate API call
             await new Promise((resolve) => setTimeout(resolve, 1000))
-            console.log("Form submitted:", values)
+            axios
+                .post(`https://middleware.bondstein.net/api/v4/tmvbd/store-order`, rawData)
+                .then((res) => {
+                    console.log(res.data);
+                    const childWindow = popupWindow(
+                        res.data.url,
+                        "Track My Vehicle Payment",
+                        window,
+                        430,
+                        620
+                    );
 
-            setSubmitSuccess(true)
+                    toast.success("Invoice has been created");
+                    const intervalId = setInterval(() => {
+                        try {
+                            if (!childWindow || childWindow.closed) return;
 
-            // Reset success message after 3 seconds
-            setTimeout(() => setSubmitSuccess(false), 3000)
+                            const currentUrl = childWindow.location.href;
+                            console.log("Current URL:", currentUrl);
+                            if (currentUrl.includes("ACCEPTED")) {
+                                toast.success("Payment Successfull!");
+                                childWindow.close();
+                                clearInterval(intervalId);
+                                console.log("Current URL:", { currentUrl });
+                            } else if (currentUrl.includes("REJECTED")) {
+                                toast.error("Payment Rejected!");
+                                childWindow.close();
+                                clearInterval(intervalId);
+                                setIsSubmitting(false);
+                            }
+                        } catch (e) {
+                            console.log("Error accessing child window URL", e);
+                            // errorNotify("Payment Error");
+                        } finally {
+                            setIsSubmitting(false);
+                        }
+                    }, 300);
+                })
+                // eslint-disable-next-line @typescript-eslint/no-explicit-any
+                .catch((err: any) => {
+                    console.log(err?.response?.data?.user_message);
+                })
+                .finally(() => {
+                    setIsSubmitting(false);
+                });
+            console.log("Form submitted:", rawData)
         } catch (error) {
             console.error("Submission error:", error)
         } finally {
@@ -99,38 +175,45 @@ export default function BillingForm({
                 <form onSubmit={form.handleSubmit(onSubmit)} className='grid grid-cols-12 md:gap-8 gap-0'>
                     <div className='lg:col-span-7 col-span-12'>
                         <div className='space-y-5'>
-
-                            {/* Success Message */}
-                            {submitSuccess && (
-                                <div className="rounded-md bg-green-50 p-4 text-sm text-green-800">
-                                    ✓ Billing details submitted successfully!
-                                </div>
-                            )}
                             <div className="border space-y-4 border-gray-200 md:px-7 px-2 md:py-8 py-3 rounded-lg">
                                 <div >
                                     <h2 className="mb-6 text-lg font-semibold text-foreground">BILLING DETAILS</h2>
                                     <div className="space-y-4">
+                                        <div className="grid gap-4 md:grid-cols-2">
+                                            <FormField
+                                                control={form.control}
+                                                name="first_name"
+                                                render={({ field }) => (
+                                                    <FormItem>
+                                                        <FormLabel className="text-sm font-medium">
+                                                            First Name <span className="text-destructive">*</span>
+                                                        </FormLabel>
+                                                        <Input placeholder="Enter First Name" {...field} className="bg-muted/50" />
+                                                        <FormMessage />
+                                                    </FormItem>
+                                                )}
+                                            />
 
-                                        {/* Full Name */}
-                                        <FormField
-                                            control={form.control}
-                                            name="fullName"
-                                            render={({ field }) => (
-                                                <FormItem>
-                                                    <FormLabel className="text-sm font-medium">
-                                                        Full Name <span className="text-destructive">*</span>
-                                                    </FormLabel>
-                                                    <Input placeholder="Enter Full Name" {...field} className="bg-muted/50" />
-                                                    <FormMessage />
-                                                </FormItem>
-                                            )}
-                                        />
+                                            <FormField
+                                                control={form.control}
+                                                name="last_name"
+                                                render={({ field }) => (
+                                                    <FormItem>
+                                                        <FormLabel className="text-sm font-medium">
+                                                            Last Name <span className="text-destructive">*</span>
+                                                        </FormLabel>
+                                                        <Input placeholder="Enter Last Name" {...field} className="bg-muted/50" />
+                                                        <FormMessage />
+                                                    </FormItem>
+                                                )}
+                                            />
+                                        </div>
 
                                         {/* Contact Number and Email */}
                                         <div className="grid gap-4 md:grid-cols-2">
                                             <FormField
                                                 control={form.control}
-                                                name="contactNumber"
+                                                name="contact_number"
                                                 render={({ field }) => (
                                                     <FormItem>
                                                         <FormLabel className="text-sm font-medium">
@@ -161,7 +244,7 @@ export default function BillingForm({
                                         <div className="grid gap-4 md:grid-cols-2">
                                             <FormField
                                                 control={form.control}
-                                                name="installationDate"
+                                                name="installation_date"
                                                 render={({ field }) => (
                                                     <FormItem>
                                                         <FormLabel className="text-sm font-medium">
@@ -180,7 +263,7 @@ export default function BillingForm({
 
                                             <FormField
                                                 control={form.control}
-                                                name="installationTime"
+                                                name="installation_time"
                                                 render={({ field }) => (
                                                     <FormItem>
                                                         <FormLabel className="text-sm font-medium">
@@ -222,7 +305,31 @@ export default function BillingForm({
                                         <div className="xl:grid xl:grid-cols-3 lg:block md:grid md:grid-cols-3 gap-4 justify-start items-center">
                                             <FormField
                                                 control={form.control}
-                                                name="district"
+                                                name="division_id"
+                                                render={({ field }) => (
+                                                    <FormItem>
+                                                        <FormLabel className="text-sm font-medium">
+                                                            Division <span className="text-destructive">*</span>
+                                                        </FormLabel>
+                                                        <Select onValueChange={field.onChange} value={field.value}>
+                                                            <SelectTrigger className="bg-muted/50 w-full">
+                                                                <SelectValue placeholder="Select Upazila" />
+                                                            </SelectTrigger>
+                                                            <SelectContent>
+                                                                {
+                                                                    divitions.map((div) => (
+                                                                        <SelectItem key={div.value} value={div.value}>{div.label}</SelectItem>
+                                                                    ))
+                                                                }
+                                                            </SelectContent>
+                                                        </Select>
+                                                        <FormMessage />
+                                                    </FormItem>
+                                                )}
+                                            />
+                                            <FormField
+                                                control={form.control}
+                                                name="district_id"
                                                 render={({ field }) => (
                                                     <FormItem>
                                                         <FormLabel className="text-sm font-medium">
@@ -244,51 +351,20 @@ export default function BillingForm({
                                                     </FormItem>
                                                 )}
                                             />
-
                                             <FormField
                                                 control={form.control}
-                                                name="upazila"
+                                                name="city"
                                                 render={({ field }) => (
                                                     <FormItem>
                                                         <FormLabel className="text-sm font-medium">
-                                                            Upazila <span className="text-destructive">*</span>
+                                                            City <span className="text-destructive">*</span>
                                                         </FormLabel>
-                                                        <Select onValueChange={field.onChange} value={field.value}>
-                                                            <SelectTrigger className="bg-muted/50 w-full">
-                                                                <SelectValue placeholder="Select Upazila" />
-                                                            </SelectTrigger>
-                                                            <SelectContent>
-                                                                {
-                                                                    upazilas.map((upazila) => (
-                                                                        <SelectItem key={upazila.value} value={upazila.value}>{upazila.label}</SelectItem>
-                                                                    ))
-                                                                }
-                                                            </SelectContent>
-                                                        </Select>
-                                                        <FormMessage />
-                                                    </FormItem>
-                                                )}
-                                            />
-                                            <FormField
-                                                control={form.control}
-                                                name="union"
-                                                render={({ field }) => (
-                                                    <FormItem>
-                                                        <FormLabel className="text-sm font-medium">
-                                                            Union <span className="text-destructive">*</span>
-                                                        </FormLabel>
-                                                        <Select onValueChange={field.onChange} value={field.value}>
-                                                            <SelectTrigger className="bg-muted/50 w-full">
-                                                                <SelectValue placeholder="Select Union" />
-                                                            </SelectTrigger>
-                                                            <SelectContent>
-                                                                {
-                                                                    unions.map((union) => (
-                                                                        <SelectItem key={union.value} value={union.value}>{union.label}</SelectItem>
-                                                                    ))
-                                                                }
-                                                            </SelectContent>
-                                                        </Select>
+                                                        <Input
+                                                            type="text"
+                                                            {...field}
+                                                            className="bg-muted/50"
+                                                            placeholder='City Name. Eg: Dhaka'
+                                                        />
                                                         <FormMessage />
                                                     </FormItem>
                                                 )}
@@ -296,7 +372,7 @@ export default function BillingForm({
 
                                             <FormField
                                                 control={form.control}
-                                                name="postalCode"
+                                                name="post_code"
                                                 render={({ field }) => (
                                                     <FormItem>
                                                         <FormLabel className="text-sm font-medium">
@@ -306,6 +382,7 @@ export default function BillingForm({
                                                             type="text"
                                                             {...field}
                                                             className="bg-muted/50"
+                                                            placeholder='Postal Code'
                                                         />
                                                         <FormMessage />
                                                     </FormItem>
@@ -406,7 +483,7 @@ export default function BillingForm({
                             <div>
                                 <FormField
                                     control={form.control}
-                                    name="paymentMethod"
+                                    name="paymentType"
                                     render={({ field }) => (
                                         <FormItem>
                                             <div className="grid gap-4 md:grid-cols-2">
@@ -443,7 +520,7 @@ export default function BillingForm({
                                         </FormItem>
                                     )}
                                 />
-                                {form.watch("paymentMethod") === "partial_payment" && (
+                                {form.watch("paymentType") === "partial_payment" && (
                                     <FormField
                                         control={form.control}
                                         name="advance_payment_amount"

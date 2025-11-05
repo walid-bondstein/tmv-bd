@@ -1,5 +1,4 @@
 "use client"
-import Image from 'next/image'
 
 export default function Platform() {
     return (
@@ -11,8 +10,15 @@ export default function Platform() {
                     <h2 className='text-title lg:max-w-[450px] lg:text-left text-center'>100% Self Owned Platform</h2>
                     <p className='text-subtitle lg:max-w-sm lg:text-left text-center'>Bondstein is the only company in Bangladesh operating tracking services with complete self owned platform.</p>
                 </div>
-                <div className='w-full col-span-1'>
-                    <Image
+                <div className='w-full col-span-1 rounded-md overflow-hidden'>
+                    <video
+                        autoPlay
+                        loop
+                        muted
+                        className='h-full object-cover'>
+                        <source src="/video/platform.mp4" type="video/mp4" />
+                    </video>
+                    {/* <Image
                         src={"/images/platform.png"}
                         // fill
                         width={1080}
@@ -21,7 +27,7 @@ export default function Platform() {
                         // fill
                         className='w-full object-contain 2xl:h-[24.313rem] xl:h-88 lg:h-72 sm:h-64 xs:h-56.5 h-52.5'
                         onLoad={() => console.log("Image loaded")}
-                    />
+                    /> */}
                 </div>
             </div>
         </div>

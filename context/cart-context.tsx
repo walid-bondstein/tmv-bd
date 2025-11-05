@@ -12,6 +12,7 @@ type CartItem = {
     subscriptionPrice: number;
     subscriptionDurationMonths: number;
     itemImage?: string;
+    subscriptionID: number;
 };
 
 type Coupon = {

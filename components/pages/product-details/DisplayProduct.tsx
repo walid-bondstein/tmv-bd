@@ -43,7 +43,7 @@ export default function DisplayProduct({ product }: DisplayProductProps) {
                 {Number(
                   (Number(product.product_discount_amount) /
                     Number(product.product_base_amount)) *
-                    100
+                  100
                 ).toFixed(1)}
                 % Off)
               </span>
@@ -158,6 +158,7 @@ export default function DisplayProduct({ product }: DisplayProductProps) {
                 subscriptionDurationMonths: Number(
                   selectedPlan.duration_months
                 ),
+                subscriptionID: selectedPlan.product_subscription_id,
                 itemImage: product.images?.[0] || "",
               });
               toast.success("Product added to cart!");
@@ -183,6 +184,7 @@ export default function DisplayProduct({ product }: DisplayProductProps) {
                 subscriptionDurationMonths: Number(
                   selectedPlan.duration_months
                 ),
+                subscriptionID: selectedPlan.product_subscription_id,
                 itemImage: product.images?.[0] || "",
               });
               toast.success("Product added to cart!");
