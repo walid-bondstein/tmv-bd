@@ -54,7 +54,7 @@ export default function RootLayout({
         <CartProvider>
           <Suspense>{children}</Suspense>
         </CartProvider>
-        <Toaster position="top-right" richColors />
+        <Toaster position="top-right" richColors theme="light" />
       </body>
     </html>
   )

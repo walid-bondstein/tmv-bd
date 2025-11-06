@@ -1,6 +1,7 @@
 import CircleButton from "@/components/shared/button/CircleButton";
 import { Button } from "@/components/ui/button";
 import { Crown, ShoppingCart, Smartphone } from "lucide-react";
+import Link from "next/link";
 import type React from "react";
 
 interface Step {
@@ -46,7 +47,7 @@ export function HowItWorks() {
                 How <br /> It Works
               </h2>
               <p className="mt-2 text-muted-foreground text-subtitle text-pretty">
-                Quick trust-building line BTRC <br /> Approved
+                Seamless Fleet Management
               </p>
             </div>
             {/* <Button
@@ -56,8 +57,11 @@ export function HowItWorks() {
             >
               See Plans & Pricing
             </Button> */}
-
-            <CircleButton title="See Plans & Pricing" />
+            <Link
+              href={"/#products"}
+            >
+              <CircleButton title="See Plans & Pricing" />
+            </Link>
           </div>
 
           {/* Right side - Steps with connectors */}
@@ -96,7 +100,7 @@ export function HowItWorks() {
               How It Works
             </h2>
             <p className="mt-2 text-muted-foreground text-subtitle text-pretty">
-              Quick trust-building line BTRC Approved
+              Seamless Fleet Management
             </p>
           </div>
 
@@ -108,7 +112,7 @@ export function HowItWorks() {
                 className="space-y-3 rounded-lg bg-[#F3F5F8] p-3"
               >
                 {/* Icon */}
-                <div className="flex-shrink-0 h-14 w-14 flex items-center justify-center rounded-2xl bg-yellow-400 text-black">
+                <div className="shrink-0 h-14 w-14 flex items-center justify-center rounded-2xl bg-yellow-400 text-black">
                   {step.icon}
                 </div>
 
@@ -127,13 +131,17 @@ export function HowItWorks() {
 
           {/* CTA Button */}
           <div className="flex justify-center pt-2">
-            <Button
-              variant="outline"
-              size="lg"
-              className="w-full md:w-auto bg-transparent"
+            <Link
+              href={"/#products"}
             >
-              See Plans & Pricing
-            </Button>
+              <Button
+                variant="outline"
+                size="lg"
+                className="w-full md:w-auto bg-transparent"
+              >
+                See Plans & Pricing
+              </Button>
+            </Link>
           </div>
         </div>
       </div>

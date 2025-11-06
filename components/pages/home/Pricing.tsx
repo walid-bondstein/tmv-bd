@@ -7,8 +7,8 @@ export default function Pricing({ products }: {
     return (
         <div className="component-container mx-auto lg:space-y-16 md:space-y-8 space-y-2" id="products"  >
             <div>
-                <h2 className="text-title text-center">Product & Pricing Showcase</h2>
-                <p className="text-subtitle text-center">Quick trust-building line BTRC Approved,</p>
+                <h2 className="text-title text-center">Find the right solution</h2>
+                <p className="text-subtitle text-center">Explore products designed to power your fleet’s success.</p>
             </div>
             <section className="md:grid hidden grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 2xl:grid-cols-4 gap-6 my-10">
                 {

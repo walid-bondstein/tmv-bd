@@ -49,8 +49,8 @@ export default function KeyFeatures() {
         <div id="features">
             <div className="component-container lg:block hidden mx-auto py-8">
                 <div>
-                    <h2 className="text-title text-center">Key Features TMV</h2>
-                    <p className="text-subtitle text-center">Get your tracking device delivered and installed in your vehicle by our experts for seamless setup.</p>
+                    <h2 className="text-title text-center">Features That Drive Your Fleet</h2>
+                    <p className="text-subtitle text-center">Intelligent features, effortless control, and insights that matter.</p>
                 </div>
                 <div className={`w-full relative bg-[url("/images/bg-keyFeatures.png")] bg-no-repeat bg-center bg-contain py-10`}>
                     <div className="lg:grid hidden grid-cols-3 gap-4 z-10">
@@ -82,8 +82,8 @@ export default function KeyFeatures() {
             {/* Mobile View */}
             <div className="lg:hidden block mx-auto py-8 px-3">
                 <div>
-                    <h2 className="text-title text-center">Key Features TMV</h2>
-                    <p className="text-subtitle text-center">Get your tracking device delivered and installed in your vehicle by our experts for seamless setup.</p>
+                    <h2 className="text-title text-center">Core Features That Drive Your Fleet Forward</h2>
+                    <p className="text-subtitle text-center">Intelligent features, effortless control, and insights that matter.</p>
                 </div>
                 <div className={`w-full relative bg-[url("/images/bg-keyFeatures.png")] bg-no-repeat bg-center bg-contain py-10`}>
                     <div className="lg:hidden">

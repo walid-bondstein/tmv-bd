@@ -89,25 +89,21 @@ export function Partners() {
                 {/*Certified*/}
                 <TabsContent className="component-container mx-auto" value="certified">
                     <div className="flex flex-wrap justify-center items-center gap-10">
-                        <div className="w-56">
-                            <AspectRatio ratio={1 / 1}>
-                                <Image
-                                    src="/images/ISO_certified.png"
-                                    alt="Certified"
-                                    fill
-                                    className="grayscale-100 hover:grayscale-0 transition-all duration-1000"
-                                />
-                            </AspectRatio>
-                        </div>
-                        <div className="w-56">
-                            <AspectRatio ratio={1 / 1}>
-                                <Image
-                                    src="/images/brta-certified.png"
-                                    alt="Certified"
-                                    fill
-                                    className="grayscale-100 hover:grayscale-0 transition-all duration-1000"
-                                />
-                            </AspectRatio>
+                        <div className="flex flex-wrap justify-center items-center gap-6 md:gap-10">
+                            {["/images/ISO_certified.png", "/images/brta-certified.png"].map(
+                                (src, i) => (
+                                    <div key={i} className="w-40 md:w-48">
+                                        <AspectRatio ratio={1.8 / 1}>
+                                            <Image
+                                                src={src}
+                                                alt="Certified"
+                                                fill
+                                                className="object-contain grayscale hover:grayscale-0 hover:scale-110 transition-transform duration-700 ease-in-out bg-card rounded-lg"
+                                            />
+                                        </AspectRatio>
+                                    </div>
+                                )
+                            )}
                         </div>
                     </div>
                 </TabsContent>
@@ -205,31 +201,23 @@ export function Partners() {
 
                 {/*Connectivity*/}
                 <TabsContent value="connectivity">
-                    <div className="flex flex-wrap justify-center items-center gap-10">
-                        <div className="h-22.5 relative w-56">
-                            <Image
-                                src="/images/grameenphone.png"
-                                alt="Certified"
-                                fill
-                                className="grayscale-100 w-auto hover:grayscale-0 transition-all duration-1000"
-                            />
-                        </div>
-                        <div className="h-22.5 relative w-56">
-                            <Image
-                                src="/images/robi.png"
-                                alt="Certified"
-                                fill
-                                className="grayscale-100 w-auto hover:grayscale-0 transition-all duration-1000"
-                            />
-                        </div>
-                        <div className="h-22.5 relative w-56">
-                            <Image
-                                src="/images/banglalink.png"
-                                alt="Certified"
-                                fill
-                                className="grayscale-100 w-auto hover:grayscale-0 transition-all duration-1000"
-                            />
-                        </div>
+                    <div className="flex flex-wrap justify-center items-center gap-6 md:gap-10">
+                        {[
+                            "/images/grameenphone.png",
+                            "/images/robi.png",
+                            "/images/banglalink.png",
+                        ].map((src, i) => (
+                            <div key={i} className="w-40 md:w-48">
+                                <AspectRatio ratio={1.8 / 1}>
+                                    <Image
+                                        src={src}
+                                        alt="Connectivity Partner"
+                                        fill
+                                        className="object-contain grayscale hover:grayscale-0 hover:scale-110 transition-transform duration-700 ease-in-out bg-card rounded-lg"
+                                    />
+                                </AspectRatio>
+                            </div>
+                        ))}
                     </div>
                 </TabsContent>
             </Tabs>
