@@ -91,9 +91,8 @@ export default function CartItem() {
                           <p className="text-[#727B8C]">
                             Monthly Subscription-{" "}
                             {item.subscriptionDurationMonths} Month{" "}
-                            {`(${
-                              item.subscriptionPrice * item.quantity
-                            }/- BDT)`}
+                            {`(${item.subscriptionPrice * item.quantity
+                              }/- BDT)`}
                           </p>
                         </div>
                       </div>
@@ -318,12 +317,14 @@ export default function CartItem() {
               <p className="text-sm md:text-lg font-semibold text-right">
                 {subtotal}/- BDT
               </p>
-              <p className="text-sm font-medium md:text-lg text-[#727B8C]">
-                Coupon Discount
-              </p>
-              <p className="text-sm md:text-lg font-semibold text-right">
-                {discount}/- BDT
-              </p>
+              {coupon ? <>
+                <p className="text-sm font-medium md:text-lg text-[#727B8C]">
+                  Coupon Discount
+                </p>
+                <p className="text-sm md:text-lg font-semibold text-right">
+                  {discount}/- BDT
+                </p>
+              </> : <></>}
             </div>
             <hr />
             <div className="grid grid-cols-2">

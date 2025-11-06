@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import Cart from "./Cart";
 import { LanguageSwitcher } from "./LanguageSwitcher";
+import { MobileNav } from "./mobile-nav";
 
 export default async function Header() {
   const headersList = await headers();
@@ -52,18 +53,16 @@ export default async function Header() {
                 Features
               </Link>
               <Link
-                className={`${
-                  isActive("/how-it-works") ? "text-gradient" : ""
-                }`}
+                className={`${isActive("/how-it-works") ? "text-gradient" : ""
+                  }`}
                 prefetch={false}
                 href={"/#how-it-works"}
               >
                 How It Works
               </Link>
               <Link
-                className={`${
-                  isActive("/store-locations") ? "text-gradient" : ""
-                }`}
+                className={`${isActive("/store-locations") ? "text-gradient" : ""
+                  }`}
                 prefetch={false}
                 href={"/store-locations"}
               >
@@ -85,7 +84,8 @@ export default async function Header() {
             </div>
 
             <div className="border border-secondary-foreground/10 rounded-full lg:hidden block cursor-pointer bg-white/50 backdrop-blur-sm">
-              <TextAlignStart className="w-6 h-6 m-3 text-secondary-foreground" />
+              {/* <TextAlignStart className="w-6 h-6 m-3 text-secondary-foreground" /> */}
+              <MobileNav />
             </div>
           </div>
         </div>

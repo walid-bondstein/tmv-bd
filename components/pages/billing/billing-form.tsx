@@ -150,6 +150,7 @@ export default function BillingForm({
                     });
 
                     toast.success("Invoice has been created");
+                    // setIsSubmitting(false);
                     const intervalId = setInterval(() => {
                         try {
                             if (!childWindow || childWindow.closed) return;
@@ -167,28 +168,28 @@ export default function BillingForm({
                                 // childWindow.close();
                                 window.postMessage({ type: "payment_status", status: "REJECTED" }, "*");
                                 clearInterval(intervalId);
-                                setIsSubmitting(false);
+                                // setIsSubmitting(false);
                             }
-                        } catch (e) {
+                            // eslint-disable-next-line @typescript-eslint/no-explicit-any
+                        } catch (e: any) {
                             console.log("Error accessing child window URL", e);
-                            // errorNotify("Payment Error");
+                            // toast.error(e?.message)
                         } finally {
-                            setIsSubmitting(false);
+                            // setIsSubmitting(false);
                         }
                     }, 300);
                 })
                 // eslint-disable-next-line @typescript-eslint/no-explicit-any
                 .catch((err: any) => {
-                    console.log(err?.response?.data?.user_message);
+                    toast.error(err.response?.data?.message || err.message);
                 })
                 .finally(() => {
                     setIsSubmitting(false);
                 });
-            console.log("Form submitted:", rawData)
         } catch (error) {
             console.error("Submission error:", error)
         } finally {
-            setIsSubmitting(false)
+            // setIsSubmitting(false)
         }
     }
     return (
