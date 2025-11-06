@@ -45,10 +45,10 @@ export default function FeaturedProducts({ products }: { products: Product[] }) 
         ref={scrollRef}
         className="flex overflow-x-auto gap-6 scrollbar-hide scroll-smooth"
       >
-        {products.map((product) => (
+        {products.map((product, i) => (
           <div
             key={product.id}
-            className="flex-shrink-0 w-[280px] md:w-[300px] bg-white rounded-xl shadow-sm border hover:shadow-md transition p-4"
+            className="shrink-0 w-[280px] md:w-[300px] flex flex-col bg-white rounded-xl shadow-sm border hover:shadow-md transition"
           >
             <PricingCard product={product} />
           </div>

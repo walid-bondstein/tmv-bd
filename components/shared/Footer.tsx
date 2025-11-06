@@ -3,6 +3,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
 import { Input } from '../ui/input'
+import NewsLetter from './NewsLetter'
 
 export default function Footer() {
     return (
@@ -21,30 +22,30 @@ export default function Footer() {
                             <p className="2xl:text-[22px] 2xl:leading-[35px] font-semibold">Head Office</p>
                             <p className="2xl:text-[18px] 2xl:leading-[26px] font-light text-[#4A5E6D]">138/1, Level, 4 Bir Uttam Mir Shawkat Sarak, Dhaka 1208</p>
                             <div className='flex justify-start items-center gap-4 mt-8'>
-                              <a href="https://twitter.com/"
-                                target="_blank"
-                                 className="bg-[#FDD10E] p-3 rounded-full hover:scale-110 transition-transform">
-                                <Twitter className="w-6 h-6 text-transparent fill-black" />
-                                 </a>
+                                <a href="https://twitter.com/"
+                                    target="_blank"
+                                    className="bg-[#FDD10E] p-3 rounded-full hover:scale-110 transition-transform">
+                                    <Twitter className="w-6 h-6 text-transparent fill-black" />
+                                </a>
 
-                             <a href= "https://www.facebook.com/tmvbd"
-                                target="_blank"
-                                 className="bg-[#FDD10E] p-3 rounded-full hover:scale-110 transition-transform">
-                                 <Facebook className='w-6 h-6 text-transparent fill-black' />
-                                 </a>
+                                <a href="https://www.facebook.com/tmvbd"
+                                    target="_blank"
+                                    className="bg-[#FDD10E] p-3 rounded-full hover:scale-110 transition-transform">
+                                    <Facebook className='w-6 h-6 text-transparent fill-black' />
+                                </a>
 
-                             <a href= "https://www.instagram.com/track_my_vehicle/?igsh=ZnllbXZhZWE4ejd5#"
-                                target="_blank"
-                                 className="bg-[#FDD10E] p-3 rounded-full hover:scale-110 transition-transform">
-                                 <Instagram className='w-6 h-6 text-black' />
-                                 </a>
+                                <a href="https://www.instagram.com/track_my_vehicle/?igsh=ZnllbXZhZWE4ejd5#"
+                                    target="_blank"
+                                    className="bg-[#FDD10E] p-3 rounded-full hover:scale-110 transition-transform">
+                                    <Instagram className='w-6 h-6 text-black' />
+                                </a>
 
-                              
-                             <a href= ""
-                                target="_blank"
-                                 className="bg-[#FDD10E] p-3 rounded-full hover:scale-110 transition-transform">
-                                 <Github className='w-6 h-6 text-black' />
-                                 </a> 
+
+                                <a href=""
+                                    target="_blank"
+                                    className="bg-[#FDD10E] p-3 rounded-full hover:scale-110 transition-transform">
+                                    <Github className='w-6 h-6 text-black' />
+                                </a>
                             </div>
                         </div>
                     </div>
@@ -73,23 +74,14 @@ export default function Footer() {
                     <div className='flex lg:justify-end justify-start items-start 2xl:col-span-1 lg:col-span-1 col-span-3'>
                         <div className='max-w-[25.725rem] md:space-y-4 space-y-3'>
                             <p className="text-[clamp(22px,1.6666vw,32px)] font-semibold text-[#002838]">Drop your email here. We will get back to you.</p>
-                            <div className='border px-2 py-1 rounded-full flex justify-between items-center'>
-                                <Input
-                                    type="email"
-                                    placeholder="Enter Your Email Address"
-                                    className="border-0 focus:ring-0 rounded-lg h-auto focus-visible:ring-0 focus-visible:border-0 shadow-none"
-                                />
-                                <div className="bg-yellow-400 h-10 w-10 shrink-0 flex justify-center items-center rounded-full">
-                                    <Send />
-                                </div>
-                            </div>
+                            <NewsLetter />
                             <p className="font-normal text-[clamp(20px,1.2499vw,24px)] text-[#777F92] line-clamp-1">The flagship product of</p>
                             <Image
                                 src="/images/bondstein.png"
                                 alt="Track My Vehicle BD Logo"
                                 height={82}
                                 width={176}
-                                className='lg:h-auto h-9 lg:w-[11rem] object-center object-contain'
+                                className='lg:h-auto h-9 lg:w-44 object-center object-contain'
                             />
                         </div>
                     </div>

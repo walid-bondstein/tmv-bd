@@ -81,9 +81,9 @@ export function Partners() {
                 className="mx-auto md:space-y-16 space-y-6 w-full"
             >
                 <TabsList className="mx-auto component-container">
-                    <TabsTrigger value="partners">Partners</TabsTrigger>
-                    <TabsTrigger value="certified">Certified</TabsTrigger>
-                    <TabsTrigger value="connectivity">Connectivity Partners</TabsTrigger>
+                    <TabsTrigger value="partners" className="cursor-pointer">Partners</TabsTrigger>
+                    <TabsTrigger value="certified" className="cursor-pointer">Certified</TabsTrigger>
+                    <TabsTrigger value="connectivity" className="cursor-pointer">Connectivity Partners</TabsTrigger>
                 </TabsList>
 
                 {/*Certified*/}
