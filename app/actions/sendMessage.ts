@@ -1,32 +1,37 @@
-"use server";
+// inside your Server Component
+async function handleSubmit(formData: FormData) {
+    "use server"; // marks this as a server action
 
-export async function sendMessage(formData: FormData) {
-    const email = formData.get("email");
-    const countryCode = formData.get("countryCode");
-    const phone = formData.get("phone");
-    const message = formData.get("message");
+    const email = formData.get("email")?.toString();
+    const countryCode = formData.get("countryCode")?.toString();
+    const phone = formData.get("phone")?.toString();
+    const message = formData.get("message")?.toString();
+
+    const payload = {
+        email,
+        contact_number: `${countryCode}${phone}`,
+        message,
+    };
 
     try {
-        // Send data to your real API, not localhost
-        const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/get-in-touch`, {
+        const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/v1/get-in-touch`, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({
-                email,
-                phone: `${countryCode}${phone}`,
-                message,
-            }),
+            body: JSON.stringify(payload),
         });
 
-        if (!response.ok) {
-            console.error("API Error:", await response.text());
-            throw new Error("Failed to send message to API");
+        const resp = await res.json();
+
+        if (resp.code !== 200) {
+            console.error("Error from API:", resp);
+            throw new Error(resp.data?.message || "Failed to send message");
         }
 
-        console.log("✅ Message sent successfully");
-        return { success: true };
+        // You can optionally return a message
+        return { success: true, message: resp.message || "Message sent successfully!" };
     } catch (err) {
-        console.error("Server Action Error:", err);
-        return { success: false, error: "Something went wrong" };
+        console.error("Error sending form data:", err);
+        throw err; // server action can throw errors
     }
 }
+export { handleSubmit };

@@ -1,42 +1,7 @@
-import { Input } from "@/components/ui/input";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
-import { Textarea } from "@/components/ui/textarea";
 import Image from "next/image";
 import React from "react";
+import FormClient from "./FormClientGetInTouch";
 
-// ✅ Server action
-async function handleSubmit(formData: FormData) {
-  "use server";
-
-  const email = formData.get("email");
-  const countryCode = formData.get("countryCode");
-  const phone = formData.get("phone");
-  const message = formData.get("message");
-
-  // ✅ Forward data to your external API
-  const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/get-in-touch`, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({
-      email,
-      phone: `${countryCode}${phone}`,
-      message,
-    }),
-  });
-
-  if (!response.ok) {
-    console.error("Failed to send data:", await response.text());
-    throw new Error("Something went wrong while submitting form");
-  }
-}
 
 export default function GetInTouch() {
   return (
@@ -85,58 +50,7 @@ export default function GetInTouch() {
         </div>
 
         <div className="flex-1">
-          {/* ✅ Server Action form */}
-          <form
-            action={handleSubmit}
-            className="lg:px-9 lg:py-8 py-3 px-3 bg-[#F3F5F8] rounded-2xl space-y-3"
-          >
-            <Input
-              type="email"
-              name="email"
-              placeholder="Enter Your Email Address"
-              className="bg-white rounded-lg px-5 py-4 h-auto"
-              required
-            />
-
-            <div className="space-y-2">
-              <div className="flex gap-3">
-                <Select name="countryCode" defaultValue="+880">
-                  <SelectTrigger className="w-24 bg-white/20 border-gray-200 text-gray-900 focus:ring-yellow-400">
-                    <SelectValue />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="+880">+880</SelectItem>
-                    <SelectItem value="+1">+1</SelectItem>
-                    <SelectItem value="+44">+44</SelectItem>
-                    <SelectItem value="+91">+91</SelectItem>
-                    <SelectItem value="+86">+86</SelectItem>
-                  </SelectContent>
-                </Select>
-                <Input
-                  id="phone"
-                  type="tel"
-                  name="phone"
-                  placeholder="1786594256"
-                  className="bg-white rounded-lg px-5 py-4 h-auto"
-                  required
-                />
-              </div>
-            </div>
-
-            <Textarea
-              name="message"
-              className="bg-white px-5 py-4 rounded-lg max-h-28 h-28"
-              placeholder="Write Your Message..."
-              required
-            />
-
-            <button
-              className="bg-submit w-full xs:h-13 h-8 lg:font-bold rounded-lg tmv-shadow submit cursor-pointer text-[clamp(14px,4.0625vw,16px)]"
-              type="submit"
-            >
-              Let&apos;s Talk
-            </button>
-          </form>
+          <FormClient />
         </div>
       </div>
     </div>
