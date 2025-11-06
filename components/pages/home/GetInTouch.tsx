@@ -41,7 +41,7 @@ export default function GetInTouch() {
           </div>
           <div className="relative w-full h-56 rounded-2xl overflow-hidden shadow-lg">
             <Image
-              src="/images/get-in-touch-map.png"
+              src="/images/get-in-touch-map.jpeg"
               alt="Location map"
               fill
               className="object-cover"
