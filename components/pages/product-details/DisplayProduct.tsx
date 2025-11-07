@@ -51,7 +51,7 @@ export default function DisplayProduct({ product }: DisplayProductProps) {
           </p>
 
           <p className="text-gray-500 text-base mt-3 leading-relaxed">
-            {product.product_description}
+            {product.product_details}
           </p>
         </div>
 

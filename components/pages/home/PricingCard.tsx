@@ -40,7 +40,7 @@ export const PricingCard: React.FC<Props> = ({ product }) => {
                         {product.product_name ?? "-"}
                     </h3>
                     <p className="text-sm text-gray-400/90 mb-3 line-clamp-2">
-                        {product.product_description ?? "-"}
+                        {product.product_details ?? "-"}
                     </p>
                 </div>
 
