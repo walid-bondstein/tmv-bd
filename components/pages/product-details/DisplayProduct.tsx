@@ -203,7 +203,7 @@ export default function DisplayProduct({ product }: DisplayProductProps) {
           </h3>
           <div className="flex flex-wrap items-center gap-2">
             <Image
-              src="/images/Paywith.png"
+              src="/images/SSLCOMMERZ.png"
               alt="Payment Methods"
               width={800}
               height={200}

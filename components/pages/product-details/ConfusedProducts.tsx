@@ -1,5 +1,5 @@
-import Image from "next/image";
 import { Button } from "@/components/ui/button";
+import Link from "next/link";
 
 export default function ConfusedProducts() {
   return (
@@ -11,10 +11,14 @@ export default function ConfusedProducts() {
           </h1>
 
           {/* Button */}
-          <Button
-           className="bg-gradient-to-r from-[#FDD00E] to-[#F9AA17] hover:from-[#F9AA17] hover:to-[#FDD00E] text-black font-semibold px-8 py-3.5 rounded-lg text-sm md:text-base tmv-shadow submit cursor-pointer text-[clamp(14px,4.0625vw,16px)] min-w-[188px] min-h-[52px] flex items-center justify-center" >
-             Talk to Expert
-         </Button>
+          <Link
+            href={"/#get-in-touch"}
+          >
+            <Button
+              className="bg-linear-to-r from-[#FDD00E] to-[#F9AA17] hover:from-[#F9AA17] hover:to-[#FDD00E] text-black font-semibold px-8 py-3.5 rounded-lg text-sm md:text-base tmv-shadow submit cursor-pointer text-[clamp(14px,4.0625vw,16px)] min-w-[188px] min-h-[52px] flex items-center justify-center" >
+              Talk to Expert
+            </Button>
+          </Link>
 
 
         </div>

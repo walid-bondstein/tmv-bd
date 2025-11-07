@@ -11,16 +11,25 @@ import Image from "next/image";
 import { useState } from "react";
 
 const partners = [
-    { id: 1, src: "/partners/BYD.png", alt: "BYD" },
-    { id: 2, src: "/partners/Nestle.png", alt: "Nestle" },
-    { id: 3, src: "/partners/Gp.png", alt: "Grameenphone" },
-    { id: 4, src: "/partners/IFC.png", alt: "IFC" },
-    { id: 5, src: "/partners/Kns.png", alt: "KNS" },
-    { id: 6, src: "/partners/Axiata.png", alt: "Axiata" },
-    { id: 7, src: "/partners/Therap.png", alt: "Therap" },
-    { id: 8, src: "/partners/brac.png", alt: "BRAC" },
-    { id: 9, src: "/partners/bat.png", alt: "BAT" },
-    { id: 10, src: "/partners/Unilever.png", alt: "Unilever" },
+    { id: 1, src: "/partners/Unilever.png", alt: "Unilever" },
+    { id: 2, src: "/partners/JTI.png", alt: "Jti" },
+    { id: 3, src: "/partners/Runner.png", alt: "Runner" },
+    { id: 4, src: "/partners/Eicher.png", alt: "Eicher" },
+    { id: 5, src: "/partners/Partex.png", alt: "Partex" },
+    { id: 6, src: "/partners/GTV.png", alt: "GTV" },
+    { id: 7, src: "/partners/IUT.png", alt: "IUT" },
+    { id: 8, src: "/partners/RR-imperial.png", alt: "RR Imperial" },
+    { id: 9, src: "/partners/Axiata.png", alt: "Axiata" },
+    { id: 10, src: "/partners/GreenBangla.png", alt: "Green Bangla" },
+    { id: 11, src: "/partners/IMS.png", alt: "IMS" },
+    { id: 12, src: "/partners/Tarasima.png", alt: "Tarasima" },
+    // { id: 8, src: "/partners/Nestle.png", alt: "Nestle" },
+    // { id: 9, src: "/partners/Gp.png", alt: "Grameenphone" },
+    // { id: 10, src: "/partners/IFC.png", alt: "IFC" },
+    // { id: 11, src: "/partners/Kns.png", alt: "KNS" },
+    // { id: 13, src: "/partners/Therap.png", alt: "Therap" },
+    // { id: 14, src: "/partners/brac.png", alt: "BRAC" },
+    // { id: 15, src: "/partners/bat.png", alt: "BAT" },
 ];
 
 export function Partners() {
@@ -124,21 +133,17 @@ export function Partners() {
                         <div className="component-container mx-auto">
                             <div className="flex-1 overflow-hidden">
                                 <div className="grid grid-cols-4 md:grid-cols-5 gap-2 md:gap-6">
-                                    {paddedPartners.map((partner) =>
-                                        partner ? (
-                                            <div key={partner.id} className="">
-                                                <AspectRatio ratio={1.8 / 1}>
-                                                    <Image
-                                                        src={partner.src}
-                                                        alt={partner.alt}
-                                                        fill
-                                                        className="flex items-center justify-center bg-card rounded-lg object-contain grayscale hover:grayscale-0 hover:scale-110 transition-transform duration-700 ease-in-out"
-                                                    />
-                                                </AspectRatio>
-                                            </div>
-                                        ) : (
-                                            <div key={Math.random()} className="p-4" />
-                                        )
+                                    {paddedPartners.filter((itm): itm is { id: number; src: string; alt: string } => itm !== null).map((partner) =>
+                                        <div key={partner.id} className="">
+                                            <AspectRatio ratio={1.8 / 1}>
+                                                <Image
+                                                    src={partner.src}
+                                                    alt={partner.alt}
+                                                    fill
+                                                    className="flex items-center justify-center bg-card rounded-lg object-contain grayscale hover:grayscale-0 hover:scale-110 transition-transform duration-700 ease-in-out"
+                                                />
+                                            </AspectRatio>
+                                        </div>
                                     )}
                                 </div>
                             </div>
@@ -160,24 +165,20 @@ export function Partners() {
                         <div className="component-container mx-auto">
                             <div className="flex-1 overflow-hidden space-y-5">
                                 <div className="grid grid-cols-4 md:grid-cols-5 gap-1 md:gap-6">
-                                    {paddedPartnersMobile.map((partner) =>
-                                        partner ? (
-                                            <div
-                                                key={partner.id}
-                                                className="flex items-center justify-center bg-card rounded-lg md:p-6 hover:shadow-lg transition-shadow duration-500"
-                                            >
-                                                <AspectRatio ratio={2 / 1}>
-                                                    <Image
-                                                        src={partner.src}
-                                                        alt={partner.alt}
-                                                        fill
-                                                        className="object-contain grayscale hover:grayscale-0 hover:scale-110 transition-transform duration-700 ease-in-out"
-                                                    />
-                                                </AspectRatio>
-                                            </div>
-                                        ) : (
-                                            <div key={Math.random()} className="p-4" />
-                                        )
+                                    {paddedPartnersMobile.filter((itm): itm is { id: number; src: string; alt: string } => itm !== null).map((partner) =>
+                                        <div
+                                            key={partner.id}
+                                            className="flex items-center justify-center bg-card rounded-lg md:p-6 hover:shadow-lg transition-shadow duration-500"
+                                        >
+                                            <AspectRatio ratio={2 / 1}>
+                                                <Image
+                                                    src={partner.src}
+                                                    alt={partner.alt}
+                                                    fill
+                                                    className="object-contain grayscale hover:grayscale-0 hover:scale-110 transition-transform duration-700 ease-in-out"
+                                                />
+                                            </AspectRatio>
+                                        </div>
                                     )}
                                 </div>
                                 <div className="mx-auto gap-5 max-w-max flex justify-center items-center">

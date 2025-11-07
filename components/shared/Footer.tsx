@@ -1,8 +1,6 @@
-import { Facebook, Github, Instagram, Send, Twitter } from 'lucide-react'
+import { Facebook, Github, Instagram, Twitter } from 'lucide-react'
 import Image from 'next/image'
 import Link from 'next/link'
-import React from 'react'
-import { Input } from '../ui/input'
 import NewsLetter from './NewsLetter'
 
 export default function Footer() {
@@ -11,17 +9,17 @@ export default function Footer() {
             <div className="component-container mx-auto md:py-20 py-11">
                 <div className="w-full grid grid-cols-3 gap-4">
                     <div className='2xl:col-span-1 lg:col-span-1 col-span-3'>
-                        <div className='space-y-4 max-w-[21rem]'>
+                        <div className='space-y-4 max-w-84'>
                             <Image
                                 src="/images/tmv-bd.png"
                                 alt="Track My Vehicle BD Logo"
                                 height={82}
                                 width={82}
-                                className='w-16 h-16 lg:w-[7rem] lg:h-[7rem] object-center object-contain'
+                                className='w-16 h-16 lg:w-28 lg:h-28 object-center object-contain'
                             />
                             <p className="2xl:text-[22px] 2xl:leading-[35px] font-semibold">Head Office</p>
                             <p className="2xl:text-[18px] 2xl:leading-[26px] font-light text-[#4A5E6D]">138/1, Level, 4 Bir Uttam Mir Shawkat Sarak, Dhaka 1208</p>
-                            <div className='flex justify-start items-center gap-4 mt-8'>
+                            <div className='fle x justify-start items-center gap-4 mt-8 hidden'>
                                 <a href="https://twitter.com/"
                                     target="_blank"
                                     className="bg-[#FDD10E] p-3 rounded-full hover:scale-110 transition-transform">

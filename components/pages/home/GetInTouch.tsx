@@ -5,7 +5,7 @@ import FormClient from "./FormClientGetInTouch";
 
 export default function GetInTouch() {
   return (
-    <div className="component-container mx-auto section-padding-y bg-white">
+    <div id="get-in-touch" className="component-container mx-auto section-padding-y bg-white">
       <div
         className="2xl:px-22.5
         xl:px-20
