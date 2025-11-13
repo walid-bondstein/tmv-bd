@@ -86,7 +86,7 @@ export default function Footer() {
                 </div>
             </div>
             <div className='border-t'>
-                <p className='text-center text-base font-normal py-4 md:py-7 text-[#6C757D]'>© Copyright {new Date().getFullYear()}. All rights TMV.</p>
+                <p className='text-center text-base font-normal py-4 md:py-7 text-[#6C757D]'>© Copyright {new Date().getFullYear()}. All rights Bondstein Technologies Ltd.</p>
             </div>
         </div>
     )
