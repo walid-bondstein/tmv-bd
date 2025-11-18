@@ -7,7 +7,7 @@ export function LanguageSwitcher() {
     const [language, setLanguage] = useState<"en" | "bn">("en")
 
     return (
-        <div className="flex items-center gap-2 px-1 py-1 max-h-max rounded-full border bg-background/50 backdrop-blur-sm">
+        <div className="hidden items-center gap-2 px-1 py-1 max-h-max rounded-full border bg-background/50 backdrop-blur-sm">
             <Globe className="h-4 w-4 text-muted-foreground" />
             <div className="flex items-center gap-1 text-sm">
                 <button

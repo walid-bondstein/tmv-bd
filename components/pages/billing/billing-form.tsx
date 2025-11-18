@@ -66,7 +66,7 @@ export default function BillingForm({
     divitions,
     // unions,
 }: BillinfFormProps) {
-    const { items, applyCoupon, coupon, clearCoupon, subtotal, discount, total, clearCart } = useCart()
+    const { items, applyCoupon, coupon, clearCoupon, subtotal, discount, total, clearCart, totalVat } = useCart()
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [showCoupon, setCouponForm] = useState(false);
     const [couponText, setCouponText] = useState("");
@@ -451,7 +451,7 @@ export default function BillingForm({
                                 </div>
                             </> : <>
                                 <span onClick={() => setCouponForm(!showCoupon)}
-                                    className="cursor-pointer text-[clamp(14px,4.0625vw,16px)] select-none lg:font-semibold text-black hover:underline">
+                                    className="cursor-pointer hidden text-[clamp(14px,4.0625vw,16px)] select-none lg:font-semibold text-black hover:underline">
                                     {showCoupon ? " - Hide Coupon" : " + Apply Coupon"}
                                 </span>
 
@@ -496,7 +496,8 @@ export default function BillingForm({
                                         <p className="text-sm md:text-lg font-semibold text-right">{(itm.priceWithoutDiscount + itm.subscriptionPrice) * itm.quantity}/- BDT</p>
                                     </div>)
                                 }
-
+                                <p className="text-sm font-medium md:text-lg text-[#727B8C]">VAT</p>
+                                <p className="text-sm md:text-lg font-semibold text-right">{totalVat ?? 0}/- BDT</p>
                                 <p className="text-sm font-medium md:text-lg text-[#727B8C]">Subtotal</p>
                                 <p className="text-sm md:text-lg font-semibold text-right">{subtotal ?? 0}/- BDT</p>
                                 {coupon && <p className="text-sm font-medium md:text-lg text-[#727B8C]">Coupon Discount</p>}

@@ -20,6 +20,7 @@ export default function CartItem() {
     discount,
     total,
     updateQuantity,
+    totalVat
   } = useCart();
   const [showCoupon, setCouponForm] = useState(false);
   const [couponText, setCouponText] = useState("");
@@ -271,7 +272,7 @@ export default function CartItem() {
               <>
                 <span
                   onClick={() => setCouponForm(!showCoupon)}
-                  className="cursor-pointer text-[clamp(14px,4.0625vw,16px)] select-none lg:font-semibold text-black hover:underline"
+                  className="cursor-pointer hidden text-[clamp(14px,4.0625vw,16px)] select-none lg:font-semibold text-black hover:underline"
                 >
                   {showCoupon ? " - Hide Coupon" : " + Apply Coupon"}
                 </span>
@@ -311,6 +312,17 @@ export default function CartItem() {
           <div className="border md:px-7 px-2 md:py-8 py-3 rounded-lg space-y-4">
             <p className="text-2xl font-bold">Cart</p>
             <div className="grid grid-cols-2 gap-y-4">
+              {
+                items.map((itm, indx) => <div key={indx} className='col-span-2 flex justify-between items-center'>
+                  <section className='max-w-4xs'>
+                    <p className="text-sm font-medium md:text-lg text-[#727B8C]">{itm.quantity}X. {itm.name}</p>
+                    <p className='text-[#727B8C] md:text-base text-xs'>Monthly Subscription- {itm.subscriptionDurationMonths} Month {`(${(itm.subscriptionPrice) * itm.quantity}/- BDT)`}</p>
+                  </section>
+                  <p className="text-sm md:text-lg font-semibold text-right">{(itm.priceWithoutDiscount + itm.subscriptionPrice) * itm.quantity}/- BDT</p>
+                </div>)
+              }
+              <p className="text-sm font-medium md:text-lg text-[#727B8C]">VAT</p>
+              <p className="text-sm md:text-lg font-semibold text-right">{totalVat ?? 0}/- BDT</p>
               <p className="text-sm font-medium md:text-lg text-[#727B8C]">
                 Subtotal Amount
               </p>

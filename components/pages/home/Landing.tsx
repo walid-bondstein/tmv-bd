@@ -1,7 +1,8 @@
-import Header from "@/components/shared/Header";
 import Image from "next/image";
 import Link from "next/link";
 import CurrentOffer from "./CurrentOffer";
+import Header2 from "@/components/shared/Header";
+import Header from "@/components/shared/Header";
 
 export default function Landing({ offers }: { offers: string[] }) {
   return (
@@ -11,6 +12,7 @@ export default function Landing({ offers }: { offers: string[] }) {
     >
       {/* <Icons /> */}
       {offers.length >= 1 ? <CurrentOffer offers={offers} /> : <></>}
+      {/* <Header /> */}
       <Header />
       <div className="mx-auto component-container lg:grid flex flex-col grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-0 items-center lg:flex-1">
         <div className="lg:h-full h-auto w-full lg:flex justify-start items-center">

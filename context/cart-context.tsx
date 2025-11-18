@@ -1,4 +1,5 @@
 "use client";
+import { calculateVat } from "@/lib/utils";
 import { createContext, ReactNode, useContext, useEffect, useMemo, useState } from "react";
 
 // 🧩 Types
@@ -32,6 +33,10 @@ type CartContextType = {
     discount: number;
     total: number;
     clearCoupon: () => void;
+    subtotalWithoutVat: number;
+    deviceVat: number;
+    subscriptionVat: number;
+    totalVat: number;
 };
 
 const CartContext = createContext<CartContextType | undefined>(undefined);
@@ -84,14 +89,28 @@ export function CartProvider({ children }: { children: ReactNode }) {
     };
 
     // 🧮 Calculations
-    const { subtotal, discount, total } = useMemo(() => {
+    const { subtotal, discount, total, subtotalWithoutVat, deviceVat, subscriptionVat, totalVat } = useMemo(() => {
+        const deviceVat = 15; // VAT can be calculated here if needed in future
+        const subscriptionVat = 10; // VAT can be calculated here if needed in future
+        let totalVat = 0;
+        let deviceVatAmount = 0;
+        let subscriptionVatAmount = 0;
         const subtotal = items.reduce(
-            (acc, item) => acc + (item.priceWithoutDiscount * item.quantity) + (item.subscriptionPrice * item.quantity),
+            (acc, item) => {
+                const dv = calculateVat(item.priceWithoutDiscount, deviceVat);
+                const sv = calculateVat(item.subscriptionPrice, subscriptionVat);
+                deviceVatAmount += dv * item.quantity;
+                subscriptionVatAmount += sv * item.quantity;
+                totalVat += dv * item.quantity + sv * item.quantity;
+                const devicePriceWithVat = item.priceWithoutDiscount + dv;
+                const subscriptionPriceWithVat = item.subscriptionPrice + sv;
+                return acc + (devicePriceWithVat * item.quantity) + (subscriptionPriceWithVat * item.quantity)
+            },
             0
         );
         const discount = coupon ? coupon.discount : 0;
         const total = subtotal - discount;
-        return { subtotal, discount, total };
+        return { subtotal, discount, total, subtotalWithoutVat: subtotal - totalVat, deviceVat: deviceVatAmount, subscriptionVat: subscriptionVatAmount, totalVat };
     }, [items, coupon]);
 
 
@@ -121,6 +140,10 @@ export function CartProvider({ children }: { children: ReactNode }) {
                 discount,
                 total,
                 clearCoupon,
+                subtotalWithoutVat,
+                deviceVat,
+                subscriptionVat,
+                totalVat
             }}
         >
             {children}
