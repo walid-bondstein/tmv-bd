@@ -1,4 +1,11 @@
 export interface FeatureDetails {
+    _id: string;
+    url: string;
+    title: string;
+    description: string;
+    icon: string;
+    colorCode: string;
+    tag: string,
     page_id: string;
     hero_section: HeroSection;
     platform_section: PlatformSection;

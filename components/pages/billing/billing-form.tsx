@@ -451,7 +451,7 @@ export default function BillingForm({
                                 </div>
                             </> : <>
                                 <span onClick={() => setCouponForm(!showCoupon)}
-                                    className="cursor-pointer hidden text-[clamp(14px,4.0625vw,16px)] select-none lg:font-semibold text-black hover:underline">
+                                    className="cursor-pointer text-[clamp(14px,4.0625vw,16px)] select-none lg:font-semibold text-black hover:underline">
                                     {showCoupon ? " - Hide Coupon" : " + Apply Coupon"}
                                 </span>
 
@@ -469,7 +469,7 @@ export default function BillingForm({
                                                     onChange={(e) => setCouponText(e.target.value)}
                                                 />
                                                 <Button
-                                                    onClick={() => { applyCoupon(couponText, 100); setCouponText(""); setCouponForm(false); }}
+                                                    onClick={() => { return toast.error("Invalid coupon code!"); applyCoupon(couponText, 100); setCouponText(""); setCouponForm(false); }}
                                                     type="button"
                                                     className="bg-submit lg:w-40 xs:w-[9.8rem] xs:h-13 w-28 h-[52px] lg:font-bold rounded-lg tmv-shadow submit cursor-pointer text-[clamp(14px,4.0625vw,16px)]"
                                                 >

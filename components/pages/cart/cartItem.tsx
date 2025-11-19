@@ -27,6 +27,7 @@ export default function CartItem() {
   const router = useRouter();
 
   const handeleApplyCoupon = () => {
+    return toast.error("Invalid Coupon Code");
     applyCoupon(couponText, 100);
     setCouponText("");
     setCouponForm(false);
@@ -272,7 +273,7 @@ export default function CartItem() {
               <>
                 <span
                   onClick={() => setCouponForm(!showCoupon)}
-                  className="cursor-pointer hidden text-[clamp(14px,4.0625vw,16px)] select-none lg:font-semibold text-black hover:underline"
+                  className="cursor-pointer text-[clamp(14px,4.0625vw,16px)] select-none lg:font-semibold text-black hover:underline"
                 >
                   {showCoupon ? " - Hide Coupon" : " + Apply Coupon"}
                 </span>

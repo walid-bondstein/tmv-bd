@@ -1,4 +1,4 @@
-import { MapPin, Shield, Zap, Brain, Smartphone, Monitor, ShieldCheck, Cog, Check } from 'lucide-react'
+import { Shield, Brain, Smartphone, Monitor, ShieldCheck, Cog, Check, Activity, ChartPie, ClipboardClock, FileChartColumn, CarTaxiFront, SquareStar, MessageSquareText, Smile, SquareActivity, ScrollText, ShieldPlus, Laugh, ThumbsUp, Fuel, CircleDollarSign, ScanFace, LandPlot, BellRing, UserCheck, Network, ChartCandlestick, HeartHandshake, SearchCheck, CalendarDays, Bus, SquareKanban, Dumbbell, PencilRuler, Route, Gauge, TrendingUp, ScanSearch, FileClock, UserStar, Siren, ArrowUpNarrowWide, ChartNoAxesColumn } from 'lucide-react'
 import { Card } from '@/components/ui/card'
 import { FeatureDetails } from './types'
 import { Button } from '../ui/button'
@@ -9,6 +9,43 @@ function getIconComponent(iconName: string) {
         'shield-check': ShieldCheck,
         'cog': Cog,
         'brain': Brain,
+        'activity': Activity,
+        'chart-pie': ChartPie,
+        'clipboard-clock': ClipboardClock,
+        'file-chart-column': FileChartColumn,
+        'car-taxi-front': CarTaxiFront,
+        'square-star': SquareStar,
+        'message-square-text': MessageSquareText,
+        'smile': Smile,
+        'square-activity': SquareActivity,
+        'scroll-text': ScrollText,
+        'shield-plus': ShieldPlus,
+        'laugh': Laugh,
+        'thumbs-up': ThumbsUp,
+        'fuel': Fuel,
+        'circle-dollar-sign': CircleDollarSign,
+        'scan-face': ScanFace,
+        'land-plot': LandPlot,
+        'bell-ring': BellRing,
+        'user-check': UserCheck,
+        'network': Network,
+        'chart-candlestick': ChartCandlestick,
+        'heart-handshake': HeartHandshake,
+        'search-check': SearchCheck,
+        'calendar-days': CalendarDays,
+        'bus': Bus,
+        'square-kanban': SquareKanban,
+        'dumbbell': Dumbbell,
+        'pencil-ruler': PencilRuler,
+        'route': Route,
+        'gauge': Gauge,
+        'analysis': ChartNoAxesColumn,
+        'trending-up': TrendingUp,
+        'scan-search': ScanSearch,
+        'file-clock': FileClock,
+        'user-star': UserStar,
+        'siren': Siren,
+        'arrow-up-narrow-wide': ArrowUpNarrowWide,
     }
     return iconMap[iconName] || Shield
 }

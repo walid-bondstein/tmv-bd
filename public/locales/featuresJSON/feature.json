@@ -1,0 +1,1155 @@
+[
+    {
+        "_id": "10001",
+        "page_id": "real_time_gps_tracking",
+        "url": "live-tracking",
+        "title": "Live Tracking",
+        "colorCode": "#F36B24",
+        "description": "Monitor your vehicles with precise GPS tracking in real time.",
+        "icon": "MapPinned",
+        "tag": "Feature",
+        "hero_section": {
+            "tag": "Feature",
+            "title": "Real-Time GPS Tracking",
+            "subtitle": "Monitor your vehicles with precise GPS tracking",
+            "description": "Real-time GPS Tracking is the cornerstone of TMV's telematics system, enabling you to monitor your vehicle's precise location, speed, and direction at any moment using satellite and cellular technology."
+        },
+        "platform_section": {
+            "title": "Available On All Platforms",
+            "subtitle": "Access powerful telematics features from web dashboard or mobile app",
+            "platforms": [
+                {
+                    "type": "Web Interface",
+                    "title": "Desktop Dashboard",
+                    "description": "Comprehensive fleet overview with advanced analytics, reporting, and management tools optimized for large screens.",
+                    "image": "dashboard_image.png"
+                },
+                {
+                    "type": "Mobile Application",
+                    "title": "On-The-Go Access",
+                    "description": "Monitor your fleet from anywhere with our intuitive mobile app designed for field managers and drivers.",
+                    "image": "mobile_image.png"
+                }
+            ]
+        },
+        "key_benefits": {
+            "title": "Key Benefits",
+            "benefits": [
+                {
+                    "icon": "shield-check",
+                    "title": "Enhanced Security",
+                    "description": "Instantly locate stolen or misplaced vehicles, reducing recovery time and potential losses."
+                },
+                {
+                    "icon": "cog",
+                    "title": "Operational Efficiency",
+                    "description": "Optimize dispatch and routing by knowing exactly where your vehicles are in real time."
+                },
+                {
+                    "icon": "brain",
+                    "title": "Peace of Mind",
+                    "description": "Stay connected to your vehicles 24/7 with updates as frequent as every few seconds."
+                }
+            ]
+        },
+        "real_world_applications": {
+            "title": "Real-World Applications",
+            "description": "How real-time tracking helps businesses and individuals",
+            "applications": [
+                "Fleet managers track vehicles to ensure timely arrivals and reroute during delays.",
+                "Logistics companies locate assets in real time for optimized supply chain operations.",
+                "Security teams recover stolen vehicles quickly using exact location data.",
+                "Ride-sharing services dispatch drivers efficiently based on current positions."
+            ]
+        }
+    },
+    {
+        "_id": "10002",
+        "url": "disconnection-alert",
+        "title": "Disconnection Alert",
+        "colorCode": "#F36B24",
+        "description": "Instant notifications for device tampering or disconnection.",
+        "icon": "Unplug",
+        "page_id": "disconnection_alert",
+        "tag": "Alert",
+        "hero_section": {
+            "tag": "Alert",
+            "title": "Disconnection Alert",
+            "subtitle": "Instant notifications for device tampering or disconnection",
+            "description": "Disconnection Alert is a robust security feature in TMV, designed to detect and notify you immediately if the tracking device is tampered with, disconnected, or removed such as during an attempted theft. Using built-in sensors and real-time monitoring, this alert triggers notifications to prevent unauthorized interference, solidifying TMV's position as the best vehicle tracking system in Bangladesh."
+        },
+        "platform_section": {
+            "title": "Available On All Platforms",
+            "subtitle": "Access powerful telematics features from web dashboard or mobile app",
+            "platforms": [
+                {
+                    "type": "Web Interface",
+                    "title": "Desktop Dashboard",
+                    "description": "Comprehensive fleet overview with advanced analytics, reporting, and management tools optimized for large screens.",
+                    "image": "dashboard_image.png"
+                },
+                {
+                    "type": "Mobile Application",
+                    "title": "On-The-Go Access",
+                    "description": "Monitor your fleet from anywhere with our intuitive mobile app designed for field managers and drivers.",
+                    "image": "mobile_image.png"
+                }
+            ]
+        },
+        "key_benefits": {
+            "title": "Key Benefits",
+            "benefits": [
+                {
+                    "icon": "shield-check",
+                    "title": "Theft Prevention",
+                    "description": "Instant alerts upon device disconnection allow for quick response, deterring thieves and aiding in device recovery."
+                },
+                {
+                    "icon": "activity",
+                    "title": "Enhanced Security",
+                    "description": "Maintain continuous monitoring integrity, ensuring the vehicle remains operational even in high-risk scenarios."
+                },
+                {
+                    "icon": "brain",
+                    "title": "Peace of Mind",
+                    "description": "Receive real-time notifications via app or SMS, integrating seamlessly with features like Engine Lock for comprehensive protection."
+                }
+            ]
+        },
+        "real_world_applications": {
+            "title": "Real-World Applications",
+            "description": "Where Disconnection Alerts protect assets",
+            "applications": [
+                "Security teams respond to Disconnection Alerts during attempted device thefts, combining with real-time tracking to locate and secure vehicles.",
+                "Fleet operators detect tampering on vehicles, preventing downtime and unauthorized access.",
+                "Logistics firms protect high-value vehicles by triggering alerts on disconnection, enhancing supply chain safety.",
+                "Ride-sharing services monitor device integrity to ensure uninterrupted operations."
+            ]
+        }
+    },
+    {
+        "_id": "10003",
+        "url": "distance-report",
+        "title": "Distance Report",
+        "colorCode": "#F36B24",
+        "description": "Track distance traveled across hourly, daily, and monthly timelines.",
+        "icon": "MapPinCheck",
+        "page_id": "distance_report",
+        "tag": "Report",
+        "hero_section": {
+            "tag": "Report",
+            "title": "Distance Report",
+            "subtitle": "Track distance traveled across hourly, daily, and monthly timelines",
+            "description": "Distance Report provides granular tracking of the total distance covered by your vehicles over specified periods hourly, daily, or monthly. This feature aggregates GPS data to generate clear summaries of distance traveled, helping you monitor usage patterns and plan accordingly, by TMV, the No. 1 fleet management system in Bangladesh."
+        },
+        "platform_section": {
+            "title": "Available On All Platforms",
+            "subtitle": "Access powerful telematics features from web dashboard or mobile app",
+            "platforms": [
+                {
+                    "type": "Web Interface",
+                    "title": "Desktop Dashboard",
+                    "description": "Comprehensive fleet overview with advanced analytics, reporting, and management tools optimized for large screens.",
+                    "image": "dashboard_image.png"
+                },
+                {
+                    "type": "Mobile Application",
+                    "title": "On-The-Go Access",
+                    "description": "Monitor your fleet from anywhere with our intuitive mobile app designed for field managers and drivers.",
+                    "image": "mobile_image.png"
+                }
+            ]
+        },
+        "key_benefits": {
+            "title": "Key Benefits",
+            "benefits": [
+                {
+                    "icon": "chart-pie",
+                    "title": "Usage Analytics",
+                    "description": "Understand vehicle utilization to optimize scheduling and reduce unnecessary trips."
+                },
+                {
+                    "icon": "clipboard-clock",
+                    "title": "Maintenance Scheduling",
+                    "description": "Base service intervals on actual driving rather than estimates, preventing unnecessary trips."
+                },
+                {
+                    "icon": "file-chart-column",
+                    "title": "Reporting Flexibility",
+                    "description": "Choose from hourly and daily breakdowns for short-term insights or monthly overviews for long-term trends."
+                }
+            ]
+        },
+        "real_world_applications": {
+            "title": "Real-World Applications",
+            "description": "Where Distance Reports make an impact",
+            "applications": [
+                "Logistics firms bill clients accurately based on actual mileage from daily reports.",
+                "Vehicle owners can prepare monthly distance overviews for business use.",
+                "Maintenance teams schedule services on real driving data to prevent premature wear and tear.",
+                "Fleet managers optimize schedules by analyzing hourly usage patterns."
+            ]
+        }
+    },
+    {
+        "_id": "10004",
+        "url": "drive-mark",
+        "title": "Drive Mark",
+        "colorCode": "#1DD1A1",
+        "description": "Advanced driver behavior scoring and insights.",
+        "icon": "Trophy",
+        "page_id": "drive_mark",
+        "tag": "Feature",
+        "hero_section": {
+            "tag": "Feature",
+            "title": "Drive Mark",
+            "subtitle": "Advanced driver behavior scoring and insights",
+            "description": "Drive Mark is TMV's advanced driver behavior analysis tool, scoring and evaluating driving habits based on metrics like acceleration, braking, speeding, and night travel. It promotes safer roads by providing actionable insights to improve performance, integrated into our best GPS tracking service provider in Bangladesh."
+        },
+        "platform_section": {
+            "title": "Available On All Platforms",
+            "subtitle": "Access powerful telematics features from web dashboard or mobile app",
+            "platforms": [
+                {
+                    "type": "Web Interface",
+                    "title": "Desktop Dashboard",
+                    "description": "Comprehensive fleet overview with advanced analytics, reporting, and management tools optimized for large screens.",
+                    "image": "dashboard_image.png"
+                },
+                {
+                    "type": "Mobile Application",
+                    "title": "On-The-Go Access",
+                    "description": "Monitor your fleet from anywhere with our intuitive mobile app designed for field managers and drivers.",
+                    "image": "mobile_image.png"
+                }
+            ]
+        },
+        "key_benefits": {
+            "title": "Key Benefits",
+            "benefits": [
+                {
+                    "icon": "car-taxi-front",
+                    "title": "Safer Driving",
+                    "description": "Reduce accidents by identifying risky behaviors and encouraging corrective actions."
+                },
+                {
+                    "icon": "square-star",
+                    "title": "Fleet Management",
+                    "description": "Rank drivers, offer training, and reward safe habits to boost overall team performance."
+                },
+                {
+                    "icon": "message-square-text",
+                    "title": "Detailed Feedback",
+                    "description": "Personalized reports that enhance vehicle efficiency and longevity."
+                }
+            ]
+        },
+        "real_world_applications": {
+            "title": "Real-World Applications",
+            "description": "How Drive Mark impacts real operations",
+            "applications": [
+                "Corporate fleets rank drivers for safety training and reward programs based on scores.",
+                "Logistics teams analyze night travel patterns to improve shift scheduling and reduce risks.",
+                "Individual users track personal driving habits to enhance efficiency and safety.",
+                "Ride-sharing platforms evaluate operators with monthly summaries for performance reviews, leveraging TMV as a top telematics system provider in Bangladesh."
+            ]
+        }
+    },
+    {
+        "_id": "10005",
+        "url": "engine-lock",
+        "title": "Engine Control",
+        "colorCode": "#D5AE01",
+        "description": "Remotely immobilize your vehicle for advanced security.",
+        "icon": "LockKeyholeOpen",
+        "page_id": "engine_lock",
+        "tag": "Feature",
+        "hero_section": {
+            "tag": "Feature",
+            "title": "Engine Lock",
+            "subtitle": "Remotely immobilize your vehicle for advanced security",
+            "description": "Engine Lock is a powerful security feature in TMV that allows you to remotely disable your vehicle's engine, preventing unauthorized starts or movements. This tool provides an extra layer of protection against theft or misuse, giving you control over your asset from anywhere via the app or dashboard, perfect for any vehicle, offered by TMV, the best tracking system provider in Bangladesh."
+        },
+        "platform_section": {
+            "title": "Available On All Platforms",
+            "subtitle": "Access powerful telematics features from web dashboard or mobile app",
+            "platforms": [
+                {
+                    "type": "Web Interface",
+                    "title": "Desktop Dashboard",
+                    "description": "Comprehensive fleet overview with advanced analytics, reporting, and management tools optimized for large screens.",
+                    "image": "dashboard_image.png"
+                },
+                {
+                    "type": "Mobile Application",
+                    "title": "On-The-Go Access",
+                    "description": "Monitor your fleet from anywhere with our intuitive mobile app designed for field managers and drivers.",
+                    "image": "mobile_image.png"
+                }
+            ]
+        },
+        "key_benefits": {
+            "title": "Key Benefits",
+            "benefits": [
+                {
+                    "icon": "shield-check",
+                    "title": "Theft Deterrence",
+                    "description": "Immobilize the vehicle instantly if suspicious activity is detected, reducing the risk of loss."
+                },
+                {
+                    "icon": "smile",
+                    "title": "Unauthorized Use Prevention",
+                    "description": "Stop family members, employees, or borrowers from operating the vehicle without permission."
+                },
+                {
+                    "icon": "brain",
+                    "title": "Peace of Mind",
+                    "description": "Gain remote control for added security during parking or long absences."
+                }
+            ]
+        },
+        "real_world_applications": {
+            "title": "Real-World Applications",
+            "description": "How Engine Lock improves security and operations",
+            "applications": [
+                "Fleet owners lock vehicles after hours to prevent unauthorized employee use.",
+                "Rental companies immobilize vehicles upon contract expiry or non-payment.",
+                "Security teams respond to theft alerts by locking engines remotely.",
+                "Logistics firms protect high-value cargo by enabling locks in high-risk areas."
+            ]
+        }
+    },
+    {
+        "_id": "10006",
+        "url": "engine-reports",
+        "title": "Engine Reports",
+        "colorCode": "#1DD1A1",
+        "description": "Detailed engine run-time logs with locations and timestamps.",
+        "icon": "CircleGauge",
+        "page_id": "engine_reports",
+        "tag": "Report",
+        "hero_section": {
+            "tag": "Report",
+            "title": "Engine Reports",
+            "subtitle": "Detailed engine run-time logs with locations and timestamps",
+            "description": "Engine Reports focused on engine run reports, provide detailed logs of your vehicle's engine activity, including on/off events and idle times. This feature tracks timestamps for each status change and displays them in an interactive graph, complete with associated locations for comprehensive oversight, as part of our GPS tracking system BD."
+        },
+        "platform_section": {
+            "title": "Available On All Platforms",
+            "subtitle": "Access powerful telematics features from web dashboard or mobile app",
+            "platforms": [
+                {
+                    "type": "Web Interface",
+                    "title": "Desktop Dashboard",
+                    "description": "Comprehensive fleet overview with advanced analytics, reporting, and management tools optimized for large screens.",
+                    "image": "dashboard_image.png"
+                },
+                {
+                    "type": "Mobile Application",
+                    "title": "On-The-Go Access",
+                    "description": "Monitor your fleet from anywhere with our intuitive mobile app designed for field managers and drivers.",
+                    "image": "mobile_image.png"
+                }
+            ]
+        },
+        "key_benefits": {
+            "title": "Key Benefits",
+            "benefits": [
+                {
+                    "icon": "cog",
+                    "title": "Operational Efficiency",
+                    "description": "Identify patterns in engine usage to optimize schedules and minimize idle periods, saving on fuel and resources."
+                },
+                {
+                    "icon": "square-activity",
+                    "title": "Preventive Maintenance",
+                    "description": "Monitor idle times to reduce unnecessary engine on, extending vehicle lifespan and avoiding breakdowns."
+                },
+                {
+                    "icon": "scroll-text",
+                    "title": "Compliance & Security",
+                    "description": "Use historical logs with locations for audits, theft investigations, or verifying driver adherence to policies."
+                }
+            ]
+        },
+        "real_world_applications": {
+            "title": "Real-World Applications",
+            "description": "How Engine Reports help businesses",
+            "applications": [
+                "Fleet operators analyze idle times at delivery stops to train drivers on reducing fuel waste.",
+                "Construction firms track engine usage on job sites to schedule maintenance and prevent downtime.",
+                "Rental car companies monitor unauthorized after-hours starts with location data for security.",
+                "Transportation businesses use logs for compliance audits to verify operational policies.",
+                "Individual owners detect excessive idling during daily commutes to extend engine life."
+            ]
+        }
+    },
+    {
+        "_id": "10007",
+        "url": "fatigue-alert",
+        "title": "Fatigue Alert",
+        "colorCode": "#1DD1A1",
+        "description": "Detect driver drowsiness using real-time behavior analysis.",
+        "icon": "TriangleAlert",
+        "page_id": "fatigue_alert",
+        "tag": "Alert",
+        "hero_section": {
+            "tag": "Alert",
+            "title": "Fatigue Alert",
+            "subtitle": "Detect driver drowsiness using real-time behavior analysis",
+            "description": "Fatigue Alert is an advanced safety feature in TMV that monitors driving patterns to detect signs of driver drowsiness or fatigue. Using data from sensors and GPS, it identifies erratic behavior like lane drifting, inconsistent speeds, or prolonged driving without breaks, triggering notifications to prevent accidents. This high-level monitoring strengthens TMV\u2019s position as one of the best telematics solution providers in Bangladesh."
+        },
+        "platform_section": {
+            "title": "Available On All Platforms",
+            "subtitle": "Access powerful telematics features from web dashboard or mobile app",
+            "platforms": [
+                {
+                    "type": "Web Interface",
+                    "title": "Desktop Dashboard",
+                    "description": "Comprehensive fleet overview with advanced analytics, reporting, and management tools optimized for large screens.",
+                    "image": "dashboard_image.png"
+                },
+                {
+                    "type": "Mobile Application",
+                    "title": "On-The-Go Access",
+                    "description": "Monitor your fleet from anywhere with our intuitive mobile app designed for field managers and drivers.",
+                    "image": "mobile_image.png"
+                }
+            ]
+        },
+        "key_benefits": {
+            "title": "Key Benefits",
+            "benefits": [
+                {
+                    "icon": "shield-plus",
+                    "title": "Accident Prevention",
+                    "description": "Early detection of fatigue reduces the risk of crashes caused by drowsy driving."
+                },
+                {
+                    "icon": "laugh",
+                    "title": "Driver Safety",
+                    "description": "Prompts rests or alerts supervisors to ensure well-being and compliance with rest regulations."
+                },
+                {
+                    "icon": "thumbs-up",
+                    "title": "Fleet Efficiency",
+                    "description": "Minimizes downtime from fatigue-related incidents and improves overall operational safety."
+                }
+            ]
+        },
+        "real_world_applications": {
+            "title": "Real-World Applications",
+            "description": "Where fatigue monitoring helps",
+            "applications": [
+                "Long-haul truckers receive alerts during extended drives to encourage mandatory breaks.",
+                "Ride-sharing companies monitor drivers for signs of fatigue to maintain passenger safety.",
+                "Corporate fleets use it to enforce rest policies and reduce liability in shift work.",
+                "Logistics firms analyze patterns to optimize schedules and prevent fatigue buildup."
+            ]
+        }
+    },
+    {
+        "_id": "10008",
+        "url": "fuel-reports",
+        "title": "Fuel Reports",
+        "colorCode": "#D5AE01",
+        "description": "Monitor fuel usage, consumption patterns, and efficiency.",
+        "icon": "Fuel",
+        "page_id": "fuel_reports",
+        "tag": "Report",
+        "hero_section": {
+            "tag": "Report",
+            "title": "Fuel Reports",
+            "subtitle": "Monitor fuel usage, consumption patterns, and efficiency",
+            "description": "Fuel Reports focus on monitoring and analyzing fuel consumption patterns, and efficiency. By tracking data from fuel consumption rate and engine usage, this feature helps identify inefficiencies and optimize fuel management to cut costs and reduce environmental impact, aligning with our best telematics solution in Bangladesh."
+        },
+        "platform_section": {
+            "title": "Available On All Platforms",
+            "subtitle": "Access powerful telematics features from web dashboard or mobile app",
+            "platforms": [
+                {
+                    "type": "Web Interface",
+                    "title": "Desktop Dashboard",
+                    "description": "Comprehensive fleet overview with advanced analytics, reporting, and management tools optimized for large screens.",
+                    "image": "dashboard_image.png"
+                },
+                {
+                    "type": "Mobile Application",
+                    "title": "On-The-Go Access",
+                    "description": "Monitor your fleet from anywhere with our intuitive mobile app designed for field managers and drivers.",
+                    "image": "mobile_image.png"
+                }
+            ]
+        },
+        "key_benefits": {
+            "title": "Key Benefits",
+            "benefits": [
+                {
+                    "icon": "fuel",
+                    "title": "Fuel Efficiency Gains",
+                    "description": "Detects wasteful practices such as excessive idling or aggressive driving, leading to significant savings."
+                },
+                {
+                    "icon": "circle-dollar-sign",
+                    "title": "Budget Control",
+                    "description": "Accurate tracking of fuel usage for better forecasting and expense management."
+                },
+                {
+                    "icon": "shield-check",
+                    "title": "Theft Prevention",
+                    "description": "Alerts for sudden fuel drops that could indicate siphoning or leaks."
+                }
+            ]
+        },
+        "real_world_applications": {
+            "title": "Real-World Applications",
+            "description": "Where Fuel Reports make an impact",
+            "applications": [
+                "Logistics companies adjust routes based on consumption patterns to minimize fuel costs.",
+                "Commercial fleets identify aggressive driving habits to implement efficiency training programs.",
+                "Vehicle owners monitor commuting costs and set alerts for potential fuel theft.",
+                "Delivery services forecast fuel needs for better budgeting and expense management."
+            ]
+        }
+    },
+    {
+        "_id": "10009",
+        "url": "geo-fencing",
+        "title": "Geo Fence",
+        "colorCode": "#00A3FF",
+        "description": "Create virtual boundaries and receive instant zone alerts.",
+        "icon": "MapPinCheck",
+        "page_id": "geo_fencing",
+        "tag": "Feature",
+        "hero_section": {
+            "tag": "Feature",
+            "title": "Geofencing",
+            "subtitle": "Create virtual boundaries and receive instant zone alerts",
+            "description": "Geofence creates virtual boundaries around specific areas, notifying you instantly when a vehicle enters or exits them. This customizable feature triggers notifications based on your defined zones, offered by our TMV, the best vehicle tracking company in Bangladesh."
+        },
+        "platform_section": {
+            "title": "Available On All Platforms",
+            "subtitle": "Access powerful telematics features from web dashboard or mobile app",
+            "platforms": [
+                {
+                    "type": "Web Interface",
+                    "title": "Desktop Dashboard",
+                    "description": "Comprehensive fleet overview with advanced analytics, reporting, and management tools optimized for large screens.",
+                    "image": "dashboard_image.png"
+                },
+                {
+                    "type": "Mobile Application",
+                    "title": "On-The-Go Access",
+                    "description": "Monitor your fleet from anywhere with our intuitive mobile app designed for field managers and drivers.",
+                    "image": "mobile_image.png"
+                }
+            ]
+        },
+        "key_benefits": {
+            "title": "Key Benefits",
+            "benefits": [
+                {
+                    "icon": "scan-face",
+                    "title": "Improved Security",
+                    "description": "Get alerted to unauthorized movements, such as vehicles leaving a depot after hours."
+                },
+                {
+                    "icon": "land-plot",
+                    "title": "Operational Control",
+                    "description": "Ensure drivers stay within approved areas, reducing risks and off-route travel."
+                },
+                {
+                    "icon": "bell-ring",
+                    "title": "Customizable Notifications",
+                    "description": "Tailor alerts by time, vehicle, or event type for relevant, non-intrusive updates."
+                }
+            ]
+        },
+        "real_world_applications": {
+            "title": "Real-World Applications",
+            "description": "Where Geofencing makes an impact",
+            "applications": [
+                "Warehouses alert managers when vehicles leave depots after hours for security.",
+                "Construction sites monitor equipment entry/exit to prevent unauthorized usage.",
+                "Delivery services ensure drivers stay within service areas to avoid off-route delays.",
+                "Fleet operators use time-specific geofences for scheduled job site compliance."
+            ]
+        }
+    },
+    {
+        "_id": "100010",
+        "url": "guest-user-login",
+        "title": "Guest User",
+        "colorCode": "#4E6FF3",
+        "description": "Instant access to explore TMV without registration.",
+        "icon": "UserPlus",
+        "page_id": "guest_user_login",
+        "tag": "Feature",
+        "hero_section": {
+            "tag": "Feature",
+            "title": "Guest User Login",
+            "subtitle": "Instant access to explore TMV without registration",
+            "description": "Guest User Login is a convenient feature in TMV, the best vehicle tracking system in Bangladesh, that allows users to access the platform temporarily. This access mode enables quick exploration of core functionalities like real-time tracking and reports, ideal for demonstrations or initial evaluations. As a leading vehicle tracking company in Bangladesh, TMV ensures this feature maintains high security standards while offering a seamless entry point."
+        },
+        "platform_section": {
+            "title": "Available On All Platforms",
+            "subtitle": "Access powerful telematics features from web dashboard or mobile app",
+            "platforms": [
+                {
+                    "type": "Web Interface",
+                    "title": "Desktop Dashboard",
+                    "description": "Comprehensive fleet overview with advanced analytics, reporting, and management tools optimized for large screens.",
+                    "image": "dashboard_image.png"
+                },
+                {
+                    "type": "Mobile Application",
+                    "title": "On-The-Go Access",
+                    "description": "Monitor your fleet from anywhere with our intuitive mobile app designed for field managers and drivers.",
+                    "image": "mobile_image.png"
+                }
+            ]
+        },
+        "key_benefits": {
+            "title": "Key Benefits",
+            "benefits": [
+                {
+                    "icon": "user-check",
+                    "title": "Quick Access",
+                    "description": "Dive into TMV's intuitive dashboard instantly, without registration hurdles, to experience the best tracking service in Bangladesh."
+                },
+                {
+                    "icon": "network",
+                    "title": "Trial Experience",
+                    "description": "Test essential features to understand how TMV can benefit your needs."
+                },
+                {
+                    "icon": "chart-candlestick",
+                    "title": "Evaluate Performance",
+                    "description": "Analyze the accuracy, speed, and reliability of TMV in live conditions to verify TMV’s performance firsthand."
+                }
+            ]
+        },
+        "real_world_applications": {
+            "title": "Real-World Applications",
+            "description": "Where Guest User Login becomes useful",
+            "applications": [
+                "Prospective fleet managers explore TMV features during sales demos without committing to a subscription.",
+                "Logistics partners in Bangladesh use guest mode for temporary sharing of route history to collaborate on projects.",
+                "Individual users trial TMV to assess real-time monitoring before signing up.",
+                "Ride-sharing services evaluate driver safety tools like fatigue alerts in a low-commitment environment."
+            ]
+        }
+    },
+    {
+        "_id": "100011",
+        "url": "harsh-acceleration-alert",
+        "title": "Harsh Acceleration Alert",
+        "colorCode": "#D5AE01",
+        "description": "Detect sudden and aggressive acceleration events.",
+        "icon": "TrendingUp",
+        "page_id": "harsh_acceleration_alert",
+        "tag": "Alert",
+        "hero_section": {
+            "tag": "Alert",
+            "title": "Harsh Acceleration Alert",
+            "subtitle": "Detect sudden and aggressive acceleration events",
+            "description": "Harsh Acceleration Alert detects sudden increases in speed, notifying you of aggressive acceleration events that could indicate risky behavior. This safety-focused feature supports TMV\u2019s reputation as part of the best vehicle tracking system in Bangladesh and enhances the capabilities of any type of vehicle monitoring."
+        },
+        "platform_section": {
+            "title": "Available On All Platforms",
+            "subtitle": "Access powerful telematics features from web dashboard or mobile app",
+            "platforms": [
+                {
+                    "type": "Web Interface",
+                    "title": "Desktop Dashboard",
+                    "description": "Comprehensive fleet overview with advanced analytics, reporting, and management tools optimized for large screens.",
+                    "image": "dashboard_image.png"
+                },
+                {
+                    "type": "Mobile Application",
+                    "title": "On-The-Go Access",
+                    "description": "Monitor your fleet from anywhere with our intuitive mobile app designed for field managers and drivers.",
+                    "image": "mobile_image.png"
+                }
+            ]
+        },
+        "key_benefits": {
+            "title": "Key Benefits",
+            "benefits": [
+                {
+                    "icon": "heart-handshake",
+                    "title": "Vehicle Longevity",
+                    "description": "Reduce wear on engines and tires by minimizing sudden accelerations."
+                },
+                {
+                    "icon": "search-check",
+                    "title": "Safety Improvement",
+                    "description": "Identify and correct habits that lead to loss of control or accidents."
+                },
+                {
+                    "icon": "calendar-days",
+                    "title": "Event Logging",
+                    "description": "Track incidents for training and performance reviews to improve efficiency."
+                }
+            ]
+        },
+        "real_world_applications": {
+            "title": "Real-World Applications",
+            "description": "How harsh acceleration alerts improve operations",
+            "applications": [
+                "Commercial fleets coach drivers to avoid rapid starts, reducing fuel costs at traffic lights.",
+                "Individual owners can improve their driving quality.",
+                "Logistics companies analyze events to optimize routes with fewer stop-start scenarios.",
+                "Ride-sharing services refine operator habits to enhance passenger comfort and safety, as part of our telematics system in Bangladesh."
+            ]
+        }
+    },
+    {
+        "_id": "100012",
+        "url": "harsh-braking-alert",
+        "title": "Harsh Braking Alert",
+        "colorCode": "#00A3FF",
+        "description": "Detect abrupt braking events to improve driving behavior.",
+        "icon": "TrendingDown",
+        "page_id": "harsh_braking_alert",
+        "tag": "Alert",
+        "hero_section": {
+            "tag": "Alert",
+            "title": "Harsh Braking Alert",
+            "subtitle": "Detect abrupt braking events to improve driving behavior",
+            "description": "Harsh Braking Alert detects sudden decreases in speed, notifying you of aggressive braking events that could indicate risky behavior. This feature promotes smoother, safer driving through immediate feedback on abrupt stops and reinforces TMV\u2019s positioning as a strong GPS tracking system provider in Bangladesh."
+        },
+        "platform_section": {
+            "title": "Available On All Platforms",
+            "subtitle": "Access powerful telematics features from web dashboard or mobile app",
+            "platforms": [
+                {
+                    "type": "Web Interface",
+                    "title": "Desktop Dashboard",
+                    "description": "Comprehensive fleet overview with advanced analytics, reporting, and management tools optimized for large screens.",
+                    "image": "dashboard_image.png"
+                },
+                {
+                    "type": "Mobile Application",
+                    "title": "On-The-Go Access",
+                    "description": "Monitor your fleet from anywhere with our intuitive mobile app designed for field managers and drivers.",
+                    "image": "mobile_image.png"
+                }
+            ]
+        },
+        "key_benefits": {
+            "title": "Key Benefits",
+            "benefits": [
+                {
+                    "icon": "heart-handshake",
+                    "title": "Vehicle Longevity",
+                    "description": "Reduce wear on brakes and tires by minimizing sudden stops."
+                },
+                {
+                    "icon": "search-check",
+                    "title": "Safety Improvement",
+                    "description": "Identify and correct habits that lead to rear-end collisions or skids."
+                },
+                {
+                    "icon": "calendar-days",
+                    "title": "Event Logging",
+                    "description": "Track incidents for training and performance reviews to improve efficiency."
+                }
+            ]
+        },
+        "real_world_applications": {
+            "title": "Real-World Applications",
+            "description": "Uses of harsh braking detection",
+            "applications": [
+                "Commercial fleets train drivers to anticipate stops, extending brake life in city traffic.",
+                "Logistics optimize delivery schedules to reduce harsh stops from tight timelines.",
+                "Ride-sharing platforms use data to improve ride quality by addressing jerky stops.",
+                "Individual owners can improve their driving quality, benefiting from our vehicle tracking company in Bangladesh expertise."
+            ]
+        }
+    },
+    {
+        "_id": "100013",
+        "url": "legal-alert",
+        "title": "Legal Alert",
+        "colorCode": "#4E6FF3",
+        "description": "Stay compliant with automated document expiry notifications.",
+        "icon": "FileSpreadsheet",
+        "page_id": "legal_alert",
+        "tag": "Alert",
+        "hero_section": {
+            "tag": "Feature",
+            "title": "Legal Alert",
+            "subtitle": "Stay compliant with automated document expiry notifications",
+            "description": "Legal Alert is a proactive compliance feature in TMV, the best vehicle tracking system in Bangladesh, that monitors and notifies you about upcoming expirations for essential vehicle documents and certifications. It tracks key dates such as Registration Expiry, Fitness Expiry, Route Permit Expiry, CNG System Expiry, Tax Expiry, and Insurance Expiry, ensuring you stay ahead of regulatory requirements."
+        },
+        "platform_section": {
+            "title": "Available On All Platforms",
+            "subtitle": "Access powerful telematics features from web dashboard or mobile app",
+            "platforms": [
+                {
+                    "type": "Web Interface",
+                    "title": "Desktop Dashboard",
+                    "description": "Comprehensive fleet overview with advanced analytics, reporting, and management tools optimized for large screens.",
+                    "image": "dashboard_image.png"
+                },
+                {
+                    "type": "Mobile Application",
+                    "title": "On-The-Go Access",
+                    "description": "Monitor your fleet from anywhere with our intuitive mobile app designed for field managers and drivers.",
+                    "image": "mobile_image.png"
+                }
+            ]
+        },
+        "key_benefits": {
+            "title": "Key Benefits",
+            "benefits": [
+                {
+                    "icon": "scroll-text",
+                    "title": "Regulatory Compliance",
+                    "description": "Avoid fines and penalties by receiving advance notifications for expirations, keeping your vehicles road-legal at all times."
+                },
+                {
+                    "icon": "cog",
+                    "title": "Operational Continuity",
+                    "description": "Prevent downtime from expired documents by scheduling renewals proactively, enhancing fleet efficiency."
+                },
+                {
+                    "icon": "bell-ring",
+                    "title": "Customizable Reminders",
+                    "description": "Set alert thresholds tailored to your needs, making it a seamless part of our best GPS tracking service in Bangladesh."
+                }
+            ]
+        },
+        "real_world_applications": {
+            "title": "Real-World Applications",
+            "description": "Where Legal Alerts improve operations",
+            "applications": [
+                "Fleet managers in Bangladesh receive alerts for Registration Expiry to renew documents and avoid operational halts during inspections.",
+                "Logistics companies track Insurance Expiry for multiple vehicles, ensuring coverage and reducing risks in supply chains.",
+                "Transportation businesses monitor Route Permit Expiry to maintain compliant routes, leveraging TMV as the leading telematics system in Bangladesh.",
+                "Individual vehicle owners get reminders for Tax Expiry and Fitness Expiry, simplifying personal compliance."
+            ]
+        }
+    },
+    {
+        "_id": "100014",
+        "url": "location-report",
+        "title": "Location Report",
+        "colorCode": "#00A3FF",
+        "description": "Detailed logs of all past vehicle positions.",
+        "icon": "MapPlus",
+        "page_id": "location_report",
+        "tag": "Report",
+        "hero_section": {
+            "tag": "Report",
+            "title": "Location Report",
+            "subtitle": "Detailed logs of all past vehicle positions",
+            "description": "Location Report offers detailed logs of a vehicle's positions at specific times or intervals, providing a snapshot history beyond real-time tracking. This feature compiles GPS data into reports that highlight frequented spots, dwell times, and movement patterns, integral to our TMV, the best vehicle tracking solution in BD."
+        },
+        "platform_section": {
+            "title": "Available On All Platforms",
+            "subtitle": "Access powerful telematics features from web dashboard or mobile app",
+            "platforms": [
+                {
+                    "type": "Web Interface",
+                    "title": "Desktop Dashboard",
+                    "description": "Comprehensive fleet overview with advanced analytics, reporting, and management tools optimized for large screens.",
+                    "image": "dashboard_image.png"
+                },
+                {
+                    "type": "Mobile Application",
+                    "title": "On-The-Go Access",
+                    "description": "Monitor your fleet from anywhere with our intuitive mobile app designed for field managers and drivers.",
+                    "image": "mobile_image.png"
+                }
+            ]
+        },
+        "key_benefits": {
+            "title": "Key Benefits",
+            "benefits": [
+                {
+                    "icon": "bus",
+                    "title": "Vehicle Management",
+                    "description": "Identify common parking or stop locations to improve security and logistics planning."
+                },
+                {
+                    "icon": "clipboard-clock",
+                    "title": "Efficiency Insights",
+                    "description": "Analyze time spent at locations to eliminate bottlenecks in operations."
+                },
+                {
+                    "icon": "square-kanban",
+                    "title": "Customizable Views",
+                    "description": "Generate reports by date, or vehicle for targeted analysis."
+                }
+            ]
+        },
+        "real_world_applications": {
+            "title": "Real-World Applications",
+            "description": "How Location Reports benefit operations",
+            "applications": [
+                "Security personnel identify common parking spots to enhance asset protection.",
+                "Fleet managers can confirm safe arrivals at destinations like workplaces or transfers.",
+                "Logistics optimize operations by analyzing time spent at stops to reduce bottlenecks.",
+                "Auditors use customizable views for verifying vehicle locations in compliance checks."
+            ]
+        }
+    },
+    {
+        "_id": "100015",
+        "url": "overspeed-alert",
+        "title": "Overspeed Alert",
+        "colorCode": "#7DCF00",
+        "description": "Instant alerts for speed limit violations.",
+        "icon": "ChevronsUp",
+        "page_id": "overspeed_alert",
+        "tag": "Alert",
+        "hero_section": {
+            "tag": "Alert",
+            "title": "Overspeed Alert",
+            "subtitle": "Instant alerts for speed limit violations",
+            "description": "Overspeed Alert notifies you in real-time when a vehicle exceeds predefined speed limits, helping to curb dangerous driving immediately. This feature uses GPS to monitor speed and trigger customizable notifications, reinforcing TMV as the best vehicle tracking system in Bangladesh."
+        },
+        "platform_section": {
+            "title": "Available On All Platforms",
+            "subtitle": "Access powerful telematics features from web dashboard or mobile app",
+            "platforms": [
+                {
+                    "type": "Web Interface",
+                    "title": "Desktop Dashboard",
+                    "description": "Comprehensive fleet overview with advanced analytics, reporting, and management tools optimized for large screens.",
+                    "image": "dashboard_image.png"
+                },
+                {
+                    "type": "Mobile Application",
+                    "title": "On-The-Go Access",
+                    "description": "Monitor your fleet from anywhere with our intuitive mobile app designed for field managers and drivers.",
+                    "image": "mobile_image.png"
+                }
+            ]
+        },
+        "key_benefits": {
+            "title": "Key Benefits",
+            "benefits": [
+                {
+                    "icon": "shield-check",
+                    "title": "Accident Prevention",
+                    "description": "Instant alerts allow for quick intervention, reducing the risk of speed-related incidents."
+                },
+                {
+                    "icon": "dumbbell",
+                    "title": "Driver Training",
+                    "description": "Use alert data to provide feedback and improve overall driving standards."
+                },
+                {
+                    "icon": "pencil-ruler",
+                    "title": "Customizable Thresholds",
+                    "description": "Set speed limits based on road types, vehicles, or regions for tailored monitoring."
+                }
+            ]
+        },
+        "real_world_applications": {
+            "title": "Real-World Applications",
+            "description": "Practical uses of speed alerts",
+            "applications": [
+                "Fleet managers intervene in real-time to prevent speed-related accidents on highways.",
+                "Logistics set road-type limits to ensure safe and efficient long-haul deliveries.",
+                "Training programs use alert data to feedback on improving driving standards.",
+                "Ride-sharing enforces regional speed rules for better passenger experiences."
+            ]
+        }
+    },
+    {
+        "_id": "100016",
+        "url": "speed-report",
+        "title": "Speed Report",
+        "colorCode": "#4E6FF3",
+        "description": "Monitor average, maximum, and minimum speeds for every trip.",
+        "icon": "CircleGauge",
+        "page_id": "speed_report",
+        "tag": "Report",
+        "hero_section": {
+            "tag": "Report",
+            "title": "Speed Report",
+            "subtitle": "Monitor average, maximum, and minimum speeds for every trip",
+            "description": "Speed Report monitors and analyzes vehicle speeds, generating detailed summaries of average, maximum, and minimum speeds during trips. This feature helps enforce speed limits and identify patterns in driving behavior, making TMV one of the best GPS tracking services in Bangladesh for safety monitoring."
+        },
+        "platform_section": {
+            "title": "Available On All Platforms",
+            "subtitle": "Access powerful telematics features from web dashboard or mobile app",
+            "platforms": [
+                {
+                    "type": "Web Interface",
+                    "title": "Desktop Dashboard",
+                    "description": "Comprehensive fleet overview with advanced analytics, reporting, and management tools optimized for large screens.",
+                    "image": "dashboard_image.png"
+                },
+                {
+                    "type": "Mobile Application",
+                    "title": "On-The-Go Access",
+                    "description": "Monitor your fleet from anywhere with our intuitive mobile app designed for field managers and drivers.",
+                    "image": "mobile_image.png"
+                }
+            ]
+        },
+        "key_benefits": {
+            "title": "Key Benefits",
+            "benefits": [
+                {
+                    "icon": "shield-check",
+                    "title": "Safety Enhancement",
+                    "description": "Spot excessive speeding to prevent accidents and promote safer driving habits."
+                },
+                {
+                    "icon": "fuel",
+                    "title": "Fuel Efficiency",
+                    "description": "Correlate speed data with consumption to encourage optimal driving speeds."
+                },
+                {
+                    "icon": "trending-up",
+                    "title": "Performance Metrics",
+                    "description": "Track speed trends to benchmark drivers and improve overall fleet standards."
+                }
+            ]
+        },
+        "real_world_applications": {
+            "title": "Real-World Applications",
+            "description": "Where Speed Reports matter",
+            "applications": [
+                "Transportation companies train drivers on optimal speeds to reduce vehicle wear.",
+                "Ride sharing services ensure urban speed limit compliance for passenger safety.",
+                "Fleet managers benchmark performance with zone-specific speed breakdowns.",
+                "Logistics firms correlate speeds with fuel data for efficiency improvements."
+            ]
+        }
+    },
+    {
+        "_id": "100017",
+        "url": "trip-report",
+        "title": "Trip Report",
+        "colorCode": "#7DCF00",
+        "description": "Comprehensive trip details including duration, distance, and stops.",
+        "icon": "Route",
+        "page_id": "trip_report",
+        "tag": "Report",
+        "hero_section": {
+            "tag": "Report",
+            "title": "Trip Report",
+            "subtitle": "Comprehensive trip details including duration, distance, and stops",
+            "description": "Trip Report compiles comprehensive details on individual journeys, including start/end times, routes, distances, durations, and associated metrics like fuel used or stops made. This feature turns raw data into actionable trip summaries and is especially powerful for users who are relying on the best vehicle tracking system provider in Bangladesh."
+        },
+        "platform_section": {
+            "title": "Available On All Platforms",
+            "subtitle": "Access powerful telematics features from web dashboard or mobile app",
+            "platforms": [
+                {
+                    "type": "Web Interface",
+                    "title": "Desktop Dashboard",
+                    "description": "Comprehensive fleet overview with advanced analytics, reporting, and management tools optimized for large screens.",
+                    "image": "dashboard_image.png"
+                },
+                {
+                    "type": "Mobile Application",
+                    "title": "On-The-Go Access",
+                    "description": "Monitor your fleet from anywhere with our intuitive mobile app designed for field managers and drivers.",
+                    "image": "mobile_image.png"
+                }
+            ]
+        },
+        "key_benefits": {
+            "title": "Key Benefits",
+            "benefits": [
+                {
+                    "icon": "scan-search",
+                    "title": "Trip Optimization",
+                    "description": "Review past trips to refine routes and reduce travel time in future operations."
+                },
+                {
+                    "icon": "file-clock",
+                    "title": "Expense Tracking",
+                    "description": "Accurately log trip costs for reimbursement, taxation, or budgeting purposes."
+                },
+                {
+                    "icon": "user-star",
+                    "title": "Driver Accountability",
+                    "description": "Monitor trip adherence to schedules and identify deviations for guiding."
+                }
+            ]
+        },
+        "real_world_applications": {
+            "title": "Real-World Applications",
+            "description": "How Trip Reports help",
+            "applications": [
+                "Delivery businesses improve on-time rates by refining routes from past trip data.",
+                "Commuters log expenses for distance reimbursement using detailed summaries.",
+                "Fleet supervisors can guide drivers on schedule adherence with deviation insights.",
+                "Personal users assess eco-impact from trip durations and distances."
+            ]
+        }
+    },
+    {
+        "_id": "100018",
+        "url": "virtual-watchman",
+        "title": "Virtual Watchman",
+        "colorCode": "#7DCF00",
+        "description": "Automated distance and time-based virtual vehicle monitoring.",
+        "icon": "ShieldCheck",
+        "page_id": "virtual_watchman",
+        "tag": "Feature",
+        "hero_section": {
+            "tag": "Feature",
+            "title": "Virtual Watchman",
+            "subtitle": "Automated distance and time-based virtual vehicle monitoring",
+            "description": "Virtual Watchman is an innovative monitoring feature that allows you to set custom parameters for virtual oversight of your vehicle based on distance traveled or time elapsed. This tool provides virtual monitoring of the vehicle ensuring proactive management without constant manual checking, a key aspect of our best telematics solution BD."
+        },
+        "platform_section": {
+            "title": "Available On All Platforms",
+            "subtitle": "Access powerful telematics features from web dashboard or mobile app",
+            "platforms": [
+                {
+                    "type": "Web Interface",
+                    "title": "Desktop Dashboard",
+                    "description": "Comprehensive fleet overview with advanced analytics, reporting, and management tools optimized for large screens.",
+                    "image": "dashboard_image.png"
+                },
+                {
+                    "type": "Mobile Application",
+                    "title": "On-The-Go Access",
+                    "description": "Monitor your fleet from anywhere with our intuitive mobile app designed for field managers and drivers.",
+                    "image": "mobile_image.png"
+                }
+            ]
+        },
+        "key_benefits": {
+            "title": "Key Benefits",
+            "benefits": [
+                {
+                    "icon": "bell-ring",
+                    "title": "Customized Monitoring",
+                    "description": "Tailor alerts to specific distances or durations, giving you flexibility for various scenarios like long-haul trips or timed deliveries."
+                },
+                {
+                    "icon": "siren",
+                    "title": "Enhanced Security",
+                    "description": "Receive notifications for unusual patterns, such as exceeding expected travel distances, to detect potential issues like detours or theft."
+                },
+                {
+                    "icon": "arrow-up-narrow-wide",
+                    "title": "Efficiency Gains",
+                    "description": "Optimize fleet operations by setting time-based checks to ensure timely progress, reducing delays and improving productivity."
+                }
+            ]
+        },
+        "real_world_applications": {
+            "title": "Real-World Applications",
+            "description": "How Virtual Watchman supports daily operations",
+            "applications": [
+                "Trucking companies monitor long-haul progress with time-based alerts for delays.",
+                "Logistics ensure timely deliveries by setting intervals to detect detours.",
+                "Security teams identify theft patterns with notifications on exceeded thresholds.",
+                "Fleet operators optimize productivity with background monitoring during operations, making TMV ideal for fleet management systems in Bangladesh."
+            ]
+        }
+    }
+]

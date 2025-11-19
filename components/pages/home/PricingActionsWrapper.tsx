@@ -35,8 +35,8 @@ export default function PricingActionsWrapper({
             </p>
 
             <SubscriptionButtons selected={selected} setSelected={setSelected} twelveMonthSubscription={twelveMonthSubscription} sixMonthSubscription={sixMonthSubscription} />
-            {(product && selected) ? <p className="text-gray-600 text-sm font-light my-2">Total {Number(product.product_final_amount) + Number(selected?.final_amount)}/- with {selected?.duration_months} Month Subscription</p> : <></>}
-            {(product && selected) ? <p className="text-gray-600 text-xs text-right font-light my-2">**VAT Excluding</p> : <></>}
+            {(product && selected) ? <p className="text-black text-xs font-medium my-2">Total {Number(product.product_final_amount) + Number(selected?.final_amount)}/- with {selected?.duration_months} Month Subscription</p> : <></>}
+            {/* {(product && selected) ? <p className="text-gray-600 text-xs text-right font-light my-2">**VAT Excluding</p> : <></>} */}
             <div className='grid grid-cols-2 gap-2'>
                 <Link
                     className='shrink-0'

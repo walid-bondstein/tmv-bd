@@ -63,7 +63,7 @@ export default async function Header() {
                         </div>
 
                         <div className="flex justify-end items-center gap-3">
-                            <div className="border border-secondary-foreground/10 rounded-full cursor-pointer bg-white/50 backdrop-blur-sm">
+                            <div className="border hidden border-secondary-foreground/10 rounded-full cursor-pointer bg-white/50 backdrop-blur-sm">
                                 <Search className="w-6 h-6 m-3 text-secondary-foreground" />
                             </div>
                             <div className="hidden lg:block bg-white/50 backdrop-blur-sm">
