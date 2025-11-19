@@ -1,5 +1,6 @@
 "use client"
 import { Product, ProductSubscription } from '@/app/page'
+import { toIndianNumberFormat } from '@/lib/utils';
 import { Check } from 'lucide-react'
 import React from 'react'
 
@@ -28,7 +29,7 @@ export default function SubscriptionButtons({
             >
                 <div className="text-left">
                     <p className="text-xs text-primary-foreground mb-1 uppercase tracking-wider">6 Month</p>
-                    <p className="text-base text-primary-foreground font-bold whitespace-nowrap">{Number(sixMonthSubscription.final_amount)} BDT</p>
+                    <p className="text-base text-primary-foreground font-bold whitespace-nowrap">{toIndianNumberFormat(Number(sixMonthSubscription.final_amount))} BDT</p>
                 </div>
                 {(selected?.product_subscription_id === sixMonthSubscription.product_subscription_id) ? <Check className="w-5 h-5 text-black transition-opacity" /> : <></>}
             </button> : <></>}
@@ -46,7 +47,7 @@ export default function SubscriptionButtons({
                 >
                     <div className="text-left">
                         <p className="text-xs text-primary-foreground mb-1 uppercase tracking-wider">12 Month</p>
-                        <p className="text-base text-primary-foreground font-bold whitespace-nowrap">{Number(twelveMonthSubscription.final_amount)} BDT</p>
+                        <p className="text-base text-primary-foreground font-bold whitespace-nowrap">{toIndianNumberFormat(Number(twelveMonthSubscription.final_amount))} BDT</p>
                     </div>
                     {(selected?.product_subscription_id === twelveMonthSubscription.product_subscription_id) ? <Check className="w-5 h-5 text-black transition-opacity" /> : <></>}
                 </button>

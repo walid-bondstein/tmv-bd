@@ -581,15 +581,15 @@
         "url": "guest-user-login",
         "title": "Guest User",
         "colorCode": "#4E6FF3",
-        "description": "Instant access to explore TMV without registration.",
+        "description": "Provide temporary, controlled access to view vehicle locations",
         "icon": "UserPlus",
         "page_id": "guest_user_login",
         "tag": "Feature",
         "hero_section": {
             "tag": "Feature",
             "title": "Guest User Login",
-            "subtitle": "Instant access to explore TMV without registration",
-            "description": "Guest User Login is a convenient feature in TMV, the best vehicle tracking system in Bangladesh, that allows users to access the platform temporarily. This access mode enables quick exploration of core functionalities like real-time tracking and reports, ideal for demonstrations or initial evaluations. As a leading vehicle tracking company in Bangladesh, TMV ensures this feature maintains high security standards while offering a seamless entry point."
+            "subtitle": "Provide temporary, controlled access to view vehicle locations",
+            "description": "The Guest User Login feature in TMV, the leading vehicle tracking system in Bangladesh, allows authorised users to grant temporary access to others, enabling them to view the real-time location of vehicles without full account privileges. This is perfect for fleet managers, clients, or stakeholders who need a quick, secure overview of your fleet. TMV ensures that even temporary guest access remains fully secure, making it easy to share vehicle location information while maintaining control and privacy."
         },
         "platform_section": {
             "title": "Available On All Platforms",
@@ -613,19 +613,19 @@
             "title": "Key Benefits",
             "benefits": [
                 {
-                    "icon": "user-check",
-                    "title": "Quick Access",
-                    "description": "Dive into TMV's intuitive dashboard instantly, without registration hurdles, to experience the best tracking service in Bangladesh."
+                    "icon": "finger-print",
+                    "title": "Secure Temporary Access",
+                    "description": "Grant authorized users or stakeholders temporary access to view vehicle locations without exposing full account privileges."
                 },
                 {
-                    "icon": "network",
-                    "title": "Trial Experience",
-                    "description": "Test essential features to understand how TMV can benefit your needs."
+                    "icon": "signal",
+                    "title": "Real-Time Vehicle Tracking",
+                    "description": "Enable guests to monitor your fleet’s current location instantly for better oversight and decision-making"
                 },
                 {
-                    "icon": "chart-candlestick",
-                    "title": "Evaluate Performance",
-                    "description": "Analyze the accuracy, speed, and reliability of TMV in live conditions to verify TMV’s performance firsthand."
+                    "icon": "share2",
+                    "title": "Easy and Convenient Sharing",
+                    "description": "Share fleet information quickly while maintaining control, privacy, and security."
                 }
             ]
         },
@@ -633,10 +633,10 @@
             "title": "Real-World Applications",
             "description": "Where Guest User Login becomes useful",
             "applications": [
-                "Prospective fleet managers explore TMV features during sales demos without committing to a subscription.",
-                "Logistics partners in Bangladesh use guest mode for temporary sharing of route history to collaborate on projects.",
-                "Individual users trial TMV to assess real-time monitoring before signing up.",
-                "Ride-sharing services evaluate driver safety tools like fatigue alerts in a low-commitment environment."
+                "Schools, colleges, and universities can provide temporary access to parents or staff to track buses and transport vehicles in real time.",
+                "Offices offering shuttle services can give employees temporary access to see the current location of company transport.",
+                "Businesses can allow clients to track delivery or service vehicles without granting full system access.",
+                "Logistics partners, contractors, or service providers can get limited access to monitor vehicles relevant to their tasks securely."
             ]
         }
     },

@@ -1,4 +1,4 @@
-import { Shield, Brain, Smartphone, Monitor, ShieldCheck, Cog, Check, Activity, ChartPie, ClipboardClock, FileChartColumn, CarTaxiFront, SquareStar, MessageSquareText, Smile, SquareActivity, ScrollText, ShieldPlus, Laugh, ThumbsUp, Fuel, CircleDollarSign, ScanFace, LandPlot, BellRing, UserCheck, Network, ChartCandlestick, HeartHandshake, SearchCheck, CalendarDays, Bus, SquareKanban, Dumbbell, PencilRuler, Route, Gauge, TrendingUp, ScanSearch, FileClock, UserStar, Siren, ArrowUpNarrowWide, ChartNoAxesColumn } from 'lucide-react'
+import { Shield, Brain, Smartphone, Monitor, ShieldCheck, Cog, Check, Activity, ChartPie, ClipboardClock, FileChartColumn, CarTaxiFront, SquareStar, MessageSquareText, Smile, SquareActivity, ScrollText, ShieldPlus, Laugh, ThumbsUp, Fuel, CircleDollarSign, ScanFace, LandPlot, BellRing, UserCheck, Network, ChartCandlestick, HeartHandshake, SearchCheck, CalendarDays, Bus, SquareKanban, Dumbbell, PencilRuler, Route, Gauge, TrendingUp, ScanSearch, FileClock, UserStar, Siren, ArrowUpNarrowWide, ChartNoAxesColumn, Fingerprint, Signal, Share, Share2 } from 'lucide-react'
 import { Card } from '@/components/ui/card'
 import { FeatureDetails } from './types'
 import { Button } from '../ui/button'
@@ -46,6 +46,10 @@ function getIconComponent(iconName: string) {
         'user-star': UserStar,
         'siren': Siren,
         'arrow-up-narrow-wide': ArrowUpNarrowWide,
+        'finger-print': Fingerprint,
+        'signal': Signal,
+        'share2': Share2,
+        'share': Share,
     }
     return iconMap[iconName] || Shield
 }

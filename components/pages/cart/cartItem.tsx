@@ -3,6 +3,7 @@
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { useCart } from "@/context/cart-context";
+import { toIndianNumberFormat } from "@/lib/utils";
 import { ArrowLeft, Minus, Plus, X } from "lucide-react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
@@ -93,7 +94,7 @@ export default function CartItem() {
                           <p className="text-[#727B8C]">
                             Monthly Subscription-{" "}
                             {item.subscriptionDurationMonths} Month{" "}
-                            {`(${item.subscriptionPrice * item.quantity
+                            {`(${toIndianNumberFormat(item.subscriptionPrice * item.quantity)
                               }/- BDT)`}
                           </p>
                         </div>
@@ -103,7 +104,7 @@ export default function CartItem() {
                       <p>
                         {" "}
                         <span className="lg:hidden block">Price</span>{" "}
-                        {item.priceWithoutDiscount}/-BDT
+                        {toIndianNumberFormat(item.priceWithoutDiscount)}/-BDT
                       </p>
                     </div>
                     <div className="lg:col-span-3 col-span-6 flex 2xl:justify-start xl:justify-center xl:gap-2 lg:justify-start justify-center items-center">
@@ -145,8 +146,8 @@ export default function CartItem() {
                     <div className="lg:col-span-2 col-span-3 flex lg:justify-start justify-center items-center text-[#727B8C]">
                       <p>
                         <span className="lg:hidden block">Subtotal</span>{" "}
-                        {(item.priceWithoutDiscount + item.subscriptionPrice) *
-                          item.quantity}{" "}
+                        {toIndianNumberFormat((item.priceWithoutDiscount + item.subscriptionPrice) *
+                          item.quantity)}{" "}
                         BDT
                       </p>
                     </div>
@@ -185,10 +186,10 @@ export default function CartItem() {
                       <p className="text-[#727B8C] text-base">
                         Monthly Subscription- {item.subscriptionDurationMonths}{" "}
                         Month{" "}
-                        {`(${item.subscriptionPrice * item.quantity}/- BDT)`}
+                        {`(${toIndianNumberFormat(item.subscriptionPrice * item.quantity)}/- BDT)`}
                       </p>
                       <p className="text-xl font-medium text-[#211E1F]">
-                        {item.priceWithoutDiscount}/- BDT
+                        {toIndianNumberFormat(item.priceWithoutDiscount)}/- BDT
                       </p>
                     </div>
                     <div>
@@ -255,7 +256,7 @@ export default function CartItem() {
                   <div className="flex justify-between items-center gap-4">
                     <div>
                       <p className="text-lg font-semibold">{coupon.code}</p>
-                      <p>{coupon.discount}/- BDT off</p>
+                      <p>{toIndianNumberFormat(coupon.discount)}/- BDT off</p>
                     </div>
                     <Button
                       onClick={() => {
@@ -317,25 +318,25 @@ export default function CartItem() {
                 items.map((itm, indx) => <div key={indx} className='col-span-2 flex justify-between items-center'>
                   <section className='max-w-4xs'>
                     <p className="text-sm font-medium md:text-lg text-[#727B8C]">{itm.quantity}X. {itm.name}</p>
-                    <p className='text-[#727B8C] md:text-base text-xs'>Monthly Subscription- {itm.subscriptionDurationMonths} Month {`(${(itm.subscriptionPrice) * itm.quantity}/- BDT)`}</p>
+                    <p className='text-[#727B8C] md:text-base text-xs'>Monthly Subscription- {itm.subscriptionDurationMonths} Month {`(${toIndianNumberFormat(((itm.subscriptionPrice) * itm.quantity))}/- BDT)`}</p>
                   </section>
-                  <p className="text-sm md:text-lg font-semibold text-right">{(itm.priceWithoutDiscount + itm.subscriptionPrice) * itm.quantity}/- BDT</p>
+                  <p className="text-sm md:text-lg font-semibold text-right">{toIndianNumberFormat((itm.priceWithoutDiscount + itm.subscriptionPrice) * itm.quantity)}/- BDT</p>
                 </div>)
               }
               <p className="text-sm font-medium md:text-lg text-[#727B8C]">VAT</p>
-              <p className="text-sm md:text-lg font-semibold text-right">{totalVat ?? 0}/- BDT</p>
+              <p className="text-sm md:text-lg font-semibold text-right">{toIndianNumberFormat(totalVat) ?? 0}/- BDT</p>
               <p className="text-sm font-medium md:text-lg text-[#727B8C]">
                 Subtotal Amount
               </p>
               <p className="text-sm md:text-lg font-semibold text-right">
-                {subtotal}/- BDT
+                {toIndianNumberFormat(subtotal)}/- BDT
               </p>
               {coupon ? <>
                 <p className="text-sm font-medium md:text-lg text-[#727B8C]">
                   Coupon Discount
                 </p>
                 <p className="text-sm md:text-lg font-semibold text-right">
-                  {discount}/- BDT
+                  {toIndianNumberFormat(discount)}/- BDT
                 </p>
               </> : <></>}
             </div>
@@ -345,7 +346,7 @@ export default function CartItem() {
                 Total Amount
               </p>
               <p className="text-sm md:text-lg font-semibold text-right">
-                {total}/- BDT
+                {toIndianNumberFormat(total)}/- BDT
               </p>
             </div>
             <div className="mt-3 space-y-3">

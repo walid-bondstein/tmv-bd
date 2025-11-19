@@ -9,6 +9,7 @@ import { Product } from "@/app/page";
 import { useCart } from "@/context/cart-context";
 import { useRouter } from "next/navigation";
 import { toast } from "sonner";
+import { toIndianNumberFormat } from "@/lib/utils";
 
 interface DisplayProductProps {
   product: Product;
@@ -85,7 +86,7 @@ export default function DisplayProduct({ product }: DisplayProductProps) {
                 {/* Text Content */}
                 <div>
                   <p className="text-lg font-bold text-gray-900">
-                    {Number(option.final_amount).toFixed(0)}
+                    {toIndianNumberFormat(Number(option.final_amount).toFixed(0))}
                     <span className="font-semibold">/-BDT</span>
                   </p>
                   <p className="text-sm text-gray-500">
@@ -130,7 +131,7 @@ export default function DisplayProduct({ product }: DisplayProductProps) {
           <div className="flex flex-col md:mr-0 mr-auto">
             <p className="text-sm font-bold text-gray-900">Total:</p>
             <p className="text-lg font-semibold">
-              ৳{total + Number(selectedPlan.final_amount)} /- BDT
+              ৳{toIndianNumberFormat(total + Number(selectedPlan.final_amount))} /- BDT
             </p>
             {selectedPlan && (
               <p className="text-xs text-yellow-600">

@@ -16,6 +16,7 @@ import CustomRadio from './CustomRdio'
 import { toast } from 'sonner'
 import axios from 'axios'
 import { useRouter } from 'next/navigation'
+import { toIndianNumberFormat } from '@/lib/utils'
 
 const billingFormSchema = z.object({
     first_name: z.string().min(2, "First name must be at least 2 characters"),
@@ -442,7 +443,7 @@ export default function BillingForm({
                                     <div className='flex justify-between items-center gap-4'>
                                         <div>
                                             <p className="text-lg font-semibold">{coupon.code}</p>
-                                            <p>{discount}/- BDT off</p>
+                                            <p>{toIndianNumberFormat(discount)}/- BDT off</p>
                                         </div>
                                         <Button onClick={() => { applyCoupon("", 0); clearCoupon(); setCouponText("") }} className="bg-primary rounded-lg tmv-shadow submit cursor-pointer text-[clamp(14px,4.0625vw,16px)]">
                                             <X />
@@ -491,22 +492,22 @@ export default function BillingForm({
                                     items.map((itm, indx) => <div key={indx} className='col-span-2 flex justify-between items-center'>
                                         <section className='max-w-4xs'>
                                             <p className="text-sm font-medium md:text-lg text-[#727B8C]">{itm.quantity}X. {itm.name}</p>
-                                            <p className='text-[#727B8C] md:text-base text-xs'>Monthly Subscription- {itm.subscriptionDurationMonths} Month {`(${(itm.subscriptionPrice) * itm.quantity}/- BDT)`}</p>
+                                            <p className='text-[#727B8C] md:text-base text-xs'>Monthly Subscription- {itm.subscriptionDurationMonths} Month {`(${toIndianNumberFormat((itm.subscriptionPrice) * itm.quantity)}/- BDT)`}</p>
                                         </section>
-                                        <p className="text-sm md:text-lg font-semibold text-right">{(itm.priceWithoutDiscount + itm.subscriptionPrice) * itm.quantity}/- BDT</p>
+                                        <p className="text-sm md:text-lg font-semibold text-right">{toIndianNumberFormat((itm.priceWithoutDiscount + itm.subscriptionPrice) * itm.quantity)}/- BDT</p>
                                     </div>)
                                 }
                                 <p className="text-sm font-medium md:text-lg text-[#727B8C]">VAT</p>
-                                <p className="text-sm md:text-lg font-semibold text-right">{totalVat ?? 0}/- BDT</p>
+                                <p className="text-sm md:text-lg font-semibold text-right">{toIndianNumberFormat(totalVat) ?? 0}/- BDT</p>
                                 <p className="text-sm font-medium md:text-lg text-[#727B8C]">Subtotal</p>
-                                <p className="text-sm md:text-lg font-semibold text-right">{subtotal ?? 0}/- BDT</p>
+                                <p className="text-sm md:text-lg font-semibold text-right">{toIndianNumberFormat(subtotal) ?? 0}/- BDT</p>
                                 {coupon && <p className="text-sm font-medium md:text-lg text-[#727B8C]">Coupon Discount</p>}
-                                {coupon && <p className="text-sm md:text-lg font-semibold text-right">{coupon?.discount ?? 0}/- BDT</p>}
+                                {coupon && <p className="text-sm md:text-lg font-semibold text-right">{toIndianNumberFormat(coupon?.discount) ?? 0}/- BDT</p>}
                             </div>
                             <hr />
                             <div className='grid grid-cols-2'>
                                 <p className="text-sm font-medium md:text-lg text-[#727B8C]">Total Amount</p>
-                                <p className="text-sm md:text-lg font-semibold text-right">{total}/- BDT</p>
+                                <p className="text-sm md:text-lg font-semibold text-right">{toIndianNumberFormat(total)}/- BDT</p>
                             </div>
                             <div>
                                 <FormField
