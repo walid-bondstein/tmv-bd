@@ -28,13 +28,6 @@ const partners = [
   { id: 15, src: "/partners/dncc.png", alt: "DNCC" },
   { id: 16, src: "/partners/aramIT.png", alt: "Aram IT" },
   { id: 17, src: "/partners/robi.png", alt: "Robi" },
-  // { id: 8, src: "/partners/Nestle.png", alt: "Nestle" },
-  // { id: 9, src: "/partners/Gp.png", alt: "Grameenphone" },
-  // { id: 10, src: "/partners/IFC.png", alt: "IFC" },
-  // { id: 11, src: "/partners/Kns.png", alt: "KNS" },
-  // { id: 13, src: "/partners/Therap.png", alt: "Therap" },
-  // { id: 14, src: "/partners/brac.png", alt: "BRAC" },
-  // { id: 15, src: "/partners/bat.png", alt: "BAT" },
 ];
 
 export function Partners() {
@@ -110,20 +103,26 @@ export function Partners() {
         <TabsContent className="component-container mx-auto" value="certified">
           <div className="flex flex-wrap justify-center items-center gap-10">
             <div className="flex flex-wrap justify-center items-center gap-6 md:gap-10">
-              {["/images/ISO_certified.png", "/images/brta-certified.png"].map(
-                (src, i) => (
-                  <div key={i} className="w-40 md:w-48">
-                    <AspectRatio ratio={1.8 / 1}>
-                      <Image
-                        src={src}
-                        alt="Certified"
-                        fill
-                        className="object-contain grayscale hover:grayscale-0 hover:scale-110 transition-transform duration-700 ease-in-out bg-card rounded-lg"
-                      />
-                    </AspectRatio>
-                  </div>
-                )
-              )}
+              <div className="w-40 md:w-48">
+                <AspectRatio ratio={1.8 / 1}>
+                  <Image
+                    src={"/images/iso.png"}
+                    alt="ISO Certified"
+                    fill
+                    className="object-contain grayscale hover:grayscale-0 hover:scale-110 transition-transform duration-700 ease-in-out bg-card rounded-lg"
+                  />
+                </AspectRatio>
+              </div>
+              <div className="w-40 md:w-48">
+                <AspectRatio ratio={1.8 / 1}>
+                  <Image
+                    src={"/images/btrc.png"}
+                    alt="Brtc Certified"
+                    fill
+                    className="object-contain grayscale hover:grayscale-0 hover:scale-110 transition-transform duration-700 ease-in-out bg-card rounded-lg"
+                  />
+                </AspectRatio>
+              </div>
             </div>
           </div>
         </TabsContent>

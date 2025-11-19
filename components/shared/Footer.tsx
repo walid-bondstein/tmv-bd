@@ -1,4 +1,4 @@
-import { Facebook, Github, Instagram, Twitter } from 'lucide-react'
+import { Facebook, Github, Instagram, Linkedin, Twitter } from 'lucide-react'
 import Image from 'next/image'
 import Link from 'next/link'
 import NewsLetter from './NewsLetter'
@@ -18,31 +18,21 @@ export default function Footer() {
                                 className='w-16 h-16 lg:w-28 lg:h-28 object-center object-contain'
                             />
                             <p className="2xl:text-[22px] 2xl:leading-[35px] font-semibold">Head Office</p>
-                            <p className="2xl:text-[18px] 2xl:leading-[26px] font-light text-[#4A5E6D]">138/1, Level, 4 Bir Uttam Mir Shawkat Sarak, Dhaka 1208</p>
-                            <div className='fle x justify-start items-center gap-4 mt-8 hidden'>
-                                <a href="https://twitter.com/"
-                                    target="_blank"
-                                    className="bg-[#FDD10E] p-3 rounded-full hover:scale-110 transition-transform">
-                                    <Twitter className="w-6 h-6 text-transparent fill-black" />
-                                </a>
-
+                            <div>
+                                <p className="2xl:text-[18px] 2xl:leading-[26px] font-light text-[#4A5E6D]">Bondstein Technologies Limited</p>
+                                <p className="2xl:text-[18px] 2xl:leading-[26px] font-light text-[#4A5E6D]">138/1, Level, 4 Bir Uttam Mir Shawkat Sarak, Dhaka 1208</p>
+                            </div>
+                            <div className='flex justify-start items-center gap-4 mt-8'>
                                 <a href="https://www.facebook.com/tmvbd"
                                     target="_blank"
                                     className="bg-[#FDD10E] p-3 rounded-full hover:scale-110 transition-transform">
                                     <Facebook className='w-6 h-6 text-transparent fill-black' />
                                 </a>
 
-                                <a href="https://www.instagram.com/track_my_vehicle/?igsh=ZnllbXZhZWE4ejd5#"
+                                <a href="https://www.linkedin.com/company/track-my-vehicle?originalSubdomain=bd"
                                     target="_blank"
                                     className="bg-[#FDD10E] p-3 rounded-full hover:scale-110 transition-transform">
-                                    <Instagram className='w-6 h-6 text-black' />
-                                </a>
-
-
-                                <a href=""
-                                    target="_blank"
-                                    className="bg-[#FDD10E] p-3 rounded-full hover:scale-110 transition-transform">
-                                    <Github className='w-6 h-6 text-black' />
+                                    <Linkedin className="w-6 h-6 text-transparent fill-black" />
                                 </a>
                             </div>
                         </div>
@@ -52,19 +42,19 @@ export default function Footer() {
                             <div className=''>
                                 <p className="text-lg font-semibold text-[#4A5E6D]">Quick links</p>
                                 <ul>
-                                    <li>  <Link href={"https://store.tmvbd.com/"} className="text-base font-normal text-[#6C757D] leading-10">Shop</Link></li>
-                                    <li>  <Link href={"/"} className="text-base font-normal text-[#6C757D] leading-10">About</Link></li>
-                                    <li>  <Link href={"/"} className="text-base font-normal text-[#6C757D] leading-10">Contact</Link></li>
-                                    <li>  <Link href={"/"} className="text-base font-normal text-[#6C757D] leading-10">Support</Link></li>
-                                    <li>  <Link href={"/"} className="text-base font-normal text-[#6C757D] leading-10">Policies</Link></li>
+                                    <li>  <Link href={"/#products"} className="text-base font-normal text-[#6C757D] leading-10">Shop</Link></li>
+                                    <li>  <Link href={"/#get-in-touch"} className="text-base font-normal text-[#6C757D] leading-10">Contact</Link></li>
                                 </ul>
                             </div>
                             <div>
                                 <p className="text-lg font-semibold text-[#4A5E6D]">More</p>
                                 <ul>
-                                    <li>  <Link href={"/"} className="text-base font-normal text-[#6C757D] leading-10">Legal Text</Link></li>
-                                    <li>  <Link href={"/"} className="text-base font-normal text-[#6C757D] leading-10">Privacy Notice</Link></li>
-                                    <li>  <Link href={"/"} className="text-base font-normal text-[#6C757D] leading-10">FAQ</Link></li>
+                                    {/* <li>  <Link href={"/"} className="text-base font-normal text-[#6C757D] leading-10">Legal Text</Link></li> */}
+                                    <li>  <Link href={"https://bondstein.com/about-us"} className="text-base font-normal text-[#6C757D] leading-10">About</Link></li>
+                                    {/* <li>  <Link href={"/"} className="text-base font-normal text-[#6C757D] leading-10">Privacy Notice</Link></li> */}
+                                    {/* <li>  <Link href={"/"} className="text-base font-normal text-[#6C757D] leading-10">FAQ</Link></li> */}
+                                    {/* <li>  <Link href={"/"} className="text-base font-normal text-[#6C757D] leading-10">Support</Link></li> */}
+                                    <li>  <Link href={"https://bondste.in/terms"} className="text-base font-normal text-[#6C757D] leading-10">Terms </Link></li>
                                 </ul>
                             </div>
                         </div>

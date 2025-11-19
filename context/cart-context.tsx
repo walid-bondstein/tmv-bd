@@ -90,8 +90,8 @@ export function CartProvider({ children }: { children: ReactNode }) {
 
     // 🧮 Calculations
     const { subtotal, discount, total, subtotalWithoutVat, deviceVat, subscriptionVat, totalVat } = useMemo(() => {
-        const deviceVat = 15; // VAT can be calculated here if needed in future
-        const subscriptionVat = 10; // VAT can be calculated here if needed in future
+        const deviceVat = 10; // VAT can be calculated here if needed in future
+        const subscriptionVat = 5; // VAT can be calculated here if needed in future
         let totalVat = 0;
         let deviceVatAmount = 0;
         let subscriptionVatAmount = 0;

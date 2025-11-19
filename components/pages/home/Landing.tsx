@@ -37,7 +37,7 @@ export default function Landing({ offers }: { offers: string[] }) {
                   Buy Now
                 </button>
               </Link>
-              <button className="bg-btn-info lg:w-[9.7rem] xs:w-[9.8rem] xs:h-13 w-28 h-8 lg:font-bold rounded-lg tmv-shadow submit cursor-pointer text-[clamp(14px,4.0625vw,16px)]">
+              <button className="bg-btn-info hidden lg:w-[9.7rem] xs:w-[9.8rem] xs:h-13 w-28 h-8 lg:font-bold rounded-lg tmv-shadow submit cursor-pointer text-[clamp(14px,4.0625vw,16px)]">
                 Learn More
               </button>
             </div>

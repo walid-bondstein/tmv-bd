@@ -5,6 +5,7 @@ import { Suspense } from "react"
 import "./globals.css"
 import { Toaster } from "@/components/ui/sonner"
 import { CartProvider } from "@/context/cart-context"
+import WhatsAppButton from "@/components/shared/WhatsAppButton"
 
 export const metadata: Metadata = {
   title: {
@@ -55,6 +56,7 @@ export default function RootLayout({
           <Suspense>{children}</Suspense>
         </CartProvider>
         <Toaster position="top-right" richColors theme="light" />
+        <WhatsAppButton />
       </body>
     </html>
   )
