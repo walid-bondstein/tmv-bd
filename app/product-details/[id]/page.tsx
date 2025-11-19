@@ -6,7 +6,7 @@ import DisplayProduct from "@/components/pages/product-details/DisplayProduct";
 import FeaturedProducts from "@/components/pages/product-details/FeaturedProducts";
 import ProductDescription from "@/components/pages/product-details/ProductDescription";
 import Footer from "@/components/shared/Footer";
-import Header from "@/components/shared/Header-test";
+import Header from "@/components/shared/Header";
 import { Metadata } from "next";
 
 
