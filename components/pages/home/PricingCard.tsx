@@ -2,6 +2,7 @@ import { Product } from '@/app/page'
 import Image from "next/image"
 import React from "react"
 import PricingActionsWrapper from './PricingActionsWrapper'
+import Link from 'next/link'
 
 type Props = {
     product: Product
@@ -43,9 +44,13 @@ export const PricingCard: React.FC<Props> = ({ product }) => {
 
                 {/* Product Info */}
                 <div className="flex flex-col grow space-y-2.5">
-                    <h3 className="font-semibold text-xl text-gray-900">
-                        {product.product_name ?? "-"}
-                    </h3>
+                    <Link
+                        className='shrink-0'
+                        href={`/product-details/${product.product_slug}`}>
+                        <h3 className="font-semibold text-xl text-gray-900">
+                            {product.product_name ?? "-"}
+                        </h3>
+                    </Link>
                     <p className="text-sm text-gray-400/90 mb-3 line-clamp-2">
                         {product.product_details ?? "-"}
                     </p>

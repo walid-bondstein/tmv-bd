@@ -28,24 +28,24 @@ export default function PricingActionsWrapper({
             <p className="text-gray-800 font-semibold mb-4">
                 {Number(product.product_final_amount).toLocaleString()} /-{" "}
                 <span className="text-gray-700">BDT</span>
-                {Number(product.product_discount_amount) ? (
+                {/* {Number(product.product_discount_amount) ? (
                     <span className="font-medium ml-1 text-deep-gradient">
                         ({Number((Number(product.product_discount_amount) / Number(product.product_base_amount)) * 100).toFixed(1)}% Off)
                     </span>
-                ) : <></>}
+                ) : <></>} */}
             </p>
 
             <SubscriptionButtons selected={selected} setSelected={setSelected} twelveMonthSubscription={twelveMonthSubscription} sixMonthSubscription={sixMonthSubscription} />
             {(product && selected) ? <p className="text-black text-xs font-medium my-2">Total {toIndianNumberFormat(Number(product.product_final_amount) + Number(selected?.final_amount))}/- with {selected?.duration_months} Month Subscription</p> : <></>}
             {/* {(product && selected) ? <p className="text-gray-600 text-xs text-right font-light my-2">**VAT Excluding</p> : <></>} */}
-            <div className='grid grid-cols-2 gap-2'>
-                <Link
+            <div className='grid grid-cols-1 gap-2'>
+                {/* <Link
                     className='shrink-0'
                     href={`/product-details/${product.product_slug}`}>
                     <Button variant={"outline"} className="bg-white text-black hover:bg-white/90 hover:text-black/90 transition-colors duration-300 xs:h-13 mt-1 w-full h-8 lg:font-bold rounded-lg tmv-shadow submit cursor-pointer text-[clamp(14px,4.0625vw,16px)]">
                         Details
                     </Button>
-                </Link>
+                </Link> */}
                 <Button
                     onClick={() => {
                         if (!selected) {
