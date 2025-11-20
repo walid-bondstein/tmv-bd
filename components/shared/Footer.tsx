@@ -12,7 +12,7 @@ export default function Footer() {
                         <div className='space-y-4 max-w-84'>
                             <Image
                                 src="/images/tmv-bd.png"
-                                alt="Track My Vehicle BD Logo"
+                                alt="Track My Vehicle - Bondstein Logo"
                                 height={82}
                                 width={82}
                                 className='w-16 h-16 lg:w-28 lg:h-28 object-center object-contain'
@@ -66,7 +66,7 @@ export default function Footer() {
                             <p className="font-normal text-[clamp(20px,1.2499vw,24px)] text-[#777F92] line-clamp-1">The flagship product of</p>
                             <Image
                                 src="/images/bondstein.png"
-                                alt="Track My Vehicle BD Logo"
+                                alt="Track My Vehicle - Bondstein Logo"
                                 height={82}
                                 width={176}
                                 className='lg:h-auto h-9 lg:w-44 object-center object-contain'

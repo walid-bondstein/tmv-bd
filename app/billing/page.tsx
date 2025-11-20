@@ -4,9 +4,9 @@ import Header from "@/components/shared/Header";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-    title: "Product Details | Track My Vehicle BD",
+    title: "Product Details | Track My Vehicle - Bondstein",
     description:
-        "Explore detailed information and pricing for Track My Vehicle BD products.",
+        "Explore detailed information and pricing for Track My Vehicle - Bondstein products.",
     openGraph: {
         title: "Product Details",
         description:

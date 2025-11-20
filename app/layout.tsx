@@ -9,8 +9,8 @@ import WhatsAppButton from "@/components/shared/WhatsAppButton"
 
 export const metadata: Metadata = {
   title: {
-    default: "Track My Vehicle BD",
-    template: "%s | Track My Vehicle BD",
+    default: "Track My Vehicle - Bondstein",
+    template: "%s | Track My Vehicle - Bondstein",
   },
   description: "ADVANCED TELEMATICS SOLUTIONS FOR YOUR FLEET",
   keywords: [],
@@ -20,7 +20,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "en_US",
-    siteName: "Track My Vehicle BD",
+    siteName: "Track My Vehicle - Bondstein",
   },
   // twitter: {
   //   card: "summary_large_image",

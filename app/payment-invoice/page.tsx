@@ -1,17 +1,16 @@
 "use client"
 
-import { useRouter, useSearchParams } from "next/navigation"
+import { useSearchParams } from "next/navigation"
 import { CheckCircle, XCircle, Home } from "lucide-react"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 
 export default function Page() {
     const searchParams = useSearchParams()
-    const router = useRouter()
     const status = searchParams.get("status")
 
     const isSuccess = status === "ACCEPTED"
-    if (!isSuccess) router.replace('/');
+    // if (!isSuccess) router.replace('/');
     return (
         <main className="min-h-screen flex items-center justify-center bg-background px-4">
             <div className="w-full max-w-md">

@@ -25,7 +25,7 @@ export default async function Header() {
                         <Link href="/" className="cursor-pointer">
                             <Image
                                 src="/images/tmv-bd.png"
-                                alt="Track My Vehicle BD Logo"
+                                alt="Track My Vehicle - Bondstein Logo"
                                 height={82}
                                 width={82}
                                 className="w-16 h-16 lg:w-20.5 lg:h-20.5 object-center object-contain"

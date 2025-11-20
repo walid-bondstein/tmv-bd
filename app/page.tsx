@@ -15,7 +15,7 @@ import Footer from "@/components/shared/Footer";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-    title: "Home | Track My Vehicle BD",
+    title: "Home | Track My Vehicle - Bondstein",
     description: "ADVANCED TELEMATICS SOLUTIONS FOR YOUR FLEET",
     keywords: [
         "tmv",
