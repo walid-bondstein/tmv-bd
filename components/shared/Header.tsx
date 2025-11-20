@@ -19,7 +19,7 @@ export default async function Header() {
     };
     return (
         <div className="w-full lg:py-3.5 py-1.5 relative flex">
-            <NavigationMenu className="min-w-full">
+            <NavigationMenu viewport className="max-h-full min-w-full">
                 <div className={`component-container mx-auto`}>
                     <div className="flex justify-between items-center">
                         <Link href="/" className="cursor-pointer">
@@ -43,9 +43,9 @@ export default async function Header() {
                                         <Link className={`${isActive("/#products") ? "text-gradient" : "text-[#777F92]"} whitespace-nowrap`} href={"/#products"}>Products</Link>
                                     </NavigationMenuLink>
                                 </NavigationMenuItem>
-                                <NavigationMenuItem>
+                                <NavigationMenuItem className="">
                                     <NavigationMenuTrigger className={`${isActive("/features") ? "text-gradient" : "text-[#777F92]"} bg-transparent hover:bg-transparent whitespace-nowrap`}>Features</NavigationMenuTrigger>
-                                    <NavigationMenuContent className="p-0 m-0">
+                                    <NavigationMenuContent className="p-0 m-0 min-w-full max-w-full">
                                         <FeatureLinks />
                                     </NavigationMenuContent>
                                 </NavigationMenuItem>

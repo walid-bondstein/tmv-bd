@@ -46,7 +46,7 @@ export default function FeatureLinks() {
   const alert = components.filter((item) => item.tag === 'Alert');
   const report = components.filter((item) => item.tag === 'Report');
   return (
-    <ul className="grid w-screen bg-[#FFFDFA] bg-[linear-gradient(149deg,rgba(255,253,250,1)_0%,rgba(255,253,251,1)_100%)] p-0">
+    <ul className="grid bg-[#FFFDFA] bg-[linear-gradient(149deg,rgba(255,253,250,1)_0%,rgba(255,253,251,1)_100%)] p-0">
       <div className='component-container mx-auto p-0'>
         <div className='lg:py-8 md:py-6 py-4 grid xl:grid-cols-3 lg:grid-cols-2 gap-4'>
           <div>
