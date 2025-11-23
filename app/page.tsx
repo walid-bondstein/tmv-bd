@@ -107,13 +107,19 @@ async function getCurrentOffer(): Promise<string[]> {
             return [];
         }
 
-        const data = (await res.json()).data;
+        const data: {
+            offer_images: string[];
+            id: number;
+            product_id: number;
+            created_at: string;
+            updated_at: string;
+        } = (await res.json()).data;
 
         if (!Array.isArray(data)) {
             console.error("Unexpected API structure:", []);
             return [];
         }
-        return data as string[];
+        return data.map((item) => item.offer_images) as string[];
     } catch (error) {
         console.error("Error fetching stores:", error);
         return [];
@@ -154,7 +160,7 @@ export default async function HomePage() {
     const specialOffers: string[] = await getSpecialOffer();
     return (
         <main className="min-h-screen bg-white text-slate-900 2xl:space-y-[140px] xl:space-y-[120px] lg:space-y-[100px] md:space-y-20 sm:space-y-[70px] space-y-[50px]">
-            <Landing offers={offerBanners} />
+            <Landing offers={[]} />
             <Pricing products={products} />
             <KeyFeatures />
             <HowItWorks />
