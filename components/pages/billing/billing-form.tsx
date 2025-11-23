@@ -105,7 +105,7 @@ export default function BillingForm({
             const rawData = {
                 ...rest,
                 coupon_code: coupon ? values.coupon_code : "",
-                partial_payment_amount: advance_payment_amount ? Number(advance_payment_amount) : 0,
+                partial_payment_amount: (paymentType === "partial_payment" && advance_payment_amount) ? Number(advance_payment_amount) : 0,
                 products: items.map((itm) => ({
                     id: itm.id,
                     quantity: itm.quantity,
