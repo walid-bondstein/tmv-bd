@@ -27,11 +27,11 @@ export const metadata: Metadata = {
   //   creator: "@yourusername",
   // },
   robots: {
-    index: false,
-    follow: false,
+    index: true,
+    follow: true,
     googleBot: {
-      index: false,
-      follow: false,
+      index: true,
+      follow: true,
     },
   },
 }

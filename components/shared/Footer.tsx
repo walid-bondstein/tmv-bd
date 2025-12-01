@@ -42,7 +42,7 @@ export default function Footer() {
                             <div className=''>
                                 <p className="text-lg font-semibold text-[#4A5E6D]">Quick links</p>
                                 <ul>
-                                    <li>  <Link href={"/#products"} className="text-base font-normal text-[#6C757D] leading-10">Shop</Link></li>
+                                    <li>  <Link href={"/#pricing"} className="text-base font-normal text-[#6C757D] leading-10">Shop</Link></li>
                                     <li>  <Link href={"/#get-in-touch"} className="text-base font-normal text-[#6C757D] leading-10">Contact</Link></li>
                                 </ul>
                             </div>

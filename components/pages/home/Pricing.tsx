@@ -5,7 +5,7 @@ export default function Pricing({ products }: {
     products: Product[],
 }) {
     return (
-        <div className="component-container mx-auto lg:space-y-16 md:space-y-8 space-y-2" id="products"  >
+        <div className="component-container mx-auto lg:space-y-16 md:space-y-8 space-y-2" id="pricing"  >
             <div>
                 <h2 className="text-title text-center">Find the right solution</h2>
                 <p className="text-subtitle text-center">Explore products designed to power your fleet’s success.</p>

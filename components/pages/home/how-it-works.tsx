@@ -58,7 +58,7 @@ export function HowItWorks() {
               See Plans & Pricing
             </Button> */}
             <Link
-              href={"/#products"}
+              href={"/#pricing"}
             >
               <CircleButton title="See Plans & Pricing" />
             </Link>
@@ -132,7 +132,7 @@ export function HowItWorks() {
           {/* CTA Button */}
           <div className="flex justify-center pt-2">
             <Link
-              href={"/#products"}
+              href={"/#pricing"}
             >
               <Button
                 variant="outline"

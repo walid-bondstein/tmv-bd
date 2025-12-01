@@ -9,7 +9,7 @@ export function MobileNav() {
     const [isOpen, setIsOpen] = useState(false)
     const navItems = [
         { href: "/", label: "Home", isSeparator: false },
-        { href: "/#products", label: "Products", isSeparator: false },
+        { href: "/#pricing", label: "Products", isSeparator: false },
         { href: "/#features", label: "Features", isSeparator: false },
         { href: "/#how-it-works", label: "How it works", isSeparator: false },
         { href: "/store-locations", label: "Store Locations", isSeparator: false },

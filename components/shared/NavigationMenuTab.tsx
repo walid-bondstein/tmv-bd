@@ -72,7 +72,7 @@ export async function NavigationMenuTab() {
                         <Link className={`${isActive("/") ? "text-gradient" : "text-[#777F92]"}`} href="/">Home</Link>
                     </NavigationMenuLink>
                     <NavigationMenuLink asChild className={"inline-flex text-base bg-transparent hover:bg-transparent"}>
-                        <Link className={`${isActive("/#products") ? "text-gradient" : "text-[#777F92]"}`} href={"/#products"}>Products</Link>
+                        <Link className={`${isActive("/#pricing") ? "text-gradient" : "text-[#777F92]"}`} href={"/#pricing"}>Products</Link>
                     </NavigationMenuLink>
                 </NavigationMenuItem>
                 <NavigationMenuItem>
