@@ -14,7 +14,7 @@ const cards = [
     ),
     sub: "Bondstein is the only company in Bangladesh operating tracking services with complete self owned platform.",
     bg: "/images/window-shield.png",
-    learnMore: "/",
+    learnMore: "/blogs/simplifying-fleet-management-gps",
   },
   {
     id: 2,
@@ -25,7 +25,7 @@ const cards = [
     ),
     sub: "Learn how data-driven helps managers streamline routes. Reduce downtime and keep vehicles protective.",
     bg: "/images/gps-map.jpg",
-    learnMore: "/",
+    learnMore: "/blogs/how-vehicle-tracking-reduces-expenses",
   },
   {
     id: 3,
@@ -36,7 +36,7 @@ const cards = [
     ),
     sub: "Discover how real-time monitoring and alerts can help drivers stay focused, avoid hazards, and respond quickly to emergencies.",
     bg: "/images/mobile-app.jpg",
-    learnMore: "/",
+    learnMore: "/blogs/impact-vehicle-tracking-road-safety",
   },
 ];
 

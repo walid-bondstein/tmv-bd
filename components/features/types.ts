@@ -49,3 +49,59 @@ export interface RealWorldApplications {
     description: string;
     applications: string[];
 }
+
+
+export interface ArticleData {
+    _id: string,
+    page_id: string,
+    url: string,
+    description: string,
+    badge: string
+    title: string
+    subtitle: string
+    featuredImage: {
+        src: string
+        alt: string
+    },
+    keyWords: string[]
+    author: {
+        name: string
+        avatar?: string
+    }
+    readTime: number
+    publishDate: string
+    intro: string
+    keyTakeaway: {
+        title: string
+        items: string[]
+    }
+    sections: Array<{
+        id: string
+        title: string
+        content: string
+        items?: string[]
+        callToAction?: {
+            text: string
+            icon?: string
+        }
+    }>
+    sidebar: {
+        cta: {
+            title: string
+            description: string
+            buttonText: string,
+            link: string
+        }
+        tableOfContents: Array<{
+            label: string
+            id: string
+        }>
+    }
+    relatedArticles: Array<{
+        id: string
+        category: string
+        title: string
+        image: string
+        publishedAgo: string
+    }>
+}

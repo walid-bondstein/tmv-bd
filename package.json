@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "NODE_ENV=development next dev --turbopack",
-    "build": "NODE_ENV=production next build --turbopack",
+    "build": "NODE_ENV=production next build --turbopack && next export",
     "start": "NODE_ENV=production next start",
     "intern": "next dev",
     "lint": "eslint"
