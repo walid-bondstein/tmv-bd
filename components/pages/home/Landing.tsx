@@ -28,7 +28,7 @@ export default function Landing({ offers }: { offers: string[] }) {
               Anytime. Anywhere.
             </h1>
             <div className="flex justify-start items-center gap-4 lg:gap-6 ">
-              <Link href="#products">
+              <Link href="#pricing">
                 <button
                   className="bg-submit lg:w-[9.7rem] xs:w-[9.8rem] xs:h-13 w-28 h-8 lg:font-bold rounded-lg tmv-shadow submit cursor-pointer text-[clamp(14px,4.0625vw,16px)]"
                   type="submit"
