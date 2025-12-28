@@ -15,26 +15,71 @@ import Footer from "@/components/shared/Footer";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-    title: "Home | Track My Vehicle - Bondstein",
-    description: "ADVANCED TELEMATICS SOLUTIONS FOR YOUR FLEET",
+
+    title: "Best GPS Vehicle Tracking System in Bangladesh | Track My Vehicle - Bondstein",
+    description: "Secure your car with Track My Vehicle, the best BTRC-approved GPS tracking service in Bangladesh. Enjoy real-time tracking, remote engine lock and AI-driven fleet insights with live vehicle tracking. Get started today!",
+    authors: [{ name: "Bondstein Technology Ltd." }],
+    creator: "Bondstein Technology Ltd.",
     keywords: [
-        "tmv",
-        "tmvbd",
-        "Truck My Vehicle BD",
-        "truck my vehicle bd",
-        "Truck My Vehicle",
-        "truck my vehicle",
+        "GPS Tracking Bangladesh", "Best Car Tracker BD", "Fleet Management System Bangladesh", "Vehicle Security System", "Vehicle Tracking", "Track My Vehicle", "Runner", "Bondstein", "Real-time Vehicle Tracking", "Engine Lock GPS", "BTRC Approved Tracker", "VTS Regular", "VTS Voice", "Disha AI Fleet"
     ],
+    referrer: "origin-when-cross-origin",
+    alternates: {
+        canonical: "https://tmvbd.com",
+    },
+    metadataBase: new URL("https://tmvbd.com/"),
     openGraph: {
-        title: "Home",
-        description: "ADVANCED TELEMATICS SOLUTIONS FOR YOUR FLEET",
         type: "website",
+        locale: "en_US",
+        siteName: "Track My Vehicle - Bondstein",
+        title: "Track My Vehicle - Bondstein",
+        description: "Secure your car with Track My Vehicle, the best BTRC-approved GPS tracking service in Bangladesh. Enjoy real-time tracking, remote engine lock and AI-driven fleet insights with live vehicle tracking. Get started today!",
+        url: "https://tmvbd.com",
+        images: [
+            {
+                url: "/images/og.png",
+                width: 512,
+                height: 513,
+                alt: "Track My Vehicle - Bondstein",
+            },
+        ],
     },
     twitter: {
         card: "summary_large_image",
-        title: "Home",
-        description: "ADVANCED TELEMATICS SOLUTIONS FOR YOUR FLEET",
+        title: "Track My Vehicle - Bondstein",
+        description: "Secure your car with Track My Vehicle, the best BTRC-approved GPS tracking service in Bangladesh. Enjoy real-time tracking, remote engine lock and AI-driven fleet insights with live vehicle tracking. Get started today!",
+        images: ["/images/og.png"],
+        creator: "@bondstein", // safe placeholder (remove if not used)
+        site: "@bondstein",
     },
+    icons: {
+        icon: "/favicon.ico",
+        apple: "/apple-touch-icon.png",
+        shortcut: "/favicon-16x16.png",
+    },
+    appleWebApp: {
+        capable: true,
+        title: "Track My Vehicle",
+        statusBarStyle: "default",
+    },
+    formatDetection: {
+        telephone: false,
+        email: false,
+        address: false,
+    },
+
+    robots: {
+        index: true,
+        follow: true,
+        googleBot: {
+            index: true,
+            follow: true,
+            "max-image-preview": "large",
+            "max-snippet": -1,
+            "max-video-preview": -1,
+        },
+    },
+    category: "technology",
 };
 
 // types/product.ts
@@ -174,31 +219,3 @@ export default async function HomePage() {
         </main>
     );
 }
-
-/*
-  SEO & implementation notes (short):
-  - Keep title under 60 characters and description under 155 for SERPs. We used a keyword-first title: "Fleet Management System | Fleetly".
-  - Use H1 for main product headline, H2 for feature sections, H3+ for subheads.
-  - Ensure server-side rendered meta tags (Next.js Head) so crawlers read them.
-  - Add JSON-LD for SoftwareApplication and FAQ structured data (extend as needed).
-  - Performance tips: resize images, use next/image with AVIF/WebP, set caching headers, and lazy-load non-critical assets.
-  - Accessibility: semantic tags (header/main/footer), aria-labels, and sufficient color contrast.
-
-  Suggested primary target keywords (use naturally in page copy & blog articles):
-  - fleet management system
-  - vehicle tracking software
-  - route optimization software
-  - fleet telematics
-  - fleet maintenance software
-
-  Suggested content plan:
-  1. Pillar page (this homepage) + /features, /pricing, /docs
-  2. 10 blog posts targeting long-tail keywords (e.g., "how to reduce fleet fuel costs 2025", "gps tracker installation guide for small fleets")
-  3. Case studies with measurable outcomes ("Reduced fuel spend by 18% for XYZ Logistics")
-
-  Technical SEO checklist:
-  - Add sitemap.xml and robots.txt
-  - Implement hreflang if you target multiple languages/regions
-  - Use canonical tags and structured data for key pages
-  - Server-side rendering or pre-rendering for public content
-*/

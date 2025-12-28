@@ -9,31 +9,72 @@ import WhatsAppButton from "@/components/shared/WhatsAppButton"
 
 export const metadata: Metadata = {
   title: {
-    default: "Track My Vehicle - Bondstein",
+    default: "Best GPS Vehicle Tracking System in Bangladesh | Track My Vehicle - Bondstein",
     template: "%s | Track My Vehicle - Bondstein",
   },
-  description: "ADVANCED TELEMATICS SOLUTIONS FOR YOUR FLEET",
-  keywords: [],
+  description: "Secure your car with Track My Vehicle, the best BTRC-approved GPS tracking service in Bangladesh. Enjoy real-time tracking, remote engine lock and AI-driven fleet insights with live vehicle tracking. Get started today!",
   authors: [{ name: "Bondstein Technology Ltd." }],
-  creator: "Your Name",
+  creator: "Bondstein Technology Ltd.",
+  keywords: [
+    "GPS Tracking Bangladesh", "Best Car Tracker BD", "Fleet Management System Bangladesh", "Vehicle Security System", "Vehicle Tracking", "Track My Vehicle", "Runner", "Bondstein", "Real-time Vehicle Tracking", "Engine Lock GPS", "BTRC Approved Tracker", "VTS Regular", "VTS Voice", "Disha AI Fleet"
+  ],
+  referrer: "origin-when-cross-origin",
+  alternates: {
+    canonical: "https://tmvbd.com",
+  },
   metadataBase: new URL("https://tmvbd.com/"),
   openGraph: {
     type: "website",
     locale: "en_US",
     siteName: "Track My Vehicle - Bondstein",
+    title: "Track My Vehicle - Bondstein",
+    description: "Secure your car with Track My Vehicle, the best BTRC-approved GPS tracking service in Bangladesh. Enjoy real-time tracking, remote engine lock and AI-driven fleet insights with live vehicle tracking. Get started today!",
+    url: "https://tmvbd.com",
+    images: [
+      {
+        url: "/images/og.png",
+        width: 512,
+        height: 513,
+        alt: "Track My Vehicle - Bondstein",
+      },
+    ],
   },
-  // twitter: {
-  //   card: "summary_large_image",
-  //   creator: "@yourusername",
-  // },
+  twitter: {
+    card: "summary_large_image",
+    title: "Track My Vehicle - Bondstein",
+    description: "Secure your car with Track My Vehicle, the best BTRC-approved GPS tracking service in Bangladesh. Enjoy real-time tracking, remote engine lock and AI-driven fleet insights with live vehicle tracking. Get started today!",
+    images: ["/images/og.png"],
+    creator: "@bondstein", // safe placeholder (remove if not used)
+    site: "@bondstein",
+  },
+  icons: {
+    icon: "/favicon.ico",
+    apple: "/apple-touch-icon.png",
+    shortcut: "/favicon-16x16.png",
+  },
+  appleWebApp: {
+    capable: true,
+    title: "Track My Vehicle",
+    statusBarStyle: "default",
+  },
+  formatDetection: {
+    telephone: false,
+    email: false,
+    address: false,
+  },
+
   robots: {
     index: true,
     follow: true,
     googleBot: {
       index: true,
       follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+      "max-video-preview": -1,
     },
   },
+  category: "technology",
 }
 
 
