@@ -32,7 +32,7 @@ export const metadata: Metadata = {
     url: "https://tmvbd.com",
     images: [
       {
-        url: "/images/og.png",
+        url: "https://tmvbd.com/images/og.png",
         width: 512,
         height: 513,
         alt: "Track My Vehicle - Bondstein",
@@ -43,7 +43,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Track My Vehicle - Bondstein",
     description: "Secure your car with Track My Vehicle, the best BTRC-approved GPS tracking service in Bangladesh. Enjoy real-time tracking, remote engine lock and AI-driven fleet insights with live vehicle tracking. Get started today!",
-    images: ["/images/og.png"],
+    images: ["https://tmvbd.com/images/og.png"],
     creator: "@bondstein", // safe placeholder (remove if not used)
     site: "@bondstein",
   },
