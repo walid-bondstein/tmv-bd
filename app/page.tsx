@@ -53,9 +53,9 @@ export const metadata: Metadata = {
         site: "@bondstein",
     },
     icons: {
-        icon: "/favicon.ico",
-        apple: "/apple-touch-icon.png",
-        shortcut: "/favicon-16x16.png",
+        icon: "/icon.png",
+        apple: "/icon.png",
+        shortcut: "/icon.png",
     },
     appleWebApp: {
         capable: true,
