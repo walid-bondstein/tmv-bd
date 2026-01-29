@@ -15,11 +15,10 @@ interface DisplayProductProps {
   product: Product;
 }
 
-export default function DisplayProduct({ product }: DisplayProductProps) {
+export default function BundleDisplayProduct({ product }: DisplayProductProps) {
   const [quantity, setQuantity] = useState(1);
   const { addToCart } = useCart();
   const router = useRouter();
-  const [selectedPlan, setSelectedPlan] = useState(product.subscriptions?.[0]);
 
   const total = Number(product.product_final_amount) * quantity;
 
@@ -57,47 +56,6 @@ export default function DisplayProduct({ product }: DisplayProductProps) {
         </div>
 
         <hr className="h-px my-8 bg-gray-200 border-0 dark:bg-gray-700" />
-
-        {/* Subscription Options */}
-        <div>
-          <h2 className="text-lg font-semibold text-gray-900 tracking-tight mb-3">
-            Monthly Subscription *
-          </h2>
-
-          <div className="grid xl:grid-cols-2 lg:grid-cols-2 gap-4">
-            {product.subscriptions?.map((option, index) => (
-              <label
-                key={index}
-                htmlFor={`plan-${index}`}
-                className="flex items-center justify-start gap-3 rounded-2xl px-5 py-4 bg-gray-100 cursor-pointer border border-transparent"
-              >
-                {/* Radio Button */}
-                <input
-                  type="radio"
-                  name="subscription"
-                  id={`plan-${index}`}
-                  onChange={() => setSelectedPlan(option)}
-                  checked={
-                    selectedPlan?.duration_months === option.duration_months
-                  }
-                  className="w-4 h-4 accent-gray-400"
-                />
-
-                {/* Text Content */}
-                <div>
-                  <p className="text-lg font-bold text-gray-900">
-                    {toIndianNumberFormat(Number(option.final_amount).toFixed(0))}
-                    <span className="font-semibold">/-BDT</span>
-                  </p>
-                  <p className="text-sm text-gray-500">
-                    For {option.duration_months} Month Subscription
-                  </p>
-                </div>
-              </label>
-            ))}
-          </div>
-        </div>
-
         {/* Quantity + Total */}
         <div className="flex flex-col sm:flex-row items-center justify-start gap-6 mt-6">
           {/* Quantity Section */}
@@ -131,13 +89,12 @@ export default function DisplayProduct({ product }: DisplayProductProps) {
           <div className="flex flex-col md:mr-0 mr-auto">
             <p className="text-sm font-bold text-gray-900">Total:</p>
             <p className="text-lg font-semibold">
-              ৳{toIndianNumberFormat(total + Number(selectedPlan.final_amount))} /- BDT
+              ৳{toIndianNumberFormat(total + Number(0))} /- BDT
             </p>
-            {selectedPlan && (
-              <p className="text-xs text-yellow-600">
-                For {selectedPlan.duration_months} Months
-              </p>
-            )}
+            <p className="text-xs text-yellow-600">
+              For {product.subscriptions?.[0].duration_months} Months
+            </p>
+
           </div>
         </div>
 
@@ -147,7 +104,6 @@ export default function DisplayProduct({ product }: DisplayProductProps) {
         <div className="flex gap-4 w-full mt-8 md:flex-row flex-col">
           <Button
             onClick={() => {
-              if (!selectedPlan) return;
               addToCart({
                 id: product.id,
                 name: product.product_name,
@@ -155,13 +111,13 @@ export default function DisplayProduct({ product }: DisplayProductProps) {
                 discount: Number(product.product_discount_amount),
                 priceWithoutDiscount: Number(product.product_final_amount),
                 quantity: quantity,
-                subscriptionPrice: Number(selectedPlan.final_amount),
+                subscriptionPrice: Number(0),
                 subscriptionDurationMonths: Number(
-                  selectedPlan.duration_months
+                  product.subscriptions?.[0].duration_months
                 ),
-                subscriptionID: selectedPlan.product_subscription_id,
+                subscriptionID: product.subscriptions?.[0].product_subscription_id,
                 itemImage: product.images?.[0] || "",
-                item_type: "product",
+                item_type: "bundle",
               });
               toast.success("Product added to cart!");
               router.push("/cart");
@@ -174,7 +130,6 @@ export default function DisplayProduct({ product }: DisplayProductProps) {
 
           <Button
             onClick={() => {
-              if (!selectedPlan) return;
               addToCart({
                 id: product.id,
                 name: product.product_name,
@@ -182,13 +137,13 @@ export default function DisplayProduct({ product }: DisplayProductProps) {
                 discount: Number(product.product_discount_amount),
                 priceWithoutDiscount: Number(product.product_final_amount),
                 quantity: quantity,
-                subscriptionPrice: Number(selectedPlan.final_amount),
+                subscriptionPrice: Number(0),
                 subscriptionDurationMonths: Number(
-                  selectedPlan.duration_months
+                  product.subscriptions?.[0].duration_months
                 ),
-                subscriptionID: selectedPlan.product_subscription_id,
+                subscriptionID: product.subscriptions?.[0].product_subscription_id,
                 itemImage: product.images?.[0] || "",
-                item_type: "product",
+                item_type: "bundle",
               });
               toast.success("Product added to cart!");
             }}

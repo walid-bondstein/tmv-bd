@@ -10,12 +10,14 @@ import { useRouter } from 'next/navigation';
 import React, { useState } from 'react'
 import { toast } from 'sonner';
 
-export default function PricingActionsWrapper({
+export default function BundlePricingActionsWrapper({
     product,
-    monthlySubscription
+    monthlySubscription,
+    percentage
 }: {
     product: Product;
     monthlySubscription: ProductSubscription | null;
+    percentage: string;
 }) {
     const { subscriptions } = product;
     const { clearCart, addToCart } = useCart();
@@ -35,8 +37,18 @@ export default function PricingActionsWrapper({
                 ) : <></>} */}
             </p>
 
-            <SubscriptionButtons selected={selected} setSelected={setSelected} twelveMonthSubscription={twelveMonthSubscription} sixMonthSubscription={sixMonthSubscription} />
-            {(product && selected) ? <p className="text-black text-xs font-medium my-2">Total {toIndianNumberFormat(Number(product.product_final_amount) + Number(selected?.final_amount))}/- with {selected?.duration_months} Month Subscription</p> : <></>}
+            {/* <SubscriptionButtons selected={selected} setSelected={setSelected} twelveMonthSubscription={twelveMonthSubscription} sixMonthSubscription={sixMonthSubscription} /> */}
+            {/* <div className="relative shrink-0">
+                <button
+                    className={`bg-submit w-full cursor-pointer group relative px-3 py-3 pt-5 rounded-xl font-semibold`}
+                >
+                    <div className="text-left">
+                        <p className="text-base text-primary-foreground font-bold whitespace-nowrap">Saves {toIndianNumberFormat(product.product_discount_amount)}BDT</p>
+                        <p className="text-xs text-primary-foreground mb-1 uppercase tracking-wider">{percentage}%</p>
+                    </div>
+                </button>
+            </div> */}
+            {/* {(product && selected) ? <p className="text-black text-xs font-medium my-2">Total {toIndianNumberFormat(Number(product.product_final_amount) + Number(selected?.final_amount))}/- with {selected?.duration_months} Month Subscription</p> : <></>} */}
             {/* {(product && selected) ? <p className="text-gray-600 text-xs text-right font-light my-2">**VAT Excluding</p> : <></>} */}
             <div className='grid grid-cols-1 gap-2'>
                 {/* <Link
@@ -60,13 +72,13 @@ export default function PricingActionsWrapper({
                             discount: Number(product.product_discount_amount),
                             priceWithoutDiscount: Number(product.product_final_amount),
                             quantity: 1,
-                            subscriptionPrice: Number(selected.final_amount),
+                            subscriptionPrice: 0,
                             subscriptionDurationMonths: Number(
-                                selected.duration_months
+                                subscriptions?.[0].duration_months
                             ),
-                            subscriptionID: selected.product_subscription_id,
+                            subscriptionID: subscriptions?.[0].product_subscription_id,
                             itemImage: product.images?.[0] || "",
-                            item_type: "product",
+                            item_type: "bundle",
                         });
                         toast.success("Product added to cart!");
                         router.push("/cart");

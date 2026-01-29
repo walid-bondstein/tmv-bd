@@ -1,6 +1,7 @@
 export const dynamic = "force-dynamic";
 
 import AppSection from "@/components/pages/home/AppSection";
+import BundlePricing from "@/components/pages/home/BundlePricing";
 import GetInTouch from "@/components/pages/home/GetInTouch";
 import { HowItWorks } from "@/components/pages/home/how-it-works";
 import KeyFeatures from "@/components/pages/home/KeyFeatures";
@@ -15,7 +16,6 @@ import Footer from "@/components/shared/Footer";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-
     title: "Best GPS Vehicle Tracking System in Bangladesh | Track My Vehicle - Bondstein",
     description: "Secure your car with Track My Vehicle, the best BTRC-approved GPS tracking service in Bangladesh. Enjoy real-time tracking, remote engine lock and AI-driven fleet insights with live vehicle tracking. Get started today!",
     authors: [{ name: "Bondstein Technology Ltd." }],
@@ -136,6 +136,33 @@ async function getProducts(): Promise<Product[]> {
         return [];
     }
 }
+// Fetch bundle data keeping page server-side
+async function getBundleProducts(): Promise<Product[]> {
+    try {
+        const res = await fetch(
+            `${process.env.NEXT_PUBLIC_API_URL}/api/v1/products-bundle`,
+            {
+                // cache: 'no-store', // 👈 use this if you want no caching (always fresh)
+                next: { revalidate: 3600 }, // or control revalidation at fetch-level
+            }
+        );
+        if (!res.ok) {
+            console.error("API returned non-OK status:", res.status);
+            return [];
+        }
+
+        const data = (await res.json()).data;
+
+        if (!Array.isArray(data)) {
+            console.error("Unexpected API structure:", []);
+            return [];
+        }
+        return data as Product[];
+    } catch (error) {
+        console.error("Error fetching bundle products:", error);
+        return [];
+    }
+}
 
 // Fetch store data keeping page server-side
 async function getCurrentOffer(): Promise<string[]> {
@@ -201,12 +228,16 @@ async function getSpecialOffer(): Promise<string[]> {
 
 export default async function HomePage() {
     const products = await getProducts();
+    const bundles = await getBundleProducts();
     const offerBanners: string[] = await getCurrentOffer();
     const specialOffers: string[] = await getSpecialOffer();
     return (
         <main className="min-h-screen bg-white text-slate-900 2xl:space-y-[140px] xl:space-y-[120px] lg:space-y-[100px] md:space-y-20 sm:space-y-[70px] space-y-[50px]">
             <Landing offers={offerBanners} />
             <Pricing products={products} />
+            {
+                bundles.length === 0 ? <></> : <BundlePricing bundles={bundles} />
+            }
             <KeyFeatures />
             <HowItWorks />
             <Platform />

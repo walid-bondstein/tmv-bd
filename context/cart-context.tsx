@@ -14,6 +14,7 @@ type CartItem = {
     subscriptionDurationMonths: number;
     itemImage?: string;
     subscriptionID: number;
+    item_type: "product" | "bundle";
 };
 
 type Coupon = {
