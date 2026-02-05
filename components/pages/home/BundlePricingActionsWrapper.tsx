@@ -24,7 +24,7 @@ export default function BundlePricingActionsWrapper({
     const router = useRouter();
     const twelveMonthSubscription = subscriptions.length > 0 ? subscriptions.find((ech) => ech.duration_months === 12) ?? null : null;
     const sixMonthSubscription = subscriptions.length > 0 ? subscriptions.find((ech) => ech.duration_months === 6) ?? null : null;
-    const [selected, setSelected] = useState<ProductSubscription | null>(twelveMonthSubscription ?? sixMonthSubscription ?? monthlySubscription ?? null);
+    // const [selected, setSelected] = useState<ProductSubscription | null>(twelveMonthSubscription ?? sixMonthSubscription ?? monthlySubscription ?? null);
     return (
         <div>
             <p className="text-gray-800 font-semibold mb-4">
@@ -60,10 +60,10 @@ export default function BundlePricingActionsWrapper({
                 </Link> */}
                 <Button
                     onClick={() => {
-                        if (!selected) {
-                            toast.error("Please select a subscription plan.");
-                            return;
-                        }
+                        // if (!selected) {
+                        //     toast.error("Please select a subscription plan.");
+                        //     return;
+                        // }
                         clearCart();
                         addToCart({
                             id: product.id,
@@ -83,7 +83,7 @@ export default function BundlePricingActionsWrapper({
                         toast.success("Product added to cart!");
                         router.push("/cart");
                     }}
-                    variant={"outline"} className="shrink-0 bg-primary-foreground text-white hover:bg-primary-foreground/90 hover:text-white/90 transition-colors duration-300 xs:h-13 mt-1 w-full h-8 lg:font-bold rounded-lg tmv-shadow submit cursor-pointer text-[clamp(14px,4.0625vw,16px)]">
+                    variant={"outline"} className="shrink-0 bg-primary-foreground text-white hover:bg-primary-foreground/90 hover:text-white/90 transition-colors duration-300 xs:h-13 mt-1 w-full h-8 lg:font-bold rounded-lg tmv-shadow submit cursor-pointer text-[clamp(14px,4.0625vw,16px)] bg-submit">
                     Purchase
                 </Button>
             </div>

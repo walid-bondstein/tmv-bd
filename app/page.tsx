@@ -11,76 +11,78 @@ import { Partners } from "@/components/pages/home/Partners";
 import Platform from "@/components/pages/home/Platform";
 import Pricing from "@/components/pages/home/Pricing";
 import OfferSlider from "@/components/pages/home/slider";
+import BundleCard from "@/components/shared/BundleCard";
+import BundleTicket from "@/components/shared/BundleTicket";
 import Footer from "@/components/shared/Footer";
+import CounterCard from "@/components/shared/timer/timer";
+import { Button } from "@/components/ui/button";
 
-import { Metadata } from "next";
+// export const metadata: Metadata = {
+//     title: "Best GPS Vehicle Tracking System in Bangladesh | Track My Vehicle - Bondstein",
+//     description: "Secure your car with Track My Vehicle, the best BTRC-approved GPS tracking service in Bangladesh. Enjoy real-time tracking, remote engine lock and AI-driven fleet insights with live vehicle tracking. Get started today!",
+//     authors: [{ name: "Bondstein Technology Ltd." }],
+//     creator: "Bondstein Technology Ltd.",
+//     keywords: [
+//         "GPS Tracking Bangladesh", "Best Car Tracker BD", "Fleet Management System Bangladesh", "Vehicle Security System", "Vehicle Tracking", "Track My Vehicle", "Runner", "Bondstein", "Real-time Vehicle Tracking", "Engine Lock GPS", "BTRC Approved Tracker", "VTS Regular", "VTS Voice", "Disha AI Fleet"
+//     ],
+//     referrer: "origin-when-cross-origin",
+//     alternates: {
+//         canonical: "https://tmvbd.com",
+//     },
+//     metadataBase: new URL("https://tmvbd.com/"),
+//     openGraph: {
+//         type: "website",
+//         locale: "en_US",
+//         siteName: "Track My Vehicle - Bondstein",
+//         title: "Track My Vehicle - Bondstein",
+//         description: "Secure your car with Track My Vehicle, the best BTRC-approved GPS tracking service in Bangladesh. Enjoy real-time tracking, remote engine lock and AI-driven fleet insights with live vehicle tracking. Get started today!",
+//         url: "https://tmvbd.com",
+//         images: [
+//             {
+//                 url: "https://tmvbd.com/images/og.png",
+//                 width: 512,
+//                 height: 513,
+//                 alt: "Track My Vehicle - Bondstein",
+//             },
+//         ],
+//     },
+//     twitter: {
+//         card: "summary_large_image",
+//         title: "Track My Vehicle - Bondstein",
+//         description: "Secure your car with Track My Vehicle, the best BTRC-approved GPS tracking service in Bangladesh. Enjoy real-time tracking, remote engine lock and AI-driven fleet insights with live vehicle tracking. Get started today!",
+//         images: ["https://tmvbd.com/images/og.png"],
+//         creator: "@bondstein", // safe placeholder (remove if not used)
+//         site: "@bondstein",
+//     },
+//     icons: {
+//         icon: "/icon.png",
+//         apple: "/icon.png",
+//         shortcut: "/icon.png",
+//     },
+//     appleWebApp: {
+//         capable: true,
+//         title: "Track My Vehicle",
+//         statusBarStyle: "default",
+//     },
+//     formatDetection: {
+//         telephone: false,
+//         email: false,
+//         address: false,
+//     },
 
-export const metadata: Metadata = {
-    title: "Best GPS Vehicle Tracking System in Bangladesh | Track My Vehicle - Bondstein",
-    description: "Secure your car with Track My Vehicle, the best BTRC-approved GPS tracking service in Bangladesh. Enjoy real-time tracking, remote engine lock and AI-driven fleet insights with live vehicle tracking. Get started today!",
-    authors: [{ name: "Bondstein Technology Ltd." }],
-    creator: "Bondstein Technology Ltd.",
-    keywords: [
-        "GPS Tracking Bangladesh", "Best Car Tracker BD", "Fleet Management System Bangladesh", "Vehicle Security System", "Vehicle Tracking", "Track My Vehicle", "Runner", "Bondstein", "Real-time Vehicle Tracking", "Engine Lock GPS", "BTRC Approved Tracker", "VTS Regular", "VTS Voice", "Disha AI Fleet"
-    ],
-    referrer: "origin-when-cross-origin",
-    alternates: {
-        canonical: "https://tmvbd.com",
-    },
-    metadataBase: new URL("https://tmvbd.com/"),
-    openGraph: {
-        type: "website",
-        locale: "en_US",
-        siteName: "Track My Vehicle - Bondstein",
-        title: "Track My Vehicle - Bondstein",
-        description: "Secure your car with Track My Vehicle, the best BTRC-approved GPS tracking service in Bangladesh. Enjoy real-time tracking, remote engine lock and AI-driven fleet insights with live vehicle tracking. Get started today!",
-        url: "https://tmvbd.com",
-        images: [
-            {
-                url: "https://tmvbd.com/images/og.png",
-                width: 512,
-                height: 513,
-                alt: "Track My Vehicle - Bondstein",
-            },
-        ],
-    },
-    twitter: {
-        card: "summary_large_image",
-        title: "Track My Vehicle - Bondstein",
-        description: "Secure your car with Track My Vehicle, the best BTRC-approved GPS tracking service in Bangladesh. Enjoy real-time tracking, remote engine lock and AI-driven fleet insights with live vehicle tracking. Get started today!",
-        images: ["https://tmvbd.com/images/og.png"],
-        creator: "@bondstein", // safe placeholder (remove if not used)
-        site: "@bondstein",
-    },
-    icons: {
-        icon: "/icon.png",
-        apple: "/icon.png",
-        shortcut: "/icon.png",
-    },
-    appleWebApp: {
-        capable: true,
-        title: "Track My Vehicle",
-        statusBarStyle: "default",
-    },
-    formatDetection: {
-        telephone: false,
-        email: false,
-        address: false,
-    },
-
-    robots: {
-        index: true,
-        follow: true,
-        googleBot: {
-            index: true,
-            follow: true,
-            "max-image-preview": "large",
-            "max-snippet": -1,
-            "max-video-preview": -1,
-        },
-    },
-    category: "technology",
-};
+//     robots: {
+//         index: true,
+//         follow: true,
+//         googleBot: {
+//             index: true,
+//             follow: true,
+//             "max-image-preview": "large",
+//             "max-snippet": -1,
+//             "max-video-preview": -1,
+//         },
+//     },
+//     category: "technology",
+// };
 
 // types/product.ts
 export interface ProductSubscription {
@@ -233,6 +235,35 @@ export default async function HomePage() {
     const specialOffers: string[] = await getSpecialOffer();
     return (
         <main className="min-h-screen bg-white text-slate-900 2xl:space-y-[140px] xl:space-y-[120px] lg:space-y-[100px] md:space-y-20 sm:space-y-[70px] space-y-[50px]">
+
+            <div className="max-w-min rounded-full cursor-pointer p-px relative overflow-hidden">
+                <div
+                    className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full bg-gradient-rotation aspect-square"
+                    style={{
+                        animation: 'spin 2s linear infinite',
+                    }}
+                />
+                <section className="grid z-10">
+                    <Button className="rounded-full bg-black hover:bg-black text-white px-6 py-5 z-10">
+                        <span
+                            className="bg-submit bg-clip-text text-transparent font-semibold text-2xl"
+                        >
+                            Current offers
+                        </span>
+                    </Button>
+                </section>
+            </div>
+            <div className="flex gap-4 mb-8">
+                {/* Staggered delays for the "start from different corner" effect */}
+                <CounterCard title="Days" value={1} delay="0s" />
+                <CounterCard title="Hours" value={21} delay="-0.75s" />
+                <CounterCard title="Minutes" value={52} delay="-1.5s" />
+                <CounterCard title="Seconds" value={20} delay="-2.25s" />
+            </div>
+            <BundleCard />
+            <div className="bg-green-500 p-20">
+                <BundleTicket product={bundles[0]} />
+            </div>
             <Landing offers={offerBanners} />
             <Pricing products={products} />
             {

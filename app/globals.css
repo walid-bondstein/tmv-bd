@@ -235,6 +235,40 @@ body {
         var(--primary2));
   }
 
+  .bg-rotate {
+    background-size: 300% 100%;
+    moz-transition: all 0.4s ease-in-out;
+    -o-transition: all 0.4s ease-in-out;
+    -webkit-transition: all 0.4s ease-in-out;
+    transition: all 0.4s ease-in-out;
+    background: linear-gradient(179deg, var(--color-yellow-100), var(--color-yellow-500));
+  }
+  
+    .bg-gradient-rotation {
+    background-size: 300% 100%;
+    moz-transition: all 0.4s ease-in-out;
+    -o-transition: all 0.4s ease-in-out;
+    -webkit-transition: all 0.4s ease-in-out;
+    transition: all 0.4s ease-in-out;
+    background-image: linear-gradient(to right,
+        var(--color-orange-500),
+        transparent,
+        var(--primary2),
+        var(--primary2));
+  }
+  .bg-bundle-gradient {
+    background-size: 300% 100%;
+    moz-transition: all 0.4s ease-in-out;
+    -o-transition: all 0.4s ease-in-out;
+    -webkit-transition: all 0.4s ease-in-out;
+    transition: all 0.4s ease-in-out;
+       background-image: linear-gradient(to right,
+        var(--color-yellow-100),
+        var(--color-yellow-200),
+        var(--color-yellow-300),
+        var(--color-yellow-400));
+  }
+
   .bg-btn-info {
     background-size: 300% 100%;
     moz-transition: all 0.4s ease-in-out;
@@ -416,4 +450,55 @@ body {
     animation: gradientShift 8s ease infinite;
   }
 
+}
+
+.cut-hole{
+  display: none;
+}
+
+
+.ticket-mask {
+  --hole: 8px;
+  --bigHole: 16px;
+
+  -webkit-mask-image:
+    /* BASE LAYER — keeps whole card visible */
+    linear-gradient(#000 0 0),
+
+    /* LEFT holes */
+    radial-gradient(circle var(--hole) at 0% 8%, transparent 99%, #000 100%),
+    radial-gradient(circle var(--hole) at 0% 21%, transparent 99%, #000 100%),
+    radial-gradient(circle var(--hole) at 0% 34%, transparent 99%, #000 100%),
+    radial-gradient(circle var(--hole) at 0% 47%, transparent 99%, #000 100%),
+    radial-gradient(circle var(--hole) at 0% 60%, transparent 99%, #000 100%),
+    radial-gradient(circle var(--hole) at 0% 73%, transparent 99%, #000 100%),
+    radial-gradient(circle var(--hole) at 0% 86%, transparent 99%, #000 100%),
+
+    /* RIGHT holes */
+    radial-gradient(circle var(--hole) at 100% 8%, transparent 99%, #000 100%),
+    radial-gradient(circle var(--hole) at 100% 21%, transparent 99%, #000 100%),
+    radial-gradient(circle var(--hole) at 100% 34%, transparent 99%, #000 100%),
+    radial-gradient(circle var(--hole) at 100% 47%, transparent 99%, #000 100%),
+    radial-gradient(circle var(--hole) at 100% 60%, transparent 99%, #000 100%),
+    radial-gradient(circle var(--hole) at 100% 73%, transparent 99%, #000 100%),
+    radial-gradient(circle var(--hole) at 100% 86%, transparent 99%, #000 100%),
+    radial-gradient(circle var(--bigHole) at 39% 0%, transparent 99%, #000 100%),
+    radial-gradient(circle var(--bigHole) at 39% 100%, transparent 99%, #000 100%);
+
+  -webkit-mask-composite: destination-out;
+  mask-composite: exclude;
+}
+
+@keyframes conic-spin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-conic {
+  animation: conic-spin 3s linear infinite;
 }
