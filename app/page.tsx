@@ -236,34 +236,6 @@ export default async function HomePage() {
     return (
         <main className="min-h-screen bg-white text-slate-900 2xl:space-y-[140px] xl:space-y-[120px] lg:space-y-[100px] md:space-y-20 sm:space-y-[70px] space-y-[50px]">
 
-            <div className="max-w-min rounded-full cursor-pointer p-px relative overflow-hidden">
-                <div
-                    className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full bg-gradient-rotation aspect-square"
-                    style={{
-                        animation: 'spin 2s linear infinite',
-                    }}
-                />
-                <section className="grid z-10">
-                    <Button className="rounded-full bg-black hover:bg-black text-white px-6 py-5 z-10">
-                        <span
-                            className="bg-submit bg-clip-text text-transparent font-semibold text-2xl"
-                        >
-                            Current offers
-                        </span>
-                    </Button>
-                </section>
-            </div>
-            <div className="flex gap-4 mb-8">
-                {/* Staggered delays for the "start from different corner" effect */}
-                <CounterCard title="Days" value={1} delay="0s" />
-                <CounterCard title="Hours" value={21} delay="-0.75s" />
-                <CounterCard title="Minutes" value={52} delay="-1.5s" />
-                <CounterCard title="Seconds" value={20} delay="-2.25s" />
-            </div>
-            <BundleCard />
-            <div className="bg-green-500 p-20">
-                <BundleTicket product={bundles[0]} />
-            </div>
             <Landing offers={offerBanners} />
             <Pricing products={products} />
             {
