@@ -2,7 +2,6 @@
 import React from 'react'
 import { Card, CardContent } from '../ui/card'
 import Image from 'next/image'
-import { Clock } from 'lucide-react'
 import { Button } from '../ui/button'
 import { Product } from '@/app/page'
 import { toIndianNumberFormat } from '@/lib/utils'
@@ -22,12 +21,12 @@ export default function BundleTicket({
         <Card className="ticket-mask relative overflow-hidden shadow-none border-0 rounded-none p-0 md:w-122 min-h-60 bg-black group/card">
             <CardContent className="p-0 grow w-full grid md:grid-cols-[39%_61%] z-1">
                 {/* Left Section */}
-                <div className="relative bg-black flex items-center justify-center p-5 bg-[url('/images/ticket-image-background.png')] bg-no-repeat bg-position-[60%_50%]">
+                <div className="relative md:h-auto h-40 bg-black flex items-center justify-center p-5 bg-[url('/images/ticket-image-background.png')] bg-no-repeat bg-position-[60%_50%]">
                     <div className='w-full h-full relative'>
                         <Image
                             fill
                             src={product.images[0] ?? "/images/storePlaceholder.png"}
-                            alt={"-"}
+                            alt={product.product_name ?? "-"}
                             className="max-h-full object-contain group-hover/card:scale-110 transition-all duration-700"
                         />
                     </div>

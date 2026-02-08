@@ -5,6 +5,7 @@ import SubscriptionButtons from '@/components/shared/SubscriptionButtons'
 import { Button } from '@/components/ui/button';
 import { useCart } from '@/context/cart-context';
 import { toIndianNumberFormat } from '@/lib/utils';
+import { Plus } from 'lucide-react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import React, { useState } from 'react'
@@ -25,18 +26,21 @@ export default function PricingActionsWrapper({
     const [selected, setSelected] = useState<ProductSubscription | null>(twelveMonthSubscription ?? sixMonthSubscription ?? monthlySubscription ?? null);
     return (
         <div>
-            <p className="text-gray-800 font-semibold mb-4">
-                {Number(product.product_final_amount).toLocaleString()} /-{" "}
-                <span className="text-gray-700">BDT</span>
-                {/* {Number(product.product_discount_amount) ? (
+            <div className='flex gap-1 justify-between items-center md:flex-nowrap flex-wrap'>
+                <p className="text-gray-800 font-semibold mb-4">
+                    <span className="text-gray-700 font-normal text-[14px] block">Device</span>
+                    <span className="text-gray-700 text-[14px] whitespace-nowrap">{Number(product.product_final_amount).toLocaleString()} /-{" "} BDT</span>
+                    {/* {Number(product.product_discount_amount) ? (
                     <span className="font-medium ml-1 text-deep-gradient">
                         ({Number((Number(product.product_discount_amount) / Number(product.product_base_amount)) * 100).toFixed(1)}% Off)
                     </span>
                 ) : <></>} */}
-            </p>
-
-            <SubscriptionButtons selected={selected} setSelected={setSelected} twelveMonthSubscription={twelveMonthSubscription} sixMonthSubscription={sixMonthSubscription} />
-            {(product && selected) ? <p className="text-black text-xs font-medium my-2">Total {toIndianNumberFormat(Number(product.product_final_amount) + Number(selected?.final_amount))}/- with {selected?.duration_months} Month Subscription</p> : <></>}
+                </p>
+                <Plus className='group-hover/card:text-black text-gray-500 transition-all duration-700 md:inline-block hidden w-3.5 h-3.5' />
+                <SubscriptionButtons selected={selected} setSelected={setSelected} twelveMonthSubscription={twelveMonthSubscription} sixMonthSubscription={sixMonthSubscription} />
+            </div>
+            <hr className='my-4' />
+            {(product && selected) ? <p className="text-black text-2xl font-semibold text-center my-2">Total {toIndianNumberFormat(Number(product.product_final_amount) + Number(selected?.final_amount))} BDT</p> : <></>}
             {/* {(product && selected) ? <p className="text-gray-600 text-xs text-right font-light my-2">**VAT Excluding</p> : <></>} */}
             <div className='grid grid-cols-1 gap-2'>
                 {/* <Link
