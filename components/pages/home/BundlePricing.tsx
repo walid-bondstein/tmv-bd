@@ -81,7 +81,7 @@ export default function BundlePricing({ bundles, bundleDate }: {
                         Best GPS Tracking Offers in Bangladesh </h2>
                 </div>
                 {
-                    bundles.length >= 1 ? <div>
+                    bundles.length <= 1 ? <div>
                         <BundleTicket product={bundles[0]} />
                     </div> : <div
                         ref={scrollRef}
