@@ -492,22 +492,22 @@ export default function BillingForm({
                                     items.map((itm, indx) => <div key={indx} className='col-span-2 flex justify-between items-center'>
                                         <section className='max-w-4xs'>
                                             <p className="text-sm font-medium md:text-lg text-[#727B8C]">{itm.quantity}X. {itm.name}</p>
-                                            <p className='text-[#727B8C] md:text-base text-xs'>Monthly Subscription- {itm.subscriptionDurationMonths} Month {`(${toIndianNumberFormat((itm.subscriptionPrice) * itm.quantity)}/- BDT)`}</p>
+                                            <p className='text-[#727B8C] md:text-base text-xs'>Monthly Subscription- {itm.subscriptionDurationMonths} {itm.subscriptionDurationMonths === 1 ? "Month" : "Months"} {`(${toIndianNumberFormat(Math.round(itm.subscriptionPrice) * itm.quantity)}/- BDT)`}</p>
                                         </section>
-                                        <p className="text-sm md:text-lg font-semibold text-right">{toIndianNumberFormat((itm.priceWithoutDiscount + itm.subscriptionPrice) * itm.quantity)}/- BDT</p>
+                                        <p className="text-sm md:text-lg font-semibold text-right">{toIndianNumberFormat(Math.round(itm.priceWithoutDiscount + itm.subscriptionPrice) * itm.quantity)}/- BDT</p>
                                     </div>)
                                 }
                                 <p className="text-sm font-medium md:text-lg text-[#727B8C]">VAT</p>
-                                <p className="text-sm md:text-lg font-semibold text-right">{toIndianNumberFormat(totalVat) ?? 0}/- BDT</p>
+                                <p className="text-sm md:text-lg font-semibold text-right">{toIndianNumberFormat(Math.round(totalVat)) ?? 0}/- BDT</p>
                                 <p className="text-sm font-medium md:text-lg text-[#727B8C]">Subtotal</p>
-                                <p className="text-sm md:text-lg font-semibold text-right">{toIndianNumberFormat(subtotal) ?? 0}/- BDT</p>
+                                <p className="text-sm md:text-lg font-semibold text-right">{toIndianNumberFormat(Math.round(subtotal)) ?? 0}/- BDT</p>
                                 {coupon && <p className="text-sm font-medium md:text-lg text-[#727B8C]">Coupon Discount</p>}
-                                {coupon && <p className="text-sm md:text-lg font-semibold text-right">{toIndianNumberFormat(coupon?.discount) ?? 0}/- BDT</p>}
+                                {coupon && <p className="text-sm md:text-lg font-semibold text-right">{toIndianNumberFormat(Math.round(coupon?.discount)) ?? 0}/- BDT</p>}
                             </div>
                             <hr />
                             <div className='grid grid-cols-2'>
                                 <p className="text-sm font-medium md:text-lg text-[#727B8C]">Total Amount</p>
-                                <p className="text-sm md:text-lg font-semibold text-right">{toIndianNumberFormat(total)}/- BDT</p>
+                                <p className="text-sm md:text-lg font-semibold text-right">{toIndianNumberFormat(Math.round(total))}/- BDT</p>
                             </div>
                             <div>
                                 <FormField
