@@ -58,7 +58,7 @@ export default function BundlePricing({ bundles }: {
     };
 
     return (
-        <div className="flex flex-col items-center justify-start w-full bg-black min-h-screen mx-auto py-6 lg:space-y-6 md:space-y-4 space-y-4  mt-4 overflow-hidden bg-no-repeat bg-[url('/images/bundle_pricing-bg.png')]" id="bundle-pricing"  >
+        <div className="flex flex-col items-center justify-start w-full bg-black min-h-auto mx-auto py-6 lg:space-y-6 md:space-y-4 space-y-4  mt-4 overflow-hidden bg-no-repeat bg-[url('/images/bundle_pricing-bg.png')]" id="bundle-pricing"  >
             <div className="max-w-min rounded-full cursor-pointer p-px relative overflow-hidden  mt-14">
                 <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full bg-gradient-rotation aspect-square" style={{ animation: 'spin 2s linear infinite', }} />
                 <section className="grid z-10">
@@ -104,7 +104,7 @@ export default function BundlePricing({ bundles }: {
                     onClick={() => scroll("right")}
                     className="w-9 h-9 flex items-center justify-center border rounded-full hover:bg-yellow-400 text-white transition">
                     <ChevronRight size={20} /> </button>
-            </div> : ""}
+            </div> : <div className="mb-6" />}
 
         </div>
     )
