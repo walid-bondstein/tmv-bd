@@ -17,7 +17,7 @@ export default function Pricing({ products }: {
                     ))
                 }
             </section>
-            <section className="md:hidden block overflow-x-auto px-4">
+            <section className="md:hidden block overflow-x-auto">
                 <section className="flex justify-center min-w-max items-center gap-4 my-3">
                     {
                         products.map((product) => (
