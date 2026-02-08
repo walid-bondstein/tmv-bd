@@ -20,19 +20,20 @@ function getTimeLeft(targetTime: number) {
     return { days, hours, minutes, seconds };
 }
 
-function Countdown() {
+function Countdown({ bundleDate }: { bundleDate: string | null }) {
     //target time to 5 days from now
-    const [targetTime] = useState(() => Date.now() + 5 * 24 * 60 * 60 * 1000);
+    const [targetTime] = useState(new Date(bundleDate ?? "")?.getTime());
     const [timeLeft, setTimeLeft] = useState(() => getTimeLeft(targetTime));
 
     useEffect(() => {
+        if (!targetTime) return;
         const interval = setInterval(() => {
             setTimeLeft(getTimeLeft(targetTime));
         }, 1000);
 
         return () => clearInterval(interval);
     }, [targetTime]);
-
+    if (!targetTime) return null;
     return (
         <div className="flex mx-auto justify-center gap-4 md:mb-8 mb-0">
             <CounterCard title="Days" value={timeLeft.days} delay="0s" />
@@ -43,8 +44,9 @@ function Countdown() {
     );
 }
 
-export default function BundlePricing({ bundles }: {
+export default function BundlePricing({ bundles, bundleDate }: {
     bundles: Product[],
+    bundleDate: string | null,
 }) {
     const scrollRef = useRef<HTMLDivElement>(null);
 
@@ -58,7 +60,7 @@ export default function BundlePricing({ bundles }: {
     };
 
     return (
-        <div className="flex flex-col items-center justify-start w-full bg-black min-h-screen mx-auto py-6 lg:space-y-6 md:space-y-4 space-y-4  mt-4 overflow-hidden bg-no-repeat bg-[url('/images/bundle_pricing-bg.png')]" id="bundle-pricing"  >
+        <div className="flex flex-col items-center justify-start w-full bg-black min-h-screen mx-auto py-6 lg:space-y-6 md:space-y-4 space-y-4  mt-4 overflow-hidden bg-no-repeat bg-[url('/images/bundle_pricing-bg.png')]" id="offer"  >
             <div className="max-w-min rounded-full cursor-pointer p-px relative overflow-hidden  mt-14">
                 <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full bg-gradient-rotation aspect-square" style={{ animation: 'spin 2s linear infinite', }} />
                 <section className="grid z-10">
@@ -70,7 +72,7 @@ export default function BundlePricing({ bundles }: {
                 </section>
             </div>
 
-            <Countdown />
+            <Countdown bundleDate={bundleDate} />
 
             {/* Main Offer Heading */}
             <div className="max-w-[955px] mx-auto text-center">

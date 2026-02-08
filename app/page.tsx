@@ -139,7 +139,10 @@ async function getProducts(): Promise<Product[]> {
     }
 }
 // Fetch bundle data keeping page server-side
-async function getBundleProducts(): Promise<Product[]> {
+async function getBundleProducts(): Promise<{
+    products: Product[];
+    date: string | null;
+}> {
     try {
         const res = await fetch(
             `${process.env.NEXT_PUBLIC_API_URL}/api/v1/products-bundle`,
@@ -150,19 +153,31 @@ async function getBundleProducts(): Promise<Product[]> {
         );
         if (!res.ok) {
             console.error("API returned non-OK status:", res.status);
-            return [];
+            return {
+                products: [],
+                date: null,
+            };
         }
 
-        const data = (await res.json()).data;
+        const { products, global_product_bundle_duration = null } = (await res.json()).data;
 
-        if (!Array.isArray(data)) {
+        if (!Array.isArray(products)) {
             console.error("Unexpected API structure:", []);
-            return [];
+            return {
+                products: [],
+                date: null,
+            };
         }
-        return data as Product[];
+        return {
+            products: products as Product[],
+            date: global_product_bundle_duration,
+        } as { products: Product[]; date: string | null };
     } catch (error) {
         console.error("Error fetching bundle products:", error);
-        return [];
+        return {
+            products: [],
+            date: null,
+        };
     }
 }
 
@@ -230,7 +245,7 @@ async function getSpecialOffer(): Promise<string[]> {
 
 export default async function HomePage() {
     const products = await getProducts();
-    const bundles = await getBundleProducts();
+    const { products: bundles, date: bundleDate } = await getBundleProducts();
     const offerBanners: string[] = await getCurrentOffer();
     const specialOffers: string[] = await getSpecialOffer();
     return (
@@ -239,7 +254,7 @@ export default async function HomePage() {
             <Landing offers={offerBanners} />
             <Pricing products={products} />
             {
-                bundles.length === 0 ? <></> : <BundlePricing bundles={bundles} />
+                bundles.length === 0 ? <></> : <BundlePricing bundles={bundles} bundleDate={bundleDate} />
             }
             <KeyFeatures />
             <HowItWorks />
