@@ -77,8 +77,7 @@ export default function BundlePricing({ bundles, bundleDate }: {
             {/* Main Offer Heading */}
             <div className="max-w-[955px] mx-auto text-center">
                 <h2 className="font-semibold md:text-[54px] text-3xl md:leading-[68px] tracking-[-0.02em] text-white">
-                    Discover the best GPS tracking offer <br />
-                    in Bangladesh </h2>
+                    Best GPS Tracking Offers in Bangladesh </h2>
             </div>
             {
                 bundles.length >= 1 ? <div>
