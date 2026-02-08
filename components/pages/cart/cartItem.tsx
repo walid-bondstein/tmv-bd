@@ -93,7 +93,7 @@ export default function CartItem() {
                           <p>{item.name}</p>
                           <p className="text-[#727B8C]">
                             Monthly Subscription-{" "}
-                            {item.subscriptionDurationMonths} Month{" "}
+                            {item.subscriptionDurationMonths} {item.subscriptionDurationMonths === 1 ? "Month" : "Months"}{" "}
                             {item.item_type === "product" ? `(${toIndianNumberFormat(Math.round(item.subscriptionPrice * item.quantity))
                               }/- BDT)` : ""}
                           </p>
@@ -185,7 +185,7 @@ export default function CartItem() {
                       </p>
                       <p className="text-[#727B8C] text-base">
                         Monthly Subscription- {item.subscriptionDurationMonths}{" "}
-                        Month{" "}
+                        {item.subscriptionDurationMonths === 1 ? "Month" : "Months"}{" "}
                         {`(${toIndianNumberFormat(Math.round(item.subscriptionPrice * item.quantity))}/- BDT)`}
                       </p>
                       <p className="text-xl font-medium text-[#211E1F]">
@@ -318,7 +318,7 @@ export default function CartItem() {
                 items.map((itm, indx) => <div key={indx} className='col-span-2 flex justify-between items-center'>
                   <section className='max-w-4xs'>
                     <p className="text-sm font-medium md:text-lg text-[#727B8C]">{itm.quantity}X. {itm.name}</p>
-                    {itm.item_type === "product" ? <p className='text-[#727B8C] md:text-base text-xs'>Monthly Subscription- {itm.subscriptionDurationMonths} Month {`(${toIndianNumberFormat((Math.round(itm.subscriptionPrice) * itm.quantity))}/- BDT)`}</p> : null}
+                    {itm.item_type === "product" ? <p className='text-[#727B8C] md:text-base text-xs'>Monthly Subscription- {itm.subscriptionDurationMonths}  {itm.subscriptionDurationMonths === 1 ? "Month" : "Months"}{" "} {`(${toIndianNumberFormat((Math.round(itm.subscriptionPrice) * itm.quantity))}/- BDT)`}</p> : null}
                   </section>
                   <p className="text-sm md:text-lg font-semibold text-right">{toIndianNumberFormat(Math.round(itm.priceWithoutDiscount + itm.subscriptionPrice) * itm.quantity)}/- BDT</p>
                 </div>)
