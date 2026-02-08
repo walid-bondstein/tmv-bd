@@ -94,8 +94,8 @@ export default function CartItem() {
                           <p className="text-[#727B8C]">
                             Monthly Subscription-{" "}
                             {item.subscriptionDurationMonths} Month{" "}
-                            {`(${toIndianNumberFormat(item.subscriptionPrice * item.quantity)
-                              }/- BDT)`}
+                            {item.item_type === "product" ? `(${toIndianNumberFormat(Math.round(item.subscriptionPrice * item.quantity))
+                              }/- BDT)` : ""}
                           </p>
                         </div>
                       </div>
@@ -104,7 +104,7 @@ export default function CartItem() {
                       <p>
                         {" "}
                         <span className="lg:hidden block">Price</span>{" "}
-                        {toIndianNumberFormat(item.priceWithoutDiscount)}/-BDT
+                        {toIndianNumberFormat(Math.round(item.priceWithoutDiscount))}/-BDT
                       </p>
                     </div>
                     <div className="lg:col-span-3 col-span-6 flex 2xl:justify-start xl:justify-center xl:gap-2 lg:justify-start justify-center items-center">
@@ -146,8 +146,8 @@ export default function CartItem() {
                     <div className="lg:col-span-2 col-span-3 flex lg:justify-start justify-center items-center text-[#727B8C]">
                       <p>
                         <span className="lg:hidden block">Subtotal</span>{" "}
-                        {toIndianNumberFormat((item.priceWithoutDiscount + item.subscriptionPrice) *
-                          item.quantity)}{" "}
+                        {toIndianNumberFormat(Math.round((item.priceWithoutDiscount + item.subscriptionPrice) *
+                          item.quantity))}{" "}
                         BDT
                       </p>
                     </div>
@@ -186,10 +186,10 @@ export default function CartItem() {
                       <p className="text-[#727B8C] text-base">
                         Monthly Subscription- {item.subscriptionDurationMonths}{" "}
                         Month{" "}
-                        {`(${toIndianNumberFormat(item.subscriptionPrice * item.quantity)}/- BDT)`}
+                        {`(${toIndianNumberFormat(Math.round(item.subscriptionPrice * item.quantity))}/- BDT)`}
                       </p>
                       <p className="text-xl font-medium text-[#211E1F]">
-                        {toIndianNumberFormat(item.priceWithoutDiscount)}/- BDT
+                        {toIndianNumberFormat(Math.round(item.priceWithoutDiscount))}/- BDT
                       </p>
                     </div>
                     <div>
@@ -318,25 +318,25 @@ export default function CartItem() {
                 items.map((itm, indx) => <div key={indx} className='col-span-2 flex justify-between items-center'>
                   <section className='max-w-4xs'>
                     <p className="text-sm font-medium md:text-lg text-[#727B8C]">{itm.quantity}X. {itm.name}</p>
-                    {itm.item_type === "product" ? <p className='text-[#727B8C] md:text-base text-xs'>Monthly Subscription- {itm.subscriptionDurationMonths} Month {`(${toIndianNumberFormat(((itm.subscriptionPrice) * itm.quantity))}/- BDT)`}</p> : null}
+                    {itm.item_type === "product" ? <p className='text-[#727B8C] md:text-base text-xs'>Monthly Subscription- {itm.subscriptionDurationMonths} Month {`(${toIndianNumberFormat((Math.round(itm.subscriptionPrice) * itm.quantity))}/- BDT)`}</p> : null}
                   </section>
-                  <p className="text-sm md:text-lg font-semibold text-right">{toIndianNumberFormat((itm.priceWithoutDiscount + itm.subscriptionPrice) * itm.quantity)}/- BDT</p>
+                  <p className="text-sm md:text-lg font-semibold text-right">{toIndianNumberFormat(Math.round(itm.priceWithoutDiscount + itm.subscriptionPrice) * itm.quantity)}/- BDT</p>
                 </div>)
               }
               <p className="text-sm font-medium md:text-lg text-[#727B8C]">VAT</p>
-              <p className="text-sm md:text-lg font-semibold text-right">{toIndianNumberFormat(totalVat) ?? 0}/- BDT</p>
+              <p className="text-sm md:text-lg font-semibold text-right">{toIndianNumberFormat(Math.round(totalVat)) ?? 0}/- BDT</p>
               <p className="text-sm font-medium md:text-lg text-[#727B8C]">
                 Subtotal Amount
               </p>
               <p className="text-sm md:text-lg font-semibold text-right">
-                {toIndianNumberFormat(subtotal)}/- BDT
+                {toIndianNumberFormat(Math.round(subtotal))}/- BDT
               </p>
               {coupon ? <>
                 <p className="text-sm font-medium md:text-lg text-[#727B8C]">
                   Coupon Discount
                 </p>
                 <p className="text-sm md:text-lg font-semibold text-right">
-                  {toIndianNumberFormat(discount)}/- BDT
+                  {toIndianNumberFormat(Math.round(discount))}/- BDT
                 </p>
               </> : <></>}
             </div>
@@ -346,7 +346,7 @@ export default function CartItem() {
                 Total Amount
               </p>
               <p className="text-sm md:text-lg font-semibold text-right">
-                {toIndianNumberFormat(total)}/- BDT
+                {toIndianNumberFormat(Math.round(total))}/- BDT
               </p>
             </div>
             <div className="mt-3 space-y-3">

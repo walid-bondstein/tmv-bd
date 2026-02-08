@@ -55,7 +55,19 @@ export function CartProvider({ children }: { children: ReactNode }) {
                     ((p.id === item.id) && (item.subscriptionDurationMonths === p.subscriptionDurationMonths)) ? { ...p, quantity: p.quantity + item.quantity } : p
                 );
             }
-            return [...prev, item];
+            const vatLessPriceWithoutDiscount = Number(item.priceWithoutDiscount) / (10 + 100) * 100;
+            const vatLessSubscriptionPrice = Number(item.subscriptionPrice) / (5 + 100) * 100;
+            // console.log("Adding to cart with VAT calculations:", {
+            //     priceWithoutDiscount: item.priceWithoutDiscount,
+            //     subscriptionPrice: item.subscriptionPrice,
+            //     priceWithoutDiscountWithVat: vatLessPriceWithoutDiscount,
+            //     subscriptionPriceWithVat: vatLessSubscriptionPrice,
+            // });
+            return [...prev, {
+                ...item,
+                priceWithoutDiscount: vatLessPriceWithoutDiscount,
+                subscriptionPrice: vatLessSubscriptionPrice,
+            }];
         });
     };
 

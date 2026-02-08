@@ -6,7 +6,7 @@ export function cn(...inputs: ClassValue[]) {
 }
 
 export function calculateVat(amount: number, vatRate: number): number {
-  return Number(Number((amount * vatRate) / 100).toFixed(0));
+  return Math.round(Number(Number((amount * vatRate) / 100)));
 }
 
 export function toIndianNumberFormat(input: number | string): number | string {
