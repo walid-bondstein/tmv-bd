@@ -49,6 +49,7 @@ export default function BundlePricing({ bundles, bundleDate }: {
     bundleDate: string | null,
 }) {
     const scrollRef = useRef<HTMLDivElement>(null);
+    const [isOverflowing, setIsOverflowing] = useState(false);
 
     const scroll = (direction: "left" | "right") => {
         if (!scrollRef.current) return;
@@ -58,6 +59,30 @@ export default function BundlePricing({ bundles, bundleDate }: {
             behavior: "smooth",
         });
     };
+
+    useEffect(() => {
+        const el = scrollRef.current;
+        if (!el) return;
+
+        const updateOverflow = () => {
+            const hasOverflow = el.scrollWidth > el.clientWidth + 1;
+            setIsOverflowing(hasOverflow);
+            if (hasOverflow) {
+                el.scrollTo({ left: 0 });
+            }
+        };
+
+        updateOverflow();
+
+        if (typeof ResizeObserver !== "undefined") {
+            const observer = new ResizeObserver(() => updateOverflow());
+            observer.observe(el);
+            return () => observer.disconnect();
+        }
+
+        window.addEventListener("resize", updateOverflow);
+        return () => window.removeEventListener("resize", updateOverflow);
+    }, [bundles.length]);
 
     return (
         <div className="flex flex-col items-center justify-center w-full bg-black min-h-screen mx-auto py-6 lg:space-y-6 md:space-y-4 space-y-4  mt-4 overflow-hidden bg-no-repeat bg-[url('/images/bundle_pricing-bg.png')]" id="offer"  >
@@ -85,7 +110,7 @@ export default function BundlePricing({ bundles, bundleDate }: {
                         <BundleTicket product={bundles[0]} />
                     </div> : <div
                         ref={scrollRef}
-                        className="w-full overflow-x-auto overflow-y-hidden scroll-smooth pr-4 md:pl-42 flex gap-6 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
+                        className={`w-full ${isOverflowing ? "overflow-x-auto md:pl-42" : "overflow-hidden pl-4"} overflow-y-hidden scroll-smooth pr-4 flex gap-6 ${isOverflowing ? "justify-start" : "justify-center"} [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden`}>
                         {bundles.map((bundle, index) => (
                             <div
                                 key={index}
@@ -96,7 +121,7 @@ export default function BundlePricing({ bundles, bundleDate }: {
                     </div>
                 }
 
-                {bundles.length > 1 ? <div className="flex gap-2">
+                {bundles.length > 1 && isOverflowing ? <div className="flex gap-2">
                     <button
                         onClick={() => scroll("left")}
                         className="w-9 h-9 flex items-center justify-center border rounded-full hover:bg-yellow-400 text-white transition">

@@ -43,15 +43,16 @@ export default function FeaturedProducts({ products }: { products: Product[] }) 
       {/* Scrollable Product Cards */}
       <div
         ref={scrollRef}
-        className="flex overflow-x-auto gap-6 scrollbar-hide scroll-smooth"
+        className="flex overflow-x-auto gap-6 scroll-smooth [&::-webkit-scrollbar]:hidden"
+        style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
       >
         {products.map((product, i) => (
-          <div
-            key={product.id}
-            className="shrink-0 w-[280px] md:w-[300px] flex flex-col bg-white rounded-xl shadow-sm border hover:shadow-md transition"
-          >
-            <PricingCard product={product} />
-          </div>
+          // <div
+          //   key={product.id}
+          //   className="shrink-0 w-[280px] md:w-[30px] flex flex-col bg-white rounded-xl shadow-sm border hover:shadow-md transition"
+          // >
+          <PricingCard key={product.id} product={product} />
+          // </div>
         ))}
       </div>
     </div>}

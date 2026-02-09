@@ -12,7 +12,7 @@ export const PricingCard: React.FC<Props> = ({ product }) => {
     const monthlySubscription = product?.subscriptions?.length > 0 ? product.subscriptions.find((ech) => ech.duration_months === 1) ?? product.subscriptions[0] : null;
     const discounted = Number((Number(product.product_discount_amount) / Number(product.product_base_amount)) * 100).toFixed(0)
     return (
-        <div className="max-w-[280px] min-w-[280px] md:max-w-[360px] flex flex-col space-y-3 justify-between bg-[#F6F5EE] relative rounded-xl transition hover:shadow-md w-full overflow-hidden group/card flex-1">
+        <div className="max-w-[340px] min-w-[340px] md:max-w-[360px] flex flex-col space-y-3 justify-between bg-[#F6F5EE] relative rounded-xl transition hover:shadow-md w-full overflow-hidden group/card flex-1">
             {/* Subscription Label */}
             {/* {monthlySubscription ? (
                 <div className="whitespace-nowrap ml-auto text-ellipsis text-sm px-[18px] py-[11px] bg-white group-hover/card:bg-primary text-left font-semibold w-2/3 rounded-bl-4xl text-black transition-all duration-300">

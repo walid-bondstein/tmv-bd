@@ -68,7 +68,7 @@ async function getBundleProducts(): Promise<Product[]> {
       return []
     }
 
-    const data = (await res.json()).data;
+    const data = (await res.json()).data.products;
 
     if (!Array.isArray(data)) {
       console.error('Unexpected API structure:', [])

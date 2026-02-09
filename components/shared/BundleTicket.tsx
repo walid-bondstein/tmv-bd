@@ -8,6 +8,7 @@ import { toIndianNumberFormat } from '@/lib/utils'
 import { useCart } from '@/context/cart-context'
 import { useRouter } from 'next/navigation'
 import { toast } from 'sonner'
+import Link from 'next/link'
 
 export default function BundleTicket({
     product
@@ -40,7 +41,11 @@ export default function BundleTicket({
                                 <span className='font-semibold'>08h : 14m : 55s</span>
                             </div> */}
                             <div>
-                                <p className='font-medium text-[32px] leading-11 line-clamp-1'>{product.product_name}</p>
+                                <Link
+                                    className='shrink-0 cursor-pointer'
+                                    href={`/bundle-details/${product.product_slug}`}>
+                                    <p className='font-medium text-[32px] leading-11 line-clamp-1'>{product.product_name}</p>
+                                </Link>
                                 {product?.subscriptions?.[0]?.duration_months ? <p className='font-normal text-[14px] leading-5 line-clamp-1'>{product.product_details}</p> : null}
                             </div>
                         </div>
