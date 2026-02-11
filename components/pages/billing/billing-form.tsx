@@ -21,8 +21,8 @@ import { toIndianNumberFormat } from '@/lib/utils'
 const billingFormSchema = z.object({
     first_name: z.string().min(2, "First name must be at least 2 characters"),
     last_name: z.string().min(2, "Last name must be at least 2 characters"),
-    contact_number: z.string().regex(/^[0-9+\-\s()]+$/, "Invalid phone number"),
-    email: z.string().email("Invalid email address").or(z.literal("")),
+    contact_number: z.string().regex(/^\d{11}$/, "Contact number must be 11 digits"),
+    email: z.string().min(1, "Email is required").email("Invalid email address"),
     installation_date: z.string().min(1, "Installation date is required"),
     installation_time: z.string().min(1, "Installation time is required"),
     district_id: z.string().min(1, "District is required"),
@@ -259,7 +259,7 @@ export default function BillingForm({
                                                 render={({ field }) => (
                                                     <FormItem>
                                                         <FormLabel className="text-sm font-medium">
-                                                            Email <span className="text-muted-foreground">(optional)</span>
+                                                            Email <span className="text-destructive">*</span>
                                                         </FormLabel>
                                                         <Input type="email" placeholder="example@gmail.com" {...field} className="bg-muted/50" />
                                                         <FormMessage />
