@@ -34,7 +34,7 @@ export default function CounterCard({ title, value, delay = "0s" }: { title: str
     const formattedValue = value < 10 ? `0${value}` : `${value}`;
 
     return (
-        <div className="flex flex-col items-center w-24 h-24">
+        <div className="flex flex-col items-center w-20 h-20 md:w-24 md:h-24">
             <h3 className="text-[#8D96A1] text-[10px] tracking-wider mb-1.5 font-medium font-titillium">
                 {title}
             </h3>
@@ -50,7 +50,7 @@ export default function CounterCard({ title, value, delay = "0s" }: { title: str
                     {/* upper half styling detail - optional decoration inside */}
                     {/* overlays removed as background is now handled in ConicBorder */}
 
-                    <p className="bg-linear-to-b from-[#FDD10E] to-[#F36B24] bg-clip-text text-transparent font-lato font-semibold text-4xl leading-none tracking-tight text-center z-30" style={{ letterSpacing: '-0.02em' }}>
+                    <p className="bg-linear-to-b from-[#FDD10E] to-[#F36B24] bg-clip-text text-transparent font-lato font-semibold text-2xl md:text-4xl leading-none tracking-tight text-center z-30" style={{ letterSpacing: '-0.02em' }}>
                         {formattedValue}
                     </p>
                 </div>

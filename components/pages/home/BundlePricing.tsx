@@ -35,7 +35,7 @@ function Countdown({ bundleDate }: { bundleDate: string | null }) {
     }, [targetTime]);
     if (!targetTime) return null;
     return (
-        <div className="flex mx-auto justify-center gap-4">
+        <div className="flex mx-auto justify-center gap-1 md:gap-4">
             <CounterCard title="Days" value={timeLeft.days} delay="0s" />
             <CounterCard title="Hours" value={timeLeft.hours} delay="-0.75s" />
             <CounterCard title="Minutes" value={timeLeft.minutes} delay="-1.5s" />
